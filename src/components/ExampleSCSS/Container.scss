@@ -1,0 +1,25 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  max-width: $mobile;
+
+  @include media-rules(tablet) {
+    max-width: $tablet;
+  }
+
+  @include media-rules(desktop) {
+    max-width: $desktop;
+  }
+}
+
+.container.dark {
+  background-color: $background-dark;
+}
+.container.light {
+  background-color: $background-light;
+}
+.container.violet {
+  background-color: $background-violet;
+}

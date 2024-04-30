@@ -1,0 +1,106 @@
+@import 'src/styles/fonts.scss';
+
+:root {
+  /* Main background colors */
+  --background-violet: #d6d8ff;
+  --background-light: #fdfdfd;
+  --background-dark: #1f1f1f;
+
+  /* Sidebar background colors */
+  --sidebar-background-violet: #5255bc;
+  --sidebar-background-light: #fff;
+  --sidebar-background-dark: #121212;
+
+  /* Secondary colors (header) */
+  --header-background-violet: #fff;
+  --header-background-light: #fcfcfc;
+  --header-background-dark: #161616;
+
+  /* Labels */
+  --label-green: #bedbb0;
+  --label-pink: #e09cb5;
+  --label-purple: #8fa1d0;
+  --label-grey: rgba(255, 255, 255, 0.3);
+
+  /* Buttons */
+  --button-dark: #bedbb0;
+  --button-hover-dark: #9dc888;
+  --button-light: #bedbb0;
+  --button-hover-light: #9dc888;
+  --button-violet: #5255bc;
+  --button-hover-violet: #7b7ede;
+  --button-violet-small: #b8bcfd;
+  --button-hover-violet-small: #979cea;
+
+  /* Border colors */
+  --border-dark: #bedbb0;
+  --border-light: #bedbb0;
+  --border-violet: #5255bc;
+
+  html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  [hidden] {
+    display: none;
+  }
+}
