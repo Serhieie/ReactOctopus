@@ -10,7 +10,7 @@ import './styles/common.scss';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <Provider store={store}> */}
-    <BrowserRouter>
+    <BrowserRouter basename="/ReactOctopus">
       {/* <PersistGate loading={null} persistor={persistor}> */}
       <App />
       {/* </PersistGate> */}
