@@ -1,6 +1,12 @@
-// import { Route, Routes } from 'react-router-dom';
+ import { Route, Routes } from 'react-router-dom';
 // import Layout from 'components/Layout/Layout';
 // import ErrorPage from 'pages/ErrorPage/ErrorPage';
+
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import AuthPage from './pages/AuthPage/AuthPage';
+import ScreenPage from './pages/ScreenPage/ScreenPage';
+import HomePage from './pages/HomePage/HomePage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -10,13 +16,20 @@ const test = import.meta.env.VITE_API_TEST;
 // const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 
 function App() {
-  console.log(test);
+ 
   return (
-    <>
-      <h1>Task Pro</h1>
-      <h2>HELLO EVERYONE!</h2>
-      <p>Some text</p>
-    </>
+    <div>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/auth/:id" element={<AuthPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/home/:boardName" element={<ScreenPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
+  );
+}
+   
     // <Routes>
     //   <Route path="/" element={<Layout />}>
     //     <Route path="/first" element={<WelcomePage />} />
@@ -26,7 +39,5 @@ function App() {
     //     <Route path="*" element={<ErrorPage />} />
     //   </Route>
     // </Routes>;
-  );
-}
-
+ 
 export default App;
