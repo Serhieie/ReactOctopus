@@ -1,0 +1,31 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 335px;
+    padding: 24px;
+    transform: translate(-50%, -50%);
+    background: rgb(21, 21, 21);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.registrLink {
+    color: rgba(255, 255, 255, 0.3) ;
+}
+
+.registrLink:active {
+    color: rgb(255, 255, 255) ;
+}
+.loginLink {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.loginLink:active {
+    color: rgb(255, 255, 255) ;
+}
+

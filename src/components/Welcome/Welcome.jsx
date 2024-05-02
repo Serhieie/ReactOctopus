@@ -23,7 +23,7 @@ const Welcome = () => {
       <div className={styles.logoWrap}>
         <div className={styles.logo}>
           <svg className={styles.icon} >
-            <use xlinkHref={`${LogoSprite}#icon-lightning`} className={styles.iconLightning} />
+            <use xlinkHref={`${LogoSprite}#icon-lightning`} className={styles.iconLightning} style={{ width: '15px', height: '20px' }} />
           </svg>
         </div>
         <h1>Task Pro</h1>

@@ -99,16 +99,13 @@
 
 .icon {
     fill: rgb(255, 255, 255);
+    margin-top: 10px;
+    margin-left: 12.5px;     
     width: 15px;
     height: 20px;
-    margin-top: 10px;
-    margin-left: 12.5px;        
 }
 
-.iconLightning {
-    width: 15px;
-    height: 20px;
-}
+
 
 .text {
     width: 335px;
@@ -118,4 +115,8 @@
     line-height: 18px;
     letter-spacing: -2%;
     text-align: center;
+}
+.icon svg {
+    width: 15px;
+    height: 20px;
 }
