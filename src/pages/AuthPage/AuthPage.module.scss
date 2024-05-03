@@ -2,30 +2,32 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
+.containerPage{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    background: linear-gradient(180.00deg, rgba(196, 196, 196, 0) 25%, rgb(190, 219, 176) 92.188%);
+}
+
 .container {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 335px;
+    min-height: 300px;
     padding: 24px;
     transform: translate(-50%, -50%);
     background: rgb(21, 21, 21);
     box-sizing: border-box;
     border-radius: 10px;
+    
 }
 
-.registrLink {
-    color: rgba(255, 255, 255, 0.3) ;
-}
 
-.registrLink:active {
-    color: rgb(255, 255, 255) ;
-}
-.loginLink {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.loginLink:active {
-    color: rgb(255, 255, 255) ;
-}
 

@@ -18,14 +18,14 @@ const AuthPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div>
-        <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: { display: 'none' }}}>
-          <Tab className={styles.registrLink}  label="Registration" component={NavLink} to="/auth/register" />
-          <Tab className={styles.loginLink}  label="Log In" component={NavLink} to="/auth/login" />
+    <div className={styles.containerPage}>
+      <div className={styles.container}>
+      <Tabs value={value} onChange={handleChange} TabIndicatorProps={{style: { display: 'none' }}}>
+          <Tab className={styles.registrLink}  label="Registration" component={NavLink} to="/auth/register" style={{ color: value === 0 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)'  ,  padding: 0  }} />
+          <Tab className={styles.loginLink}  label="Log In" component={NavLink} to="/auth/login"  style={{ color: value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)' ,  padding: 0}}/>
         </Tabs>
         {value === 0 && <RegisterForm />}
-        {value === 1 && <LoginForm />}
+      {value === 1 && <LoginForm />}
       </div>
     </div>
   );
