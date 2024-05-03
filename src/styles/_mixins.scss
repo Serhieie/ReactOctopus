@@ -30,6 +30,7 @@
 // .main-dashboard {
 //   @include responsive-scroll(width, height);
 // }
+//цей не перевірений
 @mixin responsive-scroll($column-width, $column-height) {
   $screen-width: 100vw;
   $screen-height: 100vh;
@@ -46,6 +47,36 @@
   @media (min-height: #{$screen-height}) {
     .column {
       overflow-y: auto;
+    }
+  }
+}
+
+@mixin appear-animation($duration: 0.25s) {
+  animation: appear $duration ease forwards;
+
+  @keyframes appear {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin disappear-animation($duration: 0.25s) {
+  animation: disappear $duration ease forwards;
+
+  @keyframes disappear {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(0);
+      opacity: 0;
     }
   }
 }

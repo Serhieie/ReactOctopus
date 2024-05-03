@@ -1,6 +1,7 @@
 // import { Route, Routes } from 'react-router-dom';
 // import Layout from 'components/Layout/Layout';
 // import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import { Header } from './components/Header/Header';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -13,6 +14,7 @@ function App() {
   console.log(test);
   return (
     <>
+      <Header />
       <h1>Task Pro</h1>
       <h2>HELLO EVERYONE!</h2>
       <p>Some text</p>
