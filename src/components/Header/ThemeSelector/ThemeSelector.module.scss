@@ -1,0 +1,72 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.openTheme {
+  position: relative;
+  margin-left: auto;
+  margin-right: 14px;
+
+  cursor: pointer;
+}
+
+.openThemeSpan {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: inherit;
+  opacity: 0.8;
+  user-select: none;
+  transition:
+    transform 250ms ease-in-out,
+    color 250ms ease-in-out;
+}
+
+.arrowIcon {
+  transition:
+    transform 250ms ease-in-out,
+    stroke 250ms ease-in-out;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+// DARK THEME
+.openThemeSpanDark {
+  > svg {
+    stroke: $text-dark;
+  }
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-dark;
+    stroke: $text-hover-dark;
+  }
+}
+
+// LIGHT THEME
+.openThemeSpanLight {
+  > svg {
+    stroke: $text-light;
+  }
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-light;
+    stroke: $text-hover-light;
+  }
+}
+//VIOLET THEME
+
+.openThemeSpanViolet {
+  > svg {
+    stroke: $text-violet;
+  }
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-violet;
+    stroke: $text-hover-violet;
+  }
+}

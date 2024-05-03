@@ -9,9 +9,9 @@ $sidebar-background-light: #fff;
 $sidebar-background-dark: #121212;
 
 //secondary colors (header)
-$sidebar-background-violet: #fff;
-$sidebar-background-light: #fcfcfc;
-$sidebar-background-dark: #161616;
+$header-background-violet: #fff;
+$header-background-light: #fcfcfc;
+$header-background-dark: #161616;
 
 // Lables
 $lable-green: #bedbb0;
@@ -33,3 +33,15 @@ $button-hover-violet-small: #979cea;
 $border-dark: #bedbb0;
 $border-light: #bedbb0;
 $border-violet: #5255bc;
+
+//text
+
+$text-dark: #fff;
+$text-secondary-dark: rgba(255, 255, 255, 0.5);
+$text-hover-dark: #bedbb0;
+$text-light: #161616;
+$text-secondary-light: rgba(255, 255, 255, 0.5);
+$text-hover-light: #bedbb0;
+$text-violet: #161616;
+$text-secondary-violet: rgba(255, 255, 255, 0.5);
+$text-hover-violet: #5255bc;

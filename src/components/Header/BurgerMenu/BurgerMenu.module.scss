@@ -1,0 +1,61 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.burgerButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.burgerIcon {
+  transition: stroke 250ms ease-in-out;
+  width: 24px;
+  height: 24px;
+  @include media-rules(tablet) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// DARK THEME
+
+.burgerButtonDark {
+  .burgerIcon {
+    stroke: $text-dark;
+  }
+
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-dark;
+    stroke: $text-hover-dark;
+  }
+}
+
+// LIGHT THEME
+
+.burgerButtonLight {
+  .burgerIcon {
+    stroke: $text-light;
+  }
+
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-light;
+    stroke: $text-hover-light;
+  }
+}
+
+//VIOLET THEME
+
+.burgerButtonViolet {
+  .burgerIcon {
+    stroke: $text-violet;
+  }
+
+  &:hover,
+  &:hover > svg {
+    color: $text-hover-violet;
+    stroke: $text-hover-violet;
+  }
+}
