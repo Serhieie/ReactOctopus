@@ -1,0 +1,83 @@
+ @import '/src/styles/breakpoints';
+ @import '/src/styles/mixins';
+ @import '/src/styles/colors';
+
+ .form {
+     display: flex;
+     flex-direction: column;
+     gap: 14px;
+     margin-top: 20px
+ }
+
+ .inputContainer {
+     position: relative;
+     height: 70px;
+
+ }
+
+ .input {
+     border: 1px solid #bedbb0;
+     border-radius: 8px;
+     width: 287px;
+     height: 49px;
+     background: #1f1f1f;
+     color: #fff;
+     padding: 0 18px;
+     box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+     opacity: 0.4;
+
+ }
+
+ .input::placeholder {
+     color: rgba(255, 255, 255, 0.7);
+     padding-left: 18px;
+ }
+
+
+
+ .button {
+     border: none;
+     border-radius: 8px;
+     width: 287px;
+     height: 49px;
+     background: #bedbb0;
+     color: #161616;
+     font-weight: bold;
+     font-size: 16px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+     margin-top: 24px;
+ }
+
+ .button:hover {
+     background: #9dc888;
+ }
+
+ .iconContainer {
+     position: absolute;
+     top: 50%;
+     right: 18px;
+     transform: translateY(-50%);
+     cursor: pointer;
+ }
+
+ .icon {
+     color: rgba(255, 255, 255, 0.3);
+     width: 18px;
+     height: 18px;
+ }
+
+ .input:active {
+     border: 1px solid #bedbb0;
+     color: #fff;
+     box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+     background: #1f1f1f;
+ }
+
+ .error {
+     color: red;
+     font-family: Poppins;
+     font-weight: 400;
+     font-size: 14px;
+
+ }
