@@ -8,10 +8,10 @@ export const signUp = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await register(body);
+      Notify.info('Please confirm your email address.');
       return response.data;
     } catch (error) {
-      //переробити обробку помилок
-      if (error.response.data.code === 11000) {
+      if (error.response.status === 409) {
         Notify.failure(`User with email "${body.email}" already exists`);
       }
       return rejectWithValue(error.response.data.message);
@@ -27,8 +27,11 @@ export const logIn = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error(error.message);
-      if (error.response.status === 400) {
-        Notify.failure('Incorrect data. Try again');
+      if (error.response.status === 600) {
+        Notify.failure(error.response.data.message);
+      }
+      if (error.response.status === 401) {
+        Notify.failure(error.response.data.message);
       } else {
         Notify.failure(error.response.data.message);
       }
