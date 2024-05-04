@@ -14,6 +14,7 @@ import { signUp, logIn } from '../../redux/auth/authOperations';
 const AuthPage = () => {
   const { id } = useParams();
   const [value, setValue] = useState(id === 'login' ? 1 : 0);
+
   const dispatch = useDispatch();
 
   const handleChange = (event, newValue) => {
