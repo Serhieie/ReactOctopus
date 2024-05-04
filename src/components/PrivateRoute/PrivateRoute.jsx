@@ -12,7 +12,7 @@ const PrivateRoute = () => {
     return <Loader />;
   }
   if (!isLogin && !token) {
-    return <Navigate to="/welcome" />;
+    return <Navigate to="/" />;
   }
 
   return <Outlet />;

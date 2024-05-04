@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import UserImg from '../../assets/login/loginX1.png';
 import LogoSprite from '../../assets/sprite.svg';
 import styles from './Welcome.module.scss';
-import { selectToken } from '../../redux/auth/authSelectors';
-import { useDispatch } from 'react-redux';
-import { current } from '../../redux/auth/authOperations';
 
 const Welcome = () => {
   const [isLoginHovered, setIsLoginHovered] = useState(false);
-  const dispatch = useDispatch();
 
   const handleLoginHover = () => {
     setIsLoginHovered(true);

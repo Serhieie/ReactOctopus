@@ -12,7 +12,7 @@ const NotFoundPage = () => {
         className={styles.img}
       />
       <p className={styles.title}>This Page is Not on the Map</p>
-      <Button component={Link} to="/home" variant="outlined">
+      <Button component={Link} to="/" variant="outlined">
         Get back to home page
       </Button>
     </div>
