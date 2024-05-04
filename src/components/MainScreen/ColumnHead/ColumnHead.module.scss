@@ -1,0 +1,90 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.columnHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 334px;
+  height: 56px;
+  font-size: 14px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+
+  user-select: none;
+  @include media-rules(tablet) {
+  }
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+  }
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: transparent;
+
+  transition: stroke 250ms ease-in-out;
+}
+
+//DARK
+
+.columnHeadDark {
+  background-color: #121212;
+
+  .icon {
+    stroke: $text-secondary-dark;
+  }
+
+  .columnTitle {
+    color: $text-dark;
+  }
+
+  .icon:hover {
+    stroke: $text-hover-dark;
+  }
+}
+
+//LIGHT
+
+.columnHeadLight {
+  background-color: #fff;
+
+  .icon {
+    stroke: $text-secondary-light;
+  }
+  .columnTitle {
+    color: $text-light;
+  }
+  .icon:hover {
+    stroke: $text-hover-light;
+  }
+}
+
+//VIOLET
+
+.columnHeadViolet {
+  background-color: #fff;
+
+  .icon {
+    stroke: $text-secondary-violet;
+  }
+
+  .columnTitle {
+    color: $text-violet;
+  }
+  .icon:hover {
+    stroke: $text-hover-violet;
+  }
+}
