@@ -1,0 +1,122 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    background: linear-gradient(180.00deg, rgba(196, 196, 196, 0) 25%, rgb(190, 219, 176) 92.188%);
+}
+
+.userImg {
+    width: 124px;
+    height: 124px;
+    margin-bottom: 15px;
+
+}
+
+.linksWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 48px;
+}
+
+.register  {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    width: 335px;
+    letter-spacing: -0.02em;
+    padding: 14px 131px 14px 130px;
+    background: rgb(22, 22, 22);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);;
+    cursor: pointer;
+    text-transform: none;
+}
+
+.login {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    width: 335px;
+    letter-spacing: -0.02em;
+    padding: 14px 131px 14px 130px;
+    background: transparent;
+    border-radius: 8px;
+    color: rgb(22, 22, 22);
+    cursor: pointer;
+    text-transform: none;
+}
+
+.registerOnLoginHover{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    width: 335px;
+    letter-spacing: -0.02em;
+    padding: 14px 131px 14px 130px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: none;
+    background: transparent;
+    color: rgb(22, 22, 22);
+}
+
+.login:hover {
+    background: rgb(22, 22, 22);
+    color: rgb(255, 255, 255);
+}
+
+.logoWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    margin-bottom: 25px;
+    
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgb(22, 22, 22);       
+}
+
+.icon {
+    fill: rgb(255, 255, 255);
+    margin-top: 10px;
+    margin-left: 12.5px;     
+    width: 15px;
+    height: 20px;
+}
+
+
+
+.text {
+    width: 335px;
+    color: rgb(22, 22, 22);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -2%;
+    text-align: center;
+}
+.icon svg {
+    width: 15px;
+    height: 20px;
+}
