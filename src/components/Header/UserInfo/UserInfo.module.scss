@@ -1,0 +1,80 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.userInfo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include media-rules(tablet) {
+    gap: 14px;
+  }
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.userName {
+  margin-top: 2px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+
+  transition: color 250ms ease-in-out;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4.5px;
+  border: 0.5px solid transparent;
+  transition: border-color 250ms ease-in-out;
+}
+
+// DARK THEME
+.userInfoDark {
+  &:hover {
+    color: $text-hover-dark;
+  }
+  &:hover .userAvatar {
+    border-color: $text-hover-dark;
+  }
+}
+
+.dark {
+  background-color: $header-background-dark;
+  color: $text-dark;
+}
+// LIGHT THEME
+
+.userInfoDark {
+  &:hover {
+    color: $text-hover-light;
+  }
+  &:hover .userAvatar {
+    border-color: $text-hover-light;
+  }
+}
+
+.light {
+  background-color: $header-background-light;
+  color: $text-light;
+}
+
+//VIOLET THEME
+
+.userInfoViolet {
+  &:hover {
+    color: $text-hover-violet;
+  }
+  &:hover .userAvatar {
+    border-color: $text-hover-violet;
+  }
+}
+
+.violet {
+  background-color: $header-background-violet;
+  color: $text-violet;
+}

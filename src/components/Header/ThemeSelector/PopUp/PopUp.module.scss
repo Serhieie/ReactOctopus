@@ -1,0 +1,93 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.themePopUp {
+  position: absolute;
+  top: 44px;
+  left: -10px;
+
+  width: 100px;
+  height: 108px;
+
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
+  font-size: 14px;
+  @include appear-animation(0.25s);
+  @include media-rules(tablet) {
+    top: 48px;
+  }
+
+  > span {
+    cursor: pointer;
+    user-select: none;
+
+    transition: color 250ms ease-in-out;
+  }
+
+  &.disappear {
+    pointer-events: none;
+  }
+}
+
+.disappear {
+  @include disappear-animation(0.25s);
+}
+
+// DARK THEME
+
+.themePopUpDark {
+  background-color: $header-background-dark;
+  > span {
+    color: $text-secondary-dark;
+  }
+
+  > span.activeDark {
+    color: $text-hover-dark;
+  }
+
+  > span:hover {
+    color: $text-hover-dark;
+  }
+}
+
+// LIGHT THEME
+
+.themePopUpLight {
+  border: 1px solid #bedbb0;
+
+  > span {
+    color: $text-light;
+  }
+
+  > span.activeLight {
+    color: $text-hover-light;
+  }
+
+  > span:hover {
+    color: $text-hover-light;
+  }
+}
+
+//VIOLET THEME
+
+.themePopUpViolet {
+  border: 1px solid #ecedfd;
+
+  > span {
+    color: $text-violet;
+  }
+
+  > span.activeViolet {
+    color: $text-hover-violet;
+  }
+
+  > span:hover {
+    color: $text-hover-violet;
+  }
+}
