@@ -26,7 +26,7 @@
   > span {
     cursor: pointer;
     user-select: none;
-
+    padding: 2px 0;
     transition: color 250ms ease-in-out;
   }
 
@@ -43,6 +43,7 @@
 
 .themePopUpDark {
   background-color: $header-background-dark;
+  border: 1px solid $border-dark;
   > span {
     color: $text-secondary-dark;
   }
@@ -59,7 +60,8 @@
 // LIGHT THEME
 
 .themePopUpLight {
-  border: 1px solid #bedbb0;
+  background-color: $header-background-light;
+  border: 1px solid $border-light;
 
   > span {
     color: $text-light;
@@ -77,6 +79,7 @@
 //VIOLET THEME
 
 .themePopUpViolet {
+  background-color: $header-background-violet;
   border: 1px solid #ecedfd;
 
   > span {

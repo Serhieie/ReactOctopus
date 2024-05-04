@@ -1,0 +1,60 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.explainField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(100dvh - 60px);
+  @include media-rules(tablet) {
+    min-height: calc(100dvh - 68px);
+  }
+}
+
+.explainText {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 133%;
+  max-width: 335px;
+
+  @include media-rules(tablet) {
+    max-width: 486px;
+    font-size: 14px;
+    line-height: 129%;
+  }
+}
+
+//DARK
+.explainField {
+  .explainText {
+    color: $text-secondary-dark;
+  }
+  .explainSpan {
+    color: $text-hover-dark;
+  }
+}
+
+//LIGHT
+.explainFieldDark {
+  .explainText {
+    color: $text-secondary-light;
+  }
+
+  .explainSpan {
+    color: $text-hover-light;
+  }
+}
+
+//LIGHT
+.explainFieldViolet {
+  .explainText {
+    color: $text-secondary-violet;
+  }
+
+  .explainSpan {
+    color: $text-hover-violet;
+  }
+}

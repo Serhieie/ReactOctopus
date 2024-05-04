@@ -1,0 +1,135 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.addColumnButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 334px;
+
+  cursor: pointer;
+  height: 56px;
+  font-size: 14px;
+  padding: 16px 20px;
+  border-radius: 8px;
+
+  user-select: none;
+  @include media-rules(tablet) {
+  }
+}
+
+.margin {
+  margin-top: 14px;
+}
+
+.addColumnFilling {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 178px;
+}
+
+.addSpan {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+}
+
+//DARK
+
+.addColumnButtonDark {
+  background-color: #121212;
+
+  .iconAddColumn {
+    stroke: $text-light;
+  }
+
+  .addColumn {
+    color: $text-dark;
+  }
+
+  .addSpan {
+    background-color: $text-dark;
+  }
+}
+
+.addCardButtonDark {
+  background-color: $button-dark;
+  color: $text-light;
+
+  .iconAddColumn {
+    stroke: $text-dark;
+  }
+
+  .addSpan {
+    background-color: $text-light;
+  }
+}
+
+//LIGHT
+
+.addColumnButtonLight {
+  background-color: $background-light;
+
+  .iconAddColumn {
+    stroke: $text-dark;
+  }
+
+  .addColumn {
+    color: $text-light;
+  }
+
+  .addSpan {
+    background-color: $text-light;
+  }
+}
+
+.addCardButtonLight {
+  background-color: $button-light;
+  color: $text-light;
+
+  .iconAddColumn {
+    stroke: $text-dark;
+  }
+
+  .addSpan {
+    background-color: $text-light;
+  }
+}
+
+//VIOLET
+
+.addColumnButtonViolet {
+  background-color: #fff;
+  color: $text-light;
+
+  .iconAddColumn {
+    stroke: $button-dark;
+  }
+
+  .addSpan {
+    background-color: $button-violet;
+  }
+}
+
+.addCardButtonViolet {
+  background-color: $button-violet;
+
+  .iconAddColumn {
+    stroke: $text-light;
+  }
+
+  .addSpan {
+    background-color: $text-dark;
+  }
+}

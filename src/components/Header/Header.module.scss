@@ -13,6 +13,8 @@
 
   @include media-rules(desktop) {
     padding: 18px 24px;
+    width: calc(100dvw - 260px);
+    margin-left: auto;
   }
 }
 
@@ -35,7 +37,6 @@
     color: $text-light;
   }
 }
-
 //VIOLET THEME
 
 .violet {
