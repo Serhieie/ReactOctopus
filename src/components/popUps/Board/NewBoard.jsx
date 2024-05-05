@@ -1,20 +1,20 @@
 import css from './NewBoard.module.scss';
-import { useState, useEffect } from 'react';
 
-import Icons from '../../../assets/sprite.svg';
 import ColumnForm from './ColumnForm/ColumnForm';
 
 import CloseModalButton from './CloseModalButton/CloseModalButton';
+import Backdrop from '../Backdrop/Backdrop';
+import BoardModal from '../Modal/BoardModal/BoardModal';
 
 const NewBoard = ({ name }) => {
   return (
-    <div className={css.backdrop}>
-      <div className={css.columnsModal}>
+    <Backdrop>
+      <BoardModal>
         <CloseModalButton />
         <p className={css.modalTitle}>{name}</p>
         <ColumnForm />
-      </div>
-    </div>
+      </BoardModal>
+    </Backdrop>
   );
 };
 

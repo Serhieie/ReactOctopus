@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import Welcome from '../../components/Welcome/Welcome'
+import Welcome from '../../components/Welcome/Welcome';
+import NewBoard from '../../components/popUps/Board/NewBoard';
 
 const WelcomePage = () => {
   return (
-      <div>
-          <Welcome/>
+    <div>
+      <Welcome />
+      <NewBoard name={'Add Board'} />
     </div>
-  )
-}
+  );
+};
 
-export default WelcomePage
+export default WelcomePage;

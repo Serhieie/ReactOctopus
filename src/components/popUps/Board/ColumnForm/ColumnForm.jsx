@@ -1,10 +1,11 @@
 import css from './ColumnForm.module.scss';
 import { useState, useRef, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 import axios from 'axios';
+
 import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
+
 const INITIAL_STATE = {
   title: '',
   icon: '',

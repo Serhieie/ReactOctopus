@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 
 import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
+import Backdrop from '../Backdrop/Backdrop';
+import BoardModal from '../Modal/BoardModal/BoardModal';
 
 const EditBoard = ({ name }) => {
   const [board, setBoard] = useState({
@@ -34,13 +36,13 @@ const EditBoard = ({ name }) => {
   }, []);
 
   return (
-    <div className={css.backdrop}>
-      <div className={css.columnsModal}>
+    <Backdrop>
+      <BoardModal>
         <CloseModalButton />
         <p className={css.modalTitle}>{name}</p>
         {!loading && <ColumnForm data={board} />}
-      </div>
-    </div>
+      </BoardModal>
+    </Backdrop>
   );
 };
 
