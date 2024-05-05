@@ -1,20 +1,19 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
-import Header from '../Header/Header'
-import Sidebar from '../Sidebar/Sidebar'
-import styles from "./SharedLayout.module.scss"
+import Header from '../Header/Header';
+// import Sidebar from '../Sidebar/Sidebar'
+import styles from './SharedLayout.module.scss';
 
 const SharedLayout = () => {
   return (
     <div className={styles.layoutContainer}>
       <Header />
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className={styles.contentWrapper}>
-        <Outlet/>
+        <Outlet />
       </div>
-     </div>
-  )
-}
+    </div>
+  );
+};
 
-export default SharedLayout
+export default SharedLayout;

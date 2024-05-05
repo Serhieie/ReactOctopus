@@ -12,7 +12,7 @@ export const ColumnHead = ({ column }) => {
     console.log('You will edit column');
   };
 
-  const deleteColumn = () => {
+  const toggleDeleteColumn = () => {
     setIsDeleteModalOpen((state) => !state);
   };
 
@@ -34,12 +34,18 @@ export const ColumnHead = ({ column }) => {
         {' '}
         <p className={styles.columnTitle}>{column.title}</p>
         <div className={styles.icons}>
-          <button onClick={editColumn} type="button">
+          <button className={styles.button} onClick={editColumn} type="button">
+            <span className={styles.lightSpanBtn}></span>
             <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg">
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </svg>
           </button>
-          <button onClick={deleteColumn} type="button">
+          <button
+            className={styles.button}
+            onClick={toggleDeleteColumn}
+            type="button"
+          >
+            <span className={styles.lightSpanBtn}></span>
             <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg">
               <use xlinkHref={`${sprite}#icon-trash`} />
             </svg>
@@ -48,7 +54,7 @@ export const ColumnHead = ({ column }) => {
       </div>
       <DeleteModal
         isOpen={isDeleteModalOpen}
-        onClose={deleteColumn}
+        onClose={toggleDeleteColumn}
         onConfirmDelete={confirmDelete}
         theme={theme}
         column={true}

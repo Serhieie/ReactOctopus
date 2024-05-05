@@ -2,30 +2,35 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
-.themePopUp {
+.movePopUp {
   position: absolute;
   z-index: 999;
-  top: 44px;
-  left: -10px;
-
-  width: 100px;
-  height: 108px;
+  bottom: 0px;
+  right: 10px;
+  width: 135px;
 
   padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 4px;
 
   border-radius: 8px;
   box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
   font-size: 14px;
 
   @include appear-animation(0.25s);
-  @include media-rules(tablet) {
-    top: 48px;
+
+  .icon {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
   }
 
   > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
     cursor: pointer;
     user-select: none;
     padding: 2px 0;
@@ -43,25 +48,29 @@
 
 // DARK THEME
 
-.themePopUpDark {
+.movePopUpDark {
   background-color: $header-background-dark;
   border: 1px solid $border-dark;
-  > span {
+
+  span {
     color: $text-secondary-dark;
   }
 
-  > span.activeDark {
-    color: $text-hover-dark;
+  span:hover .icon {
+    stroke: $text-hover-dark;
+  }
+  .icon {
+    stroke: $text-secondary-dark;
   }
 
-  > span:hover {
+  span:hover {
     color: $text-hover-dark;
   }
 }
 
 // LIGHT THEME
 
-.themePopUpLight {
+.movePopUpLight {
   background-color: $header-background-light;
   border: 1px solid $border-light;
 
@@ -69,18 +78,21 @@
     color: $text-light;
   }
 
-  > span.activeLight {
+  > span:hover {
     color: $text-hover-light;
   }
 
-  > span:hover {
-    color: $text-hover-light;
+  span:hover .icon {
+    stroke: $text-hover-light;
+  }
+  .icon {
+    stroke: $text-secondary-light;
   }
 }
 
 //VIOLET THEME
 
-.themePopUpViolet {
+.movePopUpViolet {
   background-color: $header-background-violet;
   border: 1px solid #ecedfd;
 
@@ -88,11 +100,14 @@
     color: $text-violet;
   }
 
-  > span.activeViolet {
+  > span:hover {
     color: $text-hover-violet;
   }
 
-  > span:hover {
-    color: $text-hover-violet;
+  span:hover .icon {
+    stroke: $text-hover-violet;
+  }
+  .icon {
+    stroke: $text-secondary-violet;
   }
 }
