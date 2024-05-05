@@ -46,4 +46,10 @@ export const checkTokenRequest = async (token) => {
   }
 };
 
+export const edit = async (credentials) => {
+  const response = await axios.patch('/users/edit', credentials);
+  setToken();
+  return response;
+};
+
 export default instance;
