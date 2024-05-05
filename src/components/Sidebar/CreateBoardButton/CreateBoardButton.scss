@@ -1,0 +1,26 @@
+.sidebar_create-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar_create-title {
+  width: 76px;
+  height: 42px;
+}
+
+.sidebar_create-btn {
+  background-color: #bedbb0;
+  border-radius: 10px;
+  width: 40px;
+  height: 36px;
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar_create-ico {
+  stroke: #000000;
+}

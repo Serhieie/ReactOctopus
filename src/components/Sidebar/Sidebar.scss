@@ -1,3 +1,30 @@
 @import '/src/styles/breakpoints';
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
+
+.sidebar-container {
+  background-color: black;
+  color: #fff;
+  height: 100vh;
+  width: 225px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-container {
+    width: 260px;
+    padding: 0 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .sidebar-container {
+    width: 260px;
+  }
+}

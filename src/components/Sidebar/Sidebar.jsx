@@ -1,13 +1,15 @@
-import React from 'react';
+import BoardList from './BoardList/BoardList';
+import Logo from './Logo/Logo';
 import NeedHelp from './NeedHelp/NeedHelp';
-import LogoutButton from './LogoutButton/LogoutButton';
+
+import './Sidebar.scss';
 
 const Sidebar = () => {
   return (
-    <div>
-      Sidebar
+    <div className="sidebar-container">
+      <Logo />
+      <BoardList />
       <NeedHelp />
-      <LogoutButton />
     </div>
   );
 };

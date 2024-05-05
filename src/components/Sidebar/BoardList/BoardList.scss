@@ -1,0 +1,19 @@
+.board-list_container {
+  margin-bottom: auto;
+}
+
+.board-list_name {
+  margin-bottom: 8px;
+}
+
+.board-list_create-btn {
+  padding: 14px 0;
+  border-top: 1px solid rgba($color: #fff, $alpha: 0.2);
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 0.2);
+  margin-bottom: 40px;
+}
+
+.board-list_sheet {
+  overflow-y: auto;
+  height: 35vh;
+}
