@@ -1,6 +1,6 @@
-import styles from './СolumnList.module.scss';
 import clsx from 'clsx';
 import { Column } from '../Column/Column.jsx';
+import styles from './ColumnList.module.scss';
 
 export const ColumnList = ({ data }) => {
   const theme = 'Dark';
