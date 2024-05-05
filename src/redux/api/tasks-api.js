@@ -1,9 +1,5 @@
-import axios from 'axios';
 
-const instance = axios.create({
-  // baseURL: 'http://localhost:3000/api',
-  baseURL: 'https://reactoctopus-back.onrender.com/api',
-});
+import instance from './api';
 
 export const getBoards = async () => {
   const { data } = await instance.get('/boards');
@@ -43,6 +39,36 @@ export const removeColumn = async (boardId, columnId) => {
 export const editeColumn = async (boardId, columnId, body) => {
   const { data } = instance.patch(
     `/boards/${boardId}/columns/${columnId}`,
+    body
+  );
+  return data;
+};
+
+export const getCards = async (boardId, columnId) => {
+  const { data } = await instance.get(
+    `/boards/${boardId}/columns/${columnId}/cards`
+  );
+  return data;
+};
+
+export const addCard = async (boardId, columnId, body) => {
+  const { data } = await instance.post(
+    `/boards/${boardId}/columns/${columnId}/cards`,
+    body
+  );
+  return data;
+};
+
+export const removeCard = async (boardId, columnId, cardId) => {
+  const { data } = await instance.delete(
+    `/boards/${boardId}/columns/${columnId}/cards/${cardId}`
+  );
+  return data;
+};
+
+export const editeCard = async (boardId, columnId, cardId, body) => {
+  const { data } = await instance.patch(
+    `/boards/${boardId}/columns/${columnId}/cards/${cardId}`,
     body
   );
   return data;
