@@ -1,4 +1,4 @@
-import styles from './columnList.module.scss';
+import styles from './СolumnList.module.scss';
 import clsx from 'clsx';
 import { Column } from '../Column/Column.jsx';
 
