@@ -9,6 +9,7 @@
   flex-shrink: 0;
   width: 100%;
   max-width: 334px;
+  gap: 8px;
 
   cursor: pointer;
   height: 56px;
@@ -23,15 +24,6 @@
 
 .margin {
   margin-top: 14px;
-}
-
-.addColumnFilling {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  min-width: 178px;
 }
 
 .addSpan {
@@ -49,13 +41,10 @@
 
 .addColumnButtonDark {
   background-color: #121212;
+  color: $text-dark;
 
   .iconAddColumn {
     stroke: $text-light;
-  }
-
-  .addColumn {
-    color: $text-dark;
   }
 
   .addSpan {
@@ -80,13 +69,9 @@
 
 .addColumnButtonLight {
   background-color: $background-light;
-
+  color: $text-light;
   .iconAddColumn {
     stroke: $text-dark;
-  }
-
-  .addColumn {
-    color: $text-light;
   }
 
   .addSpan {
