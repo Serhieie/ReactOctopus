@@ -1,0 +1,123 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.columnHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 334px;
+  height: 56px;
+  font-size: 14px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+
+  user-select: none;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+    position: relative;
+  }
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: transparent;
+
+  transition: stroke 250ms ease-in-out;
+}
+
+//DARK
+
+.columnHeadDark {
+  background-color: #121212;
+
+  .icon {
+    stroke: $text-secondary-dark;
+  }
+  .columnTitle {
+    color: $text-dark;
+  }
+
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-dark;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-dark, 100%);
+  }
+}
+
+//LIGHT
+
+.columnHeadLight {
+  background-color: #fff;
+
+  .icon {
+    stroke: $text-secondary-light;
+  }
+  .columnTitle {
+    color: $text-light;
+  }
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-light;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-light, 100%);
+  }
+}
+
+//VIOLET
+
+.columnHeadViolet {
+  background-color: #fff;
+
+  .icon {
+    stroke: $text-secondary-violet;
+  }
+
+  .columnTitle {
+    color: $text-violet;
+  }
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-violet;
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-light, 100%);
+  }
+}

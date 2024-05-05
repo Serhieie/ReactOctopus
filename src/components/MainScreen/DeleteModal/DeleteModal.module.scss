@@ -1,0 +1,140 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.modalOverlay {
+  position: fixed;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include appear-animation(50ms);
+
+  z-index: 1000;
+}
+
+.modalContent {
+  padding: 20px 18px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+  @include appear-animation(300ms);
+  @include media-rules(tablet) {
+    padding: 32px 28px;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modalBody {
+  margin-bottom: 20px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-around;
+}
+
+.deleteButton,
+.cancelButton {
+  padding: 8px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.closeButton {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+//Dark
+
+.modalOverlayDark {
+  background-color: rgba(0, 0, 0, 0.22);
+
+  .modalContent {
+    background-color: $background-dark;
+    color: $text-dark;
+  }
+
+  .deleteButton {
+    background-color: #ff5555;
+    color: white;
+  }
+
+  .closeButton {
+    .icon {
+      stroke: $text-dark;
+    }
+  }
+  .cancelButton {
+    background-color: $button-dark;
+    color: $text-light;
+  }
+}
+
+//Light
+
+.modalOverlayLight {
+  background-color: rgba(255, 255, 255, 0.5);
+
+  .modalContent {
+    background-color: $background-light;
+    color: $text-light;
+  }
+
+  .deleteButton {
+    background-color: #ff5555;
+    opacity: 0.85;
+    color: white;
+  }
+
+  .closeButton {
+    .icon {
+      stroke: $text-light;
+    }
+  }
+  .cancelButton {
+    background-color: $button-dark;
+    color: $text-light;
+  }
+}
+
+//Violet
+
+.modalOverlayViolet {
+  background-color: $background-violet;
+  color: $text-violet;
+  background-color: rgba(255, 255, 255, 0.5);
+
+  .modalContent {
+    background-color: $background-violet;
+    color: $text-violet;
+  }
+
+  .deleteButton {
+    background-color: #990000;
+    opacity: 0.9;
+    color: white;
+  }
+
+  .closeButton {
+    .icon {
+      stroke: $text-violet;
+    }
+  }
+  .cancelButton {
+    background-color: $button-violet;
+    color: $text-dark;
+    opacity: 0.8;
+  }
+}

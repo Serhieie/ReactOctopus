@@ -1,0 +1,104 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.priorityInfo {
+  display: flex;
+  gap: 14px;
+}
+
+.prioritySpan {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  background-color: $lable-green;
+}
+
+.prioritySpanPriority {
+  text-transform: capitalize;
+}
+
+.prioritySpanLabel {
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.priorityWrapper,
+.deadlineWrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+}
+
+.priority {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+//DARK
+
+.priorityInfoDark {
+  background-color: #121212;
+
+  .cardTitle {
+    color: $text-dark;
+  }
+
+  .cardDescription {
+    color: $text-secondary-dark;
+  }
+
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .prioritySpanLabel {
+    color: $text-secondary-dark;
+  }
+}
+
+//LIGHT
+
+.priorityInfoLight {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $text-light;
+  }
+  .cardDescription {
+    color: $text-secondary-light;
+  }
+
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+
+  .prioritySpanLabel {
+    color: $text-secondary-light;
+  }
+}
+
+//VIOLET
+
+.priorityInfoViolet {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $text-violet;
+  }
+  .cardDescription {
+    color: $text-secondary-violet;
+  }
+
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+
+  .prioritySpanLabel {
+    color: $text-secondary-violet;
+  }
+}
