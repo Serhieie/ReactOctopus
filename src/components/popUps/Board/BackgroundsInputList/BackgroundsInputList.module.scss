@@ -1,0 +1,35 @@
+.backgoundsList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 252px;
+  gap: 4px;
+}
+
+.label {
+  display: block;
+}
+
+.radioIcon {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.backgroundItemImg {
+  border-radius: 6px;
+}
+
+.radioIcon + img {
+  cursor: pointer;
+}
+
+.radioIcon:checked + img {
+  outline: 1px solid white;
+}

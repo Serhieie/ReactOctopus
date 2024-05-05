@@ -1,0 +1,39 @@
+.iconsList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconsItem {
+  height: 18px;
+}
+
+.label {
+  display: block;
+}
+
+.radioIcon {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.icon {
+  stroke: gray;
+  fill: none;
+}
+
+.radioIcon + svg {
+  cursor: pointer;
+}
+
+.radioIcon:checked + svg .icon {
+  stroke: white;
+}
