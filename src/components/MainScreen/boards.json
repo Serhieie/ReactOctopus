@@ -1,0 +1,128 @@
+[
+  {
+    "title": "Project Office",
+    "background": "https://example/images/nightSky.webp",
+    "iconId": "1",
+    "columns": [
+      {
+        "title": "Title-1",
+        "_id": "6631f3141c36049126cf1ac",
+        "cards": [
+          {
+            "title": "Title-1",
+            "description": "description-1",
+            "priority": "medium",
+            "deadline": "2024-05-01T07:47:16.688+00:00",
+            "_id": "6631f3141c36049126cf1ac"
+          },
+          {
+            "title": "Title-2",
+            "description": "description-2",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3141c36049126cfffc"
+          },
+          {
+            "title": "Title-3",
+            "description": "description-3",
+            "priority": "medium",
+            "deadline": "2024-07-02T04:57:26.687+00:00",
+            "_id": "6631f3141c36049126cf34c"
+          },
+          {
+            "title": "Title-4",
+            "description": "description-4",
+            "priority": "medium",
+            "deadline": "2024-05-01T07:47:16.688+00:00",
+            "_id": "6631f3141c36049126ca1ac"
+          },
+          {
+            "title": "Title-5",
+            "description": "description-5",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3141c36049126c2ffc"
+          },
+          {
+            "title": "Title-6",
+            "description": "description-6",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3143236049126c2ffc"
+          },
+          {
+            "title": "Title-7",
+            "description": "description-6",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3143236049142c2ffc"
+          }
+        ]
+      },
+      {
+        "title": "Title-2",
+        "_id": "6631f3141c36049126cf2ac",
+        "cards": [
+          {
+            "title": "Title-1",
+            "description": "description-1",
+            "priority": "medium",
+            "deadline": "2024-05-01T07:47:16.688+00:00",
+            "_id": "6631f3141c36049126cf1ac"
+          },
+          {
+            "title": "Title-2",
+            "description": "description-2",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3141c36049126cfffc"
+          },
+          {
+            "title": "Title-3",
+            "description": "description-2",
+            "priority": "medium",
+            "deadline": "2024-07-02T04:57:26.687+00:00",
+            "_id": "6631f3141c36049126cf34c"
+          }
+        ]
+      },
+      {
+        "title": "Title-3",
+        "_id": "6631f3141c36049126cf3ac",
+        "cards": [
+          {
+            "title": "Title-1",
+            "description": "description-1",
+            "priority": "medium",
+            "deadline": "2024-05-01T07:47:16.688+00:00",
+            "_id": "6631f3141c36049126cf1ac"
+          },
+          {
+            "title": "Title-2",
+            "description": "description-2",
+            "priority": "low",
+            "deadline": "2024-05-04T07:00:00.688+00:00",
+            "_id": "6631f3141c36049126cfffc"
+          },
+          {
+            "title": "Title-3",
+            "description": "description-2",
+            "priority": "medium",
+            "deadline": "2024-07-02T04:57:26.687+00:00",
+            "_id": "6631f3141c36049126cf34c"
+          }
+        ]
+      },
+      {
+        "title": "Title-4",
+        "_id": "6631f3141c36049126cf4ac",
+        "cards": []
+      }
+    ],
+    "_id": "6631f3841c36049d76cf1ac3",
+    "owner": {
+      "email": "www.example@ex.com",
+      "_id": "6631f3841c36049d76ad2123"
+    }
+  }
+]
