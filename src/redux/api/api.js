@@ -45,3 +45,5 @@ export const checkTokenRequest = async (token) => {
     throw error;
   }
 };
+
+export default instance;
