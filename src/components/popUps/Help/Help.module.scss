@@ -59,24 +59,24 @@
     padding: 0 18px;
 }
 
-.forComment {
-    width: 287px;
-    border: 1px solid $button-light;
-    border-radius: 8px;
-    height: 120px;
-    color: $text-dark;
-    background-color: $modal-background-dark;
-    opacity: .4;
-    padding: 0 18px;
-    margin-top: 14px;
+.comment {
     position: relative;
 }
 
-.forComment::placeholder {
-    position: absolute;
-    top: 18px;
-    left: 18px; 
+.forComment {
+    width: 287px;
+    height: 120px;
+    padding: 18px;
+    border: 1px solid $button-light;
+    border-radius: 8px;
+    color: $text-dark;
+    background-color: $modal-background-dark;
+    opacity: .4;
+    margin-top: 14px; 
+    overflow: hidden;
+    resize: none;   
 }
+
 
 .button {
     margin-top: 24px;

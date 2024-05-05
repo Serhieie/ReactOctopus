@@ -56,7 +56,7 @@ const HelpModal = ({ onSubmit }) => {
                 )}
               </div>
               <div className={styles.comment}>
-                <input
+                <textarea
                   type="text"
                   className={styles.forComment}
                   {...register('comment', { required: true })}
