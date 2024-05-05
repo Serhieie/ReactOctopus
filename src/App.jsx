@@ -34,12 +34,11 @@ function App() {
     <div>
       <Routes>
         <Route index element={<WelcomePage />} />
+        <Route path="home" element={<SharedLayoutLazy />} />
         <Route element={<PublicRoute />}>
           <Route path="/auth/:id" element={<AuthPage />} />
         </Route>
-        <Route element={<PrivateRoute />}>
-          <Route path="home" element={<SharedLayoutLazy />} />
-        </Route>
+        <Route element={<PrivateRoute />}></Route>
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

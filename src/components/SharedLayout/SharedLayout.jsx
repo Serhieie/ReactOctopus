@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 
 import Header from '../Header/Header';
 // import Sidebar from '../Sidebar/Sidebar'
@@ -8,7 +9,7 @@ const SharedLayout = () => {
   return (
     <div className={styles.layoutContainer}>
       <Header />
-      {/* <Sidebar /> */}
+      <Sidebar />
       <div className={styles.contentWrapper}>
         <Outlet />
       </div>

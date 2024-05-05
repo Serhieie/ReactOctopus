@@ -1,5 +1,10 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
 .board-list_container {
   margin-bottom: auto;
+  height: 100%;
 }
 
 .board-list_name {
@@ -14,6 +19,70 @@
 }
 
 .board-list_sheet {
-  overflow-y: auto;
+  overflow: auto;
   height: 35vh;
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+//DARK
+
+.board-list_sheet {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+}
+
+//LIGHT
+
+.board-list_sheetLight {
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(22, 22, 22, 0.1);
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #e8e8e8;
+    border-radius: 12px;
+  }
+}
+
+//VIOLET
+
+.board-list_sheetViolet {
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b8bcfd;
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 12px;
+  }
 }
