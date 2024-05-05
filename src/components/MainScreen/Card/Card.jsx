@@ -4,7 +4,7 @@ import { Buttons } from './Buttons/Buttons';
 import { Priority } from './Priority/Priority';
 import { getColorByPriority } from '../../../helpers/getColorByPriority';
 
-export const Card = ({ card }) => {
+export const Card = ({ card, columnTitle }) => {
   const theme = 'Dark';
 
   const labelColor = getColorByPriority(card.priority);
@@ -28,7 +28,7 @@ export const Card = ({ card }) => {
       <hr className={styles.hr} />
       <div className={styles.priorityBlock}>
         <Priority card={card} labelColor={labelColor} />
-        <Buttons card={card} />
+        <Buttons card={card} columnTitle={columnTitle} />
       </div>
     </li>
   );

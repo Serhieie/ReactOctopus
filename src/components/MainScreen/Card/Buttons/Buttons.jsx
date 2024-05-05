@@ -7,7 +7,7 @@ import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
 import data from '../../boards.json';
 
-export const Buttons = ({ card }) => {
+export const Buttons = ({ card, columnTitle }) => {
   const theme = 'Dark';
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
@@ -97,6 +97,7 @@ export const Buttons = ({ card }) => {
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
         currentBoard={currentBoard}
         moveCard={moveCard}
+        columnTitle={columnTitle}
       />
       <DeleteModal
         isOpen={isDeleteCardOpen}

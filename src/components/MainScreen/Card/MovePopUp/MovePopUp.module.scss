@@ -2,11 +2,26 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
+.modalOverlay {
+  position: absolute;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 500ms ease-in-out;
+  @include appear-animation(50ms);
+  z-index: 1000;
+}
+
 .movePopUp {
   position: absolute;
   z-index: 999;
-  bottom: 0px;
-  right: 10px;
+  bottom: 3px;
+  right: 4px;
   width: 135px;
 
   padding: 18px;
@@ -47,67 +62,69 @@
 }
 
 // DARK THEME
+.modalOverlayDark {
+  background-color: rgba(0, 0, 0, 0.42);
+  .movePopUp {
+    background-color: $background-dark;
 
-.movePopUpDark {
-  background-color: $header-background-dark;
-  border: 1px solid $border-dark;
+    span {
+      color: $text-secondary-dark;
+    }
 
-  span {
-    color: $text-secondary-dark;
-  }
+    span:hover .icon {
+      stroke: $text-hover-dark;
+    }
+    .icon {
+      stroke: $text-secondary-dark;
+    }
 
-  span:hover .icon {
-    stroke: $text-hover-dark;
-  }
-  .icon {
-    stroke: $text-secondary-dark;
-  }
-
-  span:hover {
-    color: $text-hover-dark;
+    span:hover {
+      color: $text-hover-dark;
+    }
   }
 }
 
 // LIGHT THEME
+.modalOverlayLight {
+  background-color: rgba(255, 255, 255, 0.5);
+  .movePopUp {
+    background-color: $background-light;
 
-.movePopUpLight {
-  background-color: $header-background-light;
-  border: 1px solid $border-light;
+    > span {
+      color: $text-light;
+    }
 
-  > span {
-    color: $text-light;
-  }
+    > span:hover {
+      color: $text-hover-light;
+    }
 
-  > span:hover {
-    color: $text-hover-light;
-  }
-
-  span:hover .icon {
-    stroke: $text-hover-light;
-  }
-  .icon {
-    stroke: $text-secondary-light;
+    span:hover .icon {
+      stroke: $text-hover-light;
+    }
+    .icon {
+      stroke: $text-secondary-light;
+    }
   }
 }
-
 //VIOLET THEME
+.modalOverlayLight {
+  background-color: rgba(255, 255, 255, 0.5);
+  .movePopUp {
+    background-color: $background-violet;
 
-.movePopUpViolet {
-  background-color: $header-background-violet;
-  border: 1px solid #ecedfd;
+    > span {
+      color: $text-violet;
+    }
 
-  > span {
-    color: $text-violet;
-  }
+    > span:hover {
+      color: $text-hover-violet;
+    }
 
-  > span:hover {
-    color: $text-hover-violet;
-  }
-
-  span:hover .icon {
-    stroke: $text-hover-violet;
-  }
-  .icon {
-    stroke: $text-secondary-violet;
+    span:hover .icon {
+      stroke: $text-hover-violet;
+    }
+    .icon {
+      stroke: $text-secondary-violet;
+    }
   }
 }

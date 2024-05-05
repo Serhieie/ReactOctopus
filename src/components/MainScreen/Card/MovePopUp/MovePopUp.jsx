@@ -2,9 +2,14 @@ import styles from './MovePopUp.module.scss';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 
-export const MovePopUp = ({ isMoveCardPopUpOpen, currentBoard, moveCard }) => {
+//ЦЕЙ ПОПАП ТРЕБА ВИНЕСТИ ІЗ КАРТКИ У КОЛОНКУ ЩО Б ВІН МІГ ВИХОДИТИ ЗА МЕЖІ КАРТКИ`
+export const MovePopUp = ({
+  isMoveCardPopUpOpen,
+  currentBoard,
+  moveCard,
+  columnTitle,
+}) => {
   const theme = 'Dark';
-
   const handleChangeColumn = async (event) => {
     const board = event.target.textContent;
     console.log(`You will move your card to ${board} column`);
@@ -13,30 +18,34 @@ export const MovePopUp = ({ isMoveCardPopUpOpen, currentBoard, moveCard }) => {
 
   return (
     <div
-      className={clsx(styles.movePopUp, {
-        [styles.movePopUpDark]: theme === 'Dark',
-        [styles.movePopUpLight]: theme === 'Light',
-        [styles.movePopUpViolet]: theme === 'Violet',
+      className={clsx(styles.modalOverlay, {
+        [styles.modalOverlayDark]: theme === 'Dark',
+        [styles.modalOverlayLight]: theme === 'Light',
+        [styles.modalOverlayViolet]: theme === 'Violet',
         [styles.disappear]: !isMoveCardPopUpOpen,
       })}
     >
-      {currentBoard.columns.map((column) => (
-        <span
-          key={column._id}
-          className={styles.span}
-          onClick={handleChangeColumn}
-        >
-          {column.title}{' '}
-          <svg
-            className={styles.icon}
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-          >
-            <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
-          </svg>
-        </span>
-      ))}
+      <div className={styles.movePopUp}>
+        {currentBoard.columns.map((column) =>
+          columnTitle !== column.title ? (
+            <span
+              key={column._id}
+              className={styles.span}
+              onClick={handleChangeColumn}
+            >
+              {column.title}{' '}
+              <svg
+                className={styles.icon}
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+              >
+                <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
+              </svg>
+            </span>
+          ) : null
+        )}
+      </div>
     </div>
   );
 };
