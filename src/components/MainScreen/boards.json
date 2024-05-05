@@ -6,116 +6,201 @@
     "columns": [
       {
         "title": "Title-1",
-        "_id": "6631f3141c36049126cf1ac",
+        "_id": "6631f13141c316049126cf1ac",
         "cards": [
           {
-            "title": "Title-1",
-            "description": "description-1",
+            "title": "The Watch Spot Design",
+            "description": "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.",
+            "priority": "low",
+            "deadline": "2024-05-04T17:42:30.636+00:00",
+            "_id": "6631f31411c3604119126cf1ac",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Research and Analysis",
+            "description": "Conduct in-depth research and analysis on the project's topic, gather relevant data, and identify key insights to inform decision-making and project planning.",
             "priority": "medium",
-            "deadline": "2024-05-01T07:47:16.688+00:00",
-            "_id": "6631f3141c36049126cf1ac"
+            "deadline": "2024-05-05T17:42:30.636+00:00",
+            "_id": "66311f3141c31316049126cfffc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-2",
-            "description": "description-2",
+            "title": "Concept Development",
+            "description": "Brainstorm and develop creative concepts and ideas that align with the project's objectives, considering factors such as target audience, messaging, and visual representation.",
+            "priority": "without",
+            "deadline": "2024-05-06T17:42:30.636+00:00",
+            "_id": "6631f3141c31312316049126cf34c",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Students' projects",
+            "description": "Review the project materials: Familiarize yourself with the project's content, including text, images, and any supplementary materials.",
+            "priority": "without",
+            "deadline": "2024-05-07T17:42:30.636+00:00",
+            "_id": "6631adwdawdad6ca123131ac",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
             "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3141c36049126cfffc"
+            "deadline": "2024-05-08T17:42:30.636+00:00",
+            "_id": "6631f3adwad12214eafc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-3",
-            "description": "description-3",
-            "priority": "medium",
-            "deadline": "2024-07-02T04:57:26.687+00:00",
-            "_id": "6631f3141c36049126cf34c"
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "2024-06-02T17:42:30.636+00:00",
+            "_id": "6631fadwa1231ffc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-4",
-            "description": "description-4",
-            "priority": "medium",
-            "deadline": "2024-05-01T07:47:16.688+00:00",
-            "_id": "6631f3141c36049126ca1ac"
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "6631dawda23142c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-5",
-            "description": "description-5",
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
             "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3141c36049126c2ffc"
+            "deadline": "12/05/2023",
+            "_id": "663adwwad231c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-6",
-            "description": "description-6",
-            "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3143236049126c2ffc"
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "12/05/2023",
+            "_id": "6631f31adwwad21321ffc",
+            "columnId": "6631f13141c316049126cf1ac"
           },
           {
-            "title": "Title-7",
-            "description": "description-6",
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "6631f3awdaw23211322ffc",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
             "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3143236049142c2ffc"
+            "deadline": "12/05/2023",
+            "_id": "6adwwadwadawd6c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "2024-06-02T17:42:30.636+00:00",
+            "_id": "6631f31adwa2313c",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "6631f3awdawd2c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
+            "priority": "low",
+            "deadline": "12/05/2023",
+            "_id": "6631eadwc2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "12/05/2023",
+            "_id": "6631132139126c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
+          },
+          {
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "6631dawwdawd142c2ffc",
+            "columnId": "6631f13141c316049126cf1ac"
           }
         ]
       },
       {
         "title": "Title-2",
-        "_id": "6631f3141c36049126cf2ac",
+        "_id": "66311312313211131eawac",
         "cards": [
           {
-            "title": "Title-1",
-            "description": "description-1",
-            "priority": "medium",
-            "deadline": "2024-05-01T07:47:16.688+00:00",
-            "_id": "6631f3141c36049126cf1ac"
-          },
-          {
-            "title": "Title-2",
-            "description": "description-2",
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
             "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3141c36049126cfffc"
+            "deadline": "12/05/2023",
+            "_id": "adaw3d04adaffc",
+            "columnId": "66311312313211131eawac"
           },
           {
-            "title": "Title-3",
-            "description": "description-2",
-            "priority": "medium",
-            "deadline": "2024-07-02T04:57:26.687+00:00",
-            "_id": "6631f3141c36049126cf34c"
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "12/05/2023",
+            "_id": "6623t34adaw2ffc",
+            "columnId": "66311312313211131eawac"
+          },
+          {
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "awdd42c2ffc",
+            "columnId": "66311312313211131eawac"
           }
         ]
       },
       {
         "title": "Title-3",
-        "_id": "6631f3141c36049126cf3ac",
+        "_id": "6631f31323126cf3ac",
         "cards": [
           {
-            "title": "Title-1",
-            "description": "description-1",
-            "priority": "medium",
-            "deadline": "2024-05-01T07:47:16.688+00:00",
-            "_id": "6631f3141c36049126cf1ac"
-          },
-          {
-            "title": "Title-2",
-            "description": "description-2",
+            "title": "Design and Prototyping SoYummy",
+            "description": "Create visually appealing and functional design prototypes based on the approved concepts, ensuring seamless user experience and incorporating feedback for iterative improvements.",
             "priority": "low",
-            "deadline": "2024-05-04T07:00:00.688+00:00",
-            "_id": "6631f3141c36049126cfffc"
+            "deadline": "12/05/2023",
+            "_id": "6631f3141c3604adaffc",
+            "columnId": "6631f31323126cf3ac"
           },
           {
-            "title": "Title-3",
-            "description": "description-2",
-            "priority": "medium",
-            "deadline": "2024-07-02T04:57:26.687+00:00",
-            "_id": "6631f3141c36049126cf34c"
+            "title": "Content Creation",
+            "description": "Generate engaging and persuasive content for various project deliverables, such as presentations, reports, website copy, social media posts, and other communication channels.",
+            "priority": "high",
+            "deadline": "12/05/2023",
+            "_id": "6631adwwdadaw2ffc",
+            "columnId": "6631f31323126cf3ac"
+          },
+          {
+            "title": "Quiz Creation",
+            "description": "Create engaging and interactive quizzes using Kahoot's intuitive quiz builder. Design questions, provide multiple-choice answers, and include multimedia elements such as images and videos.",
+            "priority": "without",
+            "deadline": "12/05/2023",
+            "_id": "6631fadawdadwwad42c2ffc",
+            "columnId": "6631f31323126cf3ac"
           }
         ]
       },
       {
         "title": "Title-4",
-        "_id": "6631f3141c36049126cf4ac",
+        "_id": "66131239126cf4ac",
         "cards": []
       }
     ],

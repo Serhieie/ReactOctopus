@@ -2,61 +2,44 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
-.card {
-  position: relative;
-  overflow: hidden;
+.priorityInfo {
+  display: flex;
+  gap: 14px;
+}
 
+.prioritySpan {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  background-color: $lable-green;
+}
+
+.prioritySpanPriority {
+  text-transform: capitalize;
+}
+
+.prioritySpanLabel {
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.priorityWrapper,
+.deadlineWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-  user-select: none;
-
-  width: 334px;
-  min-height: 154px;
-
-  border-radius: 8px;
-  padding: 14px 24px;
-  .cardDescription {
-    @include twoLineText();
-  }
-  @include media-rules(tablet) {
-  }
+  font-size: 10px;
 }
 
-.cardTitle {
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.cardDescription {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 133%;
-  padding-top: 8px;
-}
-
-.hr {
-  width: 100%;
-  border-width: 0.5px;
-  margin: 0;
-  padding: 0;
-}
-.priorityBlock {
+.priority {
   display: flex;
-  justify-content: space-between;
-}
-
-.absoluteSpan {
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 4px;
+  align-items: center;
+  gap: 4px;
 }
 
 //DARK
 
-.cardDark {
+.priorityInfoDark {
   background-color: #121212;
 
   .cardTitle {
@@ -70,11 +53,15 @@
   .hr {
     border-color: rgba(255, 255, 255, 0.1);
   }
+
+  .prioritySpanLabel {
+    color: $text-secondary-dark;
+  }
 }
 
 //LIGHT
 
-.cardLight {
+.priorityInfoLight {
   background-color: #fff;
 
   .cardTitle {
@@ -88,11 +75,15 @@
     border-color: rgba(22, 22, 22, 0.1);
     border-width: 1px;
   }
+
+  .prioritySpanLabel {
+    color: $text-secondary-light;
+  }
 }
 
 //VIOLET
 
-.cardViolet {
+.priorityInfoViolet {
   background-color: #fff;
 
   .cardTitle {
@@ -105,5 +96,9 @@
   .hr {
     border-color: rgba(22, 22, 22, 0.1);
     border-width: 1px;
+  }
+
+  .prioritySpanLabel {
+    color: $text-secondary-violet;
   }
 }

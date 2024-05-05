@@ -1,7 +1,7 @@
-import React from 'react';
+import { MainScreen } from '../../components/MainScreen/MainScreen';
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <MainScreen />;
 };
 
 export default HomePage;

@@ -10,14 +10,12 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 //import SharedLayout from './components/SharedLayout/SharedLayout';
-
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import { useDispatch } from 'react-redux';
 import { current } from './redux/auth/authOperations';
 
-const test = import.meta.env.VITE_API_TEST;
-
+// const test = import.meta.env.VITE_API_TEST;
 const AuthPageLazy = lazy(() => import('./pages/AuthPage/AuthPage'));
 const HomePageLazy = lazy(() => import('./pages/HomePage/HomePage'));
 const ScreenPageLazy = lazy(() => import('./pages/ScreenPage/ScreenPage'));

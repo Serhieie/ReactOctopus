@@ -19,7 +19,7 @@ export const Column = ({ column }) => {
       })}
     >
       <ColumnHead column={column} />
-      <CardList data={column.cards} />
+      <CardList data={column.cards} columnTitle={column.title} />
       <AddButton column={false} addFunction={addCardFunc} />
     </li>
   );

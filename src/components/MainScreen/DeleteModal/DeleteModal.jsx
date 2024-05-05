@@ -12,14 +12,14 @@ export const DeleteModal = ({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.modalOverlay}>
-      <div
-        className={clsx(styles.modalContent, {
-          [styles.modalContentDark]: theme === 'Dark',
-          [styles.modalContentLight]: theme === 'Light',
-          [styles.modalContentViolet]: theme === 'Violet',
-        })}
-      >
+    <div
+      className={clsx(styles.modalOverlay, {
+        [styles.modalOverlayDark]: theme === 'Dark',
+        [styles.modalOverlayLight]: theme === 'Light',
+        [styles.modalOverlayViolet]: theme === 'Violet',
+      })}
+    >
+      <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h2>Confirmation</h2>
           <button className={styles.closeButton} onClick={onClose}>

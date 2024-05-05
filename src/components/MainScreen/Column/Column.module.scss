@@ -6,7 +6,6 @@
   width: 334px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   @include media-rules(tablet) {
   }
 }

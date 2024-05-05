@@ -2,7 +2,7 @@ import styles from './CardList.module.scss';
 import clsx from 'clsx';
 import { Card } from '../Card/Card.jsx';
 
-export const CardList = ({ data }) => {
+export const CardList = ({ data, columnTitle }) => {
   const theme = 'Dark';
   console.log(data);
   return (
@@ -13,7 +13,10 @@ export const CardList = ({ data }) => {
         [styles.cardListViolet]: theme === 'Violet',
       })}
     >
-      {data && data.map((card) => <Card key={card._id} card={card} />)}
+      {data &&
+        data.map((card) => (
+          <Card key={card._id} card={card} columnTitle={columnTitle} />
+        ))}
     </ul>
   );
 };

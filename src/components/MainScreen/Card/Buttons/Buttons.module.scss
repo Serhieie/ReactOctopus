@@ -2,122 +2,110 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
-.columnHead {
+.buttons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-self: flex-end;
+  gap: 4px;
 
-  width: 334px;
-  height: 56px;
-  font-size: 14px;
-  padding: 16px 20px;
-  margin-bottom: 14px;
-  border-radius: 8px;
-
-  user-select: none;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-
-  button {
+  .button,
+  .isDeadlineToodaySpan {
+    padding: 10px 2px 0px 2px;
     display: flex;
-    align-items: center;
-    padding: 4px;
+    align-items: flex-end;
+  }
+  .button {
     cursor: pointer;
     position: relative;
   }
-}
-.icon {
-  width: 16px;
-  height: 16px;
-  fill: transparent;
 
-  transition: stroke 250ms ease-in-out;
+  .isDeadlineToodaySpan {
+    position: relative;
+  }
+
+  .icon {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
+  }
+  .isDeadlineTooday {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
+    position: relative;
+    z-index: 99;
+  }
 }
 
 //DARK
 
-.columnHeadDark {
-  background-color: #121212;
-
+.buttonsDark {
   .icon {
     stroke: $text-secondary-dark;
   }
-  .columnTitle {
-    color: $text-dark;
-  }
 
   .icon:hover,
-  .icon:focus,
+  .isDeadlineTooday,
   .button:hover svg,
   .button:focus svg {
     stroke: $text-hover-dark;
   }
 
   .lightSpanBtn {
-    @include light('', 100%);
+    @include light('', 0);
   }
 
   .lightSpan,
   .button:hover .lightSpanBtn,
   .button:focus .lightSpanBtn {
-    @include light($text-hover-dark, 100%);
+    @include light($text-hover-dark, 70%);
   }
 }
 
 //LIGHT
 
-.columnHeadLight {
-  background-color: #fff;
-
+.buttonsLight {
   .icon {
     stroke: $text-secondary-light;
   }
-  .columnTitle {
-    color: $text-light;
-  }
+
   .icon:hover,
-  .icon:focus,
+  .isDeadlineTooday,
   .button:hover svg,
   .button:focus svg {
     stroke: $text-hover-light;
   }
 
   .lightSpanBtn {
-    @include light('', 100%);
+    @include light('', 0);
   }
 
   .lightSpan,
   .button:hover .lightSpanBtn,
   .button:focus .lightSpanBtn {
-    @include light($text-hover-light, 100%);
+    @include light($text-hover-light, 70%);
   }
 }
 
 //VIOLET
 
-.columnHeadViolet {
-  background-color: #fff;
-
+.cardViolet {
   .icon {
     stroke: $text-secondary-violet;
   }
 
-  .columnTitle {
-    color: $text-violet;
-  }
   .icon:hover,
-  .icon:focus,
+  .isDeadlineTooday,
   .button:hover svg,
   .button:focus svg {
     stroke: $text-hover-violet;
   }
 
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
   .lightSpan,
   .button:hover .lightSpanBtn,
   .button:focus .lightSpanBtn {
-    @include light($text-hover-light, 100%);
+    @include light($text-hover-violet, 70%);
   }
 }

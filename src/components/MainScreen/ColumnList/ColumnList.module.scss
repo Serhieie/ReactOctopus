@@ -4,12 +4,12 @@
 
 .columnList {
   display: flex;
-  gap: 12px;
+  gap: 24px;
 
-  max-height: calc(100dvh - 160px);
+  max-height: calc(100dvh - 174px);
 
   @include media-rules(tablet) {
-    max-height: calc(100dvh - 168px);
+    max-height: calc(100dvh - 182px);
     gap: 34px;
   }
 }
