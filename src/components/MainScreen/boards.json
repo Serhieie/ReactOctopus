@@ -14,7 +14,7 @@
             "priority": "low",
             "deadline": "2024-05-04T17:42:30.636+00:00",
             "_id": "6631f31411c3604119126cf1ac",
-            "columnId": "6631f13141c316049126cf1ac"
+            "owner": "6631f13141c316049126cf1ac"
           },
           {
             "title": "Research and Analysis",
