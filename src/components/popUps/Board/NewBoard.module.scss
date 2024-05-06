@@ -2,42 +2,21 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
-.backdrop {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(46, 47, 66, 0.4);
-  top: 0;
-}
-
-.columnsModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-  transform: translate(-50%, -50%);
-  border-radius: 8px;
-  background-color: #151515;
-  padding: 24px;
-}
-
-.modalClose {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-}
-
-.modalCloseIcon {
-  fill: #ffffff;
-}
-
 .modalTitle {
   font-weight: 500;
   font-size: 18px;
   letter-spacing: -0.02em;
-  color: #fff;
   margin-bottom: 24px;
+}
+
+.modalTitleDark {
+  color: #fff;
+}
+
+.modalTitleLight {
+  color: #161616;
+}
+
+.modalTitleViolet {
+  color: #161616;
 }

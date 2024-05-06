@@ -1,3 +1,7 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
 .backgoundsList {
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +13,7 @@
   display: block;
 }
 
-.radioIcon {
+.backgroundsIcon {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -26,10 +30,18 @@
   border-radius: 6px;
 }
 
-.radioIcon + img {
+.backgroundsIcon + img {
   cursor: pointer;
 }
 
-.radioIcon:checked + img {
-  outline: 1px solid white;
+.backgroundsIconDark:checked + img {
+  outline: 2px solid #bedbb0;
+}
+
+.backgroundsIconLight:checked + img {
+  outline: 2px solid #bedbb0;
+}
+
+.backgroundsIconViolet:checked + img {
+  outline: 2px solid #5255bc;
 }

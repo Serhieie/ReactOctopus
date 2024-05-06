@@ -1,3 +1,7 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
 .iconsList {
   display: flex;
   align-items: center;
@@ -34,6 +38,14 @@
   cursor: pointer;
 }
 
-.radioIcon:checked + svg .icon {
-  stroke: white;
+.radioIconDark:checked + svg .icon {
+  stroke: #bedbb0;
+}
+
+.radioIconLight:checked + svg .icon {
+  stroke: #bedbb0;
+}
+
+.radioIconViolet:checked + svg .icon {
+  stroke: #5255bc;
 }

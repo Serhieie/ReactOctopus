@@ -2,7 +2,12 @@ import styles from './AddButton.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 
-export const AddButton = ({ column, addFunction }) => {
+export const AddButton = ({
+  column,
+  addFunction,
+  type = 'button',
+  text = 'Add another',
+}) => {
   const theme = 'Dark';
 
   const handleClick = () => {
@@ -21,7 +26,7 @@ export const AddButton = ({ column, addFunction }) => {
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={handleClick}
       className={clsx(styles.addColumnButton, {
         [stylesDark]: theme === 'Dark',
@@ -40,7 +45,7 @@ export const AddButton = ({ column, addFunction }) => {
           <use xlinkHref={`${sprite}#icon-plus`} />
         </svg>
       </span>
-      Add another {column ? 'column' : 'card'}
+      {text} {column ? 'column' : 'card'}
     </button>
   );
 };

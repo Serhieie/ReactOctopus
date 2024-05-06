@@ -1,9 +1,6 @@
-.submitNewColumnBtn {
-  border-radius: 8px;
-  width: 287px;
-  height: 49px;
-  background-color: #bedbb0;
-}
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
 
 .iconsInputWrapper {
   margin-bottom: 24px;
@@ -13,10 +10,21 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: #ffffff;
   margin-bottom: 14px;
 }
 
 .backgroundsInputWrapper {
   margin-bottom: 40px;
+}
+
+.formSubtitleDark {
+  color: #ffffff;
+}
+
+.formSubtitleLight {
+  color: #161616;
+}
+
+.formSubtitleViolet {
+  color: #161616;
 }

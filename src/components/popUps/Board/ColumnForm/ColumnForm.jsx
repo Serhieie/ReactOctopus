@@ -1,15 +1,18 @@
 import css from './ColumnForm.module.scss';
 import { useState, useRef, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import clsx from 'clsx';
 
 import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
+import ModalButton from '../../ModalButton/ModalButton';
 
 const INITIAL_STATE = {
   title: '',
-  icon: '',
-  background: '',
+  icon: 'project',
+  background: '/ReactOctopus/src/assets/themeDefault/backgroundViolet.png',
 };
 const icons = [
   'project',
@@ -40,7 +43,9 @@ const backgroundsImages = [
   'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
 ];
 
-const ColumnForm = ({ data }) => {
+const ColumnForm = ({ data = INITIAL_STATE }) => {
+  const theme = 'Violet';
+
   const [columns, setColumns] = useState({
     ...data,
   });
@@ -55,41 +60,67 @@ const ColumnForm = ({ data }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log('Saved');
-      // const response = await axios.post('/api/columns', columns);
+
+    if (columns.title === '') {
+      toast.error('Title is required');
+    } else {
+      try {
+        console.log('Saved');
+        // const response = await axios.post('/api/columns', columns);
+        reset();
+      } catch (error) {
+        console.error('Error saving form data:', error);
+      }
       reset();
-    } catch (error) {
-      console.error('Error saving form data:', error);
     }
-    reset();
   };
 
   const reset = () => {
     setColumns({ ...INITIAL_STATE });
   };
 
+  const stylesDark = css.formSubtitleDark;
+  const stylesLight = css.formSubtitleLight;
+  const stylesViolet = css.formSubtitleViolet;
+
   const { title, icon, background } = columns;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputForm onChange={handleChange} value={title} />
-      <div className={css.iconsInputWrapper}>
-        <h3 className={css.formSubtitle}>Icons</h3>
-        <IconsList onChange={handleChange} items={icons} checked={icon} />
-      </div>
-      <div className={css.backgroundsInputWrapper}>
-        <h3 className={css.formSubtitle}>Background</h3>
-        <BackgroundsInputList
-          onChange={handleChange}
-          items={backgroundsImages}
-          checked={background}
-        />
-      </div>
-      <button className={css.submitNewColumnBtn} type="submit">
-        Submit
-      </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <InputForm onChange={handleChange} value={title} />
+        <div className={css.iconsInputWrapper}>
+          <h3
+            className={clsx(css.formSubtitle, {
+              [stylesDark]: theme === 'Dark',
+              [stylesLight]: theme === 'Light',
+              [stylesViolet]: theme === 'Violet',
+            })}
+          >
+            Icons
+          </h3>
+          <IconsList onChange={handleChange} items={icons} checked={icon} />
+        </div>
+        <div className={css.backgroundsInputWrapper}>
+          <h3
+            className={clsx(css.formSubtitle, {
+              [stylesDark]: theme === 'Dark',
+              [stylesLight]: theme === 'Light',
+              [stylesViolet]: theme === 'Violet',
+            })}
+          >
+            Background
+          </h3>
+          <BackgroundsInputList
+            onChange={handleChange}
+            items={backgroundsImages}
+            checked={background}
+          />
+        </div>
+        <ModalButton type="submit" text="Create" />
+      </form>
+      <ToastContainer position="top-right" />
+    </>
   );
 };
 
