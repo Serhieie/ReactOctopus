@@ -1,17 +1,17 @@
-import styles from './HeaderSkelleton.module.scss';
+import styles from './UserInfoSkeleton.module.scss';
 import userDark from '../../../assets/user/userDark.png';
 import userLight from '../../../assets/user/userLight.png';
 import userViolet from '../../../assets/user/userViolet.png';
 import clsx from 'clsx';
 
-export const HeaderSkelleton = () => {
+export const UserInfoSkeleton = () => {
   const theme = 'dark';
 
   //   const dispatch = useDispatch();
   //   const { theme } = useAuth();
 
   return (
-    <header
+    <div
       className={clsx(styles.header, {
         [styles.dark]: theme === 'dark',
         [styles.light]: theme === 'light',
@@ -28,8 +28,8 @@ export const HeaderSkelleton = () => {
       {theme === 'violet' && (
         <img className={styles.userAvatar} src={userViolet} alt="user avatar" />
       )}
-    </header>
+    </div>
   );
 };
 
-export default HeaderSkelleton;
+export default UserInfoSkeleton;

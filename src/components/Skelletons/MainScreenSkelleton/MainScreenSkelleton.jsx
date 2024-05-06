@@ -21,7 +21,10 @@ export const MainScreenSkelleton = () => {
           [styles.mainScreenSidebarOpen]: isSidebarOpen && !isDesktop,
         })}
       >
-        <div className={styles.mainScreenHead}></div>
+        <div className={styles.mainScreenHead}>
+          <div className={styles.headTitle}></div>
+          <div className={styles.headFilter}></div>
+        </div>
         <div className={styles.mainContent}>
           <ColumnListSkelleton data={board} />
           <AddButtonSkelleton column={true} />
