@@ -6,7 +6,7 @@ import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import HeaderSkelleton from '../Skelletons/HeaderSkelleton/HeaderSkelleton.jsx';
+import HeaderSkelleton from '../Skelletons/UserInfoSkeleton/UserInfoSkeleton.jsx';
 
 export const Header = () => {
   const theme = 'Dark';
