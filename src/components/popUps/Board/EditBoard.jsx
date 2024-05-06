@@ -7,7 +7,7 @@ import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
 
-const Board = ({ name, open = true, action = 'Create' }) => {
+const EditBoard = ({ name, open = true }) => {
   const theme = 'Violet';
 
   const [board, setBoard] = useState({
@@ -40,12 +40,8 @@ const Board = ({ name, open = true, action = 'Create' }) => {
         setLoading(false);
       }
     };
-
-    if (action !== 'Create') {
-      console.log(loading);
-      fetchData();
-    }
-  }, [loading]);
+    fetchData();
+  }, []);
 
   return (
     <Backdrop show={showModal}>
@@ -60,13 +56,10 @@ const Board = ({ name, open = true, action = 'Create' }) => {
         >
           {name}
         </p>
-        {action === 'Create' && <ColumnForm />}
-        {action !== 'Create' && !loading && (
-          <ColumnForm data={board} action={action} />
-        )}
+        {!loading && <ColumnForm data={board} action="Edit" />}
       </BoardModal>
     </Backdrop>
   );
 };
 
-export default Board;
+export default EditBoard;
