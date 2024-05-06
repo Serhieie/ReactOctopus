@@ -1,0 +1,130 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    overflow-y: auto;
+    transition: opacity 0.3s;
+    z-index: 999;
+}
+
+.modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 335px;
+    min-height: 335px;
+    padding: 24px;
+    transform: translate(-50%, -50%);
+    background: $modal-background-dark;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.titleContainer {
+    display: flex;
+}
+
+.mainTitle{
+    font-size: 18px;
+    color: $text-dark;
+    font-weight: 500;
+}
+
+.form {
+    position: relative;
+}
+
+.email {
+    margin-top: 24px;
+}
+
+.forEmail {
+    width: 287px;
+    border: 1px solid $button-light;
+    border-radius: 8px;
+    height: 49px;
+    color: $text-dark;
+    background-color: $modal-background-dark;
+    opacity: .4;
+    padding: 0 18px;
+}
+
+.comment {
+    position: relative;
+}
+
+.forComment {
+    width: 287px;
+    height: 120px;
+    padding: 18px;
+    border: 1px solid $button-light;
+    border-radius: 8px;
+    color: $text-dark;
+    background-color: $modal-background-dark;
+    opacity: .4;
+    margin-top: 14px; 
+    overflow: hidden;
+    resize: none;   
+}
+
+
+.button {
+    margin-top: 24px;
+    border: none;
+    border-radius: 8px;
+    width: 287px;
+    height: 49px;
+    background: $button-light;
+    color: $text-light;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+
+.button:hover {
+    background: $button-hover-dark;
+}
+
+.closeButton {
+    background-image: url('./x-close.svg');
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-dark;
+    width: 18px;
+    height: 18px
+}
+
+.closeButton:focus {
+    outline: none;
+}
+
+.closeButton::before {
+    content: '\00D7';
+    font-size: 18px;
+    color: $text-dark;
+}
+
+.error {
+    color: red;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+
