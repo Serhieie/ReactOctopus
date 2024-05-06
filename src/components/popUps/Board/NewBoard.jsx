@@ -30,7 +30,7 @@ const NewBoard = ({ name, open = true }) => {
         >
           {name}
         </p>
-        <ColumnForm />
+        <ColumnForm action="Create" />
       </BoardModal>
     </Backdrop>
   );
