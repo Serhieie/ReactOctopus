@@ -43,7 +43,7 @@ const backgroundsImages = [
   'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
 ];
 
-const ColumnForm = ({ data = INITIAL_STATE }) => {
+const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
   const theme = 'Violet';
 
   const [columns, setColumns] = useState({
@@ -65,8 +65,13 @@ const ColumnForm = ({ data = INITIAL_STATE }) => {
       toast.error('Title is required');
     } else {
       try {
-        console.log('Saved');
-        // const response = await axios.post('/api/columns', columns);
+        if (action === 'Create') {
+          // const response = await axios.post('/api/columns', columns);
+          console.log('Saved');
+        } else {
+          //const response = await axios.put(`/api/columns/${columns.id}`, columns);
+          console.log('Updated');
+        }
         reset();
       } catch (error) {
         console.error('Error saving form data:', error);
