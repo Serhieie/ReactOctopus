@@ -1,0 +1,81 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-right: -12px;
+  gap: 8px;
+
+  @include media-rules(tablet) {
+    margin-right: -18px;
+  }
+
+  @include media-rules(desctop) {
+  }
+}
+
+//DARK
+
+.cardListDark {
+  background-color: $background-dark;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+}
+
+//LIGHT
+
+.cardListLight {
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(22, 22, 22, 0.1);
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #e8e8e8;
+    border-radius: 12px;
+  }
+}
+
+//VIOLET
+
+.cardListViolet {
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b8bcfd;
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+    border-radius: 12px;
+  }
+}

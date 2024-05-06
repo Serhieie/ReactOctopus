@@ -1,0 +1,66 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+
+  .name {
+    height: 14px;
+    width: 60px;
+    opacity: 0.04;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4.5px;
+    border: 0.5px solid transparent;
+    transition: border-color 250ms ease-in-out;
+  }
+
+  @include media-rules(tablet) {
+    padding: 18px 32px;
+  }
+
+  @include media-rules(desktop) {
+    padding: 18px 24px;
+    width: calc(100dvw - 260px);
+    margin-left: auto;
+  }
+}
+
+// DARK THEME
+
+.dark {
+  background-color: $header-background-dark;
+  color: $text-dark;
+  .name {
+    background-color: $text-dark;
+  }
+}
+
+// LIGHT THEME
+
+.light {
+  background-color: $header-background-light;
+  color: $text-light;
+  .name {
+    background-color: $text-light;
+  }
+}
+//VIOLET THEME
+
+.violet {
+  background-color: $header-background-violet;
+  color: $text-violet;
+
+  .name {
+    background-color: $text-violet;
+  }
+}
