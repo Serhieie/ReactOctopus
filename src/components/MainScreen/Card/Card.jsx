@@ -3,13 +3,17 @@ import clsx from 'clsx';
 import { Buttons } from './Buttons/Buttons';
 import { Priority } from './Priority/Priority';
 import { getColorByPriority } from '../../../helpers/getColorByPriority';
+import { useAuth } from '../../../hooks';
+import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 
 export const Card = ({ card, columnTitle }) => {
   const theme = 'Dark';
-
+  const { isLoading } = useAuth();
   const labelColor = getColorByPriority(card.priority);
   //TRANSFORM RIGHT AFTER SIDEBAR
-  return (
+  return isLoading ? (
+    <CardSkelleton />
+  ) : (
     <li
       className={clsx(styles.card, {
         [styles.cardDark]: theme === 'Dark',

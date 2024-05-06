@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import styles from './ColumnHead.module.scss';
+import { useAuth } from '../../../hooks/useAuth.js';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
+import { ColumnHeadSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnHeadSkelleton/ColumnHeadSkelleton.jsx';
 
 export const ColumnHead = ({ column }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
   const editColumn = () => {
     console.log('You will edit column');
@@ -22,7 +25,9 @@ export const ColumnHead = ({ column }) => {
     setIsDeleteModalOpen(false);
   };
 
-  return (
+  return isLoading ? (
+    <ColumnHeadSkelleton />
+  ) : (
     <>
       <div
         className={clsx(styles.columnHead, {
