@@ -1,0 +1,15 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  top: 0;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}

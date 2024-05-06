@@ -1,0 +1,31 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.boardModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(190, 219, 176, 0.5);
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+
+  padding: 24px;
+  width: 335px;
+  min-height: 433px;
+  @include media-rules(tablet) {
+    width: 350px;
+  }
+}
+
+.boardModalDark {
+  background-color: #151515;
+}
+
+.boardModalLight {
+  background-color: #fcfcfc;
+}
+
+.boardModalViolet {
+  background-color: #fcfcfc;
+}

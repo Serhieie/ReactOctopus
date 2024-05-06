@@ -1,14 +1,13 @@
+import { showSuccessToast, showErrorToast } from '../showToast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import { register, login, logout, checkTokenRequest } from '../api/api';
+import { register, login, logout, checkTokenRequest, edit } from '../api/api';
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
   async (body, { rejectWithValue }) => {
     try {
       const response = await register(body);
-      Notify.info('Please confirm your email address.');
       return response.data;
     } catch (error) {
       if (error.response.status === 409) {
@@ -72,6 +71,21 @@ export const logOut = createAsyncThunk(
     } catch (error) {
       console.error(error.message);
       return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  '/users/edit',
+  async (credentials, thunkAPI) => {
+    const theme = thunkAPI.getState()?.theme?.currentTheme;
+    try {
+      const response = await edit();
+      showSuccessToast('All data saved successfully', theme);
+      return response.data;
+    } catch (error) {
+      showErrorToast(error.response.data.message, theme);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

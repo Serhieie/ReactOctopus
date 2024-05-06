@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import Welcome from '../../components/Welcome/Welcome'
+import Welcome from '../../components/Welcome/Welcome';
 
 const WelcomePage = () => {
   return (
-      <div>
-          <Welcome/>
+    <div>
+      <Welcome />
     </div>
-  )
-}
+  );
+};
 
-export default WelcomePage
+export default WelcomePage;

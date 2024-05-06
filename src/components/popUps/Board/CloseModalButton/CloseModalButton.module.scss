@@ -1,0 +1,28 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.modalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.modalCloseIcon {
+  fill: none;
+}
+
+.modalCloseIconDark {
+  fill: #ffffff;
+}
+
+.modalCloseIconLight {
+  fill: #161616;
+}
+
+.modalCloseIconViolet {
+  fill: #161616;
+}

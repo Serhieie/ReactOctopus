@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  // baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://reactoctopus-back.onrender.com/api',
   timeout: 15000,
 });
 
@@ -45,3 +46,11 @@ export const checkTokenRequest = async (token) => {
     throw error;
   }
 };
+
+export const edit = async (credentials) => {
+  const response = await axios.patch('/users/edit', credentials);
+  setToken();
+  return response;
+};
+
+export default instance;
