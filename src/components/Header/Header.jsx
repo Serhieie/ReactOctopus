@@ -1,10 +1,11 @@
 import styles from './Header.module.scss';
-import { useMedia } from '../../hooks/useMedia.js';
+import { useMedia, useAuth } from '../../hooks/useMedia.js';
 import { ThemeSelector } from './ThemeSelector/ThemeSelector.jsx';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import HeaderSkelleton from '../Skelletons/HeaderSkelleton/HeaderSkelleton.jsx';
 
 export const Header = () => {
   const theme = 'Dark';
@@ -13,11 +14,13 @@ export const Header = () => {
   const endOfURL = location.pathname === '/home';
 
   //   const dispatch = useDispatch();
-  //   const { theme } = useAuth();
+  const { isLoading } = useAuth();
 
   return (
     <>
-      {endOfURL && (
+      {endOfURL && isLoading ? (
+        <HeaderSkelleton />
+      ) : (
         <header
           className={clsx(styles.header, {
             [styles.dark]: theme === 'Dark',

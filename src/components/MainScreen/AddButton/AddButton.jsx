@@ -1,9 +1,12 @@
 import styles from './AddButton.module.scss';
 import sprite from '../../../assets/sprite.svg';
+import { useAuth } from '../../../hooks';
 import clsx from 'clsx';
+import { AddButtonSkelleton } from '../../Skelletons/MainScreenSkelleton/AddButtonSkelleton/AddButtonSkelleton';
 
 export const AddButton = ({ column, addFunction }) => {
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
   const handleClick = () => {
     addFunction();
@@ -19,7 +22,9 @@ export const AddButton = ({ column, addFunction }) => {
     ? styles.addColumnButtonViolet
     : styles.addCardButtonViolet;
 
-  return (
+  return isLoading ? (
+    <AddButtonSkelleton />
+  ) : (
     <button
       type="button"
       onClick={handleClick}

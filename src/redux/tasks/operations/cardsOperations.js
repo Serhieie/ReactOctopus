@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as tasksApi from '../api/tasks-api';
+import * as tasksApi from '../../api/tasks-api';
 
 export const fetchCards = createAsyncThunk(
   'tasks/fetchCards',

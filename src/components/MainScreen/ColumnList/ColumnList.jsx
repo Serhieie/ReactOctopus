@@ -1,11 +1,16 @@
 import clsx from 'clsx';
 import { Column } from '../Column/Column.jsx';
 import styles from './ColumnList.module.scss';
+import { useAuth } from '../../../hooks/useAuth.js';
+import { ColumnListSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnListSkelleton/ColumnListSkelleton.jsx';
 
 export const ColumnList = ({ data }) => {
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
-  return (
+  return isLoading ? (
+    <ColumnListSkelleton />
+  ) : (
     <ul
       className={clsx(styles.columnList, {
         [styles.columnListDark]: theme === 'Dark',
