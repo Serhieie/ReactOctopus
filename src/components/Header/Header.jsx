@@ -1,5 +1,6 @@
 import styles from './Header.module.scss';
-import { useMedia, useAuth } from '../../hooks/useMedia.js';
+import { useMedia } from '../../hooks/useMedia.js';
+import { useAuth } from '../../hooks/useAuth.js';
 import { ThemeSelector } from './ThemeSelector/ThemeSelector.jsx';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
@@ -16,11 +17,11 @@ export const Header = () => {
   //   const dispatch = useDispatch();
   const { isLoading } = useAuth();
 
-  return (
+  return isLoading ? (
+    <HeaderSkelleton />
+  ) : (
     <>
-      {endOfURL && isLoading ? (
-        <HeaderSkelleton />
-      ) : (
+      {endOfURL && (
         <header
           className={clsx(styles.header, {
             [styles.dark]: theme === 'Dark',
