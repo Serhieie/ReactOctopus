@@ -22,7 +22,7 @@ const LoginForm = ({ onSubmit }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className={styles.inputContainer}>
         <input
           className={styles.input}
@@ -30,9 +30,8 @@ const LoginForm = ({ onSubmit }) => {
           type="email"
           placeholder="Enter your email"
         />
-        {errors.email && errors.email.type === 'required' && (
-          <p className={styles.error}>Email is required</p>
-        )}
+
+        {errors.email && <p className={styles.error}>{errors.email.message}</p>}
       </div>
 
       <div className={styles.inputContainer}>
@@ -47,18 +46,8 @@ const LoginForm = ({ onSubmit }) => {
           placeholder="Enter your password"
         />
 
-        {errors.password && errors.password.type === 'required' && (
-          <p className={styles.error}>Password is required</p>
-        )}
-        {errors.password && errors.password.type === 'minLength' && (
-          <p className={styles.error}>
-            Password must be at least 8 characters long
-          </p>
-        )}
-        {errors.password && errors.password.type === 'maxLength' && (
-          <p className={styles.error}>
-            Password can not be more then 32 characters
-          </p>
+        {errors.password && (
+          <p className={styles.error}>{errors.password.message}</p>
         )}
 
         <div className={styles.iconContainer}>
