@@ -7,15 +7,13 @@
   width: 225px;
   display: flex;
   flex-direction: column;
+  z-index: 999;
 
   position: fixed;
   top: 0;
   left: 0;
 
   @include media-rules(tablet) {
-    width: 260px;
-  }
-  @include media-rules(desktop) {
     width: 260px;
   }
 }

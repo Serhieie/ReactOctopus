@@ -5,18 +5,13 @@
 .sidebar_board_item {
   height: 61px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  // padding-right: 10px;
-  // padding-top: 20px;
-  // padding-bottom: 20px;
 
   .sidebar_boart_cont {
     display: flex;
     justify-content: baseline;
-    align-items: flex-start;
     gap: 4px;
-    margin-left: 14px;
+    padding-right: 20px;
   }
 
   .sidebar_boart_cont,
@@ -37,10 +32,8 @@
     }
 
     .sidebar_boart_cont {
-      margin-left: 24px;
+      margin-left: 2px;
     }
-  }
-  @include media-rules(desktop) {
   }
 }
 
@@ -56,6 +49,7 @@
 
   .sidebar_board_title {
     color: $text-secondary-dark;
+    padding-right: 20px;
   }
 
   .sidebar_board_edit_ico,
