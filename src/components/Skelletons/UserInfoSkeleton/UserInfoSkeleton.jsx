@@ -12,7 +12,7 @@ export const UserInfoSkeleton = () => {
 
   return (
     <div
-      className={clsx(styles.header, {
+      className={clsx(styles.container, {
         [styles.dark]: theme === 'dark',
         [styles.light]: theme === 'light',
         [styles.violet]: theme === 'violet',
