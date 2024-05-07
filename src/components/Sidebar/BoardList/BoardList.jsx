@@ -20,7 +20,7 @@ const BoardList = ({ theme }) => {
         <CreateBoardButton theme={theme} />
       </div>
       <ul className={styles.board_list_sheet}>
-        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} isFirst={true} />
         <BoardListItem theme={theme} />
         <BoardListItem theme={theme} />
         <BoardListItem theme={theme} />
