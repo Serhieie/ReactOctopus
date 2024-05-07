@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: `${BASE_URL}/api`,
   timeout: 15000,
 });
 
@@ -35,6 +37,12 @@ export const logout = async () => {
   return response;
 };
 
+export const updateProfile = async (body) => {
+  const response = await instance.post('/auth/update-profile', body);
+  setToken(response.data.token);
+  return response;
+};
+
 export const checkTokenRequest = async (token) => {
   setToken(token);
   try {
@@ -46,9 +54,10 @@ export const checkTokenRequest = async (token) => {
   }
 };
 
-
-export const edit = async(credentials) => {
+export const edit = async (credentials) => {
   const response = await axios.patch('/users/edit', credentials);
   setToken();
   return response;
-}
+};
+
+export default instance;

@@ -1,9 +1,12 @@
 import styles from './AddButton.module.scss';
 import sprite from '../../../assets/sprite.svg';
+import { useAuth } from '../../../hooks';
 import clsx from 'clsx';
+import { AddButtonSkelleton } from '../../Skelletons/MainScreenSkelleton/AddButtonSkelleton/AddButtonSkelleton';
 
 export const AddButton = ({ column, addFunction }) => {
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
   const handleClick = () => {
     addFunction();
@@ -19,8 +22,11 @@ export const AddButton = ({ column, addFunction }) => {
     ? styles.addColumnButtonViolet
     : styles.addCardButtonViolet;
 
-  return (
-    <div
+  return isLoading ? (
+    <AddButtonSkelleton />
+  ) : (
+    <button
+      type="button"
       onClick={handleClick}
       className={clsx(styles.addColumnButton, {
         [stylesDark]: theme === 'Dark',
@@ -29,21 +35,17 @@ export const AddButton = ({ column, addFunction }) => {
         [styles.margin]: !column,
       })}
     >
-      <div className={styles.addColumnFilling}>
-        <span className={styles.addSpan}>
-          <svg
-            className={styles.iconAddColumn}
-            xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
-          >
-            <use xlinkHref={`${sprite}#icon-plus`} />
-          </svg>
-        </span>
-        <p className={styles.addColumn}>
-          Add another {column ? 'column' : 'card'}
-        </p>
-      </div>
-    </div>
+      <span className={styles.addSpan}>
+        <svg
+          className={styles.iconAddColumn}
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+        >
+          <use xlinkHref={`${sprite}#icon-plus`} />
+        </svg>
+      </span>
+      Add another {column ? 'column' : 'card'}
+    </button>
   );
 };

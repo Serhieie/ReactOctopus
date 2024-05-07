@@ -3,29 +3,107 @@
 @import '/src/styles/colors';
 
 .card {
-  width: 334px;
+  position: relative;
+  overflow: hidden;
+
   display: flex;
-
   flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  user-select: none;
 
+  width: 334px;
+  min-height: 154px;
+
+  border-radius: 8px;
+  padding: 14px 24px;
+  .cardDescription {
+    @include twoLineText();
+  }
   @include media-rules(tablet) {
   }
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cardDescription {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  padding-top: 8px;
+}
+
+.hr {
+  width: 100%;
+  border-width: 0.5px;
+  margin: 0;
+  padding: 0;
+}
+.priorityBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.absoluteSpan {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 4px;
 }
 
 //DARK
 
 .cardDark {
-  background-color: $background-dark;
+  background-color: #121212;
+
+  .cardTitle {
+    color: $text-dark;
+  }
+
+  .cardDescription {
+    color: $text-secondary-dark;
+  }
+
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 //LIGHT
 
 .cardLight {
   background-color: #fff;
+
+  .cardTitle {
+    color: $text-light;
+  }
+  .cardDescription {
+    color: $text-secondary-light;
+  }
+
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
 }
 
 //VIOLET
 
 .cardViolet {
   background-color: #fff;
+
+  .cardTitle {
+    color: $text-violet;
+  }
+  .cardDescription {
+    color: $text-secondary-violet;
+  }
+
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
 }

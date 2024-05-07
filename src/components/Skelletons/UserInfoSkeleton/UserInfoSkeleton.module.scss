@@ -1,0 +1,55 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .name {
+    height: 16px;
+    width: 32.5px;
+    opacity: 0.1;
+    border-radius: 2px;
+    background-color: white;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 4.5px;
+    border: 0.5px solid transparent;
+    transition: border-color 250ms ease-in-out;
+  }
+}
+
+// DARK THEME
+
+.dark {
+  background-color: $header-background-dark;
+  color: $text-dark;
+  .name {
+    background-color: $text-dark;
+  }
+}
+
+// LIGHT THEME
+
+.light {
+  background-color: $header-background-light;
+  color: $text-light;
+  .name {
+    background-color: $text-light;
+  }
+}
+//VIOLET THEME
+
+.violet {
+  background-color: $header-background-violet;
+  color: $text-violet;
+
+  .name {
+    background-color: $text-violet;
+  }
+}

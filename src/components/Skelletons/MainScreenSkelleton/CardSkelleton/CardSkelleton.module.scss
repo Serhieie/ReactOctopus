@@ -1,0 +1,109 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  user-select: none;
+
+  .bottom {
+    display: flex;
+    align-items: center;
+  }
+
+  .block0,
+  .block1,
+  .block2,
+  .block3,
+  .block4 {
+    background-color: white;
+    height: 14px;
+    opacity: 0.04;
+    border-radius: 2px;
+  }
+
+  .blockRound {
+    opacity: 0.04;
+    background-color: white;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .block0 {
+    width: 150px;
+    opacity: 0.09;
+  }
+  .block1,
+  .block2 {
+    height: 10px;
+  }
+
+  .block3 {
+    width: 80px;
+    height: 24px;
+  }
+  .block4 {
+    width: 68px;
+    height: 18px;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+
+  width: 334px;
+  min-height: 154px;
+
+  border-radius: 8px;
+  padding: 14px 24px;
+
+  @include media-rules(tablet) {
+  }
+}
+
+.cardDescription {
+  padding-top: 8px;
+}
+
+.hr {
+  width: 100%;
+  border-width: 0.5px;
+  margin: 0;
+  padding: 0;
+}
+
+//DARK
+
+.cardDark {
+  background-color: #121212;
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+//LIGHT
+
+.cardLight {
+  background-color: #fff;
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+}
+
+//VIOLET
+
+.cardViolet {
+  background-color: #fff;
+
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+}

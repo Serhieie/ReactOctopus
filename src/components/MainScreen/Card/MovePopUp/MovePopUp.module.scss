@@ -1,0 +1,130 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.modalOverlay {
+  position: absolute;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 500ms ease-in-out;
+  @include appear-animation(50ms);
+  z-index: 1000;
+}
+
+.movePopUp {
+  position: absolute;
+  z-index: 999;
+  bottom: 3px;
+  right: 4px;
+  width: 135px;
+
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
+  font-size: 14px;
+
+  @include appear-animation(0.25s);
+
+  .icon {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
+  }
+
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    cursor: pointer;
+    user-select: none;
+    padding: 2px 0;
+    transition: color 250ms ease-in-out;
+  }
+
+  &.disappear {
+    pointer-events: none;
+  }
+}
+
+.disappear {
+  @include disappear-animation(0.25s);
+}
+
+// DARK THEME
+.modalOverlayDark {
+  background-color: rgba(0, 0, 0, 0.42);
+  .movePopUp {
+    background-color: $background-dark;
+
+    span {
+      color: $text-secondary-dark;
+    }
+
+    span:hover .icon {
+      stroke: $text-hover-dark;
+    }
+    .icon {
+      stroke: $text-secondary-dark;
+    }
+
+    span:hover {
+      color: $text-hover-dark;
+    }
+  }
+}
+
+// LIGHT THEME
+.modalOverlayLight {
+  background-color: rgba(255, 255, 255, 0.5);
+  .movePopUp {
+    background-color: $background-light;
+
+    > span {
+      color: $text-light;
+    }
+
+    > span:hover {
+      color: $text-hover-light;
+    }
+
+    span:hover .icon {
+      stroke: $text-hover-light;
+    }
+    .icon {
+      stroke: $text-secondary-light;
+    }
+  }
+}
+//VIOLET THEME
+.modalOverlayLight {
+  background-color: rgba(255, 255, 255, 0.5);
+  .movePopUp {
+    background-color: $background-violet;
+
+    > span {
+      color: $text-violet;
+    }
+
+    > span:hover {
+      color: $text-hover-violet;
+    }
+
+    span:hover .icon {
+      stroke: $text-hover-violet;
+    }
+    .icon {
+      stroke: $text-secondary-violet;
+    }
+  }
+}
