@@ -19,7 +19,6 @@ export const MainScreen = () => {
   const addColumnFunc = () => {
     console.log('Add Column');
   };
-
   return isLoading ? (
     <MainScreenSkelleton />
   ) : (
