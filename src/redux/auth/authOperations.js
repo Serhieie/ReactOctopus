@@ -77,7 +77,7 @@ export const logOut = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-    '/users/edit',
+    'users/edit',
     async (credentials, thunkAPI) => {
       const theme = thunkAPI.getState()?.theme?.currentTheme;
       try {
