@@ -1,0 +1,170 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.titleForm {
+    display: inline;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.36px;
+}
+
+.inputTitle,
+.inputDescription {
+    width: 100%;
+    margin-top: 14px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid #1F1F1F;
+    flex-shrink: 0;
+    color: currentColor;
+    outline: none;
+    opacity: 0.4;
+
+    @media (max-width: 375px) {
+        width: 100%;
+    }
+
+    @media (min-width: 375px) and (max-width: 768px) {
+        width: 287px;
+    }
+
+    @media (min-width: 768px) {
+        width: 302px;
+    }
+
+    &:focus {
+        opacity: 1;
+    }
+}
+
+.titleStatus {
+    margin-top: 24px;
+    margin-bottom: 4px;
+    color: #FFFFFF80;;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}
+
+.blockStatus {
+    position: relative;
+    display: flex;
+    gap: 8px;
+}
+
+.radioBtn {
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    border-radius: 50%;
+    opacity: 0;
+
+    &:checked+div:before {
+        content: '';
+        position: absolute;
+        display: block;
+        background: #8FA1D0;
+        z-index: 2;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        left: 3px;
+        top: 3px;
+    }
+
+    &:checked+div:after {
+        content: '';
+        border: 1px solid #8FA1D0;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        background: #000000;
+    }
+}
+
+.colorStatus {
+    position: absolute;
+    top: 0;
+    display: flex;
+    gap: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.titleDeadline {
+    margin-top: 14px;
+    color: #FFFFFF;
+    font-size: 12px;
+    letter-spacing: -0.24px;
+}
+
+.calendarShow {
+    display: flex;
+    align-items: center;
+    color: #BEDBB0;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: -0.28px;
+}
+
+.submitButton {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @media (max-width: 375px) {
+        width: 100%;
+    }
+
+    @media (min-width: 375px) and (max-width: 768px) {
+        width: 287px;
+    }
+
+    @media (min-width: 768px) {
+        width: 302px;
+    }
+
+    height: 49px;
+    border-radius: 8px;
+    border: none;
+    background: #161616;
+    color:  #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    cursor: pointer;
+}
+
+.iconPlus {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
