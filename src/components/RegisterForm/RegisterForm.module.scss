@@ -15,7 +15,7 @@
 
  }
 
- 
+
  .input {
      border: 1px solid #bedbb0;
      border-radius: 8px;
@@ -31,7 +31,7 @@
 
  .input::placeholder {
      color: rgba(255, 255, 255, 0.7);
-    
+
  }
 
 
@@ -76,9 +76,10 @@
  }
 
  .error {
+     margin-top: 5px;
+     font-size: 12px;
      color: red;
      font-family: Poppins;
      font-weight: 400;
-     font-size: 14px;
 
  }

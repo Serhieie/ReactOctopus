@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
+import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 
 import { selectUser } from '../../redux/auth/authSelectors';
 
-// import styles from './UserForm.module.scss';
+import styles from './UserForm.module.scss';
 
 import { imageExists } from '../../hooks/imageExists';
 
@@ -130,6 +131,10 @@ export const UserForm = (isOpen, onClose) => {
       }
     });
   const [showPassword, setShowPassword] = useState(false); // Состояние для отображения пароля
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -140,28 +145,25 @@ export const UserForm = (isOpen, onClose) => {
     <div style={{ display: isOpen ? 'block' : 'none' }}>
       <div className="modal">
         <div className="modal-content">
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            {/* Tittle */}
+            <h2>Edit Profile</h2>
 
-          {/* SVG for closing a modal window */}
-
-          <span className="close" onClick={onClose}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-x"
-              viewBox="0 0 16 16"
-            >
-              <path d="M3.646 3.646a.5.5 0 0 1 .708 0L8 7.293l3.646-3.647a.5.5 0 1 1 .708.708L8.707 8l3.647 3.646a.5.5 0 0 1-.708.708L8 8.707l-3.646 3.647a.5.5 0 0 1-.708-.708L7.293 8 3.646 4.354a.5.5 0 0 1 0-.708z" />
-            </svg>
-          </span>
-
-          {/* Tittle */}
-
-          <h2>Edit Profile</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* SVG for closing a modal window */}
+            <span className="close" onClick={onClose}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-x"
+                viewBox="0 0 16 16"
+              >
+                <path d="M3.646 3.646a.5.5 0 0 1 .708 0L8 7.293l3.646-3.647a.5.5 0 1 1 .708.708L8.707 8l3.647 3.646a.5.5 0 0 1-.708.708L8 8.707l-3.646 3.647a.5.5 0 0 1-.708-.708L7.293 8 3.646 4.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </span>
+            
             {/* AVATAR */}
-
             <div>
               {avatarPreviewUrl ? (
                 <img src={avatarPreviewUrl} alt={userName} />
@@ -186,41 +188,49 @@ export const UserForm = (isOpen, onClose) => {
             </div>
 
             {/* NAME */}
-
-            <input
-              type="text"
-              name="firstName"
-              placeholder="Name"
-              ref={register({ required: true })}
-              value={newUserName}
-              onChange={(e) => {
-                setNewUserName(e.target.value);
-                setIsNameValid(
-                  globalRegex.customFieldRegexp.test(e.target.value)
-                );
-              }}
-            />
-            {newUserName ? (isNameValid ? SuccessIcon : ErrorIcon) : null}
+            <div className={styles.inputContainer}>
+              <input
+                className={styles.input}
+                type="text"
+                name="firstName"
+                placeholder="Name"
+                ref={register({ required: true })}
+                value={newUserName}
+                onChange={(e) => {
+                  setNewUserName(e.target.value);
+                  setIsNameValid(
+                    globalRegex.customFieldRegexp.test(e.target.value)
+                  );
+                }}
+              />
+              {newUserName ? (isNameValid ? SuccessIcon : ErrorIcon) : null}
+            </div>
 
             {/* EMAIL */}
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              ref={register({ required: true })}
-              value={newEmail}
-              onChange={(e) => {
-                setNewEmail(e.target.value);
-                setIsEmailValid(globalRegex.emailRegexp.test(e.target.value));
-              }}
-            />
-            {newEmail ? (isEmailValid ? SuccessIcon : ErrorIcon) : null}
+            <div className={styles.inputContainer}>
+              <input
+                className={styles.input}
+                type="email"
+                name="email"
+                placeholder="Email"
+                ref={register({ required: true })}
+                value={newEmail}
+                onChange={(e) => {
+                  setNewEmail(e.target.value);
+                  setIsEmailValid(globalRegex.emailRegexp.test(e.target.value));
+                }}
+              />
+              {newEmail ? (isEmailValid ? SuccessIcon : ErrorIcon) : null}
+            </div>
 
             {/* PASSWORD */}
 
-            <div style={{ position: 'relative' }}>
+            <div
+              style={{ position: 'relative' }}
+              className={styles.inputContainer}
+            >
               <input
+                className={styles.input}
                 type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Password"
@@ -233,10 +243,21 @@ export const UserForm = (isOpen, onClose) => {
                   );
                 }}
               />
-
               {/* SVG to show a password */}
-
-              <svg
+              <div className={styles.iconContainer}>
+                {showPassword ? (
+                  <RiEyeLine
+                    className={styles.icon}
+                    onClick={togglePasswordVisibility}
+                  />
+                ) : (
+                  <RiEyeCloseLine
+                    className={styles.icon}
+                    onClick={togglePasswordVisibility}
+                  />
+                )}
+              </div>
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -257,13 +278,12 @@ export const UserForm = (isOpen, onClose) => {
                   fillRule="evenodd"
                   d="M0 8a8 8 0 0 1 12.77-6.51c.42.41.82.84 1.17 1.29C13.15 4.31 12.09 4 11 4c-3.04 0-5.5 2.46-5.5 5.5 0 .76.16 1.49.45 2.15A8.013 8.013 0 0 1 0 8zm16 0a8 8 0 0 0-12.77-6.51A15.106 15.106 0 0 1 4.5 8c0 .76-.16 1.49-.45 2.15A8.013 8.013 0 0 0 16 8z"
                 />
-              </svg>
+              </svg> */}
               {newPassword ? (isPasswordValid ? SuccessIcon : ErrorIcon) : null}
               ;
             </div>
 
             {/* Button */}
-
             <button type="submit">Send</button>
           </form>
         </div>

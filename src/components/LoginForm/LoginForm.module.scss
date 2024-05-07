@@ -7,16 +7,15 @@
     flex-direction: column;
     gap: 14px;
     margin-top: 20px
-    
 }
 
 .inputContainer {
     position: relative;
     height: 70px;
-    
+
 }
 
-.input{
+.input {
     border: 1px solid #bedbb0;
     border-radius: 8px;
     width: 287px;
@@ -26,12 +25,12 @@
     padding: 0 18px;
     box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
     opacity: 0.4;
-    
+
 }
 
 .input::placeholder {
     color: rgba(255, 255, 255, 0.7);
-    
+
 }
 
 
@@ -76,9 +75,10 @@
 }
 
 .error {
+    margin-top: 5px;
     color: red;
     font-family: Poppins;
     font-weight: 400;
-    font-size: 14px; 
-     
+    font-size: 12px;
+
 }

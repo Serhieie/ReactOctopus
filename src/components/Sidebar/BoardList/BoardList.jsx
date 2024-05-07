@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import styles from './BoardList.module.scss';
 
 const BoardList = ({ theme }) => {
+  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <div
       className={clsx(styles.board_list_container, {
@@ -20,23 +21,14 @@ const BoardList = ({ theme }) => {
         <CreateBoardButton theme={theme} />
       </div>
       <ul className={styles.board_list_sheet}>
-        <BoardListItem theme={theme} isFirst={true} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
-        <BoardListItem theme={theme} />
+               {data.map((index, i) => (
+          <BoardListItem
+            key={index}
+            index={index}
+            theme={theme}
+            isFirst={i === 0 ? true : false}
+          />
+        ))}
       </ul>
     </div>
   );
