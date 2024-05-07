@@ -36,6 +36,12 @@ export const logout = async () => {
   return response;
 };
 
+export const updateProfile = async (body) => {
+  const response = await instance.post('/auth/update-profile', body);
+  setToken(response.data.token);
+  return response;
+};
+
 export const checkTokenRequest = async (token) => {
   setToken(token);
   try {
