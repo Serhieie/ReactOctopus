@@ -5,6 +5,7 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 14px 20px;
 
   @include media-rules(tablet) {
