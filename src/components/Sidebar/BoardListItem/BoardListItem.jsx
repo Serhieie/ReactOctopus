@@ -1,29 +1,47 @@
 import LogoSprite from '../../../assets/sprite.svg';
+import clsx from 'clsx';
 
-import './BoardListItem.scss';
+import styles from './BoardListItem.module.scss';
 
-const BoardListItem = () => {
+const BoardListItem = ({ theme }) => {
   return (
-    <li className="sidebar_board-item">
-      <div className="sidebar_boart-cont">
-        <svg className="sidebar_board-item-ico" width="18" height="18">
-          <use xlinkHref={`${LogoSprite}#icon-Project`}></use>
-        </svg>
-        <p className="sidebar_board-title">BoardListItem</p>
-      </div>
-      <div className="sidebar_boart-cont">
-        <button type="button" className="sidebar_board-edit-btn">
-          <svg className="sidebar_board-edit-ico" width="16" height="16">
-            <use xlinkHref={`${LogoSprite}#icon-pencil`}></use>
+    <>
+      <li
+        className={clsx(styles.sidebar_board_item, {
+          [styles.sidebar_board_itemDark]: theme === 'dark',
+          [styles.sidebar_board_itemLight]: theme === 'light',
+          [styles.sidebar_board_itemViolet]: theme === 'violet',
+        })}
+      >
+        <div className={styles.sidebar_boart_cont}>
+          <svg className={styles.sidebar_board_item_ico} width="18" height="18">
+            <use xlinkHref={`${LogoSprite}#icon-project`}></use>
           </svg>
-        </button>
-        <button type="button" className="sidebar_board-remove-btn">
-          <svg className="sidebar_board-remove-ico" width="16" height="16">
-            <use xlinkHref={`${LogoSprite}#icon-trash`}></use>
-          </svg>
-        </button>
-      </div>
-    </li>
+          <p className={styles.sidebar_board_title}>BoardListItem</p>
+        </div>
+        <div className={styles.sidebar_boart_cont}>
+          <button type="button" className={styles.sidebar_board_edit_btn}>
+            <svg
+              className={styles.sidebar_board_edit_ico}
+              width="16"
+              height="16"
+            >
+              <use xlinkHref={`${LogoSprite}#icon-pencil`}></use>
+            </svg>
+          </button>
+          <button type="button" className={styles.sidebar_board_remove_btn}>
+            <svg
+              className={styles.sidebar_board_remove_ico}
+              width="16"
+              height="16"
+            >
+              <use xlinkHref={`${LogoSprite}#icon-trash`}></use>
+            </svg>
+          </button>
+        </div>
+        <div className={styles.sidebar_board_active}></div>
+      </li>
+    </>
   );
 };
 

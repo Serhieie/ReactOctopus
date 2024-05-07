@@ -1,0 +1,167 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.sidebar_board_item {
+  height: 61px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // padding-right: 10px;
+  // padding-top: 20px;
+  // padding-bottom: 20px;
+
+  .sidebar_boart_cont {
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-start;
+    gap: 4px;
+    margin-left: 14px;
+  }
+
+  .sidebar_boart_cont,
+  .sidebar_board_edit_btn,
+  .sidebar_board_remove_btn {
+    cursor: pointer;
+  }
+
+  .sidebar_board_active {
+    height: 61px;
+    width: 4px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  @include media-rules(tablet) {
+    .sidebar_boart_cont {
+      gap: 8px;
+    }
+
+    .sidebar_boart_cont {
+      margin-left: 24px;
+    }
+  }
+  @include media-rules(desktop) {
+  }
+}
+
+//Dark
+
+.sidebar_board_itemDark {
+  .sidebar_board_item_ico,
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    stroke: $text-secondary-dark;
+    fill: $sidebar-background-dark;
+  }
+
+  .sidebar_board_title {
+    color: $text-secondary-dark;
+  }
+
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    &:hover {
+      stroke: $text-hover-dark;
+      filter: drop-shadow(0 0 10px $text-hover-dark);
+    }
+  }
+}
+
+.sidebar_board_itemDark:hover {
+  background-color: rgb(23, 23, 23);
+
+  .sidebar_board_item_ico {
+    stroke: $text-dark;
+  }
+
+  .sidebar_board_title {
+    color: $text-dark;
+  }
+
+  .sidebar_board_active {
+    background-color: #bedbb0;
+  }
+}
+
+//Light
+
+.sidebar_board_itemLight {
+  .sidebar_board_item_ico,
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    stroke: rgba(22, 22, 22, 0.5);
+    fill: $sidebar-background-light;
+  }
+
+  .sidebar_board_title {
+    color: rgba(22, 22, 22, 0.5);
+  }
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    &:hover {
+      stroke: $text-hover-dark;
+      filter: drop-shadow(0 0 10px $text-hover-dark);
+    }
+  }
+}
+
+.sidebar_board_itemLight:hover {
+  background-color: rgb(251, 251, 252);
+
+  .sidebar_board_item_ico {
+    stroke: $text-light;
+  }
+
+  .sidebar_board_title {
+    color: $text-light;
+  }
+
+  .sidebar_board_active {
+    background-color: #bedbb0;
+  }
+}
+
+//Violet
+
+.sidebar_board_itemViolet {
+  .sidebar_board_item_ico,
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    stroke: $text-secondary-dark;
+    fill: $sidebar-background-violet;
+  }
+
+  .sidebar_board_title {
+    color: $text-secondary-dark;
+  }
+
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    &:hover {
+      stroke: $text-hover-violet;
+      fill: rgba(117, 119, 201, 0.5);
+      filter: drop-shadow(0 0 10px $text-hover-violet);
+    }
+  }
+}
+
+.sidebar_board_itemViolet:hover {
+  background-color: rgb(117, 119, 201);
+
+  .sidebar_board_item_ico,
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    fill: rgba(117, 119, 201, 0.5);
+  }
+  .sidebar_board_item_ico {
+    stroke: $text-dark;
+  }
+
+  .sidebar_board_title {
+    color: $text-dark;
+  }
+
+  .sidebar_board_active {
+    background-color: #fff;
+  }
+}

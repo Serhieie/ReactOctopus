@@ -1,35 +1,42 @@
 import BoardListItem from '../BoardListItem/BoardListItem';
 import CreateBoardButton from '../CreateBoardButton/CreateBoardButton';
+import clsx from 'clsx';
 
-import './BoardList.scss';
+import styles from './BoardList.module.scss';
 
-const BoardList = () => {
+const BoardList = ({ theme }) => {
   return (
-    <div className="board-list_container">
-      <div className="board-list_name">
+    <div
+      className={clsx(styles.board_list_container, {
+        [styles.board_list_containerDark]: theme === 'dark',
+        [styles.board_list_containerLight]: theme === 'light',
+        [styles.board_list_containerViolet]: theme === 'violet',
+      })}
+    >
+      <div className={styles.board_list_name}>
         <p>My boards</p>
       </div>
-      <div className="board-list_create-btn">
-        <CreateBoardButton />
+      <div className={styles.board_list_create_btn}>
+        <CreateBoardButton theme={theme} />
       </div>
-      <ul className="board-list_sheet">
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
-        <BoardListItem />
+      <ul className={styles.board_list_sheet}>
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
+        <BoardListItem theme={theme} />
       </ul>
     </div>
   );

@@ -1,13 +1,20 @@
 import LogoSprite from '../../../assets/sprite.svg';
+import clsx from 'clsx';
 
-import './Logo.scss';
+import styles from './Logo.module.scss';
 
-const Logo = () => {
+const Logo = ({ theme }) => {
   return (
-    <div className="sidebar_logo">
-      <div className="logo-ico_con">
-        <svg className="logo-ico" width="12" height="16">
-          <use xlinkHref={`${LogoSprite}#icon-lightning`}></use>
+    <div
+      className={clsx(styles.sidebar_logo, {
+        [styles.sidebar_logoDark]: theme === 'dark',
+        [styles.sidebar_logoLight]: theme === 'light',
+        [styles.sidebar_logoViolet]: theme === 'violet',
+      })}
+    >
+      <div className={styles.logo_ico_con}>
+        <svg className={styles.logo_ico} width="12" height="16">
+          <use xlinkHref={`${LogoSprite}#icon-lightning1`}></use>
         </svg>
       </div>
       <div>
