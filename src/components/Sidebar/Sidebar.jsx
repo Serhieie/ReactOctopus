@@ -1,14 +1,35 @@
-import React from 'react';
+import BoardList from './BoardList/BoardList';
+import Logo from './Logo/Logo';
 import NeedHelp from './NeedHelp/NeedHelp';
-import LogoutButton from './LogoutButton/LogoutButton';
+import { useMedia } from '../../hooks';
+import clsx from 'clsx';
+
+import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
+  const theme = 'dark';
+  const isSidebarOpen = false;
+  const { isMobile, isTablet, isDesktop } = useMedia();
+  // const endOfURL = location.pathname === '/home';
+
   return (
-    <div>
-      Sidebar
-      <NeedHelp />
-      <LogoutButton />
-    </div>
+    <>
+      {/* {endOfURL && ( */}
+      <div
+        className={clsx(styles.sidebar_container, {
+          [styles.sidebar_containerDark]: theme === 'dark',
+          [styles.sidebar_containerLight]: theme === 'light',
+          [styles.sidebar_containerViolet]: theme === 'violet',
+          [styles.sidebar_hidden]: isMobile || isTablet,
+          [styles.sidebar_open]: isDesktop || isSidebarOpen,
+        })}
+      >
+        <Logo theme={theme} />
+        <BoardList theme={theme} />
+        <NeedHelp />
+      </div>
+      {/* )} */}
+    </>
   );
 };
 
