@@ -19,6 +19,11 @@
     margin-left: 14px;
   }
 
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    display: none;
+  }
+
   .sidebar_boart_cont,
   .sidebar_board_edit_btn,
   .sidebar_board_remove_btn {
@@ -80,6 +85,11 @@
 
   .sidebar_board_active {
     background-color: #bedbb0;
+  }
+
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    display: inline-block;
   }
 }
 
