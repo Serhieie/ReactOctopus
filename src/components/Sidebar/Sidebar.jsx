@@ -8,8 +8,8 @@ import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   const theme = 'dark';
-  const isSidebarOpen = false;
-  const { isMobile, isTablet, isDesktop } = useMedia();
+  const isSidebarOpen = true;
+  const { isMobile, isTablet } = useMedia();
   const endOfURL = location.pathname === '/home';
 
   return (
@@ -21,7 +21,7 @@ const Sidebar = () => {
             [styles.sidebar_containerLight]: theme === 'light',
             [styles.sidebar_containerViolet]: theme === 'violet',
             [styles.sidebar_hidden]: isMobile || isTablet,
-            [styles.sidebar_open]: isDesktop || isSidebarOpen,
+            [styles.sidebar_open]: isSidebarOpen,
           })}
         >
           <Logo theme={theme} />

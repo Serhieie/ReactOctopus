@@ -20,7 +20,7 @@
 
   .board_list_sheet {
     overflow: auto;
-    height: 35vh;
+    height: calc(100dvh - 600px);
     gap: 4px;
     display: flex;
     flex-direction: column;
