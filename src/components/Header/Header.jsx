@@ -1,12 +1,10 @@
 import styles from './Header.module.scss';
 import { useMedia } from '../../hooks/useMedia.js';
-import { useAuth } from '../../hooks/useAuth.js';
 import { ThemeSelector } from './ThemeSelector/ThemeSelector.jsx';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import HeaderSkelleton from '../Skelletons/UserInfoSkeleton/UserInfoSkeleton.jsx';
 
 export const Header = () => {
   const theme = 'Dark';
@@ -15,11 +13,8 @@ export const Header = () => {
   const endOfURL = location.pathname === '/home';
 
   //   const dispatch = useDispatch();
-  const { isLoading } = useAuth();
 
-  return isLoading ? (
-    <HeaderSkelleton />
-  ) : (
+  return (
     <>
       {endOfURL && (
         <header
