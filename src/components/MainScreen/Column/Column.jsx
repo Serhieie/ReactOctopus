@@ -24,7 +24,11 @@ export const Column = ({ column }) => {
       })}
     >
       <ColumnHead column={column} />
-      <CardList data={column.cards} columnTitle={column.title} />
+      <CardList
+        data={column.cards}
+        columnTitle={column.title}
+        columnId={column._id}
+      />
       <AddButton column={false} addFunction={addCardFunc} />
     </li>
   );
