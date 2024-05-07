@@ -5,7 +5,7 @@ import styles from './BoardListItem.module.scss';
 import { useAuth } from '../../../hooks';
 import BoardListItemSkelleton from './BoardListItemSkelleton/BoardListItemSkelleton';
 
-const BoardListItem = ({ theme }) => {
+const BoardListItem = ({ theme, isFirst }) => {
   const { isLoading } = useAuth();
 
   return (
@@ -17,7 +17,7 @@ const BoardListItem = ({ theme }) => {
       })}
     >
       {isLoading ? (
-        <BoardListItemSkelleton />
+        <BoardListItemSkelleton isFirst={isFirst} />
       ) : (
         <>
           <div className={styles.sidebar_board_active}></div>

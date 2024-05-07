@@ -4,6 +4,7 @@
 
 .sidebar_board_item {
   height: 61px;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 0 22px;
@@ -19,6 +20,7 @@
   .box_container {
     gap: 10px;
     display: flex;
+    max-width: 130px;
 
     //ne robe
     align-items: center;
@@ -48,6 +50,9 @@
   }
 }
 
+.sidebar_board_item.isFirst {
+  padding-right: 65px;
+}
 //Dark
 
 .sidebar_board_itemDark {
