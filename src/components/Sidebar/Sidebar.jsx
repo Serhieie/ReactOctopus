@@ -5,11 +5,13 @@ import { useMedia } from '../../hooks';
 import clsx from 'clsx';
 
 import styles from './Sidebar.module.scss';
+import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const theme = 'dark';
-  const isSidebarOpen = true;
+  const isSidebarOpen = false;
   const { isMobile, isTablet } = useMedia();
+  const location = useLocation();
   const endOfURL = location.pathname === '/home';
 
   return (
