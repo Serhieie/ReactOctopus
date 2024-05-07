@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/api',
-  // baseURL: 'https://reactoctopus-back.onrender.com/api',
+  baseURL: `${BASE_URL}/api`,
   timeout: 15000,
 });
 
@@ -33,6 +34,12 @@ export const login = async (body) => {
 export const logout = async () => {
   const response = await instance.post('/auth/logout');
   setToken();
+  return response;
+};
+
+export const updateProfile = async (body) => {
+  const response = await instance.post('/auth/update-profile', body);
+  setToken(response.data.token);
   return response;
 };
 

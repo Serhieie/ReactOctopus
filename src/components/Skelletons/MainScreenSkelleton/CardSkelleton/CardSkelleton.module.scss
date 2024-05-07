@@ -13,7 +13,6 @@
   user-select: none;
 
   .bottom {
-    padding-top: 8px;
     display: flex;
     align-items: center;
   }
@@ -39,7 +38,8 @@
   }
 
   .block0 {
-    width: 80px;
+    width: 150px;
+    opacity: 0.09;
   }
   .block1,
   .block2 {
@@ -47,12 +47,12 @@
   }
 
   .block3 {
-    width: 60px;
-    height: 26px;
+    width: 80px;
+    height: 24px;
   }
   .block4 {
-    width: 80px;
-    height: 20px;
+    width: 68px;
+    height: 18px;
     align-self: flex-end;
     margin-left: auto;
   }

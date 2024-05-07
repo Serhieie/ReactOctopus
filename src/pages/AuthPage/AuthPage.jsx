@@ -43,10 +43,13 @@ const AuthPage = () => {
             component={NavLink}
             to="/auth/register"
             style={{
+              borderRadius: '10px', 
               color:
                 value === 0 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
               padding: 0,
-            }}
+              padding: 0,
+              transition: 'background-color 1s, color 1s, opacity 0.5s',
+              }}
           />
           <Tab
             className={styles.loginLink}
@@ -54,9 +57,11 @@ const AuthPage = () => {
             component={NavLink}
             to="/auth/login"
             style={{
+              borderRadius: '10px', 
               color:
-                value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
-              padding: 0,
+                value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.1)',
+             padding: 0,
+             transition: 'background-color 1s, color 1s, opacity 0.5s',
             }}
           />
         </Tabs>

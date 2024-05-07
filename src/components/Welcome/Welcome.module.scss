@@ -3,120 +3,155 @@
 @import '/src/styles/colors';
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100vh;
-    background: linear-gradient(180.00deg, rgba(196, 196, 196, 0) 25%, rgb(190, 219, 176) 92.188%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  //background: linear-gradient(180.00deg, rgba(196, 196, 196, 0) 25%, rgb(190, 219, 176) 92.19%);
+  user-select: none;
+
+  @include media-rules(tablet) {
+    width: 473px;
+  }
 }
 
 .userImg {
-    width: 124px;
-    height: 124px;
-    margin-bottom: 15px;
+  width: 124px;
+  height: 124px;
+  margin-bottom: 15px;
+  background-image: url('../../assets/login/loginX1.png');
+  background-size: cover;
+  transition: background-image 0.3s ease;
 
+  @include media-rules(tablet) {
+    width: 162px;
+    height: 162px;
+    margin-bottom: 24px;
+    background-image: url('../../assets/login/loginX2.png');
+    background-size: cover;
+  }
 }
 
 .linksWrap {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.register  {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    width: 335px;
-    letter-spacing: -0.02em;
-    padding: 14px 131px 14px 130px;
-    background: rgb(22, 22, 22);
-    border-radius: 8px;
-    color: rgb(255, 255, 255);;
-    cursor: pointer;
-    text-transform: none;
+.register,
+.login {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  width: 335px;
+  letter-spacing: -0.02em;
+  padding: 14px 131px 14px 130px;
+  background: $header-background-dark;
+  border-radius: 8px;
+  color: $sidebar-background-light;
+  cursor: pointer;
+  text-transform: none;
+  min-width: 290px;
 }
 
 .login {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    width: 335px;
-    letter-spacing: -0.02em;
-    padding: 14px 131px 14px 130px;
-    background: transparent;
-    border-radius: 8px;
-    color: rgb(22, 22, 22);
-    cursor: pointer;
-    text-transform: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  width: 335px;
+  letter-spacing: -0.02em;
+  padding: 14px 131px 14px 130px;
+  background: transparent;
+  border-radius: 8px;
+  color: $header-background-dark;
+  cursor: pointer;
+  text-transform: none;
+  min-width: 290px;
 }
 
-.registerOnLoginHover{
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    width: 335px;
-    letter-spacing: -0.02em;
-    padding: 14px 131px 14px 130px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-transform: none;
-    background: transparent;
-    color: rgb(22, 22, 22);
+.registerOnLoginHover {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  width: 335px;
+  letter-spacing: -0.02em;
+  padding: 14px 131px 14px 130px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: none;
+  background: transparent;
+  color: $header-background-dark;
+  min-width: 290px;
 }
 
 .login:hover {
-    background: rgb(22, 22, 22);
-    color: rgb(255, 255, 255);
+  background: $header-background-dark;
+  color: $sidebar-background-light;
+  min-width: 290px;
 }
 
 .logoWrap {
-    display: flex;
-    flex-direction: row;
-    gap: 14px;
-    margin-bottom: 25px;
-    
-}
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: center;
+  justify-content: center;
 
-.logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    background: rgb(22, 22, 22);       
+  @include media-rules(desktop) {
+    margin-bottom: 22px;
+  }
 }
 
 .icon {
-    fill: rgb(255, 255, 255);
-    margin-top: 10px;
-    margin-left: 12.5px;     
-    width: 15px;
-    height: 20px;
+  fill: $sidebar-background-light;
+  stroke: $sidebar-background-light;
+  width: 15px;
+  height: 20px;
 }
 
+.logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: $header-background-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.title {
+  font-weight: 600;
+  font-size: 28px;
+}
 
 .text {
-    width: 335px;
-    color: rgb(22, 22, 22);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: -2%;
-    text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 48px;
+  width: 100%;
+  max-width: 473px;
 }
-.icon svg {
-    width: 15px;
-    height: 20px;
+
+.login,
+.register {
+  transition:
+    background-color 0.25s,
+    color 1.4s;
 }
