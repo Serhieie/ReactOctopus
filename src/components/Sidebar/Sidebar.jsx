@@ -8,7 +8,7 @@ import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
   const theme = 'dark';
-  const isSidebarOpen = true;
+  const isSidebarOpen = false;
   const { isMobile, isTablet, isDesktop } = useMedia();
   // const endOfURL = location.pathname === '/home';
 
