@@ -1,0 +1,68 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.sidebar_logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 70px;
+  gap: 8px;
+  padding: 0 14px;
+
+  .logo_ico_con {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include media-rules(tablet) {
+    margin-top: 24px;
+    margin-bottom: 60px;
+    padding: 0 24px;
+  }
+  @include media-rules(desktop) {
+  }
+}
+
+//Dark
+
+.sidebar_logoDark {
+  .logo_ico_con {
+    background-color: #1f1f1f;
+  }
+
+  .logo_ico {
+    fill: #f4f4fd;
+  }
+}
+
+//Light
+
+.sidebar_logoLight {
+  .logo_ico_con {
+    background-color: #1f1f1f;
+  }
+
+  .logo_ico {
+    fill: #fff;
+  }
+}
+
+//Violet
+
+.sidebar_logoViolet {
+  .logo_ico_con {
+    background-color: #ecedfd;
+  }
+
+  .logo_ico {
+    fill: #5255bc;
+  }
+}

@@ -1,0 +1,111 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+  gap: 4px;
+
+  .button,
+  .isDeadlineToodaySpan {
+    padding: 10px 2px 0px 2px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .button {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .isDeadlineToodaySpan {
+    position: relative;
+  }
+
+  .icon {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
+  }
+  .isDeadlineTooday {
+    fill: transparent;
+    transition: stroke 250ms ease-in-out;
+    position: relative;
+    z-index: 99;
+  }
+}
+
+//DARK
+
+.buttonsDark {
+  .icon {
+    stroke: $text-secondary-dark;
+  }
+
+  .icon:hover,
+  .isDeadlineTooday,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-dark;
+  }
+
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-dark, 70%);
+  }
+}
+
+//LIGHT
+
+.buttonsLight {
+  .icon {
+    stroke: $text-secondary-light;
+  }
+
+  .icon:hover,
+  .isDeadlineTooday,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-light;
+  }
+
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-light, 70%);
+  }
+}
+
+//VIOLET
+
+.cardViolet {
+  .icon {
+    stroke: $text-secondary-violet;
+  }
+
+  .icon:hover,
+  .isDeadlineTooday,
+  .button:hover svg,
+  .button:focus svg {
+    stroke: $text-hover-violet;
+  }
+
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-violet, 70%);
+  }
+}

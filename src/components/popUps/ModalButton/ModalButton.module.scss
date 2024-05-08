@@ -1,0 +1,83 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.addColumnButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 334px;
+  gap: 8px;
+
+  cursor: pointer;
+  height: 49px;
+  font-size: 14px;
+  padding: 16px 20px;
+  border-radius: 8px;
+
+  user-select: none;
+  @include media-rules(tablet) {
+  }
+}
+
+.margin {
+  margin-top: 14px;
+}
+
+.addSpan {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+}
+
+//DARK
+
+.addCardButtonDark {
+  background-color: $button-dark;
+  color: $text-light;
+
+  .iconAddColumn {
+    stroke: $text-dark;
+  }
+
+  .addSpan {
+    background-color: $text-light;
+  }
+}
+
+//LIGHT
+
+.addCardButtonLight {
+  background-color: $button-light;
+  color: $text-light;
+
+  .iconAddColumn {
+    stroke: $text-dark;
+  }
+
+  .addSpan {
+    background-color: $text-light;
+  }
+}
+
+//VIOLET
+
+.addCardButtonViolet {
+  background-color: $button-violet;
+  color: $text-dark;
+
+  .iconAddColumn {
+    stroke: $text-light;
+  }
+
+  .addSpan {
+    background-color: $text-dark;
+  }
+}

@@ -1,0 +1,61 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.columnHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 334px;
+  min-height: 56px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+
+  .block1 {
+    width: 100px;
+    height: 20px;
+    border-radius: 4px;
+    opacity: 0.05;
+  }
+
+  .block2 {
+    width: 44px;
+    height: 18px;
+    border-radius: 4px;
+    opacity: 0.05;
+  }
+}
+
+//DARK
+
+.columnHeadDark {
+  background-color: #121212;
+
+  .block1,
+  .block2 {
+    background-color: $text-dark;
+  }
+}
+
+//LIGHT
+
+.columnHeadLight {
+  background-color: #fff;
+  .block1,
+  .block2 {
+    background-color: $text-light;
+  }
+}
+
+//VIOLET
+
+.columnHeadViolet {
+  background-color: #fff;
+
+  .block1,
+  .block2 {
+    background-color: $text-violet;
+  }
+}

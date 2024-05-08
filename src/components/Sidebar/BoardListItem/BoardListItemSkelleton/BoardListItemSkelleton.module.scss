@@ -1,0 +1,94 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.sidebar_board_item {
+  height: 61px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  //this is not good
+  gap: 40px;
+
+  .sidebar_board_active {
+    height: 61px;
+    width: 4px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .box_container {
+    gap: 10px;
+    display: flex;
+    max-width: 130px;
+
+    //ne robe
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .box_1,
+  .box_2,
+  .box_3 {
+    border-radius: 2px;
+    opacity: 0.14;
+  }
+
+  .box_1 {
+    width: 16px;
+    height: 16px;
+  }
+
+  .box_2 {
+    width: 100px;
+    height: 12px;
+  }
+
+  .box_3 {
+    width: 36px;
+    height: 18px;
+  }
+}
+
+.sidebar_board_item.isFirst {
+  padding-right: 65px;
+}
+//Dark
+
+.sidebar_board_itemDark {
+  .sidebar_board_active {
+    background-color: #bedbb0;
+  }
+  .box_1,
+  .box_2,
+  .box_3 {
+    background-color: $text-dark;
+  }
+}
+
+//Light
+
+.sidebar_board_itemLight {
+  .sidebar_board_active {
+    background-color: #bedbb0;
+  }
+  .box_1,
+  .box_2,
+  .box_3 {
+    background-color: $text-light;
+  }
+}
+
+//Violet
+
+.sidebar_board_itemViolet {
+  .sidebar_board_active {
+    background-color: #fff;
+  }
+
+  .box_1,
+  .box_2,
+  .box_3 {
+    background-color: $text-violet;
+  }
+}

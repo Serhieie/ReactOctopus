@@ -1,0 +1,77 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.sidebar_create_con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14px;
+
+  .sidebar_create_title {
+    width: 76px;
+    height: 42px;
+  }
+
+  .sidebar_create_btn {
+    border-radius: 10px;
+    width: 40px;
+    height: 36px;
+    cursor: pointer;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include media-rules(tablet) {
+    padding: 0 24px;
+  }
+  @include media-rules(desktop) {
+  }
+}
+
+//Dark
+
+.sidebar_create_conDark {
+  .sidebar_create_btn {
+    background-color: #bedbb0;
+    &:hover {
+      background-color: #9dc888;
+    }
+  }
+
+  .sidebar_create_ico {
+    stroke: #121212;
+  }
+}
+
+//Light
+
+.sidebar_create_conLight {
+  .sidebar_create_btn {
+    background-color: #bedbb0;
+    &:hover {
+      background-color: #9dc888;
+    }
+  }
+
+  .sidebar_create_ico {
+    stroke: #121212;
+  }
+}
+
+//Violet
+
+.sidebar_create_conViolet {
+  .sidebar_create_btn {
+    background-color: #b8bcfd;
+    &:hover {
+      background-color: #979cea;
+    }
+  }
+
+  .sidebar_create_ico {
+    stroke: #fff;
+  }
+}

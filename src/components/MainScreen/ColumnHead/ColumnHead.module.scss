@@ -15,8 +15,6 @@
   border-radius: 8px;
 
   user-select: none;
-  @include media-rules(tablet) {
-  }
 }
 
 .icons {
@@ -28,6 +26,7 @@
     align-items: center;
     padding: 4px;
     cursor: pointer;
+    position: relative;
   }
 }
 .icon {
@@ -46,13 +45,25 @@
   .icon {
     stroke: $text-secondary-dark;
   }
-
   .columnTitle {
     color: $text-dark;
   }
 
-  .icon:hover {
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
     stroke: $text-hover-dark;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-dark, 100%);
   }
 }
 
@@ -67,8 +78,21 @@
   .columnTitle {
     color: $text-light;
   }
-  .icon:hover {
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
     stroke: $text-hover-light;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-light, 100%);
   }
 }
 
@@ -84,7 +108,16 @@
   .columnTitle {
     color: $text-violet;
   }
-  .icon:hover {
+  .icon:hover,
+  .icon:focus,
+  .button:hover svg,
+  .button:focus svg {
     stroke: $text-hover-violet;
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($text-hover-light, 100%);
   }
 }

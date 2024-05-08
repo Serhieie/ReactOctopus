@@ -1,0 +1,22 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.modalTitle {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.modalTitleDark {
+  color: #fff;
+}
+
+.modalTitleLight {
+  color: #161616;
+}
+
+.modalTitleViolet {
+  color: #161616;
+}

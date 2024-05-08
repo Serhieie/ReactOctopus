@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import styles from './ColumnHead.module.scss';
+import { useAuth } from '../../../hooks/useAuth.js';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { DeleteModal } from '../DeleteModal/DeleteModal';
+import { ColumnHeadSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnHeadSkelleton/ColumnHeadSkelleton.jsx';
 
 export const ColumnHead = ({ column }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
   const editColumn = () => {
     console.log('You will edit column');
   };
 
-  const deleteColumn = () => {
+  const toggleDeleteColumn = () => {
     setIsDeleteModalOpen((state) => !state);
   };
 
@@ -22,7 +25,9 @@ export const ColumnHead = ({ column }) => {
     setIsDeleteModalOpen(false);
   };
 
-  return (
+  return isLoading ? (
+    <ColumnHeadSkelleton />
+  ) : (
     <>
       <div
         className={clsx(styles.columnHead, {
@@ -34,12 +39,18 @@ export const ColumnHead = ({ column }) => {
         {' '}
         <p className={styles.columnTitle}>{column.title}</p>
         <div className={styles.icons}>
-          <button onClick={editColumn} type="button">
+          <button className={styles.button} onClick={editColumn} type="button">
+            <span className={styles.lightSpanBtn}></span>
             <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg">
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </svg>
           </button>
-          <button onClick={deleteColumn} type="button">
+          <button
+            className={styles.button}
+            onClick={toggleDeleteColumn}
+            type="button"
+          >
+            <span className={styles.lightSpanBtn}></span>
             <svg className={styles.icon} xmlns="http://www.w3.org/2000/svg">
               <use xlinkHref={`${sprite}#icon-trash`} />
             </svg>
@@ -48,7 +59,7 @@ export const ColumnHead = ({ column }) => {
       </div>
       <DeleteModal
         isOpen={isDeleteModalOpen}
-        onClose={deleteColumn}
+        onClose={toggleDeleteColumn}
         onConfirmDelete={confirmDelete}
         theme={theme}
         column={true}

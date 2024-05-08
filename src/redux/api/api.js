@@ -37,6 +37,12 @@ export const logout = async () => {
   return response;
 };
 
+export const updateProfile = async (body) => {
+  const response = await instance.post('/auth/update-profile', body);
+  setToken(response.data.token);
+  return response;
+};
+
 export const checkTokenRequest = async (token) => {
   setToken(token);
   try {
@@ -48,9 +54,14 @@ export const checkTokenRequest = async (token) => {
   }
 };
 
-
-export const edit = async(credentials) => {
+export const edit = async (credentials) => {
   const response = await axios.patch('/users/edit', credentials);
   setToken();
   return response;
-}
+};
+
+export const ping = async () => {
+  await instance('/auth/ping');
+};
+
+export default instance;

@@ -1,9 +1,7 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
-import Header from '../Header/Header'
-import Sidebar from '../Sidebar/Sidebar'
-import styles from "./SharedLayout.module.scss"
+import { Outlet } from 'react-router-dom';
+import Header from '../Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
+import styles from './SharedLayout.module.scss';
 
 const SharedLayout = () => {
   return (
@@ -11,10 +9,10 @@ const SharedLayout = () => {
       <Header />
       <Sidebar />
       <div className={styles.contentWrapper}>
-        <Outlet/>
+        <Outlet />
       </div>
-     </div>
-  )
-}
+    </div>
+  );
+};
 
-export default SharedLayout
+export default SharedLayout;

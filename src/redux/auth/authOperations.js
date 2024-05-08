@@ -8,12 +8,12 @@ export const signUp = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await register(body);
-      Notify.info('Please confirm your email address.');
       return response.data;
     } catch (error) {
       if (error.response.status === 409) {
         Notify.failure(`User with email "${body.email}" already exists`);
       }
+      Notify.failure(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }
@@ -77,16 +77,16 @@ export const logOut = createAsyncThunk(
 );
 
 export const updateUser = createAsyncThunk(
-    'users/edit',
-    async (credentials, thunkAPI) => {
-      const theme = thunkAPI.getState()?.theme?.currentTheme;
-      try {
-        const response = await edit();
-        showSuccessToast('All data saved successfully', theme)
-        return response.data;
-      } catch (error) {
-        showErrorToast(error.response.data.message, theme);
-        return thunkAPI.rejectWithValue(error.message);
-      }
+  '/users/edit',
+  async (credentials, thunkAPI) => {
+    const theme = thunkAPI.getState()?.theme?.currentTheme;
+    try {
+      const response = await edit();
+      showSuccessToast('All data saved successfully', theme);
+      return response.data;
+    } catch (error) {
+      showErrorToast(error.response.data.message, theme);
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);

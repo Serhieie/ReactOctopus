@@ -2,16 +2,21 @@ import styles from './UserInfo.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
 import avatarDark from '../../../assets/user/userDark.png';
+import UserInfoSkeleton from '../../Skelletons/UserInfoSkeleton/UserInfoSkeleton';
+import { useAuth } from '../../../hooks';
 
 export const UserInfo = () => {
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const theme = 'Dark';
+  const { isLoading } = useAuth();
 
   const toggleUserInfoModal = async () => {
     setIsUserInfoOpen((state) => !state);
   };
 
-  return (
+  return isLoading ? (
+    <UserInfoSkeleton />
+  ) : (
     <div
       onClick={toggleUserInfoModal}
       className={clsx(styles.userInfo, {

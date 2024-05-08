@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import UserImg from '../../assets/login/loginX1.png';
 import LogoSprite from '../../assets/sprite.svg';
 import styles from './Welcome.module.scss';
 
@@ -18,19 +17,16 @@ const Welcome = () => {
 
   return (
     <section className={styles.container}>
-      <img className={styles.userImg} src={UserImg} alt="boy with computer" />
+      <div className={styles.userImg}> </div>
+      {/*<img className={styles.userImg} src={UserImg} alt="boy with computer" />*/}
 
       <div className={styles.logoWrap}>
         <div className={styles.logo}>
           <svg className={styles.icon}>
-            <use
-              xlinkHref={`${LogoSprite}#icon-lightning`}
-              className={styles.iconLightning}
-              style={{ width: '15px', height: '20px' }}
-            />
+            <use xlinkHref={LogoSprite + `#icon-lightning1`} />
           </svg>
         </div>
-        <h1>Task Pro</h1>
+        <h1 className={styles.title}>Task Pro</h1>
       </div>
 
       <p className={styles.text}>
