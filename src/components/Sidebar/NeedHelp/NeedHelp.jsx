@@ -1,11 +1,18 @@
 import React from 'react';
 import styles from './NeedHelp.module.scss';
 import UserImg from '../../../assets/plant/plantX1.png';
-// import questionSprite from '../../../assets/sprite.svg';
+import LogoSprite from '../../../assets/sprite.svg';
+import clsx from 'clsx';
 
-const NeedHelp = () => {
+const NeedHelp = ({ theme }) => {
   return (
-    <section className={styles.needHelp}>
+    <section
+      className={clsx(styles.needHelp, {
+        [styles.needHelpDark]: theme === 'dark',
+        [styles.needHelpLight]: theme === 'light',
+        [styles.needHelpViolet]: theme === 'violet',
+      })}
+    >
       <img className={styles.img} src={UserImg} alt="cute cactus" />
       <p className={styles.infoText}>
         If you need help with <span className={styles.specText}>TaskPro</span>,
@@ -13,6 +20,12 @@ const NeedHelp = () => {
         team.
       </p>
       <button className={styles.button} type="button">
+        <svg className={styles.icon}>
+          <use
+            xlinkHref={`${LogoSprite}#icon-help-circle`}
+            className={styles.iconLightning}
+          />
+        </svg>
         Need help?
       </button>
     </section>
