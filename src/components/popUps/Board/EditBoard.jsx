@@ -6,37 +6,28 @@ import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
-import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
-import { useDispatch } from 'react-redux';
-import { setIsEditBoardPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 
-const EditBoard = ({ name }) => {
+const EditBoard = ({ name, open, item, func }) => {
   const theme = 'Dark';
-  const dispatch = useDispatch();
-  const { isEditBoardPopUpOpen } = useIsPopUpOpen();
 
   const [board, setBoard] = useState({
     title: '',
-    icon: '',
+    iconId: '',
     background: '',
   });
   const [loading, setLoading] = useState(true);
-
-  const handleCloseModal = () => {
-    dispatch(setIsEditBoardPopUpOpen(false));
-  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         //const response = await axios.get('/api/board');
-        const response = {
-          title: 'hhhhh',
-          icon: 'star',
-          background:
-            'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/fekrlygw3hcac9ru0sqj.webp',
-        };
-        setBoard(response);
+        // const response = {
+        //   title: 'hhhhh',
+        //   icon: 'star',
+        //   background:
+        //     'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/fekrlygw3hcac9ru0sqj.webp',
+        // };
+        setBoard(item);
         setLoading(false);
         // setBoard(response.data);
       } catch (error) {
@@ -48,9 +39,9 @@ const EditBoard = ({ name }) => {
   }, []);
 
   return (
-    <Backdrop show={isEditBoardPopUpOpen}>
+    <Backdrop show={open}>
       <BoardModal>
-        <CloseModalButton onClick={handleCloseModal} />
+        <CloseModalButton onClick={func} />
         <p
           className={clsx(css.modalTitle, {
             [css.modalTitleDark]: theme === 'Dark',
@@ -60,7 +51,7 @@ const EditBoard = ({ name }) => {
         >
           {name}
         </p>
-        {!loading && <ColumnForm data={board} action="Edit" />}
+        {!loading && <ColumnForm data={board} action="Edit" item={item} />}
       </BoardModal>
     </Backdrop>
   );
