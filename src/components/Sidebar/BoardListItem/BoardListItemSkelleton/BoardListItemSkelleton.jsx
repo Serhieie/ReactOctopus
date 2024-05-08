@@ -3,7 +3,6 @@ import styles from './BoardListItemSkelleton.module.scss';
 
 const BoardListItemSkelleton = ({ isFirst }) => {
   const theme = 'dark';
-  console.log(theme);
   return (
     <li
       className={clsx(styles.sidebar_board_item, {

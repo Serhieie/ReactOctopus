@@ -1,27 +1,16 @@
 import css from './NewBoard.module.scss';
 import clsx from 'clsx';
 import ColumnForm from './ColumnForm/ColumnForm';
-
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
-import { useDispatch } from 'react-redux';
-import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
-import { setIsAddBoardPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 
-const NewBoard = ({ name }) => {
+const NewBoard = ({ name, open, func }) => {
   const theme = 'Dark';
-  const dispatch = useDispatch();
-  const { isAddBoardPopUpOpen } = useIsPopUpOpen();
-
-  const handleCloseModal = () => {
-    dispatch(setIsAddBoardPopUpOpen(false));
-  };
-
   return (
-    <Backdrop show={isAddBoardPopUpOpen}>
+    <Backdrop show={open}>
       <BoardModal>
-        <CloseModalButton onClick={handleCloseModal} />
+        <CloseModalButton onClick={func} />
         <p
           className={clsx(css.modalTitle, {
             [css.modalTitleDark]: theme === 'Dark',

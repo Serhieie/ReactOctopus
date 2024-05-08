@@ -7,10 +7,12 @@ import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
+import { useDispatch } from 'react-redux';
+import { addBoard, editeBoard } from '../../../../redux/api/tasks-api';
 
 const INITIAL_STATE = {
   title: '',
-  icon: 'project',
+  iconId: 'project',
   background: '/ReactOctopus/src/assets/themeDefault/backgroundViolet.png',
 };
 
@@ -43,9 +45,14 @@ const backgroundsImages = [
   'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
 ];
 
-const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
+const ColumnForm = ({
+  action = 'Create',
+  data = INITIAL_STATE,
+  item = null,
+}) => {
+  const dispatch = useDispatch();
   const theme = 'Dark';
-
+  console.log('awdawdwadwadawawdawd', item);
   const [columns, setColumns] = useState({
     ...data,
   });
@@ -65,9 +72,20 @@ const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
     } else {
       try {
         if (action === 'Create') {
+          dispatch(addBoard({ ...columns }));
+
           // const response = await axios.post('/api/columns', columns);
           console.log('Saved');
         } else {
+          if (item)
+            dispatch(
+              editeBoard(item._id, {
+                title: columns.title,
+                iconId: columns.iconId,
+                background: columns.background,
+              })
+            );
+
           //const response = await axios.put(`/api/columns/${columns.id}`, columns);
           console.log('Updated');
         }

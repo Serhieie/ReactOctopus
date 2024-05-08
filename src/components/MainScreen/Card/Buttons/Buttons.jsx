@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
 import data from '../../boards.json';
+import ModalPortal from '../../../popUps/ModalPortal';
 
 export const Buttons = ({ card, columnTitle }) => {
   const theme = 'Dark';
@@ -22,11 +23,6 @@ export const Buttons = ({ card, columnTitle }) => {
 
   const toggleDeleteCard = () => {
     setIsDeleteCardOpen((state) => !state);
-  };
-
-  const confirmDelete = () => {
-    console.log('Delete Success');
-    setIsDeleteCardOpen(false);
   };
 
   const moveCard = () => {
@@ -99,13 +95,14 @@ export const Buttons = ({ card, columnTitle }) => {
         moveCard={moveCard}
         columnTitle={columnTitle}
       />
-      <DeleteModal
-        isOpen={isDeleteCardOpen}
-        onClose={toggleDeleteCard}
-        onConfirmDelete={confirmDelete}
-        theme={theme}
-        column={false}
-      />
+      <ModalPortal>
+        <DeleteModal
+          open={isDeleteCardOpen}
+          itemType="card"
+          item={card}
+          func={toggleDeleteCard}
+        />
+      </ModalPortal>
     </div>
   );
 };

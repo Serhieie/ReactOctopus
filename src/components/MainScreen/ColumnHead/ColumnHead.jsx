@@ -1,28 +1,23 @@
-import { useState } from 'react';
 import styles from './ColumnHead.module.scss';
 import { useAuth } from '../../../hooks/useAuth.js';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-import { DeleteModal } from '../DeleteModal/DeleteModal';
 import { ColumnHeadSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnHeadSkelleton/ColumnHeadSkelleton.jsx';
+import { DeleteModal } from '../DeleteModal/DeleteModal.jsx';
+import ModalPortal from '../../popUps/ModalPortal.jsx';
+import { useState } from 'react';
 
 export const ColumnHead = ({ column }) => {
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
   const theme = 'Dark';
   const { isLoading } = useAuth();
 
   const editColumn = () => {
     console.log('You will edit column');
   };
-
-  const toggleDeleteColumn = () => {
-    setIsDeleteModalOpen((state) => !state);
-  };
-
-  const confirmDelete = () => {
-    console.log('Delete Success');
-
-    setIsDeleteModalOpen(false);
+  const togleDeleteColumn = () => {
+    console.log(column._id);
+    setIsDeletePopUpOpen((state) => !state);
   };
 
   return isLoading ? (
@@ -47,7 +42,7 @@ export const ColumnHead = ({ column }) => {
           </button>
           <button
             className={styles.button}
-            onClick={toggleDeleteColumn}
+            onClick={togleDeleteColumn}
             type="button"
           >
             <span className={styles.lightSpanBtn}></span>
@@ -56,14 +51,15 @@ export const ColumnHead = ({ column }) => {
             </svg>
           </button>
         </div>
+        <ModalPortal>
+          <DeleteModal
+            func={togleDeleteColumn}
+            open={isDeletePopUpOpen}
+            itemType="column"
+            item={column}
+          />
+        </ModalPortal>
       </div>
-      <DeleteModal
-        isOpen={isDeleteModalOpen}
-        onClose={toggleDeleteColumn}
-        onConfirmDelete={confirmDelete}
-        theme={theme}
-        column={true}
-      />
     </>
   );
 };

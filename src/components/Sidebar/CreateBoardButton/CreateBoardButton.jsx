@@ -2,15 +2,22 @@ import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 
 import styles from './CreateBoardButton.module.scss';
-import { useDispatch } from 'react-redux';
-import { setIsAddBoardPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 import NewBoard from '../../popUps/Board/NewBoard';
+import ModalPortal from '../../popUps/ModalPortal';
+import { useState } from 'react';
 
 const CreateBoardButton = ({ theme }) => {
-  const dispatch = useDispatch();
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const openAddBoardModal = () => {
-    dispatch(setIsAddBoardPopUpOpen(true));
+    console.log('Open Modal', isAddModalOpen);
+    setIsAddModalOpen(true);
   };
+
+  const closeAddBoardModal = () => {
+    setIsAddModalOpen(false);
+  };
+
   return (
     <>
       <div
@@ -30,8 +37,14 @@ const CreateBoardButton = ({ theme }) => {
             <use xlinkHref={`${LogoSprite}#icon-plus`}></use>
           </svg>
         </button>
-      </div>{' '}
-      <NewBoard name="New board" />
+      </div>
+      <ModalPortal>
+        <NewBoard
+          name="Add board"
+          open={isAddModalOpen}
+          func={closeAddBoardModal}
+        />
+      </ModalPortal>
     </>
   );
 };

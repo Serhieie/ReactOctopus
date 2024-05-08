@@ -3,23 +3,22 @@ import clsx from 'clsx';
 import styles from './BoardListItem.module.scss';
 import { useAuth } from '../../../hooks';
 import BoardListItemSkelleton from './BoardListItemSkelleton/BoardListItemSkelleton';
-import { useDispatch } from 'react-redux';
-import {
-  setIsDeletePopUpOpen,
-  setIsEditBoardPopUpOpen,
-} from '../../../redux/popUps/popUpsSlice';
+import { useState } from 'react';
+import ModalPortal from '../../popUps/ModalPortal';
 import EditBoard from '../../popUps/Board/EditBoard';
+import { DeleteModal } from '../../MainScreen/DeleteModal/DeleteModal';
 
-const BoardListItem = ({ theme, isFirst }) => {
+const BoardListItem = ({ theme, isFirst, board }) => {
   const { isLoading } = useAuth();
-  const dispatch = useDispatch();
+  const [isEditBoardModalOpen, setIsEditBoardModalOpen] = useState(false);
+  const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
 
-  const editBoardModalOpen = () => {
-    dispatch(setIsEditBoardPopUpOpen(true));
+  const toggleEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen((state) => !state);
   };
 
-  const deleteBoardModalOpen = () => {
-    dispatch(setIsDeletePopUpOpen(true));
+  const toggleDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen((state) => !state);
   };
 
   return (
@@ -37,7 +36,7 @@ const BoardListItem = ({ theme, isFirst }) => {
           <div className={styles.sidebar_board_active}></div>
           <div className={styles.sidebar_boart_cont}>
             <button
-              onClick={deleteBoardModalOpen}
+              onClick={toggleDeleteBoardModalOpen}
               type="button"
               className={styles.sidebar_board_remove_btn}
             >
@@ -50,7 +49,7 @@ const BoardListItem = ({ theme, isFirst }) => {
               </svg>
             </button>
             <button
-              onClick={editBoardModalOpen}
+              onClick={toggleEditBoardModalOpen}
               type="button"
               className={styles.sidebar_board_edit_btn}
             >
@@ -65,7 +64,7 @@ const BoardListItem = ({ theme, isFirst }) => {
           </div>
 
           <div className={styles.sidebar_boart_cont}>
-            <p className={styles.sidebar_board_title}>BoardListItem</p>
+            <p className={styles.sidebar_board_title}>{board.title}</p>
             <svg
               className={styles.sidebar_board_item_ico}
               width="18"
@@ -74,7 +73,22 @@ const BoardListItem = ({ theme, isFirst }) => {
               <use xlinkHref={`${LogoSprite}#icon-project`}></use>
             </svg>
           </div>
-          <EditBoard name="Edit board" />
+          <ModalPortal>
+            <EditBoard
+              name="Edit board"
+              open={isEditBoardModalOpen}
+              item={board}
+              func={toggleEditBoardModalOpen}
+            />
+          </ModalPortal>
+          <ModalPortal>
+            <DeleteModal
+              func={toggleDeleteBoardModalOpen}
+              itemType="board"
+              open={isDeleteBoardModalOpen}
+              item={board}
+            />
+          </ModalPortal>
         </>
       )}
     </li>

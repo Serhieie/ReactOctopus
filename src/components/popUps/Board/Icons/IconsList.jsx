@@ -20,7 +20,7 @@ const IconsList = ({ onChange, items, checked }) => {
               [css.radioIconViolet]: theme === 'Violet',
             })}
             type="radio"
-            name="icon"
+            name="iconId"
             id={iconId}
             value={icon}
             checked={checked === icon}
