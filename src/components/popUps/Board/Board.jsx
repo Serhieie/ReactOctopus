@@ -8,7 +8,7 @@ import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
 
 const Board = ({ name, open = true, action = 'Create' }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const [board, setBoard] = useState({
     title: '',

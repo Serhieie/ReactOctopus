@@ -1,12 +1,26 @@
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-
 import styles from './BoardListItem.module.scss';
 import { useAuth } from '../../../hooks';
 import BoardListItemSkelleton from './BoardListItemSkelleton/BoardListItemSkelleton';
+import { useDispatch } from 'react-redux';
+import {
+  setIsDeletePopUpOpen,
+  setIsEditBoardPopUpOpen,
+} from '../../../redux/popUps/popUpsSlice';
+import EditBoard from '../../popUps/Board/EditBoard';
 
 const BoardListItem = ({ theme, isFirst }) => {
   const { isLoading } = useAuth();
+  const dispatch = useDispatch();
+
+  const editBoardModalOpen = () => {
+    dispatch(setIsEditBoardPopUpOpen(true));
+  };
+
+  const deleteBoardModalOpen = () => {
+    dispatch(setIsDeletePopUpOpen(true));
+  };
 
   return (
     <li
@@ -22,7 +36,11 @@ const BoardListItem = ({ theme, isFirst }) => {
         <>
           <div className={styles.sidebar_board_active}></div>
           <div className={styles.sidebar_boart_cont}>
-            <button type="button" className={styles.sidebar_board_remove_btn}>
+            <button
+              onClick={deleteBoardModalOpen}
+              type="button"
+              className={styles.sidebar_board_remove_btn}
+            >
               <svg
                 className={styles.sidebar_board_remove_ico}
                 width="16"
@@ -31,7 +49,11 @@ const BoardListItem = ({ theme, isFirst }) => {
                 <use xlinkHref={`${LogoSprite}#icon-trash`}></use>
               </svg>
             </button>
-            <button type="button" className={styles.sidebar_board_edit_btn}>
+            <button
+              onClick={editBoardModalOpen}
+              type="button"
+              className={styles.sidebar_board_edit_btn}
+            >
               <svg
                 className={styles.sidebar_board_edit_ico}
                 width="16"
@@ -52,6 +74,7 @@ const BoardListItem = ({ theme, isFirst }) => {
               <use xlinkHref={`${LogoSprite}#icon-project`}></use>
             </svg>
           </div>
+          <EditBoard name="Edit board" />
         </>
       )}
     </li>

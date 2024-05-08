@@ -1,7 +1,6 @@
 import css from './ColumnForm.module.scss';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
 import clsx from 'clsx';
 
 import IconsList from '../Icons/IconsList';
@@ -14,6 +13,7 @@ const INITIAL_STATE = {
   icon: 'project',
   background: '/ReactOctopus/src/assets/themeDefault/backgroundViolet.png',
 };
+
 const icons = [
   'project',
   'star',
@@ -44,12 +44,11 @@ const backgroundsImages = [
 ];
 
 const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const [columns, setColumns] = useState({
     ...data,
   });
-
   const handleChange = (e) => {
     const { value, name } = e.target;
     setColumns({

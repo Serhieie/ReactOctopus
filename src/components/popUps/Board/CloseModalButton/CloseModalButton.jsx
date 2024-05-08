@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Icons from '../../../../assets/sprite.svg';
 
 const CloseModalButton = ({ onClick }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   return (
     <button onClick={onClick} type="button" className={css.modalClose}>

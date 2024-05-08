@@ -5,7 +5,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import Icons from '../../../../assets/sprite.svg';
 
 const IconsList = ({ onChange, items, checked }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const elements = items.map((icon, index) => {
     const iconId = nanoid();

@@ -1,12 +1,14 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './Help.module.scss';
-
+import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 import validationFormHelp from '../../../schemas/validationFormHelp';
+import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
+import { useDispatch } from 'react-redux';
 
-const HelpModal = ({ onSubmit }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const HelpModal = () => {
+  const dispatch = useDispatch();
+  const { isHelpPopUpOpen } = useIsPopUpOpen();
 
   const {
     register,
@@ -17,17 +19,16 @@ const HelpModal = ({ onSubmit }) => {
   });
 
   const handleCloseModal = () => {
-    setIsOpen(false);
+    dispatch(setIsHelpPopUpOpen(false));
   };
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
+  const onSubmit = () => {
+    console.log('Success');
   };
 
   return (
     <>
-      <button onClick={handleOpenModal}>Open Modal</button>
-      {isOpen && (
+      {isHelpPopUpOpen && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
             <button

@@ -7,8 +7,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { ButtonClose } from '';
 import { Calendar } from '';
 import sprite from './icon-plus.svg';
-import { addTask } from '../../../redux/tasks/tasksOperations';
+import { addCard } from '../../../redux/api/tasks-api';
 import styles from './Card.module.scss';
+import { setIsAddCardPopUpOpen } from '../../../redux/popUps/popUpsSlice';
+import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 
 const initialValues = {
   title: '',
@@ -16,8 +18,9 @@ const initialValues = {
   priority: 'without',
 };
 
-export const AddCardForm = ({ columnId, onClose }) => {
+export const AddCardForm = ({ columnId = 1 }) => {
   const [deadline, setDeadline] = useState();
+  const { isAddCardPopUpOpen } = useIsPopUpOpen();
   const dispatch = useDispatch();
 
   const setDateValue = (value) => {
@@ -71,95 +74,101 @@ export const AddCardForm = ({ columnId, onClose }) => {
       parentColumn: columnId,
     };
     actions.resetForm();
-    dispatch(addTask(values));
+    dispatch(addCard(values));
     onClose();
   };
 
+  const onClose = () => {
+    dispatch(setIsAddCardPopUpOpen(false));
+  };
+
   return (
-    <div className={styles.cardForm}>
-      <ButtonClose onClose={onClose} />
-      <h1 className={styles.titleForm}>Add card</h1>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={schema}
-      >
-        {() => (
-          <Form>
-            <Field
-              className={styles.inputTitle}
-              type="text"
-              name="title"
-              placeholder="Title"
-            />
-            <ErrorMessage
-              name="title"
-              component="div"
-              className={styles.errorMessage}
-            />
-            <Field
-              className={styles.inputDescription}
-              type="text"
-              name="description"
-              placeholder="Description"
-              as="textarea"
-            />
-            <ErrorMessage
-              name="description"
-              component="div"
-              className={styles.errorMessage}
-            />
-            <h2 className={styles.titleStatus} id="taskStatusGroup">
-              Label color
-            </h2>
-            <div
-              className={styles.blockStatus}
-              role="group"
-              aria-labelledby="taskStatusGroup"
-            >
-              <label>
-                <Field type="radio" name="priority" value="low" />
-                <div
-                  className={styles.colorStatus}
-                  style={{ backgroundColor: '#8FA1D0' }}
-                ></div>
-              </label>
-              <label>
-                <Field type="radio" name="priority" value="medium" />
-                <div
-                  className={styles.colorStatus}
-                  style={{ backgroundColor: '#E09CB5' }}
-                ></div>
-              </label>
-              <label>
-                <Field type="radio" name="priority" value="high" />
-                <div
-                  className={styles.colorStatus}
-                  style={{ backgroundColor: '#BEDBB0' }}
-                ></div>
-              </label>
-              <label>
-                <Field type="radio" name="priority" value="without" />
-                <div
-                  className={styles.colorStatus}
-                  style={{ backgroundColor: '#FFFFFF4D' }}
-                ></div>
-              </label>
-            </div>
-            <p className={styles.titleDeadline}>Deadline</p>
-            <div className={styles.calendarShow}>
-              <div>{displayDeadline(deadline)}</div>
-              <Calendar parentState={setDateValue} />
-            </div>
-            <button type="submit" className={styles.submitButton}>
-              <svg className={styles.iconPlus} aria-label="add">
-                <use href={sprite + '#icon-plus-add'}></use>
-              </svg>
-              Add
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    isAddCardPopUpOpen && (
+      <div className={styles.cardForm}>
+        <ButtonClose onClose={onClose} />
+        <h1 className={styles.titleForm}>Add card</h1>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validationSchema={schema}
+        >
+          {() => (
+            <Form>
+              <Field
+                className={styles.inputTitle}
+                type="text"
+                name="title"
+                placeholder="Title"
+              />
+              <ErrorMessage
+                name="title"
+                component="div"
+                className={styles.errorMessage}
+              />
+              <Field
+                className={styles.inputDescription}
+                type="text"
+                name="description"
+                placeholder="Description"
+                as="textarea"
+              />
+              <ErrorMessage
+                name="description"
+                component="div"
+                className={styles.errorMessage}
+              />
+              <h2 className={styles.titleStatus} id="taskStatusGroup">
+                Label color
+              </h2>
+              <div
+                className={styles.blockStatus}
+                role="group"
+                aria-labelledby="taskStatusGroup"
+              >
+                <label>
+                  <Field type="radio" name="priority" value="low" />
+                  <div
+                    className={styles.colorStatus}
+                    style={{ backgroundColor: '#8FA1D0' }}
+                  ></div>
+                </label>
+                <label>
+                  <Field type="radio" name="priority" value="medium" />
+                  <div
+                    className={styles.colorStatus}
+                    style={{ backgroundColor: '#E09CB5' }}
+                  ></div>
+                </label>
+                <label>
+                  <Field type="radio" name="priority" value="high" />
+                  <div
+                    className={styles.colorStatus}
+                    style={{ backgroundColor: '#BEDBB0' }}
+                  ></div>
+                </label>
+                <label>
+                  <Field type="radio" name="priority" value="without" />
+                  <div
+                    className={styles.colorStatus}
+                    style={{ backgroundColor: '#FFFFFF4D' }}
+                  ></div>
+                </label>
+              </div>
+              <p className={styles.titleDeadline}>Deadline</p>
+              <div className={styles.calendarShow}>
+                <div>{displayDeadline(deadline)}</div>
+                <Calendar parentState={setDateValue} />
+              </div>
+              <button type="submit" className={styles.submitButton}>
+                <svg className={styles.iconPlus} aria-label="add">
+                  <use href={sprite + '#icon-plus-add'}></use>
+                </svg>
+                Add
+              </button>
+            </Form>
+          )}
+        </Formik>
+      </div>
+    )
   );
 };
