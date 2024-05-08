@@ -3,6 +3,7 @@ import Logo from './Logo/Logo';
 import NeedHelp from './NeedHelp/NeedHelp';
 import { useMedia } from '../../hooks';
 import clsx from 'clsx';
+import LogoutButton from './LogoutButton/LogoutButton';
 
 import styles from './Sidebar.module.scss';
 import { useLocation } from 'react-router-dom';
@@ -28,7 +29,8 @@ const Sidebar = () => {
         >
           <Logo theme={theme} />
           <BoardList theme={theme} />
-          <NeedHelp />
+          <NeedHelp theme={theme} />
+          <LogoutButton />
         </div>
       )}
     </>

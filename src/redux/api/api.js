@@ -55,9 +55,19 @@ export const checkTokenRequest = async (token) => {
 };
 
 export const edit = async (credentials) => {
-  const response = await axios.patch('/users/edit', credentials);
+  const response = await instance.patch('/users/edit', credentials);
   setToken();
   return response;
+};
+
+export const needHelp = async (credentials) => {
+  try {
+    const response = await instance.post('/needhelp', credentials);
+    return response;
+  } catch (error) {
+    setToken();
+    throw error;
+  }
 };
 
 export const ping = async () => {

@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
 import clsx from 'clsx';
 
-const LogoutButton = ({ theme }) => {
+const LogoutButton = () => {
+  const theme = 'dark';
   const dispatch = useDispatch();
 
   const onLogout = () => {

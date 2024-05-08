@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, logIn, current, logOut } from './authOperations';
+import {
+  signUp,
+  logIn,
+  current,
+  logOut,
+  needHelpOperation,
+} from './authOperations';
 import { initialState } from './authInitialState';
 import { handlePending, handleRejected } from './authHandlers';
 
@@ -49,7 +55,14 @@ const authSlice = createSlice({
         state.token = '';
         state.error = null;
       })
-      .addCase(logOut.rejected, handleRejected);
+      .addCase(logOut.rejected, handleRejected)
+      //NeedHelp
+      .addCase(needHelpOperation.pending, handlePending)
+      .addCase(needHelpOperation.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(needHelpOperation.rejected, handleRejected);
   },
 });
 

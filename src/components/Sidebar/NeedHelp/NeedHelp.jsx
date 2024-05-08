@@ -1,12 +1,21 @@
-import React from 'react';
 import styles from './NeedHelp.module.scss';
 import UserImg from '../../../assets/plant/plantX1.png';
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import HelpModal from '../../popUps/Help/Help';
+import { useDispatch } from 'react-redux';
+import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 
 const NeedHelp = ({ theme }) => {
+  const dispatch = useDispatch();
+
+  const openNeedHelpModal = () => {
+    dispatch(setIsHelpPopUpOpen(true));
+    console.log('Need help modal oppened');
+  };
+
   return (
-    <section
+    <div
       className={clsx(styles.needHelp, {
         [styles.needHelpDark]: theme === 'dark',
         [styles.needHelpLight]: theme === 'light',
@@ -19,7 +28,11 @@ const NeedHelp = ({ theme }) => {
         check out our support resources or reach out to our customer support
         team.
       </p>
-      <button className={styles.button} type="button">
+      <button
+        onClick={openNeedHelpModal}
+        className={styles.button}
+        type="button"
+      >
         <svg className={styles.icon}>
           <use
             xlinkHref={`${LogoSprite}#icon-help-circle`}
@@ -28,7 +41,8 @@ const NeedHelp = ({ theme }) => {
         </svg>
         Need help?
       </button>
-    </section>
+      <HelpModal />
+    </div>
   );
 };
 

@@ -1,7 +1,14 @@
 import { showSuccessToast, showErrorToast } from '../showToast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { register, login, logout, checkTokenRequest, edit } from '../api/api';
+import {
+  register,
+  login,
+  logout,
+  checkTokenRequest,
+  edit,
+  needHelp,
+} from '../api/api';
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
@@ -82,6 +89,21 @@ export const updateUser = createAsyncThunk(
     const theme = thunkAPI.getState()?.theme?.currentTheme;
     try {
       const response = await edit();
+      showSuccessToast('All data saved successfully', theme);
+      return response.data;
+    } catch (error) {
+      showErrorToast(error.response.data.message, theme);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const needHelpOperation = createAsyncThunk(
+  'needhelp',
+  async (credentials, thunkAPI) => {
+    const theme = thunkAPI.getState()?.theme?.currentTheme;
+    try {
+      const response = await needHelp(credentials);
       showSuccessToast('All data saved successfully', theme);
       return response.data;
     } catch (error) {
