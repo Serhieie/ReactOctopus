@@ -11,11 +11,11 @@ import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 
 const BoardList = ({ theme }) => {
   // const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const { items } = useSelector(selectBoardsState);
+  const aw = useSelector(selectBoardsState);
 
   const dispatch = useDispatch();
 
-  console.log(items);
+  console.log(aw);
   const fetchData = async () => {
     dispatch(getBoards());
   };

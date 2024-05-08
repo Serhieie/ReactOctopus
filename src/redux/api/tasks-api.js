@@ -2,6 +2,7 @@ import instance from './api';
 
 export const getBoards = async () => {
   const { data } = await instance.get('/boards');
+  console.log(data);
   return data;
 };
 
