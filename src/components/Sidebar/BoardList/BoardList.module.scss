@@ -5,6 +5,7 @@
 .board_list_container {
   margin-bottom: auto;
   height: 100%;
+  padding-left: 8px;
 
   .board_list_name {
     margin-bottom: 8px;
@@ -20,19 +21,12 @@
 
   .board_list_sheet {
     overflow: auto;
+    direction: rtl;
     height: calc(100dvh - 600px);
     gap: 4px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-  }
-
-  @include media-rules(tablet) {
-    .board_list_name {
-      padding: 0 24px;
-    }
-  }
-  @include media-rules(desktop) {
   }
 }
 

@@ -39,6 +39,7 @@ function App() {
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+
     if (!destination) {
       return;
     }

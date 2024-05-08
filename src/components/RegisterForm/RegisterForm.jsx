@@ -25,7 +25,11 @@ const RegisterForm = ({ onSubmit }) => {
     setPassword(e.target.value);
   };
   return (
-    <form className={styles.form} onSubmit={handleSubmit((d) => onSubmit(d))}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit((d) => onSubmit(d))}
+      noValidate
+    >
       <div className={styles.inputContainer}>
         <input
           className={styles.input}
