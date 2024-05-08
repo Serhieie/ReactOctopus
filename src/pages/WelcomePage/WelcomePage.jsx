@@ -1,5 +1,4 @@
-import React from 'react';
-
+import { useEffect } from 'react';
 import Welcome from '../../components/Welcome/Welcome';
 import { ping } from '../../redux/api/api';
 
