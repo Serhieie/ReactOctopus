@@ -6,9 +6,14 @@ import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
+import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
+import { useDispatch } from 'react-redux';
+import { setIsEditBoardPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 
-const EditBoard = ({ name, open = true }) => {
-  const theme = 'Violet';
+const EditBoard = ({ name }) => {
+  const theme = 'Dark';
+  const dispatch = useDispatch();
+  const { isEditBoardPopUpOpen } = useIsPopUpOpen();
 
   const [board, setBoard] = useState({
     title: '',
@@ -16,10 +21,9 @@ const EditBoard = ({ name, open = true }) => {
     background: '',
   });
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(open);
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    dispatch(setIsEditBoardPopUpOpen(false));
   };
 
   useEffect(() => {
@@ -44,7 +48,7 @@ const EditBoard = ({ name, open = true }) => {
   }, []);
 
   return (
-    <Backdrop show={showModal}>
+    <Backdrop show={isEditBoardPopUpOpen}>
       <BoardModal>
         <CloseModalButton onClick={handleCloseModal} />
         <p

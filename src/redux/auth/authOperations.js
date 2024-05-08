@@ -13,6 +13,7 @@ export const signUp = createAsyncThunk(
       if (error.response.status === 409) {
         Notify.failure(`User with email "${body.email}" already exists`);
       }
+      Notify.failure(error.response.data.message);
       return rejectWithValue(error.response.data.message);
     }
   }

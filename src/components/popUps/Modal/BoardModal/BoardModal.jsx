@@ -2,7 +2,7 @@ import css from './BoardModal.module.scss';
 import clsx from 'clsx';
 
 const BoardModal = ({ children }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   return (
     <div

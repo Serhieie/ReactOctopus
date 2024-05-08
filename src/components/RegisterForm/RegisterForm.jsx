@@ -25,7 +25,11 @@ const RegisterForm = ({ onSubmit }) => {
     setPassword(e.target.value);
   };
   return (
-    <form className={styles.form} onSubmit={handleSubmit((d) => onSubmit(d))}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit((d) => onSubmit(d))}
+      noValidate
+    >
       <div className={styles.inputContainer}>
         <input
           className={styles.input}
@@ -55,9 +59,9 @@ const RegisterForm = ({ onSubmit }) => {
           type={showPassword ? 'text' : 'password'}
           placeholder="Create a password"
         />
-        {errors.password && (
-          <p className={styles.error}>{errors.password.message}</p>
-        )}
+        {errors.password && 
+          <p className={styles.error} style={{ fontWeight: 500 }}>{errors.password.message}</p>
+        }
 
         <div className={styles.iconContainer}>
           {showPassword ? (

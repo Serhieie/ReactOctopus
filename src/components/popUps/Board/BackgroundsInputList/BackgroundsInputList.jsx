@@ -9,7 +9,7 @@ import defaultBackgroundViolet from '../../../../assets/themeDefault/backgroundV
 const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
   const backgroundId = nanoid();
 
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const getDefaultBackground = (theme) => {
     switch (theme) {

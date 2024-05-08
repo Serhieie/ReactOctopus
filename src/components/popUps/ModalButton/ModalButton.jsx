@@ -3,7 +3,7 @@ import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 
 const ModalButton = ({ type = 'button', text = 'Create' }) => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   return (
     <button

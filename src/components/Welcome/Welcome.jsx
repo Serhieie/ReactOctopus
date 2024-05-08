@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
 
 import LogoSprite from '../../assets/sprite.svg';
 import styles from './Welcome.module.scss';
-
 
 const Welcome = () => {
   const [isLoginHovered, setIsLoginHovered] = useState(false);
@@ -20,14 +18,12 @@ const Welcome = () => {
   return (
     <section className={styles.container}>
       <div className={styles.userImg}> </div>
-    {/*<img className={styles.userImg} src={UserImg} alt="boy with computer" />*/}
+      {/*<img className={styles.userImg} src={UserImg} alt="boy with computer" />*/}
 
       <div className={styles.logoWrap}>
         <div className={styles.logo}>
           <svg className={styles.icon}>
-            <use
-              xlinkHref={LogoSprite+`#icon-lightning1`}
-            />
+            <use xlinkHref={LogoSprite + `#icon-lightning1`} />
           </svg>
         </div>
         <h1 className={styles.title}>Task Pro</h1>

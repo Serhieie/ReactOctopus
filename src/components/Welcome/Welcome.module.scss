@@ -61,6 +61,10 @@
   cursor: pointer;
   text-transform: none;
   min-width: 290px;
+
+  @include media-rules(tablet) {
+      width: 344px;
+  }
 }
 
 .login {
@@ -78,6 +82,10 @@
   cursor: pointer;
   text-transform: none;
   min-width: 290px;
+
+  @include media-rules(tablet) {
+      width: 344px;
+    }
 }
 
 .registerOnLoginHover {
@@ -95,12 +103,20 @@
   background: transparent;
   color: $header-background-dark;
   min-width: 290px;
+
+  @include media-rules(tablet) {
+      width: 344px;
+    }
 }
 
 .login:hover {
   background: $header-background-dark;
   color: $sidebar-background-light;
   min-width: 290px;
+
+  @include media-rules(tablet) {
+      width: 344px;
+    }
 }
 
 .logoWrap {

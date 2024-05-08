@@ -1,6 +1,17 @@
+
+import { useEffect } from 'react';
 import Welcome from '../../components/Welcome/Welcome';
+import { ping } from '../../redux/api/api';
 
 const WelcomePage = () => {
+  const wakeUp = async () => {
+    await ping();
+  };
+
+  useEffect(() => {
+    wakeUp();
+  }, []);
+
   return (
     <div
       style={{

@@ -60,4 +60,8 @@ export const edit = async (credentials) => {
   return response;
 };
 
+export const ping = async () => {
+  await instance('/auth/ping');
+};
+
 export default instance;

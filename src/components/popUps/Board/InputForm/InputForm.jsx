@@ -1,12 +1,9 @@
 import css from './InputForm.module.scss';
-import { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import clsx from 'clsx';
 
 const InputForm = ({ onChange, value = '', name = 'title' }) => {
-  const theme = 'Violet';
-
-  const [isInputEmpty, setIsInputEmpty] = useState(false);
+  const theme = 'Dark';
 
   const titleId = nanoid();
 

@@ -21,7 +21,7 @@ const BoardList = ({ theme }) => {
         <CreateBoardButton theme={theme} />
       </div>
       <ul className={styles.board_list_sheet}>
-        {data.map((index, i) => (
+               {data.map((index, i) => (
           <BoardListItem
             key={index}
             index={index}

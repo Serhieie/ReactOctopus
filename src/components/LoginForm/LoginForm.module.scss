@@ -5,18 +5,16 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    margin-top: 20px
-    
+    gap: 20px;
+    margin-top: 10px
 }
 
 .inputContainer {
     position: relative;
-    height: 70px;
-    
+    height: 49px;   
 }
 
-.input{
+.input {
     border: 1px solid #bedbb0;
     border-radius: 8px;
     width: 287px;
@@ -26,15 +24,16 @@
     padding: 0 18px;
     box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
     opacity: 0.4;
-    
+
+    @include media-rules(tablet) {
+            width: 344px;
+    }
 }
 
 .input::placeholder {
     color: rgba(255, 255, 255, 0.7);
-    
+
 }
-
-
 
 .button {
     border: none;
@@ -48,6 +47,10 @@
     cursor: pointer;
     transition: background 0.3s ease;
     margin-top: 24px;
+    
+    @include media-rules(tablet) {
+            width: 344px;
+        }
 }
 
 .button:hover {
@@ -56,7 +59,7 @@
 
 .iconContainer {
     position: absolute;
-    top: 50%;
+    top: 60%;
     right: 18px;
     transform: translateY(-50%);
     cursor: pointer;
@@ -68,17 +71,22 @@
     height: 18px;
 }
 
+.input:hover,
+.input:focus {
+    box-shadow: 0 0 10px rgba(157, 200, 136, 0.5);
+}
+
 .input:active {
-    border: 1px solid #bedbb0;
+    border: 4px solid #bedbb0;
     color: #fff;
-    box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+    box-shadow: 0 0 10px rgba(157, 200, 136, 0.5);
     background: #1f1f1f;
 }
 
 .error {
-    color: red;
+    color: #ff4e4e;
     font-family: Poppins;
     font-weight: 400;
-    font-size: 14px; 
-     
+    font-size: 14px;    
 }
+
