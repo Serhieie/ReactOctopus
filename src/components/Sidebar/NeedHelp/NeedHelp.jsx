@@ -11,7 +11,6 @@ const NeedHelp = ({ theme }) => {
 
   const openNeedHelpModal = () => {
     dispatch(setIsHelpPopUpOpen(true));
-    console.log('Need help modal oppened');
   };
 
   return (

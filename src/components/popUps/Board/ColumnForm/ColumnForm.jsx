@@ -52,7 +52,6 @@ const ColumnForm = ({
 }) => {
   const dispatch = useDispatch();
   const theme = 'Dark';
-  console.log('awdawdwadwadawawdawd', item);
   const [columns, setColumns] = useState({
     ...data,
   });

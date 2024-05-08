@@ -27,7 +27,6 @@ export const Buttons = ({ card, columnTitle }) => {
 
   const moveCard = () => {
     console.log('Move Card');
-    console.log(isMoveCardPopUpOpen);
     setIsMoveCardPopUpOpen((state) => !state);
   };
 

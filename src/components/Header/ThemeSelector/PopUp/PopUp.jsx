@@ -7,7 +7,6 @@ export const PopUp = ({ isThemeOpen }) => {
 
   const handleChangeTheme = async (event) => {
     const theme = event.target.textContent;
-    console.log(theme);
     setTheme(theme);
   };
 

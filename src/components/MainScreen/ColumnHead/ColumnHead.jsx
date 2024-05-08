@@ -16,7 +16,6 @@ export const ColumnHead = ({ column }) => {
     console.log('You will edit column');
   };
   const togleDeleteColumn = () => {
-    console.log(column._id);
     setIsDeletePopUpOpen((state) => !state);
   };
 

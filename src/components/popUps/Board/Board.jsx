@@ -40,7 +40,6 @@ const Board = ({ name, open, action = 'Create' }) => {
     };
 
     if (action !== 'Create') {
-      console.log(loading);
       fetchData();
     }
   }, [loading]);

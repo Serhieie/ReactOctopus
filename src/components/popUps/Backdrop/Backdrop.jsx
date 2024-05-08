@@ -1,7 +1,6 @@
 import css from './Backdrop.module.scss';
 
 const Backdrop = ({ children, show }) => {
-  console.log('hjer', show);
   return (
     <div className={`${css.backdrop} ${show ? '' : css.visuallyHidden}`}>
       {children}
