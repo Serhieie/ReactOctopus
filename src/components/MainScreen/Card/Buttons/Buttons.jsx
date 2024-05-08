@@ -7,9 +7,11 @@ import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
 import data from '../../boards.json';
 import ModalPortal from '../../../popUps/ModalPortal';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 
 export const Buttons = ({ card, columnTitle }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
@@ -33,9 +35,9 @@ export const Buttons = ({ card, columnTitle }) => {
   return (
     <div
       className={clsx(styles.buttons, {
-        [styles.buttonsDark]: theme === 'Dark',
-        [styles.buttonsLight]: theme === 'Light',
-        [styles.buttonsViolet]: theme === 'Violet',
+        [styles.buttonsDark]: theme === 'dark',
+        [styles.buttonsLight]: theme === 'light',
+        [styles.buttonsViolet]: theme === 'violet',
       })}
     >
       {tooday && (

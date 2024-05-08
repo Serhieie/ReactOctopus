@@ -6,9 +6,11 @@ import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
 
 const EditBoard = ({ name, open, item, func }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
 
   const [board, setBoard] = useState({
     title: '',
@@ -44,9 +46,9 @@ const EditBoard = ({ name, open, item, func }) => {
         <CloseModalButton onClick={func} />
         <p
           className={clsx(css.modalTitle, {
-            [css.modalTitleDark]: theme === 'Dark',
-            [css.modalTitleLight]: theme === 'Light',
-            [css.modalTitleViolet]: theme === 'Violet',
+            [css.modalTitleDark]: theme === 'dark',
+            [css.modalTitleLight]: theme === 'light',
+            [css.modalTitleViolet]: theme === 'violet',
           })}
         >
           {name}

@@ -6,8 +6,8 @@ import {
   login,
   logout,
   checkTokenRequest,
-  edit,
   needHelp,
+  updateProfile,
 } from '../api/api';
 
 export const signUp = createAsyncThunk(
@@ -85,15 +85,13 @@ export const logOut = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   '/users/edit',
-  async (credentials, thunkAPI) => {
-    const theme = thunkAPI.getState()?.theme?.currentTheme;
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await edit();
-      showSuccessToast('All data saved successfully', theme);
+      const response = await updateProfile(data);
       return response.data;
     } catch (error) {
-      showErrorToast(error.response.data.message, theme);
-      return thunkAPI.rejectWithValue(error.message);
+      console.error(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -101,13 +99,12 @@ export const updateUser = createAsyncThunk(
 export const needHelpOperation = createAsyncThunk(
   'needhelp',
   async (credentials, thunkAPI) => {
-    const theme = thunkAPI.getState()?.theme?.currentTheme;
     try {
       const response = await needHelp(credentials);
-      showSuccessToast('All data saved successfully', theme);
+      showSuccessToast('All data saved successfully');
       return response.data;
     } catch (error) {
-      showErrorToast(error.response.data.message, theme);
+      showErrorToast(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

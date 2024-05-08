@@ -1,13 +1,15 @@
 import styles from './UserInfo.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
-import avatarDark from '../../../assets/user/userDark.png';
 import UserInfoSkeleton from '../../Skelletons/UserInfoSkeleton/UserInfoSkeleton';
 import { useAuth } from '../../../hooks';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { setUserPlaceholder } from '../../../helpers/setUserPlaceholder';
 
 export const UserInfo = () => {
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const { isLoading } = useAuth();
 
   const toggleUserInfoModal = async () => {
@@ -20,20 +22,17 @@ export const UserInfo = () => {
     <div
       onClick={toggleUserInfoModal}
       className={clsx(styles.userInfo, {
-        [styles.userInfoDark]: theme === 'Dark',
-        [styles.userInfoLight]: theme === 'Light',
-        [styles.userInfoViolet]: theme === 'Violet',
+        [styles.userInfoDark]: theme === 'dark',
+        [styles.userInfoLight]: theme === 'light',
+        [styles.userInfoViolet]: theme === 'violet',
       })}
     >
       <p className={styles.userName}>Ivetta</p>
-      <img className={styles.userAvatar} src={avatarDark} alt="user avatar" />
-      {isUserInfoOpen && (
-        <img
-          style={{ position: 'absolute', top: 54, left: 20 }}
-          src={avatarDark}
-          alt="user avatar"
-        />
-      )}
+      <img
+        className={styles.userAvatar}
+        src={setUserPlaceholder(theme)}
+        alt="user avatar"
+      />
     </div>
   );
 };

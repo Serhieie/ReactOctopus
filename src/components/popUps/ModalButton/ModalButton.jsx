@@ -1,17 +1,19 @@
 import styles from './ModalButton.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
 
 const ModalButton = ({ type = 'button', text = 'Create' }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
 
   return (
     <button
       type={type}
       className={clsx(styles.addColumnButton, {
-        [styles.addCardButtonDark]: theme === 'Dark',
-        [styles.addCardButtonLight]: theme === 'Light',
-        [styles.addCardButtonViolet]: theme === 'Violet',
+        [styles.addCardButtonDark]: theme === 'dark',
+        [styles.addCardButtonLight]: theme === 'light',
+        [styles.addCardButtonViolet]: theme === 'violet',
       })}
     >
       <span className={styles.addSpan}>

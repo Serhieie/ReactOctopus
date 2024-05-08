@@ -6,9 +6,11 @@ import { getColorByPriority } from '../../../helpers/getColorByPriority';
 import { useAuth } from '../../../hooks';
 import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 import { Draggable } from 'react-beautiful-dnd';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
 
 export const Card = ({ card, columnTitle, index }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const { isLoading } = useAuth();
   const labelColor = getColorByPriority(card.priority);
   //TRANSFORM RIGHT AFTER SIDEBAR
@@ -22,9 +24,9 @@ export const Card = ({ card, columnTitle, index }) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           className={clsx(styles.card, {
-            [styles.cardDark]: theme === 'Dark',
-            [styles.cardLight]: theme === 'Light',
-            [styles.cardViolet]: theme === 'Violet',
+            [styles.cardDark]: theme === 'dark',
+            [styles.cardLight]: theme === 'light',
+            [styles.cardViolet]: theme === 'violet',
           })}
         >
           <span

@@ -5,6 +5,7 @@
 .cardList {
   display: flex;
   flex-direction: column;
+  background-color: transparent;
   overflow: auto;
   margin-right: -12px;
   gap: 8px;
@@ -17,8 +18,6 @@
 //DARK
 
 .cardListDark {
-  background-color: $background-dark;
-
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -38,8 +37,6 @@
 //LIGHT
 
 .cardListLight {
-  background-color: #fff;
-
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -59,8 +56,6 @@
 //VIOLET
 
 .cardListViolet {
-  background-color: #fff;
-
   &::-webkit-scrollbar {
     width: 8px;
   }

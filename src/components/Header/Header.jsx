@@ -5,9 +5,11 @@ import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../redux/auth/authSelectors.js';
 
 export const Header = () => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const { isDesktop } = useMedia();
   const location = useLocation();
   const endOfURL = location.pathname === '/home';
@@ -19,9 +21,9 @@ export const Header = () => {
       {endOfURL && (
         <header
           className={clsx(styles.header, {
-            [styles.dark]: theme === 'Dark',
-            [styles.light]: theme === 'Light',
-            [styles.violet]: theme === 'Violet',
+            [styles.dark]: theme === 'dark',
+            [styles.light]: theme === 'light',
+            [styles.violet]: theme === 'violet',
           })}
         >
           {!isDesktop && <BurgerMenu />}

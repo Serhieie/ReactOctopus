@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import styles from './AddButtonSkelleton.module.scss';
 import clsx from 'clsx';
+import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 
 export const AddButtonSkelleton = ({ column }) => {
-  const theme = 'dark';
+  const theme = useSelector(selectUserTheme);
 
   const stylesDark = column
     ? styles.addColumnButtonDark

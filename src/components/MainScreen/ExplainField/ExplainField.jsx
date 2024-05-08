@@ -1,15 +1,17 @@
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
 import styles from './ExplainField.module.scss';
 import clsx from 'clsx';
 
 export const ExplainField = () => {
-  const theme = 'Violet';
+  const theme = useSelector(selectUserTheme);
 
   return (
     <div
       className={clsx(styles.explainField, {
-        [styles.explainTextDark]: theme === 'Dark',
-        [styles.explainTextLight]: theme === 'Light',
-        [styles.explainTextViolet]: theme === 'Violet',
+        [styles.explainTextDark]: theme === 'dark',
+        [styles.explainTextLight]: theme === 'light',
+        [styles.explainTextViolet]: theme === 'violet',
       })}
     >
       <p className={styles.explainText}>

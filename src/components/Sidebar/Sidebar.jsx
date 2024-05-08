@@ -7,9 +7,11 @@ import LogoutButton from './LogoutButton/LogoutButton';
 
 import styles from './Sidebar.module.scss';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../redux/auth/authSelectors';
 
 const Sidebar = () => {
-  const theme = 'dark';
+  const theme = useSelector(selectUserTheme);
   const isSidebarOpen = false;
   const { isMobile, isTablet } = useMedia();
   const location = useLocation();

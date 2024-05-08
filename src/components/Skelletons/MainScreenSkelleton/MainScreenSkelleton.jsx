@@ -4,9 +4,11 @@ import { useMedia } from '../../../hooks/useMedia.js';
 import data from './boardsSkell.json';
 import { ColumnListSkelleton } from './ColumnListSkelleton/ColumnListSkelleton.jsx';
 import { AddButtonSkelleton } from './AddButtonSkelleton/AddButtonSkelleton.jsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors.js';
 
 export const MainScreenSkelleton = () => {
-  const theme = 'dark';
+  const theme = useSelector(selectUserTheme);
   const board = data[0];
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();

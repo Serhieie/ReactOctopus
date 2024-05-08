@@ -1,6 +1,8 @@
 import styles from './MovePopUp.module.scss';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 
 //ЦЕЙ ПОПАП ТРЕБА ВИНЕСТИ ІЗ КАРТКИ У КОЛОНКУ ЩО Б ВІН МІГ ВИХОДИТИ ЗА МЕЖІ КАРТКИ`
 export const MovePopUp = ({
@@ -9,7 +11,7 @@ export const MovePopUp = ({
   moveCard,
   columnTitle,
 }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const handleChangeColumn = async (event) => {
     const board = event.target.textContent;
     console.log(`You will move your card to ${board} column`);
@@ -19,9 +21,9 @@ export const MovePopUp = ({
   return (
     <div
       className={clsx(styles.modalOverlay, {
-        [styles.modalOverlayDark]: theme === 'Dark',
-        [styles.modalOverlayLight]: theme === 'Light',
-        [styles.modalOverlayViolet]: theme === 'Violet',
+        [styles.modalOverlayDark]: theme === 'dark',
+        [styles.modalOverlayLight]: theme === 'light',
+        [styles.modalOverlayViolet]: theme === 'violet',
         [styles.disappear]: !isMoveCardPopUpOpen,
       })}
     >

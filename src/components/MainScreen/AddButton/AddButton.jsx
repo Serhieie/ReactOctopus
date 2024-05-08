@@ -3,9 +3,11 @@ import sprite from '../../../assets/sprite.svg';
 import { useAuth } from '../../../hooks';
 import clsx from 'clsx';
 import { AddButtonSkelleton } from '../../Skelletons/MainScreenSkelleton/AddButtonSkelleton/AddButtonSkelleton';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
 export const AddButton = ({ column, addFunction }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const { isLoading } = useAuth();
 
   const handleClick = () => {
@@ -29,9 +31,9 @@ export const AddButton = ({ column, addFunction }) => {
       type="button"
       onClick={handleClick}
       className={clsx(styles.addColumnButton, {
-        [stylesDark]: theme === 'Dark',
-        [stylesLight]: theme === 'Light',
-        [stylesViolet]: theme === 'Violet',
+        [stylesDark]: theme === 'dark',
+        [stylesLight]: theme === 'light',
+        [stylesViolet]: theme === 'violet',
         [styles.margin]: !column,
       })}
     >

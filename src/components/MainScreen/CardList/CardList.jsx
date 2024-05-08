@@ -5,9 +5,11 @@ import { Droppable } from 'react-beautiful-dnd';
 import { useAuth } from '../../../hooks/useAuth.js';
 import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors.js';
 
 export const CardList = ({ data, columnTitle, columnId }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const { isLoading } = useAuth();
 
   // const sortedData = data.map((board) => ({
@@ -32,9 +34,9 @@ export const CardList = ({ data, columnTitle, columnId }) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
             className={clsx(styles.cardList, {
-              [styles.cardListDark]: theme === 'Dark',
-              [styles.cardListLight]: theme === 'Light',
-              [styles.cardListViolet]: theme === 'Violet',
+              [styles.cardListDark]: theme === 'dark',
+              [styles.cardListLight]: theme === 'light',
+              [styles.cardListViolet]: theme === 'violet',
             })}
           >
             {data &&

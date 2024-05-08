@@ -5,9 +5,11 @@ import { AddButton } from '../AddButton/AddButton.jsx';
 import { CardList } from '../CardList/CardList.jsx';
 import { useAuth } from '../../../hooks/useAuth.js';
 import { ColumnSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnSkelleton/ColumnSkelleton.jsx';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../redux/auth/authSelectors.js';
 
 export const Column = ({ column }) => {
-  const theme = 'dark';
+  const theme = useSelector(selectUserTheme);
   const { isLoading } = useAuth();
 
   const addCardFunc = () => {

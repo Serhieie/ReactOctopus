@@ -5,11 +5,13 @@ import clsx from 'clsx';
 import defaultBackgroundDark from '../../../../assets/themeDefault/backgroundDark.png';
 import defaultBackgroundLight from '../../../../assets/themeDefault/backgroundLight.png';
 import defaultBackgroundViolet from '../../../../assets/themeDefault/backgroundViolet.png';
+import { useSelector } from 'react-redux';
+import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 
 const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
   const backgroundId = nanoid();
 
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
 
   const getDefaultBackground = (theme) => {
     switch (theme) {
@@ -32,9 +34,9 @@ const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
           <input
             onChange={onChange}
             className={clsx(css.backgroundsIcon, {
-              [css.backgroundsIconDark]: theme === 'Dark',
-              [css.backgroundsIconLight]: theme === 'Light',
-              [css.backgroundsIconViolet]: theme === 'Violet',
+              [css.backgroundsIconDark]: theme === 'dark',
+              [css.backgroundsIconLight]: theme === 'light',
+              [css.backgroundsIconViolet]: theme === 'violet',
             })}
             type="radio"
             name="background"
@@ -61,9 +63,9 @@ const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
           <input
             onChange={onChange}
             className={clsx(css.backgroundsIcon, {
-              [css.backgroundsIconDark]: theme === 'Dark',
-              [css.backgroundsIconLight]: theme === 'Light',
-              [css.backgroundsIconViolet]: theme === 'Violet',
+              [css.backgroundsIconDark]: theme === 'dark',
+              [css.backgroundsIconLight]: theme === 'light',
+              [css.backgroundsIconViolet]: theme === 'violet',
             })}
             type="radio"
             name="background"

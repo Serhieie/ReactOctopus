@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import styles from './ColumnHeadSkelleton.module.scss';
 import clsx from 'clsx';
+import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 
 export const ColumnHeadSkelleton = () => {
-  const theme = 'dark';
+  const theme = useSelector(selectUserTheme);
 
   return (
     <div

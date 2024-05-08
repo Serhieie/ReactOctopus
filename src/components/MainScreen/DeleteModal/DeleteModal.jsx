@@ -6,9 +6,11 @@ import { getEntityName } from '../../../helpers/deleteModalHelper';
 import { deleteColumn } from '../../../redux/tasks/operations/columnsOperations';
 import { deleteCard } from '../../../redux/tasks/operations/cardsOperations';
 import { deleteBoard } from '../../../redux/tasks/operations/boardsOperations';
+import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
-  const theme = 'Dark';
+  const theme = useSelector(selectUserTheme);
   const dispatch = useDispatch();
 
   const onConfirmDelete = () => {
@@ -37,9 +39,9 @@ export const DeleteModal = ({ open, itemType, item, func }) => {
     open && (
       <div
         className={clsx(styles.modalOverlay, {
-          [styles.modalOverlayDark]: theme === 'Dark',
-          [styles.modalOverlayLight]: theme === 'Light',
-          [styles.modalOverlayViolet]: theme === 'Violet',
+          [styles.modalOverlayDark]: theme === 'dark',
+          [styles.modalOverlayLight]: theme === 'light',
+          [styles.modalOverlayViolet]: theme === 'violet',
         })}
       >
         <div className={styles.modalContent}>
