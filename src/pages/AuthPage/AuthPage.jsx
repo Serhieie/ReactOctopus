@@ -44,10 +44,12 @@ const AuthPage = () => {
             to="/auth/register"
             style={{
               borderRadius: '10px',
+              fontSize: '18px',
+              textTransform: 'none',                                  
+              height: '24px',
               color:
                 value === 0 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
-              padding: 0,
-              transition: 'background-color 1s, color 1s, opacity 0.5s',
+               transition: 'background-color 1s, color 1s, opacity 0.5s',
             }}
           />
           <Tab
@@ -57,15 +59,19 @@ const AuthPage = () => {
             to="/auth/login"
             style={{
               borderRadius: '10px',
+              textTransform: 'none',
+              fontSize: '18px',                                         
+              height: '24px',    
               color:
-                value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.1)',
-              padding: 0,
-              transition: 'background-color 1s, color 1s, opacity 0.5s',
+                value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
+                            transition: 'background-color 1s, color 1s, opacity 0.5s',
             }}
           />
         </Tabs>
+        <div className={styles.content}>
         {value === 0 && <RegisterForm onSubmit={onRegister} />}
-        {value === 1 && <LoginForm onSubmit={onLogin} />}
+          {value === 1 && <LoginForm onSubmit={onLogin} />}
+          </div>
       </div>
     </div>
   );

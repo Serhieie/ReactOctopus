@@ -59,9 +59,9 @@ const RegisterForm = ({ onSubmit }) => {
           type={showPassword ? 'text' : 'password'}
           placeholder="Create a password"
         />
-        {errors.password && (
-          <p className={styles.error}>{errors.password.message}</p>
-        )}
+        {errors.password && 
+          <p className={styles.error} style={{ fontWeight: 500 }}>{errors.password.message}</p>
+        }
 
         <div className={styles.iconContainer}>
           {showPassword ? (
