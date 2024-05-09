@@ -1,17 +1,14 @@
 import css from './BackgroundsInputList.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
 import clsx from 'clsx';
-
 import defaultBackgroundDark from '../../../../assets/themeDefault/backgroundDark.png';
 import defaultBackgroundLight from '../../../../assets/themeDefault/backgroundLight.png';
 import defaultBackgroundViolet from '../../../../assets/themeDefault/backgroundViolet.png';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
   const backgroundId = nanoid();
-
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   const getDefaultBackground = (theme) => {
     switch (theme) {

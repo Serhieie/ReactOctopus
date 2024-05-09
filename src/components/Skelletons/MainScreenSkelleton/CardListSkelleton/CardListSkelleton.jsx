@@ -2,11 +2,10 @@ import styles from './CardListSkelleton.module.scss';
 import clsx from 'clsx';
 import { nanoid } from 'nanoid';
 import { CardSkelleton } from '../CardSkelleton/CardSkelleton.jsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors.js';
+import { useAuth } from '../../../../hooks/useAuth.js';
 
 export const CardListSkelleton = ({ data }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <ul

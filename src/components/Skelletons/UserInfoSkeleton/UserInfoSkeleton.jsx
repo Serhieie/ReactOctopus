@@ -3,14 +3,10 @@ import userDark from '../../../assets/user/userDark.png';
 import userLight from '../../../assets/user/userLight.png';
 import userViolet from '../../../assets/user/userViolet.png';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 export const UserInfoSkeleton = () => {
-  const theme = useSelector(selectUserTheme);
-
-  //   const dispatch = useDispatch();
-  //   const { theme } = useAuth();
+  const { theme } = useAuth();
 
   return (
     <div

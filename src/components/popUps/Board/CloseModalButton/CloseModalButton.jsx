@@ -1,12 +1,10 @@
 import css from './CloseModalButton.module.scss';
 import clsx from 'clsx';
-
 import Icons from '../../../../assets/sprite.svg';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const CloseModalButton = ({ onClick }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <button onClick={onClick} type="button" className={css.modalClose}>

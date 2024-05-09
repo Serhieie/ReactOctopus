@@ -1,11 +1,10 @@
 import styles from './ModalButton.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 const ModalButton = ({ type = 'button', text = 'Create' }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <button

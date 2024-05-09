@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
 import styles from './CardSkelleton.module.scss';
 import clsx from 'clsx';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 export const CardSkelleton = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <li

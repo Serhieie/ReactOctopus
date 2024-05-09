@@ -6,13 +6,10 @@ import { getColorByPriority } from '../../../helpers/getColorByPriority';
 import { useAuth } from '../../../hooks';
 import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 import { Draggable } from 'react-beautiful-dnd';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
 
 export const Card = ({ card, columnTitle, index }) => {
-  const theme = useSelector(selectUserTheme);
-  const { isLoading } = useAuth();
-  const labelColor = getColorByPriority(card.priority);
+  const { theme, isLoading } = useAuth();
+  const labelColor = getColorByPriority(card.priority, theme);
   //TRANSFORM RIGHT AFTER SIDEBAR
   return isLoading ? (
     <CardSkelleton />

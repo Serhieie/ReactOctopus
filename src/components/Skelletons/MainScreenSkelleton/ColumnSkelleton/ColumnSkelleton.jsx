@@ -3,11 +3,10 @@ import clsx from 'clsx';
 import { ColumnHeadSkelleton } from '../ColumnHeadSkelleton/ColumnHeadSkelleton.jsx';
 import { AddButtonSkelleton } from '../AddButtonSkelleton/AddButtonSkelleton.jsx';
 import { CardListSkelleton } from '../CardListSkelleton/CardListSkelleton.jsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors.js';
+import { useAuth } from '../../../../hooks/useAuth.js';
 
 export const ColumnSkelleton = ({ column }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <li

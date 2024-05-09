@@ -1,13 +1,11 @@
 import css from './IconsList.module.scss';
 import clsx from 'clsx';
 import { nanoid } from '@reduxjs/toolkit';
-
 import Icons from '../../../../assets/sprite.svg';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const IconsList = ({ onChange, items, checked }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   const elements = items.map((icon, index) => {
     const iconId = nanoid();

@@ -1,8 +1,7 @@
 import styles from './MovePopUp.module.scss';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 //ЦЕЙ ПОПАП ТРЕБА ВИНЕСТИ ІЗ КАРТКИ У КОЛОНКУ ЩО Б ВІН МІГ ВИХОДИТИ ЗА МЕЖІ КАРТКИ`
 export const MovePopUp = ({
@@ -11,7 +10,8 @@ export const MovePopUp = ({
   moveCard,
   columnTitle,
 }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
+
   const handleChangeColumn = async (event) => {
     const board = event.target.textContent;
     console.log(`You will move your card to ${board} column`);

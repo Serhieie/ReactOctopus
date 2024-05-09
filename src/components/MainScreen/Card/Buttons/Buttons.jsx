@@ -7,11 +7,10 @@ import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
 import data from '../../boards.json';
 import ModalPortal from '../../../popUps/ModalPortal';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 export const Buttons = ({ card, columnTitle }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);

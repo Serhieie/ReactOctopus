@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
 import { formatDate } from '../../../../helpers/formatDate';
 import styles from './Priority.module.scss';
 import clsx from 'clsx';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 export const Priority = ({ card, labelColor }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const data = formatDate(card.deadline);
 
   return (

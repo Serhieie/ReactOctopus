@@ -3,11 +3,10 @@ import LogoSprite from '../../../assets/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 const LogoutButton = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const dispatch = useDispatch();
 
   const onLogout = () => {

@@ -1,12 +1,11 @@
 import styles from './PopUp.module.scss';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
 import { updateUser } from '../../../../redux/auth/authOperations';
+import { useAuth } from '../../../../hooks';
 
 export const PopUp = ({ isThemeOpen }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const dispatch = useDispatch();
 
   const handleChangeTheme = async (event) => {

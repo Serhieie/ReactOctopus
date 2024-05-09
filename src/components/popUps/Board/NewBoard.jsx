@@ -4,11 +4,10 @@ import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 const NewBoard = ({ name, open, func }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   return (
     <Backdrop show={open}>
       <BoardModal>

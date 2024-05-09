@@ -87,6 +87,15 @@
   }
 }
 
+.block0,
+.block1,
+.block2,
+.block3,
+.block4,
+.blockRound {
+  background-color: $text-dark;
+}
+
 //LIGHT
 
 .cardLight {
@@ -95,12 +104,29 @@
     border-color: rgba(22, 22, 22, 0.1);
     border-width: 1px;
   }
+  .block0,
+  .block1,
+  .block2,
+  .block3,
+  .block4,
+  .blockRound {
+    background-color: $text-light;
+  }
 }
 
 //VIOLET
 
 .cardViolet {
   background-color: #fff;
+
+  .block0,
+  .block1,
+  .block2,
+  .block3,
+  .block4,
+  .blockRound {
+    background-color: $text-violet;
+  }
 
   .hr {
     border-color: rgba(22, 22, 22, 0.1);

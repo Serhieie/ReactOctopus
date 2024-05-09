@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import { ColumnSkelleton } from '../ColumnSkelleton/ColumnSkelleton.jsx';
 import styles from './ColumnListSkelleton.module.scss';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors.js';
+import { useAuth } from '../../../../hooks/useAuth.js';
 
 export const ColumnListSkelleton = ({ data }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <ul

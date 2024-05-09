@@ -1,11 +1,10 @@
 import css from './InputForm.module.scss';
 import { nanoid } from '@reduxjs/toolkit';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const InputForm = ({ onChange, value = '', name = 'title' }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   const titleId = nanoid();
 

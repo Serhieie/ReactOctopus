@@ -3,12 +3,11 @@ import { useState } from 'react';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { PopUp } from './PopUp/PopUp';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 export const ThemeSelector = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   const toggleOpenTheme = async () => {
     setIsThemeOpen((state) => !state);

@@ -3,14 +3,11 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import UserInfoSkeleton from '../../Skelletons/UserInfoSkeleton/UserInfoSkeleton';
 import { useAuth } from '../../../hooks';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
 import { setUserPlaceholder } from '../../../helpers/setUserPlaceholder';
 
 export const UserInfo = () => {
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
-  const theme = useSelector(selectUserTheme);
-  const { isLoading } = useAuth();
+  const { isLoading, theme, user } = useAuth();
 
   const toggleUserInfoModal = async () => {
     setIsUserInfoOpen((state) => !state);
@@ -27,7 +24,7 @@ export const UserInfo = () => {
         [styles.userInfoViolet]: theme === 'violet',
       })}
     >
-      <p className={styles.userName}>Ivetta</p>
+      <p className={styles.userName}>{user.name}</p>
       <img
         className={styles.userAvatar}
         src={setUserPlaceholder(theme)}

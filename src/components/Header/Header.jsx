@@ -5,11 +5,10 @@ import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../redux/auth/authSelectors.js';
+import { useAuth } from '../../hooks/useAuth.js';
 
 export const Header = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const { isDesktop } = useMedia();
   const location = useLocation();
   const endOfURL = location.pathname === '/home';

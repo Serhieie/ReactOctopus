@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
 import css from './BoardModal.module.scss';
 import clsx from 'clsx';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const BoardModal = ({ children }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <div

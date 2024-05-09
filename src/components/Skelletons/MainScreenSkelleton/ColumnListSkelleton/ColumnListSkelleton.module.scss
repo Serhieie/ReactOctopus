@@ -5,6 +5,7 @@
 .columnList {
   display: flex;
   gap: 24px;
+  background-color: transparent;
 
   max-height: calc(100dvh - 174px);
 
@@ -12,22 +13,4 @@
     max-height: calc(100dvh - 182px);
     gap: 34px;
   }
-}
-
-//DARK
-
-.columnListDark {
-  background-color: $background-dark;
-}
-
-//LIGHT
-
-.columnListLight {
-  background-color: #fff;
-}
-
-//VIOLET
-
-.columnListViolet {
-  background-color: #fff;
 }

@@ -1,17 +1,18 @@
 import BoardListItem from '../BoardListItem/BoardListItem';
 import CreateBoardButton from '../CreateBoardButton/CreateBoardButton';
 import clsx from 'clsx';
-import data from '../../MainScreen/boards.json';
+import BoardListItemSkelleton from '../BoardListItem/BoardListItemSkelleton/BoardListItemSkelleton';
+// import data from '../../MainScreen/boards.json';
+import { nanoid } from 'nanoid';
 import styles from './BoardList.module.scss';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getBoards } from '../../../redux/api/tasks-api';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import { fetchBoards } from '../../../redux/tasks/operations/boardsOperations';
 
 const BoardList = ({ theme }) => {
-  // const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const dataSkelletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const { items } = useSelector(selectBoardsState);
 
   const dispatch = useDispatch();
@@ -37,16 +38,17 @@ const BoardList = ({ theme }) => {
       <div className={styles.board_list_create_btn}>
         <CreateBoardButton theme={theme} />
       </div>
-      {items.result && (
+      {items.result ? (
         <ul className={styles.board_list_sheet}>
-          {items.result.map((item, i) => (
-            <BoardListItem
-              key={item._id}
-              board={item}
-              theme={theme}
-              //зроби просто first-child то я просто тестив
-              isFirst={i === 0 ? true : false}
-            />
+          {items.result.map((item) => (
+            <BoardListItem key={item._id} board={item} theme={theme} />
+          ))}
+        </ul>
+      ) : (
+        <ul className={styles.board_list_sheet}>
+          {' '}
+          {dataSkelletons.map((item) => (
+            <BoardListItemSkelleton key={nanoid(item)} />
           ))}
         </ul>
       )}

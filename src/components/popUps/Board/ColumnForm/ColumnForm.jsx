@@ -2,15 +2,13 @@ import css from './ColumnForm.module.scss';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import clsx from 'clsx';
-
 import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
 import { useDispatch } from 'react-redux';
 import { addBoard, editeBoard } from '../../../../redux/api/tasks-api';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../../redux/auth/authSelectors';
+import { useAuth } from '../../../../hooks';
 
 const INITIAL_STATE = {
   title: '',
@@ -53,7 +51,7 @@ const ColumnForm = ({
   item = null,
 }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const [columns, setColumns] = useState({
     ...data,
   });

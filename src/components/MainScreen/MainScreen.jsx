@@ -7,11 +7,9 @@ import { AddButton } from './AddButton/AddButton.jsx';
 import { useMedia } from '../../hooks/useMedia.js';
 import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../redux/auth/authSelectors.js';
 
 export const MainScreen = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const board = data[0];
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
@@ -24,8 +22,24 @@ export const MainScreen = () => {
   return isLoading ? (
     <MainScreenSkelleton />
   ) : (
-    <div className={styles.wrapper}>
+    <div
+      style={{
+        backgroundImage:
+          'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+      className={styles.wrapper}
+    >
       <div
+        style={{
+          backgroundImage:
+            'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
         className={clsx(styles.mainScreen, {
           [styles.mainScreenDark]: theme === 'dark',
           [styles.mainScreenLight]: theme === 'light',

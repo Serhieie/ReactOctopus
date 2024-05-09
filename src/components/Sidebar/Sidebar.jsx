@@ -1,17 +1,14 @@
 import BoardList from './BoardList/BoardList';
 import Logo from './Logo/Logo';
 import NeedHelp from './NeedHelp/NeedHelp';
-import { useMedia } from '../../hooks';
+import { useAuth, useMedia } from '../../hooks';
 import clsx from 'clsx';
 import LogoutButton from './LogoutButton/LogoutButton';
-
 import styles from './Sidebar.module.scss';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../redux/auth/authSelectors';
 
 const Sidebar = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
   const isSidebarOpen = false;
   const { isMobile, isTablet } = useMedia();
   const location = useLocation();

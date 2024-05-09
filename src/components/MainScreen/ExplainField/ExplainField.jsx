@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
 import styles from './ExplainField.module.scss';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 export const ExplainField = () => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   return (
     <div

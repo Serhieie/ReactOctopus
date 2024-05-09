@@ -1,16 +1,14 @@
 import css from './NewBoard.module.scss';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
-
 import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from '../../../redux/auth/authSelectors';
+import { useAuth } from '../../../hooks';
 
 const EditBoard = ({ name, open, item, func }) => {
-  const theme = useSelector(selectUserTheme);
+  const { theme } = useAuth();
 
   const [board, setBoard] = useState({
     title: '',
