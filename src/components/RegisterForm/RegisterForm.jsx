@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -59,9 +59,12 @@ const RegisterForm = ({ onSubmit }) => {
           type={showPassword ? 'text' : 'password'}
           placeholder="Create a password"
         />
-        {errors.password && 
-          <p className={styles.error} style={{ fontWeight: 500 }}>{errors.password.message}</p>
-        }
+
+        {errors.password && (
+          <p className={styles.error} style={{ fontWeight: 500 }}>
+            {errors.password.message}
+          </p>
+        )}
 
         <div className={styles.iconContainer}>
           {showPassword ? (

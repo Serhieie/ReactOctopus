@@ -14,14 +14,9 @@ const initialValues = {
   priority: '',
 };
 
-const AddEditCardForm = (
-  cardData = initialValues,
-  columnId = null,
-  columnOwner = null
-) => {
+const AddEditCardForm = ({ cardData = initialValues, columnId = null }) => {
   const [card, setCard] = useState({ ...cardData });
   const dispatch = useDispatch();
-
   const {
     register,
     handleSubmit,
@@ -29,6 +24,8 @@ const AddEditCardForm = (
   } = useForm({
     defaultValues: card,
   });
+
+  console.log(card);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -42,46 +39,49 @@ const AddEditCardForm = (
     if (columnId === null) {
       dispatch(
         editeCard({
-          columnId: cardData.owner,
-          boardId: columnOwner,
+          cardId: card._id,
           body: { ...card },
         })
       );
     }
-    dispatch(addCard({ boardId: columnOwner, columnId, body: { ...card } }));
+    dispatch(addCard({ columnId, body: { ...card } }));
   };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit((d) => onSubmit(d))}>
       <input
         type="text"
-        {...register(card.title, { required: true })}
+        name="tite"
+        {...register('title', { required: true })}
         placeholder="Title"
       />
       {errors.card.title && <p className={s.error}>{errors.email.message}</p>}
       <textarea
-        {...register(card.description, { required: true })}
+        name="description"
+        {...register('description', { required: true })}
         placeholder="Description"
       ></textarea>
       <label>
         <p>Label color</p>
         <input
           type="radio"
-          {...register(card.priority)}
+          name="priority"
+          {...register('priority', { required: true })}
           value={'low'}
           checked={card.priority === 'low'}
           onChange={handleChange}
         />
         <input
           type="radio"
-          {...register(card.priority)}
+          name="priority"
+          {...register('priority', { required: true })}
           value={'medium'}
           checked={card.priority === 'medium'}
           onChange={handleChange}
         />
         <input
           type="radio"
-          {...register(card.priority)}
+          name="priority"
+          {...register('priority', { required: true })}
           value={'high'}
           checked={card.priority === 'high'}
           onChange={handleChange}

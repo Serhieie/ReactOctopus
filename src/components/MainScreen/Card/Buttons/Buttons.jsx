@@ -8,18 +8,19 @@ import { MovePopUp } from '../MovePopUp/MovePopUp';
 import data from '../../boards.json';
 import ModalPortal from '../../../popUps/ModalPortal';
 import { useAuth } from '../../../../hooks';
+import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 
-export const Buttons = ({ card, columnTitle }) => {
+export const Buttons = ({ card, columnTitle, columnId }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
+  const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
-
   //fetchById?
   const currentBoard = data[0];
 
-  const editCard = () => {
-    console.log('You will edit card');
+  const toggleEditCard = () => {
+    setIsEditCardOpen((state) => !state);
   };
 
   const toggleDeleteCard = () => {
@@ -63,7 +64,7 @@ export const Buttons = ({ card, columnTitle }) => {
           <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
         </svg>
       </button>
-      <button className={styles.button} type="button" onClick={editCard}>
+      <button className={styles.button} type="button" onClick={toggleEditCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -96,6 +97,9 @@ export const Buttons = ({ card, columnTitle }) => {
         columnTitle={columnTitle}
       />
       <ModalPortal>
+        {isEditCardOpen && (
+          <AddEditCardForm cardData={card} columnId={columnId} />
+        )}
         <DeleteModal
           open={isDeleteCardOpen}
           itemType="card"
