@@ -13,7 +13,7 @@ import { fetchBoards } from '../../../redux/tasks/operations/boardsOperations';
 
 const BoardList = ({ theme }) => {
   const dataSkelletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const { items } = useSelector(selectBoardsState);
+  const { items, isLoading } = useSelector(selectBoardsState);
 
   const dispatch = useDispatch();
 
@@ -44,14 +44,14 @@ const BoardList = ({ theme }) => {
             <BoardListItem key={item._id} board={item} theme={theme} />
           ))}
         </ul>
-      ) : (
+      ) : isLoading ? (
         <ul className={styles.board_list_sheet}>
           {' '}
           {dataSkelletons.map((item) => (
             <BoardListItemSkelleton key={nanoid(item)} />
           ))}
         </ul>
-      )}
+      ) : null}
     </div>
   );
 };
