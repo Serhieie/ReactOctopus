@@ -3,12 +3,10 @@ import userDark from '../../../assets/user/userDark.png';
 import userLight from '../../../assets/user/userLight.png';
 import userViolet from '../../../assets/user/userViolet.png';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 export const UserInfoSkeleton = () => {
-  const theme = 'dark';
-
-  //   const dispatch = useDispatch();
-  //   const { theme } = useAuth();
+  const { theme } = useAuth();
 
   return (
     <div

@@ -1,16 +1,18 @@
-import css from './ColumnForm.module.scss';
+import css from './BoardForm.module.scss';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import clsx from 'clsx';
-
 import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
+import { useDispatch } from 'react-redux';
+import { addBoard, editeBoard } from '../../../../redux/api/tasks-api';
+import { useAuth } from '../../../../hooks';
 
 const INITIAL_STATE = {
   title: '',
-  icon: 'project',
+  iconId: 'project',
   background: '/ReactOctopus/src/assets/themeDefault/backgroundViolet.png',
 };
 
@@ -20,7 +22,7 @@ const icons = [
   'loading',
   'puzzle-piece',
   'container',
-  'lightning',
+  'lightning-02',
   'colors',
   'hexagon-modal',
 ];
@@ -43,12 +45,19 @@ const backgroundsImages = [
   'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
 ];
 
-const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
-  const theme = 'Dark';
+const BoardForm = ({
+  action = 'Create',
+  data = INITIAL_STATE,
+  item = null,
+}) => {
+  const dispatch = useDispatch();
+
+  const { theme } = useAuth();
 
   const [columns, setColumns] = useState({
     ...data,
   });
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setColumns({
@@ -65,10 +74,17 @@ const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
     } else {
       try {
         if (action === 'Create') {
-          // const response = await axios.post('/api/columns', columns);
+          dispatch(addBoard({ ...columns }));
           console.log('Saved');
         } else {
-          //const response = await axios.put(`/api/columns/${columns.id}`, columns);
+          if (item)
+            dispatch(
+              editeBoard(item._id, {
+                title: columns.title,
+                iconId: columns.iconId,
+                background: columns.background,
+              })
+            );
           console.log('Updated');
         }
         reset();
@@ -87,7 +103,8 @@ const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
   const stylesLight = css.formSubtitleLight;
   const stylesViolet = css.formSubtitleViolet;
 
-  const { title, icon, background } = columns;
+  console.log(columns);
+  const { title, iconId, background } = columns;
 
   return (
     <>
@@ -96,21 +113,21 @@ const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
         <div className={css.iconsInputWrapper}>
           <h3
             className={clsx(css.formSubtitle, {
-              [stylesDark]: theme === 'Dark',
-              [stylesLight]: theme === 'Light',
-              [stylesViolet]: theme === 'Violet',
+              [stylesDark]: theme === 'dark',
+              [stylesLight]: theme === 'light',
+              [stylesViolet]: theme === 'violet',
             })}
           >
             Icons
           </h3>
-          <IconsList onChange={handleChange} items={icons} checked={icon} />
+          <IconsList onChange={handleChange} items={icons} checked={iconId} />
         </div>
         <div className={css.backgroundsInputWrapper}>
           <h3
             className={clsx(css.formSubtitle, {
-              [stylesDark]: theme === 'Dark',
-              [stylesLight]: theme === 'Light',
-              [stylesViolet]: theme === 'Violet',
+              [stylesDark]: theme === 'dark',
+              [stylesLight]: theme === 'light',
+              [stylesViolet]: theme === 'violet',
             })}
           >
             Background
@@ -128,4 +145,4 @@ const ColumnForm = ({ action = 'Create', data = INITIAL_STATE }) => {
   );
 };
 
-export default ColumnForm;
+export default BoardForm;

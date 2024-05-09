@@ -7,8 +7,7 @@ import { useAuth } from '../../../hooks/useAuth.js';
 import { ColumnSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnSkelleton/ColumnSkelleton.jsx';
 
 export const Column = ({ column }) => {
-  const theme = 'dark';
-  const { isLoading } = useAuth();
+  const { theme, isLoading } = useAuth();
 
   const addCardFunc = () => {
     console.log('Add card func');

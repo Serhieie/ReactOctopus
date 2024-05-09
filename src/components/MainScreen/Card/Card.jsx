@@ -8,9 +8,8 @@ import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleto
 import { Draggable } from 'react-beautiful-dnd';
 
 export const Card = ({ card, columnTitle, index }) => {
-  const theme = 'Dark';
-  const { isLoading } = useAuth();
-  const labelColor = getColorByPriority(card.priority);
+  const { theme, isLoading } = useAuth();
+  const labelColor = getColorByPriority(card.priority, theme);
   //TRANSFORM RIGHT AFTER SIDEBAR
   return isLoading ? (
     <CardSkelleton />
@@ -22,9 +21,9 @@ export const Card = ({ card, columnTitle, index }) => {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           className={clsx(styles.card, {
-            [styles.cardDark]: theme === 'Dark',
-            [styles.cardLight]: theme === 'Light',
-            [styles.cardViolet]: theme === 'Violet',
+            [styles.cardDark]: theme === 'dark',
+            [styles.cardLight]: theme === 'light',
+            [styles.cardViolet]: theme === 'violet',
           })}
         >
           <span

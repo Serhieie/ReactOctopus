@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
@@ -45,11 +45,11 @@ const AuthPage = () => {
             style={{
               borderRadius: '10px',
               fontSize: '18px',
-              textTransform: 'none',                                  
+              textTransform: 'none',
               height: '24px',
               color:
                 value === 0 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
-               transition: 'background-color 1s, color 1s, opacity 0.5s',
+              transition: 'background-color 1s, color 1s, opacity 0.5s',
             }}
           />
           <Tab
@@ -60,18 +60,18 @@ const AuthPage = () => {
             style={{
               borderRadius: '10px',
               textTransform: 'none',
-              fontSize: '18px',                                         
-              height: '24px',    
+              fontSize: '18px',
+              height: '24px',
               color:
                 value === 1 ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.3)',
-                            transition: 'background-color 1s, color 1s, opacity 0.5s',
+              transition: 'background-color 1s, color 1s, opacity 0.5s',
             }}
           />
         </Tabs>
         <div className={styles.content}>
-        {value === 0 && <RegisterForm onSubmit={onRegister} />}
+          {value === 0 && <RegisterForm onSubmit={onRegister} />}
           {value === 1 && <LoginForm onSubmit={onLogin} />}
-          </div>
+        </div>
       </div>
     </div>
   );

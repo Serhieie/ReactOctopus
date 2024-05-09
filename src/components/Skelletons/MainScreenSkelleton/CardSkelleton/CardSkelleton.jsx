@@ -1,8 +1,9 @@
 import styles from './CardSkelleton.module.scss';
 import clsx from 'clsx';
+import { useAuth } from '../../../../hooks';
 
 export const CardSkelleton = () => {
-  const theme = 'dark';
+  const { theme } = useAuth();
 
   return (
     <li

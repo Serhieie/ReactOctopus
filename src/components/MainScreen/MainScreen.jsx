@@ -6,11 +6,10 @@ import { ColumnList } from './ColumnList/ColumnList.jsx';
 import { AddButton } from './AddButton/AddButton.jsx';
 import { useMedia } from '../../hooks/useMedia.js';
 import { useAuth } from '../../hooks/useAuth.js';
-
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 
 export const MainScreen = () => {
-  const theme = 'Dark';
+  const { theme } = useAuth();
   const board = data[0];
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
@@ -19,15 +18,32 @@ export const MainScreen = () => {
   const addColumnFunc = () => {
     console.log('Add Column');
   };
+
   return isLoading ? (
     <MainScreenSkelleton />
   ) : (
-    <div className={styles.wrapper}>
+    <div
+      style={{
+        backgroundImage:
+          'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+      className={styles.wrapper}
+    >
       <div
+        style={{
+          backgroundImage:
+            'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
         className={clsx(styles.mainScreen, {
-          [styles.mainScreenDark]: theme === 'Dark',
-          [styles.mainScreenLight]: theme === 'Light',
-          [styles.mainScreenViolet]: theme === 'Violet',
+          [styles.mainScreenDark]: theme === 'dark',
+          [styles.mainScreenLight]: theme === 'light',
+          [styles.mainScreenViolet]: theme === 'violet',
           [styles.mainScreenSidebarOpen]: isSidebarOpen && !isDesktop,
         })}
       >

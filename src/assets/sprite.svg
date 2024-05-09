@@ -83,6 +83,19 @@
 <symbol id="icon-lightning1" viewBox="0 0 24 32">
 <path d="M6.663 30.054c0.489-2.543 0.905-5.22 1.494-7.897 0.29-1.401-0.063-1.999-1.63-1.892s-3.313 0.054-4.979 0c-1.666-0.053-1.965-0.892-1.005-2.088 4.726-5.836 9.506-11.601 14.268-17.347 0.534-0.651 1.15-1.115 2.028-0.625s0.697 1.098 0.552 1.829c-0.525 2.677-0.96 5.354-1.539 7.978-0.299 1.356 0.091 1.838 1.503 1.785 1.417-0.071 2.838-0.071 4.255 0 0.806 0 1.865-0.419 2.281 0.678s-0.462 1.562-0.905 2.213c-1.811 2.231-3.645 4.459-5.504 6.684-2.722 3.248-5.423 6.484-8.103 9.709-0.525 0.634-1.114 1.142-2.010 0.821s-0.706-1.080-0.706-1.847z"></path>
 </symbol>
+<symbol id="icon-help-circle" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.88" d="M16 29.333c7.364 0 13.333-5.97 13.333-13.333s-5.97-13.333-13.333-13.333c-7.364 0-13.333 5.97-13.333 13.333s5.97 13.333 13.333 13.333z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.88" d="M12.12 12c0.313-0.891 0.932-1.643 1.747-2.121s1.772-0.654 2.703-0.494c0.931 0.16 1.776 0.644 2.384 1.366s0.941 1.637 0.94 2.582c0 2.667-4 4-4 4"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.88" d="M16 22.667h0.020"></path>
+</symbol>
+<symbol id="icon-logOut" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.5" d="M11.867 10.080c0.413-4.8 2.88-6.76 8.28-6.76h0.173c5.96 0 8.347 2.387 8.347 8.347v8.693c0 5.96-2.387 8.347-8.347 8.347h-0.173c-5.36 0-7.827-1.933-8.267-6.653"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.5" d="M2.667 16h17.173"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.5" d="M16.867 11.533l4.467 4.467-4.467 4.467"></path>
+</symbol>
+<symbol id="icon-lightning-02" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M18.999 2.667h-7.674c-0.239 0-0.359 0-0.465 0.036-0.093 0.032-0.178 0.085-0.249 0.154-0.080 0.078-0.133 0.185-0.24 0.399l-5.6 11.2c-0.256 0.511-0.383 0.767-0.353 0.974 0.027 0.181 0.127 0.344 0.277 0.449 0.172 0.12 0.458 0.12 1.029 0.12h8.274l-4 13.333 16.258-16.86c0.548-0.569 0.823-0.853 0.839-1.097 0.014-0.211-0.073-0.417-0.235-0.553-0.186-0.157-0.581-0.157-1.372-0.157h-9.49l3-8z"></path>
+</symbol>
 </defs>
 </svg>
 

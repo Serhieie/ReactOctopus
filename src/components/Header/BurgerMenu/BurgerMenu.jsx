@@ -1,9 +1,10 @@
 import styles from './BurgerMenu.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 export const BurgerMenu = () => {
-  const theme = 'Dark';
+  const { theme } = useAuth();
   const toggleOpenSidebar = async () => {
     console.log('You are trying to open sidebar');
   };
@@ -11,9 +12,9 @@ export const BurgerMenu = () => {
   return (
     <button
       className={clsx(styles.burgerButton, {
-        [styles.burgerButtonDark]: theme === 'Dark',
-        [styles.burgerButtonLight]: theme === 'Light',
-        [styles.burgerButtonViolet]: theme === 'Violet',
+        [styles.burgerButtonDark]: theme === 'dark',
+        [styles.burgerButtonLight]: theme === 'light',
+        [styles.burgerButtonViolet]: theme === 'violet',
       })}
       onClick={toggleOpenSidebar}
       type="button"

@@ -5,13 +5,11 @@ import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 import validationFormHelp from '../../../schemas/validationFormHelp';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
-import LogoSprite from '../../../assets/sprite.svg';
-import clsx from 'clsx';
 
 const HelpModal = () => {
   const dispatch = useDispatch();
   const { isHelpPopUpOpen } = useIsPopUpOpen();
-  const theme = 'Violet';
+
   const {
     register,
     handleSubmit,
@@ -20,6 +18,7 @@ const HelpModal = () => {
     resolver: yupResolver(validationFormHelp),
   });
 
+  const dispatch = useDispatch();
   const handleCloseModal = () => {
     dispatch(setIsHelpPopUpOpen(false));
   };
@@ -28,8 +27,10 @@ const HelpModal = () => {
     dispatch(setIsHelpPopUpOpen(true));
   };
 
-  const onSubmit = () => {
-    console.log('Success');
+  const { isHelpPopUpOpen } = useIsPopUpOpen();
+
+  const onSubmit = (data) => {
+    dispatch(needHelpOperation(data));
   };
 
   return (
@@ -76,9 +77,7 @@ const HelpModal = () => {
               <div className={styles.email}>
                 <input
                   type="email"
-                  className={clsx(styles.forEmail, {
-                    [styles.darkInput]: theme === 'Dark',
-                  })}
+                  className={styles.forEmail}
                   {...register('email', { required: true })}
                   placeholder="Email address"
                 />
@@ -89,9 +88,7 @@ const HelpModal = () => {
               <div className={styles.comment}>
                 <textarea
                   type="text"
-                  className={clsx(styles.forComment, {
-                    [styles.darkInp]: theme === 'Dark',
-                  })}
+                  className={styles.forComment}
                   {...register('comment', { required: true })}
                   placeholder="Comment"
                 />

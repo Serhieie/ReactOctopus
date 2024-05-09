@@ -4,9 +4,10 @@ import { useMedia } from '../../../hooks/useMedia.js';
 import data from './boardsSkell.json';
 import { ColumnListSkelleton } from './ColumnListSkelleton/ColumnListSkelleton.jsx';
 import { AddButtonSkelleton } from './AddButtonSkelleton/AddButtonSkelleton.jsx';
+import { useAuth } from '../../../hooks/useAuth.js';
 
 export const MainScreenSkelleton = () => {
-  const theme = 'dark';
+  const { theme } = useAuth();
   const board = data[0];
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();

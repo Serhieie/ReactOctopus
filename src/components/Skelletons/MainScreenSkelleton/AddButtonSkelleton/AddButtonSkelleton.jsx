@@ -1,8 +1,9 @@
 import styles from './AddButtonSkelleton.module.scss';
 import clsx from 'clsx';
+import { useAuth } from '../../../../hooks';
 
 export const AddButtonSkelleton = ({ column }) => {
-  const theme = 'dark';
+  const { theme } = useAuth();
 
   const stylesDark = column
     ? styles.addColumnButtonDark

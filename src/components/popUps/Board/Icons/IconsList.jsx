@@ -1,11 +1,11 @@
 import css from './IconsList.module.scss';
 import clsx from 'clsx';
 import { nanoid } from '@reduxjs/toolkit';
-
 import Icons from '../../../../assets/sprite.svg';
+import { useAuth } from '../../../../hooks';
 
 const IconsList = ({ onChange, items, checked }) => {
-  const theme = 'Dark';
+  const { theme } = useAuth();
 
   const elements = items.map((icon, index) => {
     const iconId = nanoid();
@@ -15,12 +15,12 @@ const IconsList = ({ onChange, items, checked }) => {
           <input
             onChange={onChange}
             className={clsx(css.radioIcon, {
-              [css.radioIconDark]: theme === 'Dark',
-              [css.radioIconLight]: theme === 'Light',
-              [css.radioIconViolet]: theme === 'Violet',
+              [css.radioIconDark]: theme === 'dark',
+              [css.radioIconLight]: theme === 'light',
+              [css.radioIconViolet]: theme === 'violet',
             })}
             type="radio"
-            name="icon"
+            name="iconId"
             id={iconId}
             value={icon}
             checked={checked === icon}

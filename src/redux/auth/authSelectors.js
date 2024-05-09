@@ -7,3 +7,5 @@ export const selectIsLoading = (state) => state.auth.isLoading;
 export const selectAuthError = (state) => state.auth.error;
 
 export const selectUser = (state) => state.auth.user;
+
+export const selectUserTheme = (state) => state.auth.user.theme;

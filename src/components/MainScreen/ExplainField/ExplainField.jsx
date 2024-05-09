@@ -1,15 +1,16 @@
 import styles from './ExplainField.module.scss';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 export const ExplainField = () => {
-  const theme = 'Violet';
+  const { theme } = useAuth();
 
   return (
     <div
       className={clsx(styles.explainField, {
-        [styles.explainTextDark]: theme === 'Dark',
-        [styles.explainTextLight]: theme === 'Light',
-        [styles.explainTextViolet]: theme === 'Violet',
+        [styles.explainTextDark]: theme === 'dark',
+        [styles.explainTextLight]: theme === 'light',
+        [styles.explainTextViolet]: theme === 'violet',
       })}
     >
       <p className={styles.explainText}>

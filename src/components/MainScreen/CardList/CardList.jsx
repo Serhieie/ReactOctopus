@@ -7,8 +7,7 @@ import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
 
 export const CardList = ({ data, columnTitle, columnId }) => {
-  const theme = 'Dark';
-  const { isLoading } = useAuth();
+  const { theme, isLoading } = useAuth();
 
   // const sortedData = data.map((board) => ({
   //   ...board,
@@ -24,29 +23,32 @@ export const CardList = ({ data, columnTitle, columnId }) => {
   return isLoading ? (
     <CardListSkelleton />
   ) : (
-    <Droppable droppableId={columnId}>
-      {(provided) => (
-        <ul
-          ref={provided.innerRef}
-          {...provided.droppableProps}
-          className={clsx(styles.cardList, {
-            [styles.cardListDark]: theme === 'Dark',
-            [styles.cardListLight]: theme === 'Light',
-            [styles.cardListViolet]: theme === 'Violet',
-          })}
-        >
-          {data &&
-            sortedData.map((card, index) => (
-              <Card
-                key={card._id + card.title}
-                card={card}
-                columnTitle={columnTitle}
-                index={index}
-              />
-            ))}
-          {provided.placeholder}
-        </ul>
-      )}
-    </Droppable>
+    <>
+      {' '}
+      <Droppable droppableId={columnId}>
+        {(provided) => (
+          <ul
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={clsx(styles.cardList, {
+              [styles.cardListDark]: theme === 'dark',
+              [styles.cardListLight]: theme === 'light',
+              [styles.cardListViolet]: theme === 'violet',
+            })}
+          >
+            {data &&
+              sortedData.map((card, index) => (
+                <Card
+                  key={card._id + card.title}
+                  card={card}
+                  columnTitle={columnTitle}
+                  index={index}
+                />
+              ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
+    </>
   );
 };
