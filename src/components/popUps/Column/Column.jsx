@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import LogoSprite from '../../../assets/sprite.svg';
 
 const MdlColumn = () => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const [isOpen, setIsOpen] = useState(false);
   const [titleInput, setTitleInput] = useState('');

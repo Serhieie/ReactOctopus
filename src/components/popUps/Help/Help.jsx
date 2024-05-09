@@ -5,11 +5,12 @@ import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 import validationFormHelp from '../../../schemas/validationFormHelp';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
+import { needHelpOperation } from '../../../redux/auth/authOperations';
+import LogoSprite from '../../../assets/sprite.svg';
+import clsx from 'clsx';
 
 const HelpModal = () => {
-  const dispatch = useDispatch();
-  const { isHelpPopUpOpen } = useIsPopUpOpen();
-
+  const theme = 'Violet';
   const {
     register,
     handleSubmit,
@@ -77,7 +78,10 @@ const HelpModal = () => {
               <div className={styles.email}>
                 <input
                   type="email"
-                  className={styles.forEmail}
+                  name="email"
+                  className={clsx(styles.forEmail, {
+                    [styles.darkInput]: theme === 'Dark',
+                  })}
                   {...register('email', { required: true })}
                   placeholder="Email address"
                 />
@@ -88,7 +92,10 @@ const HelpModal = () => {
               <div className={styles.comment}>
                 <textarea
                   type="text"
-                  className={styles.forComment}
+                  name="message"
+                  className={clsx(styles.forComment, {
+                    [styles.darkInp]: theme === 'Dark',
+                  })}
                   {...register('comment', { required: true })}
                   placeholder="Comment"
                 />

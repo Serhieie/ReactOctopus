@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import LogoSprite from '../../../assets/sprite.svg';
 
 const MdlEdit = () => {
-  const theme = 'Violet';
+  const theme = 'Dark';
 
   const [isOpen, setIsOpen] = useState(false);
   const [titleInput, setTitleInput] = useState('');
