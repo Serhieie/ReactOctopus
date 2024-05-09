@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import LogoSprite from '../../../assets/sprite.svg';
 
-const MdlColumn = () => {
+const MdlEdit = () => {
   const theme = 'Violet';
 
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const MdlColumn = () => {
 
   return (
     <>
-      <button onClick={handleOpenModal}>Open Add</button>
+      <button onClick={handleOpenModal}>Edit Modal</button>
       {isOpen && (
         <div className={styles.modal}>
           <div
@@ -70,7 +70,7 @@ const MdlColumn = () => {
                   [styles.titleDark]: theme === 'Dark',
                 })}
               >
-                Add column
+                Edit column
               </h1>
             </div>
             <form className={styles.form} onSubmit={handleSubmit}>
@@ -122,4 +122,4 @@ const MdlColumn = () => {
   );
 };
 
-export default MdlColumn;
+export default MdlEdit;
