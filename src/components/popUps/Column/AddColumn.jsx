@@ -1,14 +1,18 @@
-import css from './NewBoard.module.scss';
+import css from './AddColumn.module.scss';
 import clsx from 'clsx';
-import BoardForm from './ColumnForm/BoardForm';
-import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
+import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
 
-const NewBoard = ({ name, open, func }) => {
+import ColumnFormAdd from '../Board/ColumnForm/ColumnFormAdd';
+
+const AddColumn = ({ name = 'Add Columns' }) => {
   const theme = 'Dark';
+  const func = () => {
+    console.log(123);
+  };
   return (
-    <Backdrop show={open}>
+    <Backdrop>
       <BoardModal>
         <CloseModalButton onClick={func} />
         <p
@@ -20,10 +24,10 @@ const NewBoard = ({ name, open, func }) => {
         >
           {name}
         </p>
-        <BoardForm action="Create" />
+        <ColumnFormAdd action="Create" />
       </BoardModal>
     </Backdrop>
   );
 };
 
-export default NewBoard;
+export default AddColumn;
