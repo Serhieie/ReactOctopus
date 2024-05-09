@@ -5,6 +5,7 @@ import {
   selectIsLoading,
   selectAuthError,
   selectUser,
+  selectUserTheme,
 } from '../redux/auth/authSelectors.js';
 
 export const useAuth = () => {
@@ -13,6 +14,7 @@ export const useAuth = () => {
   const isLoading = useSelector(selectIsLoading);
   const user = useSelector(selectUser);
   const error = useSelector(selectAuthError);
+  const theme = useSelector(selectUserTheme);
 
   return {
     token,
@@ -20,5 +22,6 @@ export const useAuth = () => {
     isLoading,
     user,
     error,
+    theme,
   };
 };

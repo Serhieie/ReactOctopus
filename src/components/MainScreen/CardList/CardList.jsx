@@ -7,8 +7,7 @@ import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
 
 export const CardList = ({ data, columnTitle, columnId }) => {
-  const theme = 'Dark';
-  const { isLoading } = useAuth();
+  const { theme, isLoading } = useAuth();
 
   // const sortedData = data.map((board) => ({
   //   ...board,
@@ -32,9 +31,9 @@ export const CardList = ({ data, columnTitle, columnId }) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
             className={clsx(styles.cardList, {
-              [styles.cardListDark]: theme === 'Dark',
-              [styles.cardListLight]: theme === 'Light',
-              [styles.cardListViolet]: theme === 'Violet',
+              [styles.cardListDark]: theme === 'dark',
+              [styles.cardListLight]: theme === 'light',
+              [styles.cardListViolet]: theme === 'violet',
             })}
           >
             {data &&

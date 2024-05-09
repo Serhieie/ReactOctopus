@@ -38,8 +38,8 @@ export const logout = async () => {
 };
 
 export const updateProfile = async (body) => {
-  const response = await instance.post('/auth/update-profile', body);
-  setToken(response.data.token);
+  console.log(body);
+  const response = await instance.patch('/auth/update-profile', body);
   return response;
 };
 

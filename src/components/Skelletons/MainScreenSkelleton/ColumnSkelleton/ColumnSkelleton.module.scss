@@ -3,27 +3,10 @@
 @import '/src/styles/colors';
 
 .column {
+  background-color: transparent;
   width: 334px;
   display: flex;
   flex-direction: column;
   @include media-rules(tablet) {
   }
-}
-
-//DARK
-
-.columnDark {
-  background-color: $background-dark;
-}
-
-//LIGHT
-
-.columnLight {
-  background-color: #fff;
-}
-
-//VIOLET
-
-.columnViolet {
-  background-color: #fff;
 }

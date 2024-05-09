@@ -3,7 +3,6 @@
 @import '/src/styles/colors';
 
 .board_list_container {
-  margin-bottom: auto;
   height: 100%;
   padding-left: 8px;
 
@@ -22,11 +21,16 @@
   .board_list_sheet {
     overflow: auto;
     direction: rtl;
+    width: 100%;
     height: calc(100dvh - 615px);
     gap: 4px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+
+    &:first-child {
+      justify-content: center;
+    }
   }
 }
 

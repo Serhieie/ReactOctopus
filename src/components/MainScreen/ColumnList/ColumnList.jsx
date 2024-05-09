@@ -5,8 +5,7 @@ import { useAuth } from '../../../hooks/useAuth.js';
 import { ColumnListSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnListSkelleton/ColumnListSkelleton.jsx';
 
 export const ColumnList = ({ data }) => {
-  const theme = 'Dark';
-  const { isLoading } = useAuth();
+  const { theme, isLoading } = useAuth();
 
   return isLoading ? (
     <ColumnListSkelleton />
@@ -15,9 +14,9 @@ export const ColumnList = ({ data }) => {
       {' '}
       <ul
         className={clsx(styles.columnList, {
-          [styles.columnListDark]: theme === 'Dark',
-          [styles.columnListLight]: theme === 'Light',
-          [styles.columnListViolet]: theme === 'Violet',
+          [styles.columnListDark]: theme === 'dark',
+          [styles.columnListLight]: theme === 'light',
+          [styles.columnListViolet]: theme === 'violet',
         })}
       >
         {data &&

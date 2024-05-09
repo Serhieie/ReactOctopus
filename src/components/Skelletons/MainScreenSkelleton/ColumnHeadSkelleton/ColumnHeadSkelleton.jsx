@@ -1,8 +1,9 @@
+import { useAuth } from '../../../../hooks';
 import styles from './ColumnHeadSkelleton.module.scss';
 import clsx from 'clsx';
 
 export const ColumnHeadSkelleton = () => {
-  const theme = 'dark';
+  const { theme } = useAuth();
 
   return (
     <div

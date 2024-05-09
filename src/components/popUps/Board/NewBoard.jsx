@@ -4,18 +4,19 @@ import BoardForm from './ColumnForm/BoardForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
+import { useAuth } from '../../../hooks';
 
 const NewBoard = ({ name, open, func }) => {
-  const theme = 'Dark';
+  const { theme } = useAuth();
   return (
     <Backdrop show={open}>
       <BoardModal>
         <CloseModalButton onClick={func} />
         <p
           className={clsx(css.modalTitle, {
-            [css.modalTitleDark]: theme === 'Dark',
-            [css.modalTitleLight]: theme === 'Light',
-            [css.modalTitleViolet]: theme === 'Violet',
+            [css.modalTitleDark]: theme === 'dark',
+            [css.modalTitleLight]: theme === 'light',
+            [css.modalTitleViolet]: theme === 'violet',
           })}
         >
           {name}

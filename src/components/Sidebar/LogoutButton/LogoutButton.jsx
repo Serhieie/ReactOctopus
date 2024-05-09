@@ -1,12 +1,12 @@
-import React from 'react';
 import styles from '../LogoutButton/LogoutButton.module.scss';
 import LogoSprite from '../../../assets/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 const LogoutButton = () => {
-  const theme = 'dark';
+  const { theme } = useAuth();
   const dispatch = useDispatch();
 
   const onLogout = () => {
