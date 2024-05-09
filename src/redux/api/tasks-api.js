@@ -6,69 +6,56 @@ export const getBoards = async () => {
 };
 
 export const addBoard = async (body) => {
-  const { data } = await instance.post('/boards', body);
+  const { data } = await instance.post('/boards/post', body);
   return data;
 };
 
 export const removeBoard = async (id) => {
-  const { data } = await instance.delete(`/boards/${id}`);
+  const { data } = await instance.delete(`/boards/delete/${id}`);
   return data;
 };
 
 export const editeBoard = async (boardId, body) => {
-  const { data } = await instance.patch(`/boards/${boardId}`, body);
+  const { data } = await instance.patch(`/boards/patch/${boardId}`, body);
   return data;
 };
 
 export const getColumns = async (boardId) => {
-  const { data } = instance.get(`/boards/${boardId}/columns`);
+  const { data } = instance.get(`/columns/${boardId}`);
   return data;
 };
 
-export const addColumn = async (boardId, body) => {
-  const { data } = instance.post(`/boards/${boardId}/columns`, body);
+export const addColumn = async (body) => {
+  const { data } = instance.post(`/columns/post`, body);
   return data;
 };
 
-export const removeColumn = async (boardId, columnId) => {
-  const { data } = instance.delete(`/boards/${boardId}/columns/${columnId}`);
+export const removeColumn = async (columnId) => {
+  const { data } = instance.delete(`/columns/delete/${columnId}`);
   return data;
 };
 
-export const editeColumn = async (boardId, columnId, body) => {
-  const { data } = instance.patch(
-    `/boards/${boardId}/columns/${columnId}`,
-    body
-  );
+export const editeColumn = async (columnId, body) => {
+  const { data } = instance.patch(`/columns/patch/${columnId}`, body);
   return data;
 };
 
 export const getCards = async (boardId, columnId) => {
-  const { data } = await instance.get(
-    `/boards/${boardId}/columns/${columnId}/cards`
-  );
+  const { data } = await instance.get(`/cards/${columnId}`);
   return data;
 };
 
-export const addCard = async (boardId, columnId, body) => {
-  const { data } = await instance.post(
-    `/boards/${boardId}/columns/${columnId}/cards`,
-    body
-  );
+export const addCard = async (body) => {
+  const { data } = await instance.post(`/cards/post`, body);
   return data;
 };
 
-export const removeCard = async (boardId, columnId, cardId) => {
-  const { data } = await instance.delete(
-    `/boards/${boardId}/columns/${columnId}/cards/${cardId}`
-  );
+export const removeCard = async (cardId) => {
+  const { data } = await instance.delete(`/cards/delete/${cardId}`);
   return data;
 };
 
-export const editeCard = async (boardId, columnId, cardId, body) => {
-  const { data } = await instance.patch(
-    `/boards/${boardId}/columns/${columnId}/cards/${cardId}`,
-    body
-  );
+export const editeCard = async (cardId, body) => {
+  const { data } = await instance.patch(`/cards/patch/${cardId}`, body);
   return data;
 };

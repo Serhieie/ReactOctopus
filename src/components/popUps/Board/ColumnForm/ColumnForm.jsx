@@ -104,7 +104,7 @@ const ColumnForm = ({
   const stylesLight = css.formSubtitleLight;
   const stylesViolet = css.formSubtitleViolet;
 
-  const { title, icon, background } = columns;
+  const { title, iconId, background } = columns;
 
   return (
     <>
@@ -120,7 +120,7 @@ const ColumnForm = ({
           >
             Icons
           </h3>
-          <IconsList onChange={handleChange} items={icons} checked={icon} />
+          <IconsList onChange={handleChange} items={icons} checked={iconId} />
         </div>
         <div className={css.backgroundsInputWrapper}>
           <h3

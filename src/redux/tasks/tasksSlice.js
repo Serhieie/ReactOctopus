@@ -13,11 +13,12 @@ export const tasksSlice = createSlice({
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.fetchBoards.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false), (state.boards.items = payload);
+        (state.boards.isLoading = false), (state.boards.items = payload.result);
       })
       .addCase(boardsOperations.fetchBoards.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
       })
+
       .addCase(boardsOperations.addBoard.pending, (state) => {
         (state.boards.isLoading = true), (state.boards.error = null);
       })

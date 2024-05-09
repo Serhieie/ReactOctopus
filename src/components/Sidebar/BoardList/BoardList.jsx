@@ -13,6 +13,7 @@ import { useAuth } from '../../../hooks';
 const BoardList = ({ theme }) => {
   const { items, isLoading: boardsLoading } = useSelector(selectBoardsState);
   const { isLoading } = useAuth();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchBoards());
