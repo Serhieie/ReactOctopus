@@ -29,7 +29,7 @@ const Sidebar = () => {
           <Logo theme={theme} />
           <BoardList theme={theme} />
           <NeedHelp theme={theme} />
-          <LogoutButton />
+          <LogoutButton theme={theme} />
         </div>
       )}
     </>

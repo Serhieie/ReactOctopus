@@ -1,0 +1,117 @@
+.filterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.lableColor {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.filterForm {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.colorFilterRadioLable {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// .colorFilterCenter {
+//   width: 8px;
+//   height: 8px;
+//   display: block;
+//   border-radius: 50%;
+//   background-color: #8fa1d0;
+// }
+
+.priorityText {
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.colorFilter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.colorFilterWithoutPriority {
+  border: 1px solid #ffffff4d;
+}
+
+.colorFilterMediumPriority {
+  border: 1px solid #e09cb5;
+}
+
+.colorFilterLowPriority {
+  border: 1px solid #8fa1d0;
+}
+
+.colorFilterHighPriority {
+  border: 1px solid #bedbb0;
+}
+
+.colorFilterCenter {
+  width: 14px;
+  height: 14px;
+  display: block;
+  border-radius: 50%;
+}
+
+.colorFilterCenterWithoutPriority {
+  background-color: #ffffff4d;
+}
+
+.colorFilterCenterMediumPriority {
+  background-color: #e09cb5;
+}
+
+.colorFilterCenterLowPriority {
+  background-color: #8fa1d0;
+}
+
+.colorFilterCenterHighPriority {
+  background-color: #bedbb0;
+}
+
+.radioIcon:checked ~ .colorFilter .colorFilterCenter {
+  width: 8px;
+  height: 8px;
+}
+
+.radioIcon {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.clearAllBtn {
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}

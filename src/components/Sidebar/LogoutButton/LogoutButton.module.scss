@@ -24,6 +24,12 @@
   }
   .text {
     color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  .button:hover .text,
+  .button:focus .text {
+    transform: scale(1.1);
   }
 }
 
