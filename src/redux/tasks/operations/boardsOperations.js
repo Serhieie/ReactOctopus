@@ -30,7 +30,6 @@ export const deleteBoard = createAsyncThunk(
   'tasks/deleteBoard',
   async (id, { rejectWithValue }) => {
     try {
-      console.log(id);
       const data = await tasksApi.removeBoard(id);
       return data;
     } catch (error) {

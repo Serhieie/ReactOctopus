@@ -10,7 +10,7 @@ import { persistedPopUpsReducer } from './popUps/popUpsSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);

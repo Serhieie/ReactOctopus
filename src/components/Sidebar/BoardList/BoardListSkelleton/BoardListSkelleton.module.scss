@@ -1,0 +1,73 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
+.board_list_sheetSkl {
+  overflow: auto;
+  direction: rtl;
+  width: 100%;
+  height: calc(100dvh - 615px);
+  gap: 4px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  &:first-child {
+    justify-content: center;
+  }
+}
+
+//Dark
+.board_list_sheetDarkSkl {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(99, 98, 98);
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+}
+
+//Light
+.board_list_sheetLightSkl {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(22, 22, 22, 0.1);
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: inherit;
+    border-radius: 12px;
+  }
+}
+
+//Violet
+
+.board_list_sheetVioletSkl {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #b8bcfd;
+    border-radius: 12px;
+    opacity: 0.8;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: inherit;
+    border-radius: 12px;
+  }
+}

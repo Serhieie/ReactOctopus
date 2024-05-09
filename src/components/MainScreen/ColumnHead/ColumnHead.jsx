@@ -9,14 +9,12 @@ import { useState } from 'react';
 
 export const ColumnHead = ({ column }) => {
   const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
-  const theme = 'Dark';
-  const { isLoading } = useAuth();
+  const { theme, isLoading } = useAuth();
 
   const editColumn = () => {
     console.log('You will edit column');
   };
   const togleDeleteColumn = () => {
-    console.log(column._id);
     setIsDeletePopUpOpen((state) => !state);
   };
 
@@ -26,9 +24,9 @@ export const ColumnHead = ({ column }) => {
     <>
       <div
         className={clsx(styles.columnHead, {
-          [styles.columnHeadDark]: theme === 'Dark',
-          [styles.columnHeadLight]: theme === 'Light',
-          [styles.columnHeadViolet]: theme === 'Violet',
+          [styles.columnHeadDark]: theme === 'dark',
+          [styles.columnHeadLight]: theme === 'light',
+          [styles.columnHeadViolet]: theme === 'violet',
         })}
       >
         {' '}

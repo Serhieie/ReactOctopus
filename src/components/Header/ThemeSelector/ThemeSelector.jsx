@@ -3,10 +3,11 @@ import { useState } from 'react';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { PopUp } from './PopUp/PopUp';
+import { useAuth } from '../../../hooks';
 
 export const ThemeSelector = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const theme = 'Dark';
+  const { theme } = useAuth();
 
   const toggleOpenTheme = async () => {
     setIsThemeOpen((state) => !state);
@@ -16,9 +17,9 @@ export const ThemeSelector = () => {
     <div onClick={toggleOpenTheme} className={clsx(styles.openTheme)}>
       <span
         className={clsx(styles.openThemeSpan, {
-          [styles.openThemeSpanDark]: theme === 'Dark',
-          [styles.openThemeSpanLight]: theme === 'Light',
-          [styles.openThemeSpanViolet]: theme === 'Violet',
+          [styles.openThemeSpanDark]: theme === 'dark',
+          [styles.openThemeSpanLight]: theme === 'light',
+          [styles.openThemeSpanViolet]: theme === 'violet',
         })}
       >
         Theme{' '}

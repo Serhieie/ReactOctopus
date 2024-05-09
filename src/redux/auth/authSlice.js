@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, logIn, current, logOut } from './authOperations';
+import {
+  signUp,
+  logIn,
+  current,
+  logOut,
+  needHelpOperation,
+  updateUser,
+} from './authOperations';
 import { initialState } from './authInitialState';
 import { handlePending, handleRejected } from './authHandlers';
 
@@ -32,7 +39,7 @@ const authSlice = createSlice({
       .addCase(current.pending, handlePending)
       .addCase(current.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.user = payload;
+        state.user = { ...state.user, ...payload };
         state.isLogin = true;
         state.error = null;
       })
@@ -49,7 +56,22 @@ const authSlice = createSlice({
         state.token = '';
         state.error = null;
       })
-      .addCase(logOut.rejected, handleRejected);
+      .addCase(logOut.rejected, handleRejected)
+      //Update
+      .addCase(updateUser.pending, handlePending)
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user = { ...state.user, ...payload };
+        state.error = null;
+      })
+      .addCase(updateUser.rejected, handleRejected)
+      //NeedHelp
+      .addCase(needHelpOperation.pending, handlePending)
+      .addCase(needHelpOperation.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(needHelpOperation.rejected, handleRejected);
   },
 });
 

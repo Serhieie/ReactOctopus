@@ -5,9 +5,10 @@ import ColumnForm from './ColumnForm/ColumnForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
+import { useAuth } from '../../../hooks';
 
 const Board = ({ name, open, action = 'Create' }) => {
-  const theme = 'Dark';
+  const { theme } = useAuth();
   const [showModal, setShowModal] = useState(open);
   const [loading, setLoading] = useState(true);
   const [board, setBoard] = useState({
@@ -40,7 +41,6 @@ const Board = ({ name, open, action = 'Create' }) => {
     };
 
     if (action !== 'Create') {
-      console.log(loading);
       fetchData();
     }
   }, [loading]);
@@ -51,9 +51,9 @@ const Board = ({ name, open, action = 'Create' }) => {
         <CloseModalButton onClick={handleCloseModal} />
         <p
           className={clsx(css.modalTitle, {
-            [css.modalTitleDark]: theme === 'Dark',
-            [css.modalTitleLight]: theme === 'Light',
-            [css.modalTitleViolet]: theme === 'Violet',
+            [css.modalTitleDark]: theme === 'dark',
+            [css.modalTitleLight]: theme === 'light',
+            [css.modalTitleViolet]: theme === 'violet',
           })}
         >
           {name}

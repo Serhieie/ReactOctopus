@@ -5,11 +5,9 @@ import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
 import validationFormHelp from '../../../schemas/validationFormHelp';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
+import { needHelpOperation } from '../../../redux/auth/authOperations';
 
 const HelpModal = () => {
-  const dispatch = useDispatch();
-  const { isHelpPopUpOpen } = useIsPopUpOpen();
-
   const {
     register,
     handleSubmit,
@@ -18,12 +16,15 @@ const HelpModal = () => {
     resolver: yupResolver(validationFormHelp),
   });
 
+  const dispatch = useDispatch();
   const handleCloseModal = () => {
     dispatch(setIsHelpPopUpOpen(false));
   };
 
-  const onSubmit = () => {
-    console.log('Success');
+  const { isHelpPopUpOpen } = useIsPopUpOpen();
+
+  const onSubmit = (data) => {
+    dispatch(needHelpOperation(data));
   };
 
   return (
@@ -48,6 +49,7 @@ const HelpModal = () => {
               <div className={styles.email}>
                 <input
                   type="email"
+                  name="email"
                   className={styles.forEmail}
                   {...register('email', { required: true })}
                   placeholder="Email address"
@@ -59,6 +61,7 @@ const HelpModal = () => {
               <div className={styles.comment}>
                 <textarea
                   type="text"
+                  name="message"
                   className={styles.forComment}
                   {...register('comment', { required: true })}
                   placeholder="Comment"

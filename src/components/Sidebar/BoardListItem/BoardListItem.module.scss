@@ -6,12 +6,21 @@
   height: 61px;
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 16px;
 
   .sidebar_boart_cont {
     display: flex;
     justify-content: baseline;
+    align-items: center;
     gap: 4px;
-    padding-right: 20px;
+  }
+
+  .right_part {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
 
   .sidebar_board_edit_ico,
@@ -32,10 +41,10 @@
   }
 
   @include media-rules(tablet) {
+    padding-left: 22px;
     .sidebar_boart_cont {
       gap: 8px;
     }
-
     .sidebar_boart_cont {
       margin-left: 2px;
     }
@@ -49,12 +58,11 @@
   .sidebar_board_edit_ico,
   .sidebar_board_remove_ico {
     stroke: $text-secondary-dark;
-    fill: $sidebar-background-dark;
+    fill: transparent;
   }
 
   .sidebar_board_title {
     color: $text-secondary-dark;
-    padding-right: 20px;
   }
 
   .sidebar_board_edit_ico,
@@ -94,7 +102,7 @@
   .sidebar_board_edit_ico,
   .sidebar_board_remove_ico {
     stroke: rgba(22, 22, 22, 0.5);
-    fill: $sidebar-background-light;
+    fill: transparent;
   }
 
   .sidebar_board_title {
@@ -132,7 +140,7 @@
   .sidebar_board_edit_ico,
   .sidebar_board_remove_ico {
     stroke: $text-secondary-dark;
-    fill: $sidebar-background-violet;
+    fill: transparent;
   }
 
   .sidebar_board_title {
