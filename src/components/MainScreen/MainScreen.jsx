@@ -15,8 +15,6 @@ export const MainScreen = () => {
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
 
-  if (!active && isBoardLoading) return;
-
   const addColumnFunc = () => {
     console.log('Add Column');
   };

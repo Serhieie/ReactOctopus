@@ -32,10 +32,9 @@ export const tasksSlice = createSlice({
             (state.columns.isLoading = false),
             (state.boards.active = payload);
           state.columns.items = payload.columns;
-
           state.cards.items = [];
           payload.columns.forEach((column) => {
-            state.cards.items.push(...column.cards);
+            state.cards.items.unshift(...column.cards);
           });
         }
       )
@@ -50,35 +49,44 @@ export const tasksSlice = createSlice({
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.addBoard.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false), state.boards.items.push(payload);
+        (state.boards.isLoading = false), (state.boards.items = payload);
       })
       .addCase(boardsOperations.addBoard.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
       })
+
       .addCase(boardsOperations.deleteBoard.pending, (state) => {
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.deleteBoard.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false),
-          state.boards.items.filter(({ _id }) => _id !== payload);
+        (state.boards.isLoading = false), (state.boards.items = payload.items);
+        state.boards.active = payload.newActive;
       })
       .addCase(boardsOperations.deleteBoard.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
       })
-      .addCase(boardsOperations.editeBoard.pending, (state) => {
+
+      .addCase(boardsOperations.editeBoardOperation.pending, (state) => {
         (state.boards.isLoading = true), (state.boards.error = null);
       })
-      .addCase(boardsOperations.editeBoard.fulfilled, (state, { payload }) => {
-        state.boards.isLoading = false;
-        const idx = state.boards.items.findIndex(
-          (board) => board._id === payload._id
-        );
-        state.boards.items.splice(idx, 1, payload);
-      })
-      .addCase(boardsOperations.editeBoard.rejected, (state, { payload }) => {
-        state.boards.isLoading = false;
-        state.boards.error = payload;
-      })
+      .addCase(
+        boardsOperations.editeBoardOperation.fulfilled,
+        (state, { payload }) => {
+          state.boards.isLoading = false;
+          const idx = state.boards.items.findIndex(
+            (board) => board._id === payload.response._id
+          );
+          state.boards.items.splice(idx, 1, payload.response);
+          state.boards.active = payload.newActive;
+        }
+      )
+      .addCase(
+        boardsOperations.editeBoardOperation.rejected,
+        (state, { payload }) => {
+          state.boards.isLoading = false;
+          state.boards.error = payload;
+        }
+      )
       .addCase(columsOperations.fetchColumns.pending, (state) => {
         (state.columns.isLoading = true), (state.columns.error = null);
       })
@@ -193,7 +201,7 @@ export const tasksSlice = createSlice({
 const persistConfig = {
   key: 'tasks',
   storage,
-  whitelist: ['boards', 'columns', 'cards'],
+  whitelist: ['boards'],
 };
 
 export const persistedTasksReducer = persistReducer(
