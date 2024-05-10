@@ -64,16 +64,36 @@ export const editeCard = createAsyncThunk(
 
 export const moveCardOperation = createAsyncThunk(
   'tasks/moveCard',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, getState }) => {
     try {
+      const {
+        tasks: {
+          boards: { active },
+        },
+      } = getState();
       const response = await tasksApi.moveCard(data.card._id, {
         destinationColumnId: data.destinationColumnId,
       });
-      return {
-        sourceColumn: response.sourceColumn,
-        destinationColumn: response.destinationColumn,
-        movedCard: data.card,
+      const { destinationColumn, sourceColumn } = response;
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column._id === sourceColumn._id) {
+            return {
+              ...column,
+              cards: column.cards.filter((card) => card._id !== data.card._id),
+            };
+          } else if (column._id === destinationColumn._id) {
+            return {
+              ...column,
+              cards: [data.card, ...column.cards],
+            };
+          }
+          return column;
+        }),
       };
+
+      return newActive;
     } catch (error) {
       return rejectWithValue(error.message);
     }

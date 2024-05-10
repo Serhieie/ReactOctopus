@@ -16,11 +16,8 @@ export const MovePopUp = ({
   const dispatch = useDispatch();
 
   const handleChangeColumn = async (event) => {
-    const board = event.target.textContent;
     const destinationColumnId = event.target.id;
     dispatch(moveCardOperation({ card, destinationColumnId }));
-
-    console.log(`You will move your card to ${board} column`);
     moveCard();
   };
 

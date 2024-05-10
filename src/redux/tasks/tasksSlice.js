@@ -178,19 +178,7 @@ export const tasksSlice = createSlice({
           state.boards.isLoading = false;
           state.columns.isLoading = false;
           state.cards.isLoading = false;
-          const { movedCard, destinationColumn, sourceColumn } = payload;
-          const card = state.cards.items.find(
-            (card) => card._id === movedCard._id
-          );
-          card.columnId = destinationColumn._id;
-          const from = state.columns.items.find(
-            (column) => column._id === sourceColumn._id
-          );
-          const index = from.cards.indexOf(card);
-          if (index !== -1) {
-            from.cards.splice(index, 1);
-          }
-          destinationColumn.cards.unshift(card);
+          state.boards.active = payload;
         }
       )
       .addCase(

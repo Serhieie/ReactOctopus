@@ -22,15 +22,14 @@
   z-index: 999;
   bottom: 3px;
   right: 4px;
-  width: 135px;
+  min-width: 135px;
   max-height: 150px;
 
   padding: 18px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 4px;
 
   border-radius: 8px;
   box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
@@ -46,7 +45,8 @@
   > span {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 10px;
 
     cursor: pointer;
     user-select: none;
