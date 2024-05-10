@@ -6,10 +6,13 @@ import { ColumnHeadSkelleton } from '../../Skelletons/MainScreenSkelleton/Column
 import { DeleteModal } from '../DeleteModal/DeleteModal.jsx';
 import ModalPortal from '../../popUps/ModalPortal.jsx';
 import { useState } from 'react';
+import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useSelector } from 'react-redux';
 
 export const ColumnHead = ({ column }) => {
   const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
-  const { theme, isLoading } = useAuth();
+  const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
+  const { theme } = useAuth();
 
   const editColumn = () => {
     console.log('You will edit column');
@@ -18,7 +21,7 @@ export const ColumnHead = ({ column }) => {
     setIsDeletePopUpOpen((state) => !state);
   };
 
-  return isLoading ? (
+  return isColumnLoading ? (
     <ColumnHeadSkelleton />
   ) : (
     <>

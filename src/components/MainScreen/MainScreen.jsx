@@ -11,7 +11,8 @@ import { useSelector } from 'react-redux';
 
 export const MainScreen = () => {
   const { theme } = useAuth();
-  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  let { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
 
@@ -19,7 +20,7 @@ export const MainScreen = () => {
     console.log('Add Column');
   };
 
-  return isBoardLoading ? (
+  return isBoardLoading && active ? (
     <MainScreenSkelleton />
   ) : (
     <div className={styles.wrapper}>
