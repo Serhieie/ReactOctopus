@@ -4,13 +4,14 @@
 
 // modal width
 $mobile-width: 335px;
-$tablet-width: 400px;
+$tablet-width: 350px;
 
 
 // input and button
 $mobile-input-button: 287px;
-$tablet-input-button: 352px;
-$tablet-textarea-height: 352px;
+$tablet-input-button: 302px;
+
+
 
 .modal {
     position: fixed;
@@ -31,10 +32,9 @@ $tablet-textarea-height: 352px;
     top: 50%;
     left: 50%;
     width: $mobile-width;
-    min-height: 335px;
+    min-height: 221px;
     padding: 24px;
     transform: translate(-50%, -50%);
-    background: $modal-background-dark;
     box-sizing: border-box;
     border-radius: 10px;
     @include media-rules(tablet) {
@@ -46,27 +46,30 @@ $tablet-textarea-height: 352px;
     display: flex;
 }
 
-.mainTitle{
+
+.mainTitle {
     font-size: 18px;
     color: $text-light;
     font-weight: 500;
 }
 
+
+
 .form {
     position: relative;
 }
 
-.email {
+.title {
     margin-top: 24px;
 }
 
-.forEmail {
+.forTitle {
     width: $mobile-input-button;
     border: 1px solid $button-light;
     border-radius: 8px;
     height: 49px;
-    color: #161616;
-    background-color: $text-dark;
+    color: black;
+    background-color: white;
     opacity: .4;
     padding: 0 18px;
     @include media-rules(tablet){
@@ -74,62 +77,8 @@ $tablet-textarea-height: 352px;
     }
 }
 
-.forEmail:focus {
+.forTitle:focus {
     outline: 1px solid #BEDBB0;
-}
-
-.comment {
-    position: relative;
-}
-
-.forComment {
-    width: 287px;
-    height: 120px;
-    padding: 18px;
-    border: 1px solid $button-light;
-    border-radius: 8px;
-    color: #161616;
-    background-color: $text-dark;
-    opacity: .4;
-    margin-top: 14px; 
-    overflow: hidden;
-    resize: none;  
-    @include media-rules(tablet) {
-        width: $tablet-input-button;
-    }
-}
-
-.forComment:focus {
-    outline: 1px solid #BEDBB0;
-}
-
-
-.button {
-    margin-top: 24px;
-    border: none;
-    border-radius: 8px;
-    width: 287px;
-    height: 49px;
-    background: $button-light;
-    color: $text-light;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background .3s ease;
-    @include media-rules(tablet) {
-        width: $tablet-input-button;
-    }
-}
-
-.button:hover {
-    background: $button-hover-dark;
-}
-
-
-.closeIcon {
-    width: 18px;
-    height: 18px;
-    stroke: rgb(255, 255, 255);
 }
 
 .closeButton {
@@ -137,6 +86,65 @@ $tablet-textarea-height: 352px;
     top: 18px;
     right: 18px;
     cursor: pointer;
+}
+
+
+.blackBox {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    margin-right: 8px;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton {
+    margin-top: 24px;
+    border: none;
+    border-radius: 8px;
+    width: $mobile-input-button;
+    height: 49px;
+    background: $button-light;
+    color: $text-light;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: background .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include media-rules(tablet){
+        width: $tablet-input-button;
+    }
+}
+
+.addButton:hover {
+    background: $button-hover-dark;
+}
+
+
+.icon {
+    width: 14px;
+    height: 14px;
+    margin-top: 7px;
+}
+
+
+.closeIcon {
+    width: 18px;
+    height: 18px;
+    stroke: rgb(255,255,255);
+}
+
+.plusIcon {
+    stroke: rgb(255, 255, 255);
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .error {
@@ -147,7 +155,9 @@ $tablet-textarea-height: 352px;
     opacity: 0.6;
 }
 
+
 // THEME
+
 .dark {
     background: #151515;
 }
@@ -175,12 +185,7 @@ $tablet-textarea-height: 352px;
 
 .darkInput {
     background-color: #151515;
-    color: #FFFFFF;
-}
-
-.darkInp {
-    background-color: #151515;
-    color: #FFFFFF;
+    color: white
 }
 
 .addButtonViolet {
@@ -202,5 +207,4 @@ $tablet-textarea-height: 352px;
 .plusIconViolet {
     stroke: $button-violet;
 }
-
 // THEME
