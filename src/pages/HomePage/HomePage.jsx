@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { MainScreen } from '../../components/MainScreen/MainScreen';
 import { useEffect } from 'react';
-import { fetchBoardById } from '../../redux/tasks/operations/boardsOperations';
+import { fetchBoardById } from '../../redux/tasks/boards/boardsOperations';
 import { selectBoardsState } from '../../redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../../hooks';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Column.module.scss';
 import validationTitle from '../../../schemas/validationTitle';
 import clsx from 'clsx';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 import schema from '../../schemas/validationRegistrSchemas';

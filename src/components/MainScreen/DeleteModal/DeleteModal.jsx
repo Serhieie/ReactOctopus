@@ -3,25 +3,23 @@ import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { getEntityName } from '../../../helpers/deleteModalHelper';
-import { deleteColumn } from '../../../redux/tasks/operations/columnsOperations';
-import { deleteCard } from '../../../redux/tasks/operations/cardsOperations';
-import { deleteBoard } from '../../../redux/tasks/operations/boardsOperations';
+import { deleteColumn } from '../../../redux/tasks/columns/columnsOperations';
+import { deleteCard } from '../../../redux/tasks/cards/cardsOperations';
+import { deleteBoard } from '../../../redux/tasks/boards/boardsOperations';
 import { useAuth } from '../../../hooks';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const onConfirmDelete = () => {
     switch (itemType) {
       case 'column':
-        dispatch(deleteColumn({ boardId: item._id, columnId: item.owner }));
+        dispatch(deleteColumn({ columnId: item._id }));
         break;
       case 'card':
         dispatch(
           deleteCard({
-            boardId: item.boardId,
-            columnId: item.columnId,
             cardId: item._id,
           })
         );

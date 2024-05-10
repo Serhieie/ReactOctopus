@@ -6,7 +6,7 @@ import ModalPortal from '../../popUps/ModalPortal';
 import EditBoard from '../../popUps/Board/EditBoard';
 import { DeleteModal } from '../../MainScreen/DeleteModal/DeleteModal';
 import { useDispatch } from 'react-redux';
-import { fetchBoardById } from '../../../redux/tasks/operations/boardsOperations';
+import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 
 const BoardListItem = ({ theme, board }) => {
   const [isEditBoardModalOpen, setIsEditBoardModalOpen] = useState(false);
@@ -22,7 +22,7 @@ const BoardListItem = ({ theme, board }) => {
   };
 
   const handleChangeBoard = () => {
-    dispatch(fetchBoardById(board._id));
+    // dispatch(fetchBoardById(board._id));
   };
 
   return (

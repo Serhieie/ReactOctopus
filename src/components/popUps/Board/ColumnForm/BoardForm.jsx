@@ -7,7 +7,10 @@ import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
 import { useDispatch } from 'react-redux';
-import { addBoard, editeBoard } from '../../../../redux/api/tasks-api';
+import {
+  editeBoardOperation,
+  addBoard,
+} from '../../../../redux/tasks/operations/boardsOperations';
 import { useAuth } from '../../../../hooks';
 
 const INITIAL_STATE = {
@@ -28,21 +31,21 @@ const icons = [
 ];
 
 const backgroundsImages = [
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/azx7z046l7otrrbybf8t.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/dt0pnm7qqba1jbuaggos.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/fekrlygw3hcac9ru0sqj.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/lpu2pjs0unoybmvruwge.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/oioqcxagtto7ilqncz7d.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/pcd3w8ppgzi2lmauedy0.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/pepbaej240byrklobpps.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/pocp8odhoyjois3cgklq.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/skjreeivvnhgbeqtimkt.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/sonbth2fgcewwdkvdo1t.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/u6oz79jyn0bxqo1au95j.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/w8rzb44uxyw6yuvbrqsy.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/wp3hgdz2snmgvtezu8oi.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575495/react-octopus/desctop/yl2osbr3sirp6noadvrx.webp',
-  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575494/react-octopus/desctop/zozmb4dmjfzeygotfzpg.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/e5l6os2xwkgtjmbkfuw6.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575674/react-octopus/desctopx2/heujomhkyiaavuoxqmiq.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575673/react-octopus/desctopx2/ikztmic75cfgbdhfuc1f.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/jsufvhlek6tdavzdmzvg.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575672/react-octopus/desctopx2/maopjnd6scj7z2wtcdog.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575673/react-octopus/desctopx2/muucbrq8v7kvywvio0jp.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575675/react-octopus/desctopx2/nrzdwyqz0x3phynrvqmp.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/pslkjxuhaxworen7rdyj.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/qgyeiqmm9zhlogcen0mj.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575673/react-octopus/desctopx2/t6vngzugp6qjakub1q0g.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575673/react-octopus/desctopx2/u9mmiv1ypl7b3yg9ka52.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575673/react-octopus/desctopx2/voiztzwnhjrvsdl7shsn.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/wympusczafztc5bg7kaz.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575675/react-octopus/desctopx2/yszsmlifjvpnpcwzxkul.webp',
+  'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/z7z9sfi0e3iuiqlzgjdn.webp',
 ];
 
 const BoardForm = ({
@@ -77,9 +80,10 @@ const BoardForm = ({
           dispatch(addBoard({ ...columns }));
           console.log('Saved');
         } else {
+          console.log(item._id);
           if (item)
             dispatch(
-              editeBoard(item._id, {
+              editeBoardOperation(item._id, {
                 title: columns.title,
                 iconId: columns.iconId,
                 background: columns.background,

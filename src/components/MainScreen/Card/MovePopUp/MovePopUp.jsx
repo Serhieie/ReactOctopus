@@ -3,7 +3,7 @@ import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useDispatch } from 'react-redux';
-import { moveCardOperation } from '../../../../redux/tasks/operations/cardsOperations';
+import { moveCardOperation } from '../../../../redux/tasks/cards/cardsOperations';
 
 export const MovePopUp = ({
   isMoveCardPopUpOpen,
@@ -16,11 +16,8 @@ export const MovePopUp = ({
   const dispatch = useDispatch();
 
   const handleChangeColumn = async (event) => {
-    const board = event.target.textContent;
     const destinationColumnId = event.target.id;
     dispatch(moveCardOperation({ card, destinationColumnId }));
-
-    console.log(`You will move your card to ${board} column`);
     moveCard();
   };
 

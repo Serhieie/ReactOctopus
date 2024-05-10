@@ -6,11 +6,28 @@ import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import BoardListSkelleton from './BoardListSkelleton/BoardListSkelleton';
 import { useAuth } from '../../../hooks';
-import data from '../../MainScreen/boards.json';
+// import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
-  const { items, isLoading: boardsLoading } = useSelector(selectBoardsState);
+  const {
+    items,
+    active,
+    isLoading: boardsLoading,
+  } = useSelector(selectBoardsState);
+  console.log(items);
   const { isLoading } = useAuth();
+
+  //Це просто переставляє активний елемент на першу позицію
+  const sortedItems = items && [...items];
+  if (active) {
+    const activeIndex = sortedItems.findIndex(
+      (item) => item._id === active._id
+    );
+    if (activeIndex !== -1) {
+      const activeItem = sortedItems.splice(activeIndex, 1)[0];
+      sortedItems.unshift(activeItem);
+    }
+  }
 
   if (!items) <BoardListSkelleton />;
   return (
@@ -31,8 +48,8 @@ const BoardList = ({ theme }) => {
         <BoardListSkelleton />
       ) : (
         <ul className={styles.board_list_sheet}>
-          {data &&
-            data.map((item) => (
+          {items &&
+            sortedItems.map((item) => (
               <BoardListItem key={item._id} board={item} theme={theme} />
             ))}
         </ul>
