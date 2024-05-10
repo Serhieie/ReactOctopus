@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import BoardListSkelleton from './BoardListSkelleton/BoardListSkelleton';
 import { useAuth } from '../../../hooks';
+import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
   const { items, isLoading: boardsLoading } = useSelector(selectBoardsState);
@@ -30,8 +31,8 @@ const BoardList = ({ theme }) => {
         <BoardListSkelleton />
       ) : (
         <ul className={styles.board_list_sheet}>
-          {items &&
-            items.map((item) => (
+          {data &&
+            data.map((item) => (
               <BoardListItem key={item._id} board={item} theme={theme} />
             ))}
         </ul>

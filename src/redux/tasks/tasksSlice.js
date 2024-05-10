@@ -178,20 +178,19 @@ export const tasksSlice = createSlice({
           state.boards.isLoading = false;
           state.columns.isLoading = false;
           state.cards.isLoading = false;
-          const { movedCardId, destinationColumn, sourceColumn } = payload;
-          // const card = state.boards.active.columns.cards.find(
-          //   (card) => card._id === movedCardId
-          // );
-          // console.log(card);
-          // card.columnId = destinationColumn._id;
-          // const from = state.columns.items.find(
-          //   (column) => column._id === sourceColumn._id
-          // );
-          // const index = from.cards.indexOf(card);
-          // if (index !== -1) {
-          //   from.cards.splice(index, 1);
-          // }
-          // destinationColumn.cards.unshift(card);
+          const { movedCard, destinationColumn, sourceColumn } = payload;
+          const card = state.cards.items.find(
+            (card) => card._id === movedCard._id
+          );
+          card.columnId = destinationColumn._id;
+          const from = state.columns.items.find(
+            (column) => column._id === sourceColumn._id
+          );
+          const index = from.cards.indexOf(card);
+          if (index !== -1) {
+            from.cards.splice(index, 1);
+          }
+          destinationColumn.cards.unshift(card);
         }
       )
       .addCase(
