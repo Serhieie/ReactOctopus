@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import {
   editeBoardOperation,
   addBoard,
-} from '../../../../redux/tasks/boards/boardsOperations';
+} from '../../../../redux/tasks/operations/boardsOperations';
 import { useAuth } from '../../../../hooks';
 
 const INITIAL_STATE = {
@@ -52,7 +52,6 @@ const ColumnForm = ({
   action = 'Create',
   data = INITIAL_STATE,
   item = null,
-  closeFunc,
 }) => {
   const dispatch = useDispatch();
   const { theme } = useAuth();
@@ -76,7 +75,9 @@ const ColumnForm = ({
       try {
         if (action === 'Create') {
           dispatch(addBoard({ ...columns }));
-          closeFunc();
+
+          // const response = await axios.post('/api/columns', columns);
+          console.log('Saved');
         } else {
           console.log(item._id);
           if (item) {
@@ -90,8 +91,10 @@ const ColumnForm = ({
                 },
               })
             );
-            closeFunc();
           }
+
+          //const response = await axios.put(`/api/columns/${columns.id}`, columns);
+          console.log('Updated');
         }
         reset();
       } catch (error) {

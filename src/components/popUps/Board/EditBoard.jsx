@@ -51,9 +51,7 @@ const EditBoard = ({ name, open, item, func }) => {
         >
           {name}
         </p>
-        {!loading && (
-          <ColumnForm data={board} action="Edit" item={item} closeFunc={func} />
-        )}
+        {!loading && <ColumnForm data={board} action="Edit" item={item} />}
       </BoardModal>
     </Backdrop>
   );
