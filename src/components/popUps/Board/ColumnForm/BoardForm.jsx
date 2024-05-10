@@ -1,4 +1,4 @@
-import css from './ColumnForm.module.scss';
+import css from './BoardForm.module.scss';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import clsx from 'clsx';
@@ -25,7 +25,7 @@ const icons = [
   'loading',
   'puzzle-piece',
   'container',
-  'lightning',
+  'lightning-02',
   'colors',
   'hexagon-modal',
 ];
@@ -48,16 +48,19 @@ const backgroundsImages = [
   'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575676/react-octopus/desctopx2/z7z9sfi0e3iuiqlzgjdn.webp',
 ];
 
-const ColumnForm = ({
+const BoardForm = ({
   action = 'Create',
   data = INITIAL_STATE,
   item = null,
 }) => {
   const dispatch = useDispatch();
+
   const { theme } = useAuth();
+
   const [columns, setColumns] = useState({
     ...data,
   });
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setColumns({
@@ -75,8 +78,6 @@ const ColumnForm = ({
       try {
         if (action === 'Create') {
           dispatch(addBoard({ ...columns }));
-
-          // const response = await axios.post('/api/columns', columns);
           console.log('Saved');
         } else {
           console.log(item._id);
@@ -88,8 +89,6 @@ const ColumnForm = ({
                 background: columns.background,
               })
             );
-
-          //const response = await axios.put(`/api/columns/${columns.id}`, columns);
           console.log('Updated');
         }
         reset();
@@ -149,4 +148,4 @@ const ColumnForm = ({
   );
 };
 
-export default ColumnForm;
+export default BoardForm;
