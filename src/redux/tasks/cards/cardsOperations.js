@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as tasksApi from '../../api/tasks-api';
 
 export const fetchCards = createAsyncThunk(
-  'tasks/fetchCards',
+  'cards/fetchCards',
   async (data, { rejectWithValue }) => {
     try {
       const response = await tasksApi.getCards(data.boardId, data.columnId);
@@ -14,17 +14,31 @@ export const fetchCards = createAsyncThunk(
 );
 
 export const addCard = createAsyncThunk(
-  'tasks/addCard',
-  async (data, { rejectWithValue }) => {
+  'cards/addCard',
+  async (data, { rejectWithValue, getState }) => {
     try {
-      console.log(data);
-      const response = await tasksApi.addCard(
-        data.boardId,
-        data.columnId,
-        data.body
-      );
-
-      return response.result;
+      const {
+        tasks: {
+          boards: { active },
+          cards: { items },
+        },
+      } = getState();
+      const response = await tasksApi.addCard(data);
+      const newItems = [response.result, ...items];
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column._id === data.columnId) {
+            return {
+              ...column,
+              cards: [response.result, ...column.cards],
+            };
+          } else {
+            return column;
+          }
+        }),
+      };
+      return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -32,7 +46,7 @@ export const addCard = createAsyncThunk(
 );
 
 export const deleteCard = createAsyncThunk(
-  'tasks/deleteCard',
+  'cards/deleteCard',
   async (data, { rejectWithValue, getState }) => {
     try {
       const {
@@ -60,17 +74,43 @@ export const deleteCard = createAsyncThunk(
   }
 );
 
-export const editeCard = createAsyncThunk(
-  'tasks/editeCard',
-  async (data, { rejectWithValue }) => {
+export const editCardOperation = createAsyncThunk(
+  'cards/editCard',
+  async (data, { rejectWithValue, getState }) => {
     try {
-      const response = await tasksApi.editeCard(
-        data.boardId,
-        data.columnId,
-        data.cardId,
-        data.body
+      const {
+        tasks: {
+          boards: { active },
+          cards: { items },
+        },
+      } = getState();
+      const response = await tasksApi.editCard(data.cardId, data.body);
+      const updatedItems = [...items];
+      const cardIndex = updatedItems.findIndex(
+        (card) => card._id === data.cardId
       );
-      return response;
+      if (cardIndex !== -1) {
+        updatedItems[cardIndex] = response;
+      }
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column.cards.some((card) => card._id === data.cardId)) {
+            return {
+              ...column,
+              cards: column.cards.map((card) => {
+                if (card._id === data.cardId) {
+                  return response;
+                }
+                return card;
+              }),
+            };
+          } else {
+            return column;
+          }
+        }),
+      };
+      return { newActive, items: updatedItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -78,7 +118,7 @@ export const editeCard = createAsyncThunk(
 );
 
 export const moveCardOperation = createAsyncThunk(
-  'tasks/moveCard',
+  'cards/moveCard',
   async (data, { rejectWithValue, getState }) => {
     try {
       const {

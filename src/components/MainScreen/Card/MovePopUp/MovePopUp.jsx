@@ -3,7 +3,7 @@ import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useDispatch } from 'react-redux';
-import { moveCardOperation } from '../../../../redux/tasks/operations/cardsOperations';
+import { moveCardOperation } from '../../../../redux/tasks/cards/cardsOperations';
 
 export const MovePopUp = ({
   isMoveCardPopUpOpen,

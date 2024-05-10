@@ -33,3 +33,23 @@ export const selectFilteredCards = createSelector(
 // export const selectBoardsState = state => state.tasks.boards
 // export const selectColumnsState = state => state.tasks.columns
 // export const selectCardsState = state => state.tasks.cards
+
+// const selectBoards = (state) => state.boards;
+// const selectColumns = (state) => state.columns;
+// const selectCards = (state) => state.columns;
+// const selectAllCards = (store) => store.tasks.cards.items;
+
+// export const selectBoardsState = createSelector(
+//   selectBoards,
+//   (boardsState) => boardsState.boards
+// );
+
+// export const selectColumnsState = createSelector(
+//   selectColumns,
+//   (columnsState) => columnsState.columns
+// );
+
+// export const selectCardsState = createSelector(
+//   selectCards,
+//   (cardsState) => cardsState.cards
+// );

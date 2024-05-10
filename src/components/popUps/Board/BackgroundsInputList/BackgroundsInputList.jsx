@@ -12,11 +12,11 @@ const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
 
   const getDefaultBackground = (theme) => {
     switch (theme) {
-      case 'Dark':
+      case 'dark':
         return defaultBackgroundDark;
-      case 'Light':
+      case 'light':
         return defaultBackgroundLight;
-      case 'Violet':
+      case 'violet':
       default:
         return defaultBackgroundViolet;
     }

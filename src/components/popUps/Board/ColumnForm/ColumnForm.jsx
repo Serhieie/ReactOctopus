@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import {
   editeBoardOperation,
   addBoard,
-} from '../../../../redux/tasks/operations/boardsOperations';
+} from '../../../../redux/tasks/boards/boardsOperations';
 import { useAuth } from '../../../../hooks';
 
 const INITIAL_STATE = {
@@ -52,6 +52,7 @@ const ColumnForm = ({
   action = 'Create',
   data = INITIAL_STATE,
   item = null,
+  closeFunc,
 }) => {
   const dispatch = useDispatch();
   const { theme } = useAuth();
@@ -75,12 +76,10 @@ const ColumnForm = ({
       try {
         if (action === 'Create') {
           dispatch(addBoard({ ...columns }));
-
-          // const response = await axios.post('/api/columns', columns);
-          console.log('Saved');
+          closeFunc();
         } else {
           console.log(item._id);
-          if (item)
+          if (item) {
             dispatch(
               editeBoardOperation({
                 boardId: item._id,
@@ -91,9 +90,8 @@ const ColumnForm = ({
                 },
               })
             );
-
-          //const response = await axios.put(`/api/columns/${columns.id}`, columns);
-          console.log('Updated');
+            closeFunc();
+          }
         }
         reset();
       } catch (error) {
@@ -145,7 +143,10 @@ const ColumnForm = ({
             checked={background}
           />
         </div>
-        <ModalButton type="submit" text="Create" />
+        <ModalButton
+          type="submit"
+          text={action === 'Create' ? 'Create' : 'Edit'}
+        />
       </form>
       <ToastContainer position="top-right" />
     </>

@@ -12,7 +12,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import data from './components/MainScreen/boards.json';
-import { fetchBoards } from './redux/tasks/operations/boardsOperations';
+import { fetchBoards } from './redux/tasks/boards/boardsOperations';
 
 function App() {
   const { isLogin } = useAuth();

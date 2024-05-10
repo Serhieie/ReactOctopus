@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import {
-  editeCard,
+  editCardOperation,
   addCard,
-} from '../../../redux/tasks/operations/cardsOperations';
+} from '../../../redux/tasks/cards/cardsOperations';
 import s from './addEditCardForm.module.scss';
 import ModalButton from '../ModalButton/ModalButton';
 
@@ -38,7 +38,7 @@ const AddEditCardForm = ({ cardData = initialValues, columnId = null }) => {
   const onSubmit = () => {
     if (columnId === null) {
       dispatch(
-        editeCard({
+        editCardOperation({
           cardId: card._id,
           body: { ...card },
         })
