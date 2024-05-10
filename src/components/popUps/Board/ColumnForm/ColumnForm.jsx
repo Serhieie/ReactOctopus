@@ -80,18 +80,14 @@ const ColumnForm = ({
           console.log('Saved');
         } else {
           console.log(item._id);
-          if (item) {
+          if (item)
             dispatch(
-              editeBoardOperation({
-                boardId: item._id,
-                body: {
-                  title: columns.title,
-                  iconId: columns.iconId,
-                  background: columns.background,
-                },
+              editeBoardOperation(item._id, {
+                title: columns.title,
+                iconId: columns.iconId,
+                background: columns.background,
               })
             );
-          }
 
           //const response = await axios.put(`/api/columns/${columns.id}`, columns);
           console.log('Updated');
@@ -146,10 +142,7 @@ const ColumnForm = ({
             checked={background}
           />
         </div>
-        <ModalButton
-          type="submit"
-          text={action === 'Create' ? 'Create' : 'Edit'}
-        />
+        <ModalButton type="submit" text="Create" />
       </form>
       <ToastContainer position="top-right" />
     </>
