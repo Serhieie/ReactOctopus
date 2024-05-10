@@ -54,11 +54,11 @@ export const checkTokenRequest = async (token) => {
   }
 };
 
-export const edit = async (credentials) => {
-  const response = await instance.patch('/users/edit', credentials);
-  setToken();
-  return response;
-};
+// export const edit = async (credentials) => {
+//   const response = await instance.patch('/users/edit', credentials);
+//   setToken();
+//   return response;
+// };
 
 export const needHelp = async (credentials) => {
   try {

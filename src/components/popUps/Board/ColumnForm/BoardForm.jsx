@@ -103,7 +103,6 @@ const BoardForm = ({
   const stylesLight = css.formSubtitleLight;
   const stylesViolet = css.formSubtitleViolet;
 
-  console.log(columns);
   const { title, iconId, background } = columns;
 
   return (

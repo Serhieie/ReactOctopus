@@ -28,8 +28,13 @@
     font-weight: 500;
     font-size: 12px;
     letter-spacing: -0.02em;
-
     cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .button:hover,
+  .button:focus {
+    transform: scale(1.05);
   }
 
   .icon {

@@ -43,6 +43,7 @@ export const CardList = ({ data, columnTitle, columnId }) => {
                   card={card}
                   columnTitle={columnTitle}
                   index={index}
+                  columnId={columnId}
                 />
               ))}
             {provided.placeholder}
