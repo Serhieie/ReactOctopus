@@ -13,6 +13,18 @@ export const fetchBoards = createAsyncThunk(
   }
 );
 
+export const fetchBoardById = createAsyncThunk(
+  'tasks/fetcBoardById',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await tasksApi.getBoardById(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addBoard = createAsyncThunk(
   'tasks/addBoard',
   async (body, { rejectWithValue }) => {

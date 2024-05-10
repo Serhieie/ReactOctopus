@@ -5,8 +5,11 @@ import data from './boardsSkell.json';
 import { ColumnListSkelleton } from './ColumnListSkelleton/ColumnListSkelleton.jsx';
 import { AddButtonSkelleton } from './AddButtonSkelleton/AddButtonSkelleton.jsx';
 import { useAuth } from '../../../hooks/useAuth.js';
+import { useSelector } from 'react-redux';
+import { selectBoardsState } from '../../../redux/tasks/tasksSelectors.js';
 
 export const MainScreenSkelleton = () => {
+  const { active } = useSelector(selectBoardsState);
   const { theme } = useAuth();
   const board = data[0];
   const isSidebarOpen = false;
@@ -15,6 +18,12 @@ export const MainScreenSkelleton = () => {
   return (
     <div className={styles.wrapper}>
       <div
+        style={{
+          backgroundImage: `url(${active ? active.background : ''})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
         className={clsx(styles.mainScreen, {
           [styles.mainScreenDark]: theme === 'dark',
           [styles.mainScreenLight]: theme === 'light',

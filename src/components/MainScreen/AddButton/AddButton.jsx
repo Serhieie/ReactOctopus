@@ -7,10 +7,6 @@ import { AddButtonSkelleton } from '../../Skelletons/MainScreenSkelleton/AddButt
 export const AddButton = ({ column, addFunction }) => {
   const { theme, isLoading } = useAuth();
 
-  const handleClick = () => {
-    addFunction();
-  };
-
   const stylesDark = column
     ? styles.addColumnButtonDark
     : styles.addCardButtonDark;
@@ -26,7 +22,7 @@ export const AddButton = ({ column, addFunction }) => {
   ) : (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={addFunction}
       className={clsx(styles.addColumnButton, {
         [stylesDark]: theme === 'dark',
         [stylesLight]: theme === 'light',

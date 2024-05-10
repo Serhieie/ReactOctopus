@@ -5,10 +5,13 @@ import { useState } from 'react';
 import ModalPortal from '../../popUps/ModalPortal';
 import EditBoard from '../../popUps/Board/EditBoard';
 import { DeleteModal } from '../../MainScreen/DeleteModal/DeleteModal';
+import { useDispatch } from 'react-redux';
+import { fetchBoardById } from '../../../redux/tasks/operations/boardsOperations';
 
 const BoardListItem = ({ theme, board }) => {
   const [isEditBoardModalOpen, setIsEditBoardModalOpen] = useState(false);
   const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const toggleEditBoardModalOpen = () => {
     setIsEditBoardModalOpen((state) => !state);
@@ -18,8 +21,13 @@ const BoardListItem = ({ theme, board }) => {
     setIsDeleteBoardModalOpen((state) => !state);
   };
 
+  const handleChangeBoard = () => {
+    dispatch(fetchBoardById(board._id));
+  };
+
   return (
     <li
+      onClick={handleChangeBoard}
       className={clsx(styles.sidebar_board_item, {
         [styles.sidebar_board_itemDark]: theme === 'dark',
         [styles.sidebar_board_itemLight]: theme === 'light',
@@ -62,7 +70,7 @@ const BoardListItem = ({ theme, board }) => {
       <div className={styles.sidebar_boart_cont}>
         <p className={styles.sidebar_board_title}>{board.title}</p>
         <svg className={styles.sidebar_board_item_ico} width="18" height="18">
-          <use xlinkHref={`${LogoSprite}#icon-project`}></use>
+          <use xlinkHref={`${LogoSprite}#icon-${board.iconId}`}></use>
         </svg>
       </div>
       <ModalPortal>

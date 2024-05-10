@@ -2,18 +2,24 @@ import styles from './MovePopUp.module.scss';
 import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
+import { useDispatch } from 'react-redux';
+import { moveCardOperation } from '../../../../redux/tasks/operations/cardsOperations';
 
-//ЦЕЙ ПОПАП ТРЕБА ВИНЕСТИ ІЗ КАРТКИ У КОЛОНКУ ЩО Б ВІН МІГ ВИХОДИТИ ЗА МЕЖІ КАРТКИ`
 export const MovePopUp = ({
   isMoveCardPopUpOpen,
   currentBoard,
   moveCard,
   columnTitle,
+  card,
 }) => {
   const { theme } = useAuth();
+  const dispatch = useDispatch();
 
   const handleChangeColumn = async (event) => {
     const board = event.target.textContent;
+    const destinationColumnId = event.target.id;
+    dispatch(moveCardOperation({ card, destinationColumnId }));
+
     console.log(`You will move your card to ${board} column`);
     moveCard();
   };
@@ -32,10 +38,11 @@ export const MovePopUp = ({
           columnTitle !== column.title ? (
             <span
               key={column._id}
+              id={column._id}
               className={styles.span}
               onClick={handleChangeColumn}
             >
-              {column.title}{' '}
+              {column.title}
               <svg
                 className={styles.icon}
                 xmlns="http://www.w3.org/2000/svg"
