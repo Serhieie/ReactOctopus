@@ -12,6 +12,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import data from './components/MainScreen/boards.json';
+import { fetchBoards } from './redux/tasks/operations/boardsOperations';
 
 function App() {
   const { isLogin } = useAuth();
@@ -20,6 +21,7 @@ function App() {
 
   useEffect(() => {
     dispatch(current());
+    dispatch(fetchBoards());
   }, [dispatch, isLogin]);
 
   // example

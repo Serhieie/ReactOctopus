@@ -23,11 +23,13 @@
   bottom: 3px;
   right: 4px;
   width: 135px;
+  max-height: 150px;
 
   padding: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 4px;
 
   border-radius: 8px;

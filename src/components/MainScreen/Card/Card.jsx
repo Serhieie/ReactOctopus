@@ -7,9 +7,10 @@ import { useAuth } from '../../../hooks';
 import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 import { Draggable } from 'react-beautiful-dnd';
 
-export const Card = ({ card, columnTitle, index, columnId }) => {
+export const Card = ({ card, column, index }) => {
   const { theme, isLoading } = useAuth();
   const labelColor = getColorByPriority(card.priority, theme);
+
   //TRANSFORM RIGHT AFTER SIDEBAR
   return isLoading ? (
     <CardSkelleton />
@@ -37,11 +38,7 @@ export const Card = ({ card, columnTitle, index, columnId }) => {
           <hr className={styles.hr} />
           <div className={styles.priorityBlock}>
             <Priority card={card} labelColor={labelColor} />
-            <Buttons
-              card={card}
-              columnTitle={columnTitle}
-              columnId={columnId}
-            />
+            <Buttons card={card} column={column} />
           </div>
         </li>
       )}

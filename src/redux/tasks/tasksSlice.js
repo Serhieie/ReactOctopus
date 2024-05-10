@@ -3,6 +3,8 @@ import { initialState } from './tasksInitialState';
 import * as boardsOperations from './operations/boardsOperations';
 import * as columsOperations from './operations/columnsOperations';
 import * as cardsOperations from './operations/cardsOperations';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
 
 export const tasksSlice = createSlice({
   name: 'tasks',
@@ -18,6 +20,31 @@ export const tasksSlice = createSlice({
       .addCase(boardsOperations.fetchBoards.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
       })
+      .addCase(boardsOperations.fetchBoardById.pending, (state) => {
+        (state.boards.isLoading = true), (state.boards.error = null);
+      })
+      .addCase(
+        boardsOperations.fetchBoardById.fulfilled,
+        (state, { payload }) => {
+          // console.log('ACTIVE', payload._id);
+          // console.log('COLUMNS', payload.columns);
+          (state.boards.isLoading = false),
+            (state.columns.isLoading = false),
+            (state.boards.active = payload);
+          state.columns.items = payload.columns;
+
+          state.cards.items = [];
+          payload.columns.forEach((column) => {
+            state.cards.items.push(...column.cards);
+          });
+        }
+      )
+      .addCase(
+        boardsOperations.fetchBoardById.rejected,
+        (state, { payload }) => {
+          (state.boards.isLoading = false), (state.boards.error = payload);
+        }
+      )
 
       .addCase(boardsOperations.addBoard.pending, (state) => {
         (state.boards.isLoading = true), (state.boards.error = null);
@@ -141,8 +168,49 @@ export const tasksSlice = createSlice({
       .addCase(cardsOperations.editeCard.rejected, (state, { payload }) => {
         state.cards.isLoading = false;
         state.cards.error = payload;
-      });
+      })
+      .addCase(cardsOperations.moveCardOperation.pending, (state) => {
+        (state.cards.isLoading = true), (state.cards.error = null);
+      })
+      .addCase(
+        cardsOperations.moveCardOperation.fulfilled,
+        (state, { payload }) => {
+          state.boards.isLoading = false;
+          state.columns.isLoading = false;
+          state.cards.isLoading = false;
+          const { movedCard, destinationColumn, sourceColumn } = payload;
+          const card = state.cards.items.find(
+            (card) => card._id === movedCard._id
+          );
+          card.columnId = destinationColumn._id;
+          const from = state.columns.items.find(
+            (column) => column._id === sourceColumn._id
+          );
+          const index = from.cards.indexOf(card);
+          if (index !== -1) {
+            from.cards.splice(index, 1);
+          }
+          destinationColumn.cards.unshift(card);
+        }
+      )
+      .addCase(
+        cardsOperations.moveCardOperation.rejected,
+        (state, { payload }) => {
+          (state.cards.isLoading = false), (state.cards.error = payload);
+        }
+      );
   },
 });
+
+const persistConfig = {
+  key: 'tasks',
+  storage,
+  whitelist: ['boards', 'columns', 'cards'],
+};
+
+export const persistedTasksReducer = persistReducer(
+  persistConfig,
+  tasksSlice.reducer
+);
 
 export default tasksSlice.reducer;

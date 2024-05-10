@@ -5,19 +5,23 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
-import data from '../../boards.json';
 import ModalPortal from '../../../popUps/ModalPortal';
 import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
+import { useSelector } from 'react-redux';
+import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
+import { CardSkelleton } from '../../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 
-export const Buttons = ({ card, columnTitle, columnId }) => {
+export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
+  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+
+  if (!active && isBoardLoading) <CardSkelleton />;
   //fetchById?
-  const currentBoard = data[0];
 
   const toggleEditCard = () => {
     setIsEditCardOpen((state) => !state);
@@ -28,7 +32,6 @@ export const Buttons = ({ card, columnTitle, columnId }) => {
   };
 
   const moveCard = () => {
-    console.log('Move Card');
     setIsMoveCardPopUpOpen((state) => !state);
   };
 
@@ -92,13 +95,14 @@ export const Buttons = ({ card, columnTitle, columnId }) => {
       </button>
       <MovePopUp
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
-        currentBoard={currentBoard}
+        currentBoard={active}
         moveCard={moveCard}
-        columnTitle={columnTitle}
+        columnTitle={column.title}
+        card={card}
       />
       <ModalPortal>
         {isEditCardOpen && (
-          <AddEditCardForm cardData={card} columnId={columnId} />
+          <AddEditCardForm cardData={card} columnId={column._id} />
         )}
         <DeleteModal
           open={isDeleteCardOpen}

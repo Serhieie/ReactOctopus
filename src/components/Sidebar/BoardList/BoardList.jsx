@@ -2,23 +2,17 @@ import BoardListItem from '../BoardListItem/BoardListItem';
 import CreateBoardButton from '../CreateBoardButton/CreateBoardButton';
 import clsx from 'clsx';
 import styles from './BoardList.module.scss';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
-import { fetchBoards } from '../../../redux/tasks/operations/boardsOperations';
 import BoardListSkelleton from './BoardListSkelleton/BoardListSkelleton';
 import { useAuth } from '../../../hooks';
+import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
   const { items, isLoading: boardsLoading } = useSelector(selectBoardsState);
   const { isLoading } = useAuth();
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchBoards());
-  }, []);
-
+  if (!items) <BoardListSkelleton />;
   return (
     <div
       className={clsx(styles.board_list_container, {
@@ -36,13 +30,12 @@ const BoardList = ({ theme }) => {
       {isLoading || boardsLoading ? (
         <BoardListSkelleton />
       ) : (
-        items.result && (
-          <ul className={styles.board_list_sheet}>
-            {items.result.map((item) => (
+        <ul className={styles.board_list_sheet}>
+          {data &&
+            data.map((item) => (
               <BoardListItem key={item._id} board={item} theme={theme} />
             ))}
-          </ul>
-        )
+        </ul>
       )}
     </div>
   );

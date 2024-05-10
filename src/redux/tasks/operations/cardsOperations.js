@@ -49,13 +49,31 @@ export const editeCard = createAsyncThunk(
   'tasks/editeCard',
   async (data, { rejectWithValue }) => {
     try {
-      const response = await tasksApi.editeBoard(
+      const response = await tasksApi.editeCard(
         data.boardId,
         data.columnId,
         data.cardId,
         data.body
       );
       return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const moveCardOperation = createAsyncThunk(
+  'tasks/moveCard',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await tasksApi.moveCard(data.card._id, {
+        destinationColumnId: data.destinationColumnId,
+      });
+      return {
+        sourceColumn: response.sourceColumn,
+        destinationColumn: response.destinationColumn,
+        movedCard: data.card,
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }

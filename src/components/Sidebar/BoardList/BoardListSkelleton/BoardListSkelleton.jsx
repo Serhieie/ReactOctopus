@@ -6,7 +6,7 @@ import { useAuth } from '../../../../hooks';
 
 const BoardListSkelleton = () => {
   const { theme } = useAuth();
-  const dataSkelletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const dataSkelletons = [1, 2, 3, 4];
   return (
     <ul
       className={clsx(styles.board_list_sheetSkl, {

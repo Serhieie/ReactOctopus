@@ -1,31 +1,23 @@
 import styles from './CardList.module.scss';
 import clsx from 'clsx';
+import { nanoid } from 'nanoid';
 import { Card } from '../Card/Card.jsx';
 import { Droppable } from 'react-beautiful-dnd';
 import { useAuth } from '../../../hooks/useAuth.js';
 import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
 
-export const CardList = ({ data, columnTitle, columnId }) => {
+export const CardList = ({ column }) => {
   const { theme, isLoading } = useAuth();
 
-  // const sortedData = data.map((board) => ({
-  //   ...board,
-  //   columns: board.columns.map((column) => ({
-  //     ...column,
-  //     tasks: column.tasks.slice().sort(sortByCreatedAt),
-  //   })),
-  // }));
-
-  //storted by createdAt Потребує налаштування та перевірки з бекендом
-  const sortedData = data.slice().sort(sortByCreatedAt);
+  const sortedData = column.cards.slice().sort(sortByCreatedAt);
 
   return isLoading ? (
     <CardListSkelleton />
   ) : (
     <>
       {' '}
-      <Droppable droppableId={columnId}>
+      <Droppable droppableId={column._id}>
         {(provided) => (
           <ul
             ref={provided.innerRef}
@@ -36,14 +28,13 @@ export const CardList = ({ data, columnTitle, columnId }) => {
               [styles.cardListViolet]: theme === 'violet',
             })}
           >
-            {data &&
+            {sortedData &&
               sortedData.map((card, index) => (
                 <Card
-                  key={card._id + card.title}
+                  key={nanoid()}
                   card={card}
-                  columnTitle={columnTitle}
+                  column={column}
                   index={index}
-                  columnId={columnId}
                 />
               ))}
             {provided.placeholder}
