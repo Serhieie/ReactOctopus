@@ -10,18 +10,16 @@ import { useAuth } from '../../../hooks';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const onConfirmDelete = () => {
     switch (itemType) {
       case 'column':
-        dispatch(deleteColumn({ boardId: item._id, columnId: item.owner }));
+        dispatch(deleteColumn({ boardId: item.boardId, columnId: item._id }));
         break;
       case 'card':
         dispatch(
           deleteCard({
-            boardId: item.boardId,
-            columnId: item.columnId,
             cardId: item._id,
           })
         );

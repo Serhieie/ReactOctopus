@@ -157,8 +157,8 @@ export const tasksSlice = createSlice({
         (state.cards.isLoading = true), (state.cards.error = null);
       })
       .addCase(cardsOperations.deleteCard.fulfilled, (state, { payload }) => {
-        (state.cards.isLoading = false),
-          state.cards.items.filter(({ _id }) => _id !== payload);
+        (state.cards.isLoading = false), (state.cards.items = payload.items);
+        state.boards.active = payload.newActive;
       })
       .addCase(cardsOperations.deleteCard.rejected, (state, { payload }) => {
         (state.cards.isLoading = false), (state.cards.error = payload);

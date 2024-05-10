@@ -17,11 +17,13 @@ export const addCard = createAsyncThunk(
   'tasks/addCard',
   async (data, { rejectWithValue }) => {
     try {
+      console.log(data);
       const response = await tasksApi.addCard(
         data.boardId,
         data.columnId,
         data.body
       );
+
       return response.result;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -31,14 +33,27 @@ export const addCard = createAsyncThunk(
 
 export const deleteCard = createAsyncThunk(
   'tasks/deleteCard',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, getState }) => {
     try {
-      const response = await tasksApi.removeCard(
-        data.boardId,
-        data.columnId,
-        data.cardId
-      );
-      return response;
+      const {
+        tasks: {
+          boards: { active },
+          cards: { items },
+        },
+      } = getState();
+      const response = await tasksApi.removeCard(data.cardId);
+      const newItems = items.filter((card) => card._id !== response);
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          return {
+            ...column,
+            cards: column.cards.filter((card) => card._id !== response),
+          };
+        }),
+      };
+
+      return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }
