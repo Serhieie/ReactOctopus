@@ -1,7 +1,9 @@
 import css from './NewBoard.module.scss';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import ColumnForm from './ColumnForm/ColumnForm';
+
+import BoardForm from './ColumnForm/BoardForm';
+
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
@@ -51,7 +53,7 @@ const EditBoard = ({ name, open, item, func }) => {
         >
           {name}
         </p>
-        {!loading && <ColumnForm data={board} action="Edit" item={item} />}
+        {!loading && <BoardForm data={board} action="Edit" item={item} />}
       </BoardModal>
     </Backdrop>
   );
