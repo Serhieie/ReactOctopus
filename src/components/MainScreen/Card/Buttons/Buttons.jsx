@@ -20,6 +20,8 @@ export const Buttons = ({ card, column }) => {
   const tooday = isToday(card.deadline);
   const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
 
+  const columnsAmount = active.columns.length < 1;
+
   if (!active && isBoardLoading) <CardSkelleton />;
   //fetchById?
 
@@ -56,17 +58,19 @@ export const Buttons = ({ card, column }) => {
           </svg>
         </span>
       )}
-      <button className={styles.button} type="button" onClick={moveCard}>
-        <span className={styles.lightSpanBtn}></span>
-        <svg
-          className={styles.icon}
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-        >
-          <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
-        </svg>
-      </button>
+      {columnsAmount && (
+        <button className={styles.button} type="button" onClick={moveCard}>
+          <span className={styles.lightSpanBtn}></span>
+          <svg
+            className={styles.icon}
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+          >
+            <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
+          </svg>
+        </button>
+      )}
       <button className={styles.button} type="button" onClick={toggleEditCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg

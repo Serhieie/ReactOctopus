@@ -7,11 +7,11 @@ import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
 import { useDispatch } from 'react-redux';
-import {
-  editeBoardOperation,
-  addBoard,
-} from '../../../../redux/tasks/operations/boardsOperations';
 import { useAuth } from '../../../../hooks';
+import {
+  addBoard,
+  editeBoardOperation,
+} from '../../../../redux/tasks/boards/boardsOperations';
 
 const INITIAL_STATE = {
   title: '',

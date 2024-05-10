@@ -59,8 +59,10 @@ export const deleteBoard = createAsyncThunk(
         const newActiveId =
           response === items[0]._id ? items[1]._id : items[0]._id;
         const newActive = await tasksApi.getBoardById(newActiveId);
-
         return { newActive, items: newItems };
+      }
+      if (items.length < 0) {
+        return { newActive: null, items: [] };
       }
       return { newActive: active, items: newItems };
     } catch (error) {
