@@ -49,8 +49,13 @@ const BoardList = ({ theme }) => {
       ) : (
         <ul className={styles.board_list_sheet}>
           {items &&
-            sortedItems.map((item) => (
-              <BoardListItem key={item._id} board={item} theme={theme} />
+            sortedItems.map((item, index) => (
+              <BoardListItem
+                key={item._id}
+                board={item}
+                theme={theme}
+                activeItem={index === 0 ? 'active' : ''}
+              />
             ))}
         </ul>
       )}

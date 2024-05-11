@@ -155,7 +155,16 @@ function App() {
                 <HomePage state={state} />
               </PrivateRoute>
             }
-          />
+          >
+            <Route
+              path="/:boardName"
+              element={
+                <PrivateRoute redirectTo="/">
+                  <HomePage state={state} />
+                </PrivateRoute>
+              }
+            />
+          </Route>
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>
