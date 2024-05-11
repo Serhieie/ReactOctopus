@@ -8,14 +8,12 @@ import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 import { selectBoardsState } from '../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
-import useEscapeKeyToCloseModals from '../../hooks/closeByEscape.js';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
   let { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
-  useEscapeKeyToCloseModals();
 
   const addColumnFunc = () => {
     console.log('Add Column');

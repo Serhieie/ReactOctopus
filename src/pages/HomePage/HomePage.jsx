@@ -5,11 +5,16 @@ import { fetchBoardById } from '../../redux/tasks/boards/boardsOperations';
 import { selectBoardsState } from '../../redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
 import { useAuth } from '../../hooks';
+import useClickOnBackdropToCloseModals from '../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../hooks/closeByEscape';
 
 const HomePage = ({ state }) => {
   const dispatch = useDispatch();
   const { isLoading } = useAuth();
   const { items: boards, active } = useSelector(selectBoardsState);
+
+  useClickOnBackdropToCloseModals();
+  useEscapeKeyToCloseModals();
 
   useEffect(() => {
     if (boards.length > 0 && !isLoading) {

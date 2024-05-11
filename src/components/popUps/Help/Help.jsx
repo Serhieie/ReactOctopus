@@ -24,10 +24,6 @@ const HelpModal = () => {
     dispatch(setIsHelpPopUpOpen(false));
   };
 
-  const handleOpenModal = () => {
-    dispatch(setIsHelpPopUpOpen(true));
-  };
-
   const { isHelpPopUpOpen } = useIsPopUpOpen();
 
   const onSubmit = (data) => {
@@ -36,11 +32,8 @@ const HelpModal = () => {
 
   return (
     <>
-      <button className={styles.openButton} onClick={handleOpenModal}>
-        Open Help Modal
-      </button>
       {isHelpPopUpOpen && (
-        <div className={styles.modal}>
+        <div data-id="modal-backdrop" className={styles.modal}>
           <div
             className={clsx(styles.modalContent, {
               [styles.dark]: theme === 'Dark',

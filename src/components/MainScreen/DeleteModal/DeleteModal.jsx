@@ -35,6 +35,7 @@ export const DeleteModal = ({ open, itemType, item, func }) => {
   return (
     open && (
       <div
+        data-id="modal-backdrop"
         className={clsx(styles.modalOverlay, {
           [styles.modalOverlayDark]: theme === 'dark',
           [styles.modalOverlayLight]: theme === 'light',
