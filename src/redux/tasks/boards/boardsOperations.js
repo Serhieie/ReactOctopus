@@ -12,9 +12,12 @@ export const fetchBoards = createAsyncThunk(
       } = getState();
       const data = await tasksApi.getBoards();
       if (!active) {
-        await tasksApi.getBoardById(data.result[0]._id);
-      } else await tasksApi.getBoardById(active._id);
-      return data;
+        const newActive = await tasksApi.getBoardById(data.result[0]._id);
+        return { data, newActive };
+      } else {
+        const newActive = await tasksApi.getBoardById(active._id);
+        return { data, newActive };
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
