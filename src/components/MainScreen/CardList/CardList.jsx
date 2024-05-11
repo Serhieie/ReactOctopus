@@ -4,15 +4,16 @@ import { nanoid } from 'nanoid';
 import { Card } from '../Card/Card.jsx';
 import { Droppable } from 'react-beautiful-dnd';
 import { useAuth } from '../../../hooks/useAuth.js';
-import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
+import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useSelector } from 'react-redux';
 
 export const CardList = ({ column }) => {
-  const { theme, isLoading } = useAuth();
+  const { theme } = useAuth();
+  const { isLoading: isCardLoading } = useSelector(selectColumnsState);
+  // const sortedData = column.cards.slice().sort(sortByCreatedAt);
 
-  const sortedData = column.cards.slice().sort(sortByCreatedAt);
-
-  return isLoading ? (
+  return isCardLoading ? (
     <CardListSkelleton />
   ) : (
     <>
@@ -28,8 +29,8 @@ export const CardList = ({ column }) => {
               [styles.cardListViolet]: theme === 'violet',
             })}
           >
-            {sortedData &&
-              sortedData.map((card, index) => (
+            {column.cards &&
+              column.cards.map((card, index) => (
                 <Card
                   key={nanoid()}
                   card={card}

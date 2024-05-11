@@ -22,7 +22,7 @@ const BoardListItem = ({ theme, board }) => {
   };
 
   const handleChangeBoard = () => {
-    // dispatch(fetchBoardById(board._id));
+    dispatch(fetchBoardById(board._id));
   };
 
   return (

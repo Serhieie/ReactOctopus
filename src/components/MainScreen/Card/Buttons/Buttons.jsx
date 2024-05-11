@@ -10,7 +10,6 @@ import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
-import { CardSkelleton } from '../../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 
 export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
@@ -18,12 +17,9 @@ export const Buttons = ({ card, column }) => {
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
-  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  const { active } = useSelector(selectBoardsState);
 
-  const columnsAmount = active.columns.length < 1;
-
-  if (!active && isBoardLoading) <CardSkelleton />;
-  //fetchById?
+  const columnsAmount = active.columns.length > 1;
 
   const toggleEditCard = () => {
     setIsEditCardOpen((state) => !state);

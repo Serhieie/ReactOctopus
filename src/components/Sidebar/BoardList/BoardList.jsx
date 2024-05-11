@@ -14,7 +14,7 @@ const BoardList = ({ theme }) => {
     active,
     isLoading: boardsLoading,
   } = useSelector(selectBoardsState);
-  console.log(items);
+
   const { isLoading } = useAuth();
 
   //Це просто переставляє активний елемент на першу позицію
