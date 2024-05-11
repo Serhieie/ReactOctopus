@@ -6,7 +6,6 @@
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
-  
 }
 
 *,
@@ -80,4 +79,9 @@ select {
 
 [hidden] {
   display: none;
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root {
+  border: none;
+  outline: none; /* Remove outline */
 }

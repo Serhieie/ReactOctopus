@@ -1,0 +1,30 @@
+.filterModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  padding: 24px;
+  width: 335px;
+  height: 522px;
+}
+.filtersTitle {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.filterModalDark {
+  background-color: #151515;
+}
+
+.filterModalLight {
+  background-color: #fcfcfc;
+}
+
+.filterModalViolet {
+  background-color: #fcfcfc;
+}
