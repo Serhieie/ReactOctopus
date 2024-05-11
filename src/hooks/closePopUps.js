@@ -7,10 +7,10 @@ function useEscapeKeyToClosePopUps(func, isPopUpOpen) {
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.keyCode === 27) {
+        console.log(isPopUpOpen);
         if (isPopUpOpen) func();
       }
     }
-
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {

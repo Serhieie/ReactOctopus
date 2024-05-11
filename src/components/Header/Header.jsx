@@ -12,7 +12,7 @@ export const Header = () => {
   const { theme } = useAuth();
   const { isDesktop } = useMedia();
   const location = useLocation();
-  const endOfURL = location.pathname === '/home';
+  const endOfURL = location.pathname.includes('/home');
 
   //   const dispatch = useDispatch();
 

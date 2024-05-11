@@ -14,6 +14,8 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { fetchBoards } from './redux/tasks/boards/boardsOperations';
 import { selectTasksState } from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
+import { ExplainField } from './components/MainScreen/ExplainField/ExplainField';
+import { MainScreen } from './components/MainScreen/MainScreen';
 
 function App() {
   const { isLogin } = useAuth();
@@ -155,16 +157,16 @@ function App() {
                 <HomePage state={state} />
               </PrivateRoute>
             }
-          >
-            <Route
-              path="/:boardName"
-              element={
-                <PrivateRoute redirectTo="/">
-                  <HomePage state={state} />
-                </PrivateRoute>
-              }
-            />
-          </Route>
+          />
+          <Route
+            path="/home/:boardName"
+            element={
+              <PrivateRoute redirectTo="/">
+                <HomePage state={state} />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>

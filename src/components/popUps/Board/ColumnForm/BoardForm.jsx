@@ -80,13 +80,15 @@ const BoardForm = ({
           dispatch(addBoard({ ...columns }));
           console.log('Saved');
         } else {
-          console.log(item._id);
           if (item)
             dispatch(
-              editeBoardOperation(item._id, {
-                title: columns.title,
-                iconId: columns.iconId,
-                background: columns.background,
+              editeBoardOperation({
+                boardId: item._id,
+                body: {
+                  title: columns.title,
+                  iconId: columns.iconId,
+                  background: columns.background,
+                },
               })
             );
           console.log('Updated');

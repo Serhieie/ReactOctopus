@@ -20,7 +20,6 @@ const EditBoard = ({ name, open, item, func }) => {
     background: '',
   });
   const [loading, setLoading] = useState(true);
-
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
 
