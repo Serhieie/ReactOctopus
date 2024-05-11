@@ -40,7 +40,7 @@ const NeedHelp = ({ theme }) => {
         </svg>
         Need help?
       </button>
-      <HelpModal />
+      {/* <HelpModal /> */}
     </div>
   );
 };
