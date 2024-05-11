@@ -25,7 +25,7 @@ export const selectFilteredCards = createSelector(
     if (!filter) {
       return items;
     }
-    const filteredCards = items.filter(({ label }) => label === filter);
+    const filteredCards = items.filter(({ priority }) => priority === filter);
     return filteredCards;
   }
 );

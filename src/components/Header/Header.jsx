@@ -6,6 +6,7 @@ import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from '../../hooks/useAuth.js';
+import { CalendarNew } from '../MainScreen/Card/Calendar/CalendarNew.jsx';
 
 export const Header = () => {
   const { theme } = useAuth();
@@ -26,6 +27,7 @@ export const Header = () => {
           })}
         >
           {!isDesktop && <BurgerMenu />}
+          <CalendarNew />
           <ThemeSelector />
           <UserInfo />
         </header>

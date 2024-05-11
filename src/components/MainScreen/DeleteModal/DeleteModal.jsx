@@ -7,11 +7,16 @@ import { deleteColumn } from '../../../redux/tasks/columns/columnsOperations';
 import { deleteCard } from '../../../redux/tasks/cards/cardsOperations';
 import { deleteBoard } from '../../../redux/tasks/boards/boardsOperations';
 import { useAuth } from '../../../hooks';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();
-
   const dispatch = useDispatch();
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
+
   const onConfirmDelete = () => {
     switch (itemType) {
       case 'column':

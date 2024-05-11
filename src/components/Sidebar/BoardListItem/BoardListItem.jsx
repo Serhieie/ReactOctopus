@@ -13,16 +13,24 @@ const BoardListItem = ({ theme, board }) => {
   const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const toggleEditBoardModalOpen = () => {
-    setIsEditBoardModalOpen((state) => !state);
+  const openEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(true);
   };
 
-  const toggleDeleteBoardModalOpen = () => {
-    setIsDeleteBoardModalOpen((state) => !state);
+  const closeEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(false);
+  };
+
+  const closeDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(false);
+  };
+
+  const openDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(true);
   };
 
   const handleChangeBoard = () => {
-    dispatch(fetchBoardById(board._id));
+    // dispatch(fetchBoardById(board._id));
   };
 
   return (
@@ -39,7 +47,7 @@ const BoardListItem = ({ theme, board }) => {
         <div className={styles.sidebar_board_active}></div>
         <div className={styles.sidebar_boart_cont}>
           <button
-            onClick={toggleDeleteBoardModalOpen}
+            onClick={openDeleteBoardModalOpen}
             type="button"
             className={styles.sidebar_board_remove_btn}
           >
@@ -52,7 +60,7 @@ const BoardListItem = ({ theme, board }) => {
             </svg>
           </button>
           <button
-            onClick={toggleEditBoardModalOpen}
+            onClick={openEditBoardModalOpen}
             type="button"
             className={styles.sidebar_board_edit_btn}
           >
@@ -78,12 +86,12 @@ const BoardListItem = ({ theme, board }) => {
           name="Edit board"
           open={isEditBoardModalOpen}
           item={board}
-          func={toggleEditBoardModalOpen}
+          func={closeEditBoardModalOpen}
         />
       </ModalPortal>
       <ModalPortal>
         <DeleteModal
-          func={toggleDeleteBoardModalOpen}
+          func={closeDeleteBoardModalOpen}
           itemType="board"
           open={isDeleteBoardModalOpen}
           item={board}
