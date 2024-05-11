@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { useAuth } from '../../hooks';
 import useClickOnBackdropToCloseModals from '../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../hooks/closeByEscape';
+import Header from '../../components/Header/Header';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 const HomePage = ({ state }) => {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ const HomePage = ({ state }) => {
 
   return (
     <>
+      <Header />
+      <Sidebar />
       <MainScreen state={state} />
     </>
   );

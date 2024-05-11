@@ -13,27 +13,27 @@ const Sidebar = () => {
   const { theme } = useAuth();
   const isSidebarOpen = useSelector(selectIsSideBarOpen);
   const { isMobile, isTablet } = useMedia();
-  const location = useLocation();
-  const endOfURL = location.pathname === '/home';
+  // const location = useLocation();
+  // const endOfURL = location.pathname.includes('/home/');
 
   return (
     <>
-      {endOfURL && (
-        <div
-          className={clsx(styles.sidebar_container, {
-            [styles.sidebar_containerDark]: theme === 'dark',
-            [styles.sidebar_containerLight]: theme === 'light',
-            [styles.sidebar_containerViolet]: theme === 'violet',
-            [styles.sidebar_hidden]: isMobile || isTablet,
-            [styles.sidebar_open]: isSidebarOpen,
-          })}
-        >
-          <Logo theme={theme} />
-          <BoardList theme={theme} />
-          <NeedHelp theme={theme} />
-          <LogoutButton theme={theme} />
-        </div>
-      )}
+      {/* {endOfURL && ( */}
+      <div
+        className={clsx(styles.sidebar_container, {
+          [styles.sidebar_containerDark]: theme === 'dark',
+          [styles.sidebar_containerLight]: theme === 'light',
+          [styles.sidebar_containerViolet]: theme === 'violet',
+          [styles.sidebar_hidden]: isMobile || isTablet,
+          [styles.sidebar_open]: isSidebarOpen,
+        })}
+      >
+        <Logo theme={theme} />
+        <BoardList theme={theme} />
+        <NeedHelp theme={theme} />
+        <LogoutButton theme={theme} />
+      </div>
+      {/* )} */}
     </>
   );
 };

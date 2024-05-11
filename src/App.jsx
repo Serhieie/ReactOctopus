@@ -12,7 +12,10 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { fetchBoards } from './redux/tasks/boards/boardsOperations';
-import { selectTasksState } from './redux/tasks/tasksSelectors';
+import {
+  selectBoardsState,
+  selectTasksState,
+} from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -124,6 +127,10 @@ function App() {
     setState(newState);
   };
 
+  const { items } = useSelector(selectBoardsState);
+
+  const endPoint = items.length > 0 ? `/home/${items[0].title}` : '/home';
+
   return (
     <DragDropContext
       // onDragStart={}
@@ -135,7 +142,7 @@ function App() {
           <Route
             index
             element={
-              <RestrictedRoute redirectTo="/home">
+              <RestrictedRoute redirectTo={endPoint}>
                 <WelcomePage />
               </RestrictedRoute>
             }
@@ -143,26 +150,25 @@ function App() {
           <Route
             path="/auth/:id"
             element={
-              <RestrictedRoute redirectTo="/home">
+              <RestrictedRoute redirectTo={endPoint}>
                 <AuthPage />
               </RestrictedRoute>
             }
           />
-          <Route
+          {/* <Route
             path="/home"
             element={
               <PrivateRoute redirectTo="/">
-                <HomePage state={state} />
+                <Route path="/:boardName">
+                  <HomePage state={state} />
+                </Route>
               </PrivateRoute>
             }
-          >
+          /> */}
+          <Route element={<PrivateRoute />}>
             <Route
-              path="/:boardName"
-              element={
-                <PrivateRoute redirectTo="/">
-                  <HomePage state={state} />
-                </PrivateRoute>
-              }
+              path="/home/:boardName"
+              element={<HomePage state={state} />}
             />
           </Route>
           <Route path="/*" element={<NotFoundPage />} />

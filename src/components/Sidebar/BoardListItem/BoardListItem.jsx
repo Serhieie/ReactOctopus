@@ -29,11 +29,11 @@ const BoardListItem = ({ theme, board, activeItem }) => {
   };
 
   const handleChangeBoard = () => {
-    // dispatch(fetchBoardById(board._id));
+    dispatch(fetchBoardById(board._id));
   };
 
   return (
-    <NavLink to={`/${board.title}`}>
+    <NavLink to={`/home/${board.title}`}>
       <li
         onClick={handleChangeBoard}
         className={clsx(styles.sidebar_board_item, {
