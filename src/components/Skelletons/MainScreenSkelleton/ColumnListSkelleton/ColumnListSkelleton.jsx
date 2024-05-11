@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { ColumnSkelleton } from '../ColumnSkelleton/ColumnSkelleton.jsx';
 import styles from './ColumnListSkelleton.module.scss';
 import { useAuth } from '../../../../hooks/useAuth.js';
+import { nanoid } from 'nanoid';
 
 export const ColumnListSkelleton = ({ data }) => {
   const { theme } = useAuth();
@@ -16,7 +17,7 @@ export const ColumnListSkelleton = ({ data }) => {
     >
       {data &&
         data.columns.map((column) => (
-          <ColumnSkelleton key={column._id} column={column} />
+          <ColumnSkelleton key={nanoid()} column={column} />
         ))}
     </ul>
   );

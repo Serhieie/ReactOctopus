@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import { needHelpOperation } from '../../../redux/auth/authOperations';
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const HelpModal = () => {
   const theme = 'Violet';
@@ -24,11 +26,10 @@ const HelpModal = () => {
     dispatch(setIsHelpPopUpOpen(false));
   };
 
-  const handleOpenModal = () => {
-    dispatch(setIsHelpPopUpOpen(true));
-  };
-
   const { isHelpPopUpOpen } = useIsPopUpOpen();
+
+  useClickOnBackdropToCloseModals();
+  useEscapeKeyToCloseModals();
 
   const onSubmit = (data) => {
     dispatch(needHelpOperation(data));
@@ -36,11 +37,8 @@ const HelpModal = () => {
 
   return (
     <>
-      <button className={styles.openButton} onClick={handleOpenModal}>
-        Open Help Modal
-      </button>
       {isHelpPopUpOpen && (
-        <div className={styles.modal}>
+        <div data-id="modal-backdrop" className={styles.modal}>
           <div
             className={clsx(styles.modalContent, {
               [styles.dark]: theme === 'Dark',

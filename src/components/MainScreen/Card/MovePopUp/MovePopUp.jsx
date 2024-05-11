@@ -3,29 +3,30 @@ import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useDispatch } from 'react-redux';
-import { moveCardOperation } from '../../../../redux/tasks/operations/cardsOperations';
+import { moveCardOperation } from '../../../../redux/tasks/cards/cardsOperations';
+import useEscapeKeyToClosePopUps from '../../../../hooks/closePopUps';
 
 export const MovePopUp = ({
   isMoveCardPopUpOpen,
   currentBoard,
-  moveCard,
+  func,
   columnTitle,
   card,
 }) => {
   const { theme } = useAuth();
   const dispatch = useDispatch();
 
+  useEscapeKeyToClosePopUps(func, isMoveCardPopUpOpen);
+
   const handleChangeColumn = async (event) => {
-    const board = event.target.textContent;
     const destinationColumnId = event.target.id;
     dispatch(moveCardOperation({ card, destinationColumnId }));
-
-    console.log(`You will move your card to ${board} column`);
-    moveCard();
+    func(false);
   };
 
   return (
     <div
+      data-id="move-popUp"
       className={clsx(styles.modalOverlay, {
         [styles.modalOverlayDark]: theme === 'dark',
         [styles.modalOverlayLight]: theme === 'light',

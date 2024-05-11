@@ -10,7 +10,7 @@
   justify-content: space-between;
   padding-left: 16px;
 
-  .sidebar_boart_cont {
+  .sidebar_board_cont {
     display: flex;
     justify-content: baseline;
     align-items: center;
@@ -74,7 +74,7 @@
   }
 }
 
-.sidebar_board_itemDark:hover {
+.board_activeItemDark {
   background-color: rgb(23, 23, 23);
 
   .sidebar_board_item_ico {
@@ -91,7 +91,7 @@
 
   .sidebar_board_edit_ico,
   .sidebar_board_remove_ico {
-    display: inline-block;
+    display: block;
   }
 }
 
@@ -117,7 +117,7 @@
   }
 }
 
-.sidebar_board_itemLight:hover {
+.board_activeItemLight {
   background-color: rgb(251, 251, 252);
 
   .sidebar_board_item_ico {
@@ -130,6 +130,11 @@
 
   .sidebar_board_active {
     background-color: #bedbb0;
+  }
+
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    display: block;
   }
 }
 
@@ -157,7 +162,7 @@
   }
 }
 
-.sidebar_board_itemViolet:hover {
+.board_activeItemViolet {
   background-color: rgb(117, 119, 201);
 
   .sidebar_board_item_ico,
@@ -175,5 +180,9 @@
 
   .sidebar_board_active {
     background-color: #fff;
+  }
+  .sidebar_board_edit_ico,
+  .sidebar_board_remove_ico {
+    display: block;
   }
 }

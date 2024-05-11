@@ -22,7 +22,8 @@
     overflow: auto;
     direction: rtl;
     width: 100%;
-    height: calc(100dvh - 615px);
+    min-height: 61px;
+    height: calc(100dvh - 635px);
     gap: 4px;
     display: flex;
     flex-direction: column;

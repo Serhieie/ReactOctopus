@@ -10,7 +10,6 @@ import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
-import { CardSkelleton } from '../../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 
 export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
@@ -18,23 +17,32 @@ export const Buttons = ({ card, column }) => {
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
-  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  const { active } = useSelector(selectBoardsState);
 
-  if (!active && isBoardLoading) <CardSkelleton />;
-  //fetchById?
+  const columnsAmount = active.columns.length > 1;
 
-  const toggleEditCard = () => {
-    setIsEditCardOpen((state) => !state);
+  const openEditCard = () => {
+    setIsEditCardOpen(true);
+  };
+  const closeEditCard = () => {
+    setIsEditCardOpen(false);
   };
 
-  const toggleDeleteCard = () => {
-    setIsDeleteCardOpen((state) => !state);
+  const openDeleteCard = () => {
+    setIsDeleteCardOpen(true);
   };
 
-  const moveCard = () => {
-    setIsMoveCardPopUpOpen((state) => !state);
+  const closeDeleteCard = () => {
+    setIsDeleteCardOpen(false);
   };
 
+  const moveCardClose = () => {
+    setIsMoveCardPopUpOpen(false);
+  };
+
+  const moveCardOpen = () => {
+    setIsMoveCardPopUpOpen(true);
+  };
   return (
     <div
       className={clsx(styles.buttons, {
@@ -56,18 +64,20 @@ export const Buttons = ({ card, column }) => {
           </svg>
         </span>
       )}
-      <button className={styles.button} type="button" onClick={moveCard}>
-        <span className={styles.lightSpanBtn}></span>
-        <svg
-          className={styles.icon}
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-        >
-          <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
-        </svg>
-      </button>
-      <button className={styles.button} type="button" onClick={toggleEditCard}>
+      {columnsAmount && (
+        <button className={styles.button} type="button" onClick={moveCardOpen}>
+          <span className={styles.lightSpanBtn}></span>
+          <svg
+            className={styles.icon}
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+          >
+            <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
+          </svg>
+        </button>
+      )}
+      <button className={styles.button} type="button" onClick={openEditCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -78,11 +88,7 @@ export const Buttons = ({ card, column }) => {
           <use xlinkHref={`${sprite}#icon-pencil`} />
         </svg>
       </button>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={toggleDeleteCard}
-      >
+      <button className={styles.button} type="button" onClick={openDeleteCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -96,19 +102,23 @@ export const Buttons = ({ card, column }) => {
       <MovePopUp
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
         currentBoard={active}
-        moveCard={moveCard}
+        false={moveCardClose}
         columnTitle={column.title}
         card={card}
       />
       <ModalPortal>
         {isEditCardOpen && (
-          <AddEditCardForm cardData={card} columnId={column._id} />
+          <AddEditCardForm
+            cardData={card}
+            columnId={column._id}
+            func={closeEditCard}
+          />
         )}
         <DeleteModal
           open={isDeleteCardOpen}
           itemType="card"
           item={card}
-          func={toggleDeleteCard}
+          func={closeDeleteCard}
         />
       </ModalPortal>
     </div>

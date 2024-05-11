@@ -10,18 +10,16 @@ import { selectBoardsState } from '../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 
 export const MainScreen = () => {
-  const { theme } = useAuth();
-  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  const { theme, isLoading } = useAuth();
+  let { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
-
-  if (!active && isBoardLoading) return;
 
   const addColumnFunc = () => {
     console.log('Add Column');
   };
 
-  return isBoardLoading ? (
+  return (isBoardLoading && active) || isLoading ? (
     <MainScreenSkelleton />
   ) : (
     <div className={styles.wrapper}>

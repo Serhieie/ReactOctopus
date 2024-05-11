@@ -8,16 +8,19 @@ import { ColumnSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnSkel
 import { useState } from 'react';
 import ModalPortal from '../../popUps/ModalPortal.jsx';
 import AddEditCardForm from '../../popUps/cardModal/AddEditCardForm.jsx';
+import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useSelector } from 'react-redux';
 
 export const Column = ({ column }) => {
-  const { theme, isLoading } = useAuth();
+  const { theme } = useAuth();
+  const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
 
   // (cardData = initialValues), (columnId = null);
   const toggleAddCardModal = () => {
     setIsAddCardModalOpen((state) => !state);
   };
-  return isLoading ? (
+  return isColumnLoading ? (
     <ColumnSkelleton />
   ) : (
     <>

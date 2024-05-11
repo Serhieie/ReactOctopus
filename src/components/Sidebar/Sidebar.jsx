@@ -6,13 +6,15 @@ import clsx from 'clsx';
 import LogoutButton from './LogoutButton/LogoutButton';
 import styles from './Sidebar.module.scss';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectIsSideBarOpen } from '../../redux/popUps/popUpsSelectors';
 
 const Sidebar = () => {
   const { theme } = useAuth();
-  const isSidebarOpen = false;
+  const isSidebarOpen = useSelector(selectIsSideBarOpen);
   const { isMobile, isTablet } = useMedia();
   const location = useLocation();
-  const endOfURL = location.pathname === '/home';
+  const endOfURL = location.pathname.includes('/home');
 
   return (
     <>

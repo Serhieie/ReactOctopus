@@ -7,6 +7,7 @@
   max-width: 212px;
   padding: 20px;
   margin: 0 24px;
+  height: 238px;
 
   .img {
     margin-bottom: 14px;
@@ -45,6 +46,7 @@
   }
 
   @include media-rules(tablet) {
+    height: 272px;
   }
 
   @include media-rules(desktop) {

@@ -4,12 +4,16 @@ import { useDispatch } from 'react-redux';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import {
-  editeCard,
+  editCardOperation,
   addCard,
-} from '../../../redux/tasks/operations/cardsOperations';
+} from '../../../redux/tasks/cards/cardsOperations';
 import s from './addEditCardForm.module.scss';
 import ModalButton from '../ModalButton/ModalButton';
+
 import InputForm from '../Board/InputForm/InputForm';
+
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 import DatePickerCustom from './DatePickerCustom';
 const initialValues = {
@@ -25,6 +29,7 @@ const AddEditCardForm = ({
 }) => {
   const theme = 'dark';
   const [filter, setFilter] = useState('');
+
   const [card, setCard] = useState({ ...cardData });
   const dispatch = useDispatch();
   const {
@@ -35,7 +40,8 @@ const AddEditCardForm = ({
     defaultValues: card,
   });
 
-  console.log(card);
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -48,7 +54,7 @@ const AddEditCardForm = ({
   const onSubmit = () => {
     if (columnId === null) {
       dispatch(
-        editeCard({
+        editCardOperation({
           cardId: card._id,
           body: { ...card },
         })

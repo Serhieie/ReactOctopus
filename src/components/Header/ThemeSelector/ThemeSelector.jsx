@@ -1,16 +1,24 @@
 import styles from './ThemeSelector.module.scss';
-import { useState } from 'react';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { PopUp } from './PopUp/PopUp';
 import { useAuth } from '../../../hooks';
+import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
+import { useDispatch } from 'react-redux';
+import { setIsChangeThemePopUpOpen } from '../../../redux/popUps/popUpsSlice';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 export const ThemeSelector = () => {
-  const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const { isChangeThemePopUpOpen } = useIsPopUpOpen();
+  const dispatch = useDispatch();
   const { theme } = useAuth();
 
+  useEscapeKeyToCloseModals();
+
   const toggleOpenTheme = async () => {
-    setIsThemeOpen((state) => !state);
+    isChangeThemePopUpOpen
+      ? dispatch(setIsChangeThemePopUpOpen(false))
+      : dispatch(setIsChangeThemePopUpOpen(true));
   };
 
   return (
@@ -25,7 +33,7 @@ export const ThemeSelector = () => {
         Theme{' '}
         <svg
           className={clsx(styles.arrowIcon, {
-            [styles.rotate]: isThemeOpen,
+            [styles.rotate]: isChangeThemePopUpOpen,
           })}
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -34,7 +42,7 @@ export const ThemeSelector = () => {
           <use xlinkHref={`${sprite}#icon-chevron-down`} />
         </svg>
       </span>
-      <PopUp isThemeOpen={isThemeOpen} />
+      <PopUp isThemeOpen={isChangeThemePopUpOpen} />
     </div>
   );
 };

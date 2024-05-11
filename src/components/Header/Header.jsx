@@ -6,12 +6,13 @@ import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from '../../hooks/useAuth.js';
+import { CalendarNew } from '../MainScreen/Card/Calendar/CalendarNew.jsx';
 
 export const Header = () => {
   const { theme } = useAuth();
   const { isDesktop } = useMedia();
   const location = useLocation();
-  const endOfURL = location.pathname === '/home';
+  const endOfURL = location.pathname.includes('/home');
 
   //   const dispatch = useDispatch();
 
@@ -26,6 +27,7 @@ export const Header = () => {
           })}
         >
           {!isDesktop && <BurgerMenu />}
+          <CalendarNew />
           <ThemeSelector />
           <UserInfo />
         </header>

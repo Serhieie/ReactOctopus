@@ -7,10 +7,10 @@ import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 
 export const ColumnList = ({ data }) => {
-  const { theme, isLoading } = useAuth();
+  const { theme } = useAuth();
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
 
-  return isLoading || isColumnLoading ? (
+  return isColumnLoading ? (
     <ColumnListSkelleton />
   ) : (
     <>

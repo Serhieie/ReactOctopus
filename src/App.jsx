@@ -11,12 +11,17 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
-import data from './components/MainScreen/boards.json';
-import { fetchBoards } from './redux/tasks/operations/boardsOperations';
+import { fetchBoards } from './redux/tasks/boards/boardsOperations';
+import { selectTasksState } from './redux/tasks/tasksSelectors';
+import { useSelector } from 'react-redux';
+import { ExplainField } from './components/MainScreen/ExplainField/ExplainField';
+import { MainScreen } from './components/MainScreen/MainScreen';
 
 function App() {
   const { isLogin } = useAuth();
-  const [state, setState] = useState(data[0]);
+  const reduxState = useSelector(selectTasksState);
+  const [state, setState] = useState(reduxState);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -53,31 +58,32 @@ function App() {
       return;
     }
 
-    const column = state.columns.find(
+    const column = state.columns.items.find(
       (column) => column._id === source.droppableId
     );
 
-    const start = state.columns.find(
+    const start = state.columns.items.find(
       (column) => column._id === source.droppableId
     );
-    const finish = state.columns.find(
+    const finish = state.columns.items.find(
       (column) => column._id === destination.droppableId
     );
 
     if (start === finish) {
-      const newCards = Array.from(column.cards);
+      const newCards = Array.from(state.cards.items);
       newCards.splice(source.index, 1);
-      const dragCard = state.columns
-        .flatMap((column) => column.cards)
-        .find((card) => card._id === draggableId);
+      const dragCard = state.cards.items.find(
+        (card) => card._id === draggableId
+      );
       newCards.splice(destination.index, 0, dragCard);
       const newColumn = { ...column, cards: newCards };
+
       console.log('COLUMN', column);
       console.log('NEW COLUMN', newColumn);
 
       const newState = {
         ...state,
-        [state.columns]: state.columns.map((col) =>
+        [state.columns]: state.columns.items.map((col) =>
           col._id === newColumn._id ? newColumn : col
         ),
       };
@@ -152,6 +158,15 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/home/:boardName"
+            element={
+              <PrivateRoute redirectTo="/">
+                <HomePage state={state} />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>

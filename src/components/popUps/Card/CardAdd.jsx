@@ -4,8 +4,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import moment from 'moment';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { ButtonClose } from '';
-import { Calendar } from '';
 import sprite from './icon-plus.svg';
 import { addCard } from '../../../redux/api/tasks-api';
 import styles from './Card.module.scss';
@@ -85,7 +83,7 @@ export const AddCardForm = ({ columnId = 1 }) => {
   return (
     isAddCardPopUpOpen && (
       <div className={styles.cardForm}>
-        <ButtonClose onClose={onClose} />
+        {/* <ButtonClose onClose={onClose} /> */}
         <h1 className={styles.titleForm}>Add card</h1>
         <Formik
           initialValues={initialValues}
@@ -157,7 +155,7 @@ export const AddCardForm = ({ columnId = 1 }) => {
               <p className={styles.titleDeadline}>Deadline</p>
               <div className={styles.calendarShow}>
                 <div>{displayDeadline(deadline)}</div>
-                <Calendar parentState={setDateValue} />
+                {/* <Calendar parentState={setDateValue} /> */}
               </div>
               <button type="submit" className={styles.submitButton}>
                 <svg className={styles.iconPlus} aria-label="add">

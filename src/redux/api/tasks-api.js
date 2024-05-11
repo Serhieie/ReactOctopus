@@ -12,7 +12,7 @@ export const getBoardById = async (id) => {
 
 export const addBoard = async (body) => {
   const { data } = await instance.post('/boards/post', body);
-  return data;
+  return data.result;
 };
 
 export const removeBoard = async (id) => {
@@ -40,7 +40,7 @@ export const removeColumn = async (columnId) => {
   return data;
 };
 
-export const editeColumn = async (columnId, body) => {
+export const editColumn = async (columnId, body) => {
   const { data } = await instance.patch(`/columns/patch/${columnId}`, body);
   return data;
 };
@@ -60,7 +60,7 @@ export const removeCard = async (cardId) => {
   return data;
 };
 
-export const editeCard = async (cardId, body) => {
+export const editCard = async (cardId, body) => {
   const { data } = await instance.patch(`/cards/patch/${cardId}`, body);
   return data;
 };

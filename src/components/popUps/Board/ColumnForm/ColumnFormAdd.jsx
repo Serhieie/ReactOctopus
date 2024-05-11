@@ -5,7 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
 import { useDispatch } from 'react-redux';
-import { addBoard, editeBoard } from '../../../../redux/api/tasks-api';
+import {
+  addBoard,
+  editeBoardOperation,
+} from '../../../../redux/tasks/boards/boardsOperations';
 
 const INITIAL_STATE = {
   title: '',
@@ -41,10 +44,13 @@ const ColumnFormAdd = ({
         } else {
           if (item)
             dispatch(
-              editeBoard(item._id, {
-                title: columns.title,
-                iconId: columns.iconId,
-                background: columns.background,
+              editeBoardOperation({
+                boardId: item._id,
+                body: {
+                  title: columns.title,
+                  iconId: columns.iconId,
+                  background: columns.background,
+                },
               })
             );
           console.log('Updated');
