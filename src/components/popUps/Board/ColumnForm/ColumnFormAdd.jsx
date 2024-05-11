@@ -44,10 +44,13 @@ const ColumnFormAdd = ({
         } else {
           if (item)
             dispatch(
-              editeBoardOperation(item._id, {
-                title: columns.title,
-                iconId: columns.iconId,
-                background: columns.background,
+              editeBoardOperation({
+                boardId: item._id,
+                body: {
+                  title: columns.title,
+                  iconId: columns.iconId,
+                  background: columns.background,
+                },
               })
             );
           console.log('Updated');

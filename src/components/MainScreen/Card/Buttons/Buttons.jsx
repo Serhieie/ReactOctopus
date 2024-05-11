@@ -39,6 +39,7 @@ export const Buttons = ({ card, column }) => {
   const moveCardClose = () => {
     setIsMoveCardPopUpOpen(false);
   };
+
   const moveCardOpen = () => {
     setIsMoveCardPopUpOpen(true);
   };

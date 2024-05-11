@@ -6,6 +6,10 @@ import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import BoardListSkelleton from './BoardListSkelleton/BoardListSkelleton';
 import { useAuth } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 // import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
@@ -14,8 +18,20 @@ const BoardList = ({ theme }) => {
     active,
     isLoading: boardsLoading,
   } = useSelector(selectBoardsState);
-
   const { isLoading } = useAuth();
+  const dispatch = useDispatch();
+  const { boardName } = useParams();
+
+  useEffect(() => {
+    if (
+      active &&
+      boardName &&
+      boardName !== '/home' &&
+      boardName !== active._id
+    ) {
+      dispatch(fetchBoardById(boardName));
+    }
+  }, [boardName, active, dispatch]);
 
   //Це просто переставляє активний елемент на першу позицію
   const sortedItems = items && [...items];

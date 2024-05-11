@@ -6,7 +6,7 @@ import {
 } from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
-function useEscapeKeyToCloseModals(func, isPopUpOpen) {
+function useEscapeKeyToCloseModals(func) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function useEscapeKeyToCloseModals(func, isPopUpOpen) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch, func, isPopUpOpen]);
+  }, [dispatch, func]);
 
   return null;
 }

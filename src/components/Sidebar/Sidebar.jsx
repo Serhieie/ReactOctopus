@@ -14,7 +14,7 @@ const Sidebar = () => {
   const isSidebarOpen = useSelector(selectIsSideBarOpen);
   const { isMobile, isTablet } = useMedia();
   const location = useLocation();
-  const endOfURL = location.pathname === '/home';
+  const endOfURL = location.pathname.includes('/home');
 
   return (
     <>

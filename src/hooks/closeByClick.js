@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setIsHelpPopUpOpen } from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
-function useClickOnBackdropToCloseModals(func, isPopUpOpen) {
+function useClickOnBackdropToCloseModals(func) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,15 +15,12 @@ function useClickOnBackdropToCloseModals(func, isPopUpOpen) {
           dispatch(setIsHelpPopUpOpen(false));
         }
       }
-      if (event.target.dataset.id !== 'move-popUp' && isPopUpOpen) {
-        func();
-      }
     }
     document.addEventListener('click', handleClick);
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [dispatch, func, isPopUpOpen]);
+  }, [dispatch, func]);
 
   return null;
 }

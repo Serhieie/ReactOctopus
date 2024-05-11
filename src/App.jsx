@@ -12,12 +12,19 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { fetchBoards } from './redux/tasks/boards/boardsOperations';
-import { selectTasksState } from './redux/tasks/tasksSelectors';
+import {
+  selectBoardsState,
+  selectTasksState,
+} from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
+import { ExplainField } from './components/MainScreen/ExplainField/ExplainField';
+import { MainScreen } from './components/MainScreen/MainScreen';
+import { getBoardById } from './redux/api/tasks-api';
 
 function App() {
   const { isLogin } = useAuth();
   const reduxState = useSelector(selectTasksState);
+  const { items, active } = useSelector(selectBoardsState);
   const [state, setState] = useState(reduxState);
 
   const dispatch = useDispatch();
@@ -26,6 +33,11 @@ function App() {
     dispatch(current());
     dispatch(fetchBoards());
   }, [dispatch, isLogin]);
+
+  // useEffect(() => {
+  //   if (!active && items) dispatch(getBoardById(items[0]._id));
+  //   else dispatch(getBoardById(active._id));
+  // }, []);
 
   // example
   // const result = {
@@ -155,16 +167,16 @@ function App() {
                 <HomePage state={state} />
               </PrivateRoute>
             }
-          >
-            <Route
-              path="/:boardName"
-              element={
-                <PrivateRoute redirectTo="/">
-                  <HomePage state={state} />
-                </PrivateRoute>
-              }
-            />
-          </Route>
+          />
+          <Route
+            path="/home/:boardName"
+            element={
+              <PrivateRoute redirectTo="/">
+                <HomePage state={state} />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>
