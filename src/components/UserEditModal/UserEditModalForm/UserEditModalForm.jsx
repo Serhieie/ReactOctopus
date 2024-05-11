@@ -7,8 +7,13 @@ import styles from './UserEditModalForm.module.scss';
 import schema from '../../../schemas/validationRegistrSchemas';
 import { updateUser } from '../../../redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '../../../hooks';
+import clsx from 'clsx';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import { setUserPlaceholder } from '../../../helpers/setUserPlaceholder';
 
-const UserEditModalForm = ({ userData }) => {
+const UserEditModalForm = ({ userData, func }) => {
   const {
     register,
     handleSubmit,
@@ -21,11 +26,17 @@ const UserEditModalForm = ({ userData }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(userInitState);
 
+  const { avatarURL } = useAuth();
+  const theme = 'dark';
+
   const dispatch = useDispatch();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   const handleFormData = (e) => {
     const { name, value } = e.target;
@@ -66,8 +77,9 @@ const UserEditModalForm = ({ userData }) => {
     >
       <div className={styles.inputContainerImg}>
         <img
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAYAAAA4E5OyAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAM5SURBVHgB7ZzbdaMwEIYFvj5uCXSwKWG3gqSU7WCdDjadZCvYLYEOQgl58v2S+TmZE0XBgEAjW1jfORybYGP0eSSkkaNEGWRZ9uN4PN4nSfKAXTVM8tPplKdp+lgQ+oGEn5CIbyTiN4n4pW4IEvPnXcwr9kshkEEH/tHTO3Wb5BQIPyElxR4iQ92uDHD37kAlFB0ZRceLiihEScpmImVNeUjJyi1XlU+Qi3u0IVHIB1mqIp+IQgyiEIMoxCAKMYhCDKIQgyjEIAoxiEIMohCDKMRgrC7E4XAoNxpylxug0aaidF75OJlMykffeBey3+/VbrdDLvPLMfwNkvh1o9FITadTr2K8VRkUdrPZqO12WymjCshZrValQF94iRCWwVXDFhaCaiSNlwhBgbrK0M+BaiSNuBCEvauCnGt7XCIuxGX9hwzpKBEVwrdVl0CIZJSIC3ENZAQrxHV0MJLVJkghksSxjIGokEuMRfoSpBAMAKUQFSJ14cEKGY/dD5U4RSCFeIRgCO8S6QGe+F0G+QxXIDokok5HXAgK4UIKzjOfz5U0Xvoh+Fb7hDrL8HEb95ZC5Bwput02PVi0Q7PZzFufxmtOFZGCRhYpAQz86gZpnGiWbjNMvH0aCo/IaDMChgyI4/dI3mZNRIVwFp03m/fxiJYTTIgUiJGOGJGz41tFgZqqhQ26IESP1LyNUyEovHQymKMHG6S47qg5E1I3ASUFy0c/x1WPuHdr1WUCyiX8+a6S2b2E8MVI5E5tgZD1et37S+ksBB+MC7imNCGupa+UTkJYxiWqSBN9r81ayDXLYPpco5UQbjOuWQaDa0RDb4uVEBeT1j7pMq/cWgh3hkLDtjvQSoiPSWZJbKpOKyGhVRUTm6rTKCT06GDa9mQbhfj8fZck+g/66kibTjKE6GDalKVWSMjtRhVt8jMQUpw7OKToYBrKlOP/dv9WHWlb50KjLurJRY4Iea46GEL3vAsN1eYxLYriP5l5qnrjUDnzs/InrCXCjeqCtlx/wdAaVJ2KsmFxlQWelEKwbgZWRqiKlCGiC0Fk8Noh2P+Sx8fyGfSwWC6X3+nFg1wXgOZ2Cpoexc3kGU2GfuwNm5glb1rp5toAAAAASUVORK5CYII="
           className={styles.img}
+          src={avatarURL || setUserPlaceholder(theme)}
+          alt="user avatar"
         />
         <input
           className={styles.loadInput}
@@ -82,7 +94,11 @@ const UserEditModalForm = ({ userData }) => {
       </div>
       <div className={styles.inputContainer}>
         <input
-          className={styles.input}
+          className={clsx(styles.boardModal, {
+            [styles.inputDark]: theme === 'dark',
+            [styles.inputLight]: theme === 'light',
+            [styles.inputViolet]: theme === 'violet',
+          })}
           {...register('name', { required: false })}
           type="text"
           placeholder="Enter you name"
@@ -95,7 +111,11 @@ const UserEditModalForm = ({ userData }) => {
 
       <div className={styles.inputContainer}>
         <input
-          className={styles.input}
+          className={clsx(styles.boardModal, {
+            [styles.inputDark]: theme === 'dark',
+            [styles.inputLight]: theme === 'light',
+            [styles.inputViolet]: theme === 'violet',
+          })}
           {...register('email', { required: false })}
           type="email"
           placeholder="Enter you email"
@@ -108,7 +128,11 @@ const UserEditModalForm = ({ userData }) => {
 
       <div className={styles.inputContainer}>
         <input
-          className={styles.input}
+          className={clsx(styles.boardModal, {
+            [styles.inputDark]: theme === 'dark',
+            [styles.inputLight]: theme === 'light',
+            [styles.inputViolet]: theme === 'violet',
+          })}
           {...register('password', { required: false })}
           value={formData.password}
           onChange={handleFormData}
@@ -126,19 +150,34 @@ const UserEditModalForm = ({ userData }) => {
         <div className={styles.iconContainer}>
           {showPassword ? (
             <RiEyeLine
-              className={styles.icon}
+              className={clsx(styles.boardModal, {
+                [styles.iconDark]: theme === 'dark',
+                [styles.iconLight]: theme === 'light',
+                [styles.iconViolet]: theme === 'violet',
+              })}
               onClick={togglePasswordVisibility}
             />
           ) : (
             <RiEyeCloseLine
-              className={styles.icon}
+              className={clsx(styles.boardModal, {
+                [styles.iconDark]: theme === 'dark',
+                [styles.iconLight]: theme === 'light',
+                [styles.iconViolet]: theme === 'violet',
+              })}
               onClick={togglePasswordVisibility}
             />
           )}
         </div>
       </div>
 
-      <button className={styles.button} type="submit">
+      <button
+        className={clsx(styles.boardModal, {
+          [styles.buttonDark]: theme === 'dark',
+          [styles.buttonLight]: theme === 'light',
+          [styles.buttonViolet]: theme === 'violet',
+        })}
+        type="submit"
+      >
         Send
       </button>
     </form>
