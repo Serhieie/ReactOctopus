@@ -7,7 +7,6 @@ import { useAuth } from '../../../../hooks/useAuth.js';
 
 export const ColumnSkelleton = ({ column }) => {
   const { theme } = useAuth();
-
   return (
     <li
       className={clsx(styles.column, {

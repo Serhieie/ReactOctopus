@@ -6,8 +6,13 @@ import validationFormHelp from '../../../schemas/validationFormHelp';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
 import { needHelpOperation } from '../../../redux/auth/authOperations';
+import LogoSprite from '../../../assets/sprite.svg';
+import clsx from 'clsx';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const HelpModal = () => {
+  const theme = 'Violet';
   const {
     register,
     handleSubmit,
@@ -23,6 +28,9 @@ const HelpModal = () => {
 
   const { isHelpPopUpOpen } = useIsPopUpOpen();
 
+  useClickOnBackdropToCloseModals();
+  useEscapeKeyToCloseModals();
+
   const onSubmit = (data) => {
     dispatch(needHelpOperation(data));
   };
@@ -30,14 +38,33 @@ const HelpModal = () => {
   return (
     <>
       {isHelpPopUpOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <button
-              className={styles.closeButton}
-              onClick={handleCloseModal}
-            ></button>
+        <div data-id="modal-backdrop" className={styles.modal}>
+          <div
+            className={clsx(styles.modalContent, {
+              [styles.dark]: theme === 'Dark',
+              [styles.light]: theme === 'Light',
+              [styles.violet]: theme === 'Violet',
+            })}
+          >
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              <svg className={styles.iconBtn} width="18px" height="18px">
+                <use
+                  xlinkHref={`${LogoSprite}#icon-x-close`}
+                  className={clsx(styles.closeIcon, {
+                    [styles.lightCloseButton]: theme === 'Light',
+                    [styles.violetCloseButton]: theme === 'Violet',
+                  })}
+                />
+              </svg>
+            </button>
             <div className={styles.titleContainer}>
-              <h1 className={styles.mainTitle}>Need help</h1>
+              <h1
+                className={clsx(styles.mainTitle, {
+                  [styles.titleDark]: theme === 'Dark',
+                })}
+              >
+                Need help
+              </h1>
             </div>
             <form
               className={styles.form}
@@ -50,7 +77,9 @@ const HelpModal = () => {
                 <input
                   type="email"
                   name="email"
-                  className={styles.forEmail}
+                  className={clsx(styles.forEmail, {
+                    [styles.darkInput]: theme === 'Dark',
+                  })}
                   {...register('email', { required: true })}
                   placeholder="Email address"
                 />
@@ -62,7 +91,9 @@ const HelpModal = () => {
                 <textarea
                   type="text"
                   name="message"
-                  className={styles.forComment}
+                  className={clsx(styles.forComment, {
+                    [styles.darkInp]: theme === 'Dark',
+                  })}
                   {...register('comment', { required: true })}
                   placeholder="Comment"
                 />
@@ -70,8 +101,19 @@ const HelpModal = () => {
                   <p className={styles.error}>{errors.comment.message}</p>
                 )}
               </div>
-              <button className={styles.button} type="submit">
-                Send
+              <button
+                className={clsx(styles.button, {
+                  [styles.addButtonViolet]: theme === 'Violet',
+                })}
+                type="submit"
+              >
+                <span
+                  className={clsx(styles.span, {
+                    [styles.addTextButton]: theme === 'Violet',
+                  })}
+                >
+                  Add
+                </span>
               </button>
             </form>
           </div>

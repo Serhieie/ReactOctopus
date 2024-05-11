@@ -12,7 +12,7 @@
 
   padding: 24px;
   width: 335px;
-  min-height: 433px;
+  max-height: 433px;
   @include media-rules(tablet) {
     width: 350px;
   }

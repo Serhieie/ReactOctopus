@@ -3,11 +3,14 @@ import { Column } from '../Column/Column.jsx';
 import styles from './ColumnList.module.scss';
 import { useAuth } from '../../../hooks/useAuth.js';
 import { ColumnListSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnListSkelleton/ColumnListSkelleton.jsx';
+import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useSelector } from 'react-redux';
 
 export const ColumnList = ({ data }) => {
-  const { theme, isLoading } = useAuth();
+  const { theme } = useAuth();
+  const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
 
-  return isLoading ? (
+  return isColumnLoading ? (
     <ColumnListSkelleton />
   ) : (
     <>

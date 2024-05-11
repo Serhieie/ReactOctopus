@@ -2,7 +2,15 @@
 @import '/src/styles/mixins';
 @import '/src/styles/colors';
 
+// modal width
+$mobile-width: 335px;
+$tablet-width: 400px;
 
+
+// input and button
+$mobile-input-button: 287px;
+$tablet-input-button: 352px;
+$tablet-textarea-height: 352px;
 
 .modal {
     position: fixed;
@@ -15,19 +23,23 @@
     overflow-y: auto;
     transition: opacity 0.3s;
     z-index: 999;
+    user-select: none;
 }
 
 .modalContent {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 335px;
+    width: $mobile-width;
     min-height: 335px;
     padding: 24px;
     transform: translate(-50%, -50%);
     background: $modal-background-dark;
     box-sizing: border-box;
     border-radius: 10px;
+    @include media-rules(tablet) {
+        width: $tablet-width;
+    }
 }
 
 .titleContainer {
@@ -36,7 +48,7 @@
 
 .mainTitle{
     font-size: 18px;
-    color: $text-dark;
+    color: $text-light;
     font-weight: 500;
 }
 
@@ -49,14 +61,21 @@
 }
 
 .forEmail {
-    width: 287px;
+    width: $mobile-input-button;
     border: 1px solid $button-light;
     border-radius: 8px;
     height: 49px;
-    color: $text-dark;
-    background-color: $modal-background-dark;
+    color: #161616;
+    background-color: $text-dark;
     opacity: .4;
     padding: 0 18px;
+    @include media-rules(tablet){
+        width: $tablet-input-button;
+    }
+}
+
+.forEmail:focus {
+    outline: 1px solid #BEDBB0;
 }
 
 .comment {
@@ -69,12 +88,19 @@
     padding: 18px;
     border: 1px solid $button-light;
     border-radius: 8px;
-    color: $text-dark;
-    background-color: $modal-background-dark;
+    color: #161616;
+    background-color: $text-dark;
     opacity: .4;
     margin-top: 14px; 
     overflow: hidden;
-    resize: none;   
+    resize: none;  
+    @include media-rules(tablet) {
+        width: $tablet-input-button;
+    }
+}
+
+.forComment:focus {
+    outline: 1px solid #BEDBB0;
 }
 
 
@@ -86,37 +112,31 @@
     height: 49px;
     background: $button-light;
     color: $text-light;
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 14px;
     cursor: pointer;
     transition: background .3s ease;
+    @include media-rules(tablet) {
+        width: $tablet-input-button;
+    }
 }
 
 .button:hover {
     background: $button-hover-dark;
 }
 
+
+.closeIcon {
+    width: 18px;
+    height: 18px;
+    stroke: rgb(255, 255, 255);
+}
+
 .closeButton {
-    background-image: url('./x-close.svg');
     position: absolute;
     top: 18px;
     right: 18px;
-    background: none;
-    border: none;
     cursor: pointer;
-    color: $text-dark;
-    width: 18px;
-    height: 18px
-}
-
-.closeButton:focus {
-    outline: none;
-}
-
-.closeButton::before {
-    content: '\00D7';
-    font-size: 18px;
-    color: $text-dark;
 }
 
 .error {
@@ -124,7 +144,63 @@
     font-family: Poppins;
     font-weight: 400;
     font-size: 14px;
+    opacity: 0.6;
+}
 
+// THEME
+.dark {
+    background: #151515;
+}
+
+.light {
+    background-color: $background-light;
+}
+
+.violet {
+    background-color: $background-light;
+}
+
+.titleDark {
+    color: $text-dark
 }
 
 
+.lightCloseButton {
+    stroke: rgb(0, 0, 0);
+}
+
+.violetCloseButton {
+    stroke: rgb(0, 0, 0);
+}
+
+.darkInput {
+    background-color: #151515;
+    color: #FFFFFF;
+}
+
+.darkInp {
+    background-color: #151515;
+    color: #FFFFFF;
+}
+
+.addButtonViolet {
+    background-color: $button-violet;
+}
+
+.addButtonViolet:hover {
+    background-color: $button-hover-violet;
+}
+
+.addTextButton {
+    color: $text-dark;
+}
+
+.blackBoxViolet {
+    background-color: $background-light;
+}
+
+.plusIconViolet {
+    stroke: $button-violet;
+}
+
+// THEME

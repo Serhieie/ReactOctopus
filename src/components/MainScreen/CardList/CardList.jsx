@@ -1,31 +1,24 @@
 import styles from './CardList.module.scss';
 import clsx from 'clsx';
+import { nanoid } from 'nanoid';
 import { Card } from '../Card/Card.jsx';
 import { Droppable } from 'react-beautiful-dnd';
 import { useAuth } from '../../../hooks/useAuth.js';
-import { sortByCreatedAt } from '../../../helpers/sortByCreatedAt.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
+import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useSelector } from 'react-redux';
 
-export const CardList = ({ data, columnTitle, columnId }) => {
-  const { theme, isLoading } = useAuth();
+export const CardList = ({ column }) => {
+  const { theme } = useAuth();
+  const { isLoading: isCardLoading } = useSelector(selectColumnsState);
+  // const sortedData = column.cards.slice().sort(sortByCreatedAt);
 
-  // const sortedData = data.map((board) => ({
-  //   ...board,
-  //   columns: board.columns.map((column) => ({
-  //     ...column,
-  //     tasks: column.tasks.slice().sort(sortByCreatedAt),
-  //   })),
-  // }));
-
-  //storted by createdAt Потребує налаштування та перевірки з бекендом
-  const sortedData = data.slice().sort(sortByCreatedAt);
-
-  return isLoading ? (
+  return isCardLoading ? (
     <CardListSkelleton />
   ) : (
     <>
       {' '}
-      <Droppable droppableId={columnId}>
+      <Droppable droppableId={column._id}>
         {(provided) => (
           <ul
             ref={provided.innerRef}
@@ -36,14 +29,13 @@ export const CardList = ({ data, columnTitle, columnId }) => {
               [styles.cardListViolet]: theme === 'violet',
             })}
           >
-            {data &&
-              sortedData.map((card, index) => (
+            {column.cards &&
+              column.cards.map((card, index) => (
                 <Card
-                  key={card._id + card.title}
+                  key={nanoid()}
                   card={card}
-                  columnTitle={columnTitle}
+                  column={column}
                   index={index}
-                  columnId={columnId}
                 />
               ))}
             {provided.placeholder}

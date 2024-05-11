@@ -1,11 +1,15 @@
 import css from './NewBoard.module.scss';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import ColumnForm from './ColumnForm/ColumnForm';
+
+import BoardForm from './ColumnForm/BoardForm';
+
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
 import { useAuth } from '../../../hooks';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const EditBoard = ({ name, open, item, func }) => {
   const { theme } = useAuth();
@@ -16,6 +20,9 @@ const EditBoard = ({ name, open, item, func }) => {
     background: '',
   });
   const [loading, setLoading] = useState(true);
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +58,7 @@ const EditBoard = ({ name, open, item, func }) => {
         >
           {name}
         </p>
-        {!loading && <ColumnForm data={board} action="Edit" item={item} />}
+        {!loading && <BoardForm data={board} action="Edit" item={item} />}
       </BoardModal>
     </Backdrop>
   );

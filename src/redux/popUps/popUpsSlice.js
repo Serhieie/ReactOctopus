@@ -15,34 +15,6 @@ export const popUpsSlice = createSlice({
       const isOpen = action.payload;
       handlers.setChangeThemePopUpState(state, isOpen);
     },
-    // setIsDeletePopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isDeletePopUpOpen', isOpen);
-    // },
-    // setIsAddBoardPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isAddBoardPopUpOpen', isOpen);
-    // },
-    // setIsEditBoardPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isEditBoardPopUpOpen', isOpen);
-    // },
-    // setIsAddColumnPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isAddColumnPopUpOpen', isOpen);
-    // },
-    // setIsEditColumnPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isEditColumnPopUpOpen', isOpen);
-    // },
-    // setIsAddCardPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isAddCardPopUpOpen', isOpen);
-    // },
-    // setIsEditCardPopUpOpen(state, action) {
-    //   const isOpen = action.payload;
-    //   handlers.setPopUpState(state, 'isEditCardPopUpOpen', isOpen);
-    // },
     setIsMoveCardPopUpOpen(state, action) {
       const isOpen = action.payload;
       handlers.setPopUpState(state, 'isMoveCardPopUpOpen', isOpen);
@@ -68,13 +40,6 @@ export const persistedPopUpsReducer = persistReducer(
 export const {
   setIsSideBarOpen,
   setIsChangeThemePopUpOpen,
-  //   setIsDeletePopUpOpen,
-  //   setIsAddBoardPopUpOpen,
-  //   setIsEditBoardPopUpOpen,
-  //   setIsAddColumnPopUpOpen,
-  //   setIsEditColumnPopUpOpen,
-  //   setIsAddCardPopUpOpen,
-  //   setIsEditCardPopUpOpen,
   setIsMoveCardPopUpOpen,
   setIsHelpPopUpOpen,
 } = popUpsSlice.actions;

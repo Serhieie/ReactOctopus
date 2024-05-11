@@ -1,13 +1,18 @@
 import css from './NewBoard.module.scss';
 import clsx from 'clsx';
-import ColumnForm from './ColumnForm/ColumnForm';
+import BoardForm from './ColumnForm/BoardForm';
 import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
 import { useAuth } from '../../../hooks';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const NewBoard = ({ name, open, func }) => {
   const { theme } = useAuth();
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
   return (
     <Backdrop show={open}>
       <BoardModal>
@@ -21,7 +26,7 @@ const NewBoard = ({ name, open, func }) => {
         >
           {name}
         </p>
-        <ColumnForm action="Create" />
+        <BoardForm action="Create" />
       </BoardModal>
     </Backdrop>
   );

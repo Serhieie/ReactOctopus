@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import {
-  editeCard,
+  editCardOperation,
   addCard,
-} from '../../../redux/tasks/operations/cardsOperations';
+} from '../../../redux/tasks/cards/cardsOperations';
 import s from './addEditCardForm.module.scss';
 import ModalButton from '../ModalButton/ModalButton';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const initialValues = {
   title: '',
@@ -14,7 +16,11 @@ const initialValues = {
   priority: '',
 };
 
-const AddEditCardForm = ({ cardData = initialValues, columnId = null }) => {
+const AddEditCardForm = ({
+  cardData = initialValues,
+  columnId = null,
+  func,
+}) => {
   const [card, setCard] = useState({ ...cardData });
   const dispatch = useDispatch();
   const {
@@ -25,7 +31,8 @@ const AddEditCardForm = ({ cardData = initialValues, columnId = null }) => {
     defaultValues: card,
   });
 
-  console.log(card);
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -38,7 +45,7 @@ const AddEditCardForm = ({ cardData = initialValues, columnId = null }) => {
   const onSubmit = () => {
     if (columnId === null) {
       dispatch(
-        editeCard({
+        editCardOperation({
           cardId: card._id,
           body: { ...card },
         })

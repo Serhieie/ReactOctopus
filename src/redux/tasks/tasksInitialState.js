@@ -1,5 +1,6 @@
 export const initialState = {
   boards: {
+    active: null,
     items: [],
     isLoading: false,
     error: null,

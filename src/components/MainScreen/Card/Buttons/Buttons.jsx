@@ -5,33 +5,43 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { isToday } from '../../../../helpers/isToday';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
-import data from '../../boards.json';
 import ModalPortal from '../../../popUps/ModalPortal';
 import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
+import { useSelector } from 'react-redux';
+import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
 
-export const Buttons = ({ card, columnTitle, columnId }) => {
+export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
   const tooday = isToday(card.deadline);
-  //fetchById?
-  const currentBoard = data[0];
+  const { active } = useSelector(selectBoardsState);
 
-  const toggleEditCard = () => {
-    setIsEditCardOpen((state) => !state);
+  const columnsAmount = active.columns.length > 1;
+
+  const openEditCard = () => {
+    setIsEditCardOpen(true);
+  };
+  const closeEditCard = () => {
+    setIsEditCardOpen(false);
   };
 
-  const toggleDeleteCard = () => {
-    setIsDeleteCardOpen((state) => !state);
+  const openDeleteCard = () => {
+    setIsDeleteCardOpen(true);
   };
 
-  const moveCard = () => {
-    console.log('Move Card');
-    setIsMoveCardPopUpOpen((state) => !state);
+  const closeDeleteCard = () => {
+    setIsDeleteCardOpen(false);
   };
 
+  const moveCardClose = () => {
+    setIsMoveCardPopUpOpen(false);
+  };
+  const moveCardOpen = () => {
+    setIsMoveCardPopUpOpen(true);
+  };
   return (
     <div
       className={clsx(styles.buttons, {
@@ -53,18 +63,20 @@ export const Buttons = ({ card, columnTitle, columnId }) => {
           </svg>
         </span>
       )}
-      <button className={styles.button} type="button" onClick={moveCard}>
-        <span className={styles.lightSpanBtn}></span>
-        <svg
-          className={styles.icon}
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-        >
-          <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
-        </svg>
-      </button>
-      <button className={styles.button} type="button" onClick={toggleEditCard}>
+      {columnsAmount && (
+        <button className={styles.button} type="button" onClick={moveCardOpen}>
+          <span className={styles.lightSpanBtn}></span>
+          <svg
+            className={styles.icon}
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+          >
+            <use xlinkHref={`${sprite}#icon-arrow-circle-right`} />
+          </svg>
+        </button>
+      )}
+      <button className={styles.button} type="button" onClick={openEditCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -75,11 +87,7 @@ export const Buttons = ({ card, columnTitle, columnId }) => {
           <use xlinkHref={`${sprite}#icon-pencil`} />
         </svg>
       </button>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={toggleDeleteCard}
-      >
+      <button className={styles.button} type="button" onClick={openDeleteCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -92,19 +100,24 @@ export const Buttons = ({ card, columnTitle, columnId }) => {
       </button>
       <MovePopUp
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
-        currentBoard={currentBoard}
-        moveCard={moveCard}
-        columnTitle={columnTitle}
+        currentBoard={active}
+        false={moveCardClose}
+        columnTitle={column.title}
+        card={card}
       />
       <ModalPortal>
         {isEditCardOpen && (
-          <AddEditCardForm cardData={card} columnId={columnId} />
+          <AddEditCardForm
+            cardData={card}
+            columnId={column._id}
+            func={closeEditCard}
+          />
         )}
         <DeleteModal
           open={isDeleteCardOpen}
           itemType="card"
           item={card}
-          func={toggleDeleteCard}
+          func={closeDeleteCard}
         />
       </ModalPortal>
     </div>

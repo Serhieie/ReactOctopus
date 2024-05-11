@@ -52,7 +52,8 @@
 }
 
 .addCardButtonDark {
-  background-color: $button-dark;
+  opacity: 1;
+  background-color: #85997b;
 
   .iconAddColumn {
     stroke: $text-dark;
@@ -80,8 +81,8 @@
 }
 
 .addCardButtonLight {
-  background-color: $button-light;
-
+  background-color: #92a987;
+  opacity: 1;
   .iconAddColumn {
     stroke: $text-dark;
   }
@@ -110,7 +111,8 @@
 }
 
 .addCardButtonViolet {
-  background-color: $button-violet;
+  opacity: 1;
+  background-color: #7b7ede;
 
   .iconAddColumn {
     stroke: $text-light;

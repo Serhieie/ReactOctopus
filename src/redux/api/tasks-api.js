@@ -5,9 +5,14 @@ export const getBoards = async () => {
   return data;
 };
 
+export const getBoardById = async (id) => {
+  const { data } = await instance.get(`/boards/${id}`);
+  return data;
+};
+
 export const addBoard = async (body) => {
   const { data } = await instance.post('/boards/post', body);
-  return data;
+  return data.result;
 };
 
 export const removeBoard = async (id) => {
@@ -21,22 +26,22 @@ export const editeBoard = async (boardId, body) => {
 };
 
 export const getColumns = async (boardId) => {
-  const { data } = instance.get(`/columns/${boardId}`);
+  const { data } = await instance.get(`/columns/${boardId}`);
   return data;
 };
 
 export const addColumn = async (body) => {
-  const { data } = instance.post(`/columns/post`, body);
+  const { data } = await instance.post(`/columns/post`, body);
   return data;
 };
 
 export const removeColumn = async (columnId) => {
-  const { data } = instance.delete(`/columns/delete/${columnId}`);
+  const { data } = await instance.delete(`/columns/delete/${columnId}`);
   return data;
 };
 
-export const editeColumn = async (columnId, body) => {
-  const { data } = instance.patch(`/columns/patch/${columnId}`, body);
+export const editColumn = async (columnId, body) => {
+  const { data } = await instance.patch(`/columns/patch/${columnId}`, body);
   return data;
 };
 
@@ -55,7 +60,12 @@ export const removeCard = async (cardId) => {
   return data;
 };
 
-export const editeCard = async (cardId, body) => {
+export const editCard = async (cardId, body) => {
   const { data } = await instance.patch(`/cards/patch/${cardId}`, body);
+  return data;
+};
+
+export const moveCard = async (cardId, body) => {
+  const { data } = await instance.patch(`/cards/move/${cardId}`, body);
   return data;
 };
