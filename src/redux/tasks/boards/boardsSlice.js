@@ -31,11 +31,8 @@ export const boardsSlice = createSlice({
           (state.boards.isLoading = false),
             (state.columns.isLoading = false),
             (state.boards.active = payload);
-          state.columns.items = payload.columns;
-          state.cards.items = [];
-          payload.columns.forEach((column) => {
-            state.cards.items.unshift(...column.cards);
-          });
+          state.columns.items = [...payload.columns];
+          state.cards.items = [...payload.columns.cards];
         }
       )
       .addCase(

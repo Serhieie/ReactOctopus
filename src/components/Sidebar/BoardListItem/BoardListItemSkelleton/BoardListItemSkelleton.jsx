@@ -2,8 +2,9 @@ import clsx from 'clsx';
 import styles from './BoardListItemSkelleton.module.scss';
 import { useAuth } from '../../../../hooks';
 
-const BoardListItemSkelleton = () => {
+const BoardListItemSkelleton = ({ item }) => {
   const { theme } = useAuth();
+  if (!item) return;
   return (
     <div
       className={clsx(styles.sidebar_board_item, {

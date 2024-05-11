@@ -243,7 +243,6 @@ export const tasksSlice = createSlice({
 const persistConfig = {
   key: 'tasks',
   storage,
-  whitelist: ['boards'],
 };
 
 export const persistedTasksReducer = persistReducer(

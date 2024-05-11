@@ -18,7 +18,7 @@ const BoardListSkelleton = () => {
       })}
     >
       {items.map((item) => (
-        <BoardListItemSkelleton key={nanoid(item)} />
+        <BoardListItemSkelleton key={nanoid()} item={item} />
       ))}
     </ul>
   );
