@@ -16,16 +16,20 @@ const BoardListItem = ({ theme, board, activeItem }) => {
   const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  // const { active } = useSelector(selectBoardsState);
-
-  console.log(activeItem);
-
-  const toggleEditBoardModalOpen = () => {
-    setIsEditBoardModalOpen((state) => !state);
+  const openEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(true);
   };
 
-  const toggleDeleteBoardModalOpen = () => {
-    setIsDeleteBoardModalOpen((state) => !state);
+  const closeEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(false);
+  };
+
+  const closeDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(false);
+  };
+
+  const openDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(true);
   };
 
   const handleChangeBoard = () => {

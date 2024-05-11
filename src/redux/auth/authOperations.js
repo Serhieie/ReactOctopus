@@ -53,6 +53,7 @@ export const current = createAsyncThunk(
     try {
       const { auth } = getState();
       const response = await checkTokenRequest(auth.token);
+
       return response.data;
     } catch (error) {
       console.error(error.message);

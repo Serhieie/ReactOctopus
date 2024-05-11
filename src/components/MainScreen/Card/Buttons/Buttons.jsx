@@ -21,18 +21,27 @@ export const Buttons = ({ card, column }) => {
 
   const columnsAmount = active.columns.length > 1;
 
-  const toggleEditCard = () => {
-    setIsEditCardOpen((state) => !state);
+  const openEditCard = () => {
+    setIsEditCardOpen(true);
+  };
+  const closeEditCard = () => {
+    setIsEditCardOpen(false);
   };
 
-  const toggleDeleteCard = () => {
-    setIsDeleteCardOpen((state) => !state);
+  const openDeleteCard = () => {
+    setIsDeleteCardOpen(true);
   };
 
-  const moveCard = () => {
-    setIsMoveCardPopUpOpen((state) => !state);
+  const closeDeleteCard = () => {
+    setIsDeleteCardOpen(false);
   };
 
+  const moveCardClose = () => {
+    setIsMoveCardPopUpOpen(false);
+  };
+  const moveCardOpen = () => {
+    setIsMoveCardPopUpOpen(true);
+  };
   return (
     <div
       className={clsx(styles.buttons, {
@@ -55,7 +64,7 @@ export const Buttons = ({ card, column }) => {
         </span>
       )}
       {columnsAmount && (
-        <button className={styles.button} type="button" onClick={moveCard}>
+        <button className={styles.button} type="button" onClick={moveCardOpen}>
           <span className={styles.lightSpanBtn}></span>
           <svg
             className={styles.icon}
@@ -67,7 +76,7 @@ export const Buttons = ({ card, column }) => {
           </svg>
         </button>
       )}
-      <button className={styles.button} type="button" onClick={toggleEditCard}>
+      <button className={styles.button} type="button" onClick={openEditCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -78,11 +87,7 @@ export const Buttons = ({ card, column }) => {
           <use xlinkHref={`${sprite}#icon-pencil`} />
         </svg>
       </button>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={toggleDeleteCard}
-      >
+      <button className={styles.button} type="button" onClick={openDeleteCard}>
         <span className={styles.lightSpanBtn}></span>
         <svg
           className={styles.icon}
@@ -96,19 +101,23 @@ export const Buttons = ({ card, column }) => {
       <MovePopUp
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
         currentBoard={active}
-        moveCard={moveCard}
+        false={moveCardClose}
         columnTitle={column.title}
         card={card}
       />
       <ModalPortal>
         {isEditCardOpen && (
-          <AddEditCardForm cardData={card} columnId={column._id} />
+          <AddEditCardForm
+            cardData={card}
+            columnId={column._id}
+            func={closeEditCard}
+          />
         )}
         <DeleteModal
           open={isDeleteCardOpen}
           itemType="card"
           item={card}
-          func={toggleDeleteCard}
+          func={closeDeleteCard}
         />
       </ModalPortal>
     </div>

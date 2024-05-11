@@ -3,9 +3,17 @@ import * as tasksApi from '../../api/tasks-api';
 
 export const fetchBoards = createAsyncThunk(
   'boards/fetcBoards',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      const {
+        tasks: {
+          boards: { active },
+        },
+      } = getState();
       const data = await tasksApi.getBoards();
+      if (!active) {
+        await tasksApi.getBoardById(data.result[0]._id);
+      } else await tasksApi.getBoardById(active._id);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
