@@ -2,15 +2,15 @@ import css from './UserEditModal.module.scss';
 import clsx from 'clsx';
 
 import CloseModalButton from '../popUps/Board/CloseModalButton/CloseModalButton';
-import { Backdrop } from '@mui/material';
 import BoardModal from '../popUps/Modal/BoardModal/BoardModal';
 import { useAuth } from '../../hooks';
 import UserEditModalForm from './UserEditModalForm/UserEditModalForm';
+import Backdrop from '../popUps/Backdrop/Backdrop';
 
 const UserEditModal = ({ name, open, func }) => {
   const { theme, user } = useAuth();
   return (
-    <Backdrop open={open}>
+    <Backdrop show={open}>
       <BoardModal>
         <CloseModalButton onClick={func} />
         <p
@@ -22,7 +22,7 @@ const UserEditModal = ({ name, open, func }) => {
         >
           {name}
         </p>
-        <UserEditModalForm userData={user} />
+        <UserEditModalForm userData={user} func={func} />
       </BoardModal>
     </Backdrop>
   );

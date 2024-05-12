@@ -89,20 +89,15 @@ export const editeBoardOperation = createAsyncThunk(
   'boards/editeBoard',
   async (data, { rejectWithValue, getState }) => {
     try {
-      const {
-        tasks: {
-          boards: { active },
-        },
-      } = getState();
+      const { active, items } = getState().tasks.boards;
       const response = await tasksApi.editeBoard(data.boardId, data.body);
-      const newActive = {
-        ...active,
-        title: response.title,
-        iconId: response.iconId,
-        background: response.background,
-      };
 
-      return { newActive, response };
+      const newActive = { ...active, ...response };
+      const newItems = items.map((board) =>
+        board._id === response._id ? { ...board, ...response } : board
+      );
+
+      return { newActive, newItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }

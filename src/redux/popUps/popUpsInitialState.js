@@ -10,4 +10,5 @@ export const initialState = {
   isEditCardPopUpOpen: false,
   isMoveCardPopUpOpen: false,
   isHelpPopUpOpen: false,
+  setUserModalClose: false,
 };
