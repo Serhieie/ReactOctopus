@@ -20,18 +20,26 @@ const Sidebar = () => {
     <>
       {endOfURL && (
         <div
-          className={clsx(styles.sidebar_container, {
-            [styles.sidebar_containerDark]: theme === 'dark',
-            [styles.sidebar_containerLight]: theme === 'light',
-            [styles.sidebar_containerViolet]: theme === 'violet',
-            [styles.sidebar_hidden]: isMobile || isTablet,
-            [styles.sidebar_open]: isSidebarOpen,
+          data-id="modal-backdrop"
+          className={clsx({
+            [styles.sidebar_backdrop]:
+              (isMobile && isSidebarOpen) || (isTablet && isSidebarOpen),
           })}
         >
-          <Logo />
-          <BoardList />
-          <NeedHelp />
-          <LogoutButton />
+          <div
+            className={clsx(styles.sidebar_container, {
+              [styles.sidebar_containerDark]: theme === 'dark',
+              [styles.sidebar_containerLight]: theme === 'light',
+              [styles.sidebar_containerViolet]: theme === 'violet',
+              [styles.sidebar_hidden]: isMobile || isTablet,
+              [styles.sidebar_open]: isSidebarOpen,
+            })}
+          >
+            <Logo />
+            <BoardList />
+            <NeedHelp />
+            <LogoutButton />
+          </div>
         </div>
       )}
     </>
