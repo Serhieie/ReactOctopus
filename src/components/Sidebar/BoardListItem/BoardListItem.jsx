@@ -27,6 +27,16 @@ const BoardListItem = ({ theme, board, activeItem }) => {
     setIsDeleteBoardModalOpen(true);
   };
 
+  function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+      const truncatedText = '...' + text.substring(0, maxLength - 3);
+      return truncatedText;
+    }
+    return text;
+  }
+
+  const boardName = truncateText(board.title, 13);
+
   let endPoint;
   if (board) endPoint = board._id ? `${board._id}` : '';
 
@@ -80,7 +90,10 @@ const BoardListItem = ({ theme, board, activeItem }) => {
           </div>
 
           <div className={styles.sidebar_board_cont}>
-            <p className={styles.sidebar_board_title}>{board.title}</p>
+            <p className={styles.sidebar_board_title} title={board.title}>
+              {boardName}
+            </p>
+
             <svg
               className={styles.sidebar_board_item_ico}
               width="18"

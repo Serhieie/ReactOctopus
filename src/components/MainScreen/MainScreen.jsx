@@ -8,31 +8,36 @@ import { useMedia } from '../../hooks/useMedia.js';
 import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 import { selectBoardsState } from '../../redux/tasks/tasksSelectors.js';
-
 import { useSelector } from 'react-redux';
 import { FilterModal } from '../popUps/Filters/FilterModal.jsx';
 import { useIsPopUpOpen } from '../../hooks/useIsPopUpOpen.js';
 import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
+import ModalPortal from '../popUps/ModalPortal.jsx';
+import MdlColumn from '../popUps/Column/Column.jsx';
+import { useState } from 'react';
+
+  
+
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
-  let {
+    const {
     active,
     items,
     isLoading: isBoardLoading,
   } = useSelector(selectBoardsState);
-  const { isFiltersModalOpen } = useIsPopUpOpen();
   const dispatch = useDispatch();
-
-  // active = [];
-  // items = [];
-
+  const { isFiltersModalOpen } = useIsPopUpOpen();
+  const [isAddCardOpen, setAddCardOpen] = useState(false);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
 
-  const addColumnFunc = () => {
-    console.log('Add Column');
+  const openAddColumnModal = () => {
+    setAddCardOpen(true);
+  };
+  const closeAddColumnModal = () => {
+    setAddCardOpen(false);
   };
 
   const openFilters = () => {
@@ -81,8 +86,15 @@ export const MainScreen = () => {
             </div>
             <div className={styles.mainContent}>
               <ColumnList data={active ? active : items[0]} />
-              <AddButton column={true} addFunction={addColumnFunc} />
+              <AddButton column={true} addFunction={openAddColumnModal} />
             </div>
+            <ModalPortal>
+              <MdlColumn
+                open={isAddCardOpen}
+                onOpen={openAddColumnModal}
+                onClose={closeAddColumnModal}
+              />
+            </ModalPortal>
           </>
         ) : (
           <ExplainField />
