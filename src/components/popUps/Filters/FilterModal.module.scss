@@ -1,3 +1,7 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
 .filterModal {
   position: absolute;
   top: 20%;
@@ -7,26 +11,51 @@
   padding: 24px;
   width: 300px;
   height: 234px;
+  z-index: 999;
 }
 .filtersTitle {
   font-weight: 500;
   font-size: 18px;
   letter-spacing: -0.02em;
-  color: #fff;
   margin-bottom: 24px;
   position: relative;
 }
 
 .filterModalDark {
-  background-color: #151515;
+  background-color: $sidebar-background-dark;
+  color: $text-dark;
+
+  .filtersTitle {
+    color: $text-dark;
+  }
+
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+  }
 }
 
 .filterModalLight {
-  background-color: #fcfcfc;
+  background-color: $sidebar-background-light;
+  color: $text-light;
+
+  .filtersTitle {
+    color: $text-light;
+  }
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+  }
 }
 
 .filterModalViolet {
-  background-color: #fcfcfc;
+  background-color: $sidebar-background-light;
+  color: $text-violet;
+  .filtersTitle {
+    color: $text-violet;
+  }
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+  }
 }
 
 .filtersTitle::after {

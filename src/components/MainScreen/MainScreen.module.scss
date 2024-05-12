@@ -21,6 +21,10 @@
     margin-left: auto;
     padding-left: 24px;
   }
+
+  .iconFilter {
+    fill: transparent;
+  }
 }
 
 .mainScreenSidebarOpen {
@@ -49,6 +53,8 @@
   font-size: 14px;
   font-weight: 500px;
   user-select: none;
+  padding: 2px 8px;
+  border-radius: 4px;
 
   @include media-rules(tablet) {
     font-size: 18px;
@@ -69,8 +75,14 @@
 }
 
 .filters {
+  padding: 2px 8px;
+  border-radius: 4px;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(5px);
 }
 
 //DARK
@@ -80,6 +92,7 @@
 
   .filters {
     color: $text-secondary-dark;
+    background-color: $background-dark;
   }
 
   .mainContent {
@@ -99,6 +112,14 @@
       border-radius: 12px;
     }
   }
+
+  .boardTitle {
+    background-color: $background-dark;
+  }
+
+  .iconFilter {
+    stroke: $text-secondary-dark;
+  }
 }
 
 //LIGHT
@@ -108,6 +129,7 @@
 
   .filters {
     color: $text-secondary-light;
+    background-color: $background-light;
   }
 
   .mainContent {
@@ -126,14 +148,24 @@
       border-radius: 12px;
     }
   }
+
+  .boardTitle {
+    background-color: $background-light;
+  }
+
+  .iconFilter {
+    stroke: $text-secondary-light;
+  }
 }
 
 //Violet
 .mainScreenViolet {
   background-color: $background-violet;
   color: $text-violet;
+
   .filters {
     color: $text-secondary-violet;
+    background-color: $background-violet;
   }
 
   .mainContent {
@@ -151,5 +183,13 @@
       background-color: #fff;
       border-radius: 12px;
     }
+  }
+
+  .boardTitle {
+    background-color: $background-violet;
+  }
+
+  .iconFilter {
+    stroke: $text-secondary-violet;
   }
 }

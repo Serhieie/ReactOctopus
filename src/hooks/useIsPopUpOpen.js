@@ -4,6 +4,7 @@ import {
   selectIsChangeThemePopUpOpen,
   selectIsMoveCardPopUpOpen,
   selectIsHelpPopUpOpen,
+  selectIsFiltersOpen,
 } from '../redux/popUps/popUpsSelectors.js';
 
 export const useIsPopUpOpen = () => {
@@ -11,8 +12,10 @@ export const useIsPopUpOpen = () => {
   const isChangeThemePopUpOpen = useSelector(selectIsChangeThemePopUpOpen);
   const isMoveCardPopUpOpen = useSelector(selectIsMoveCardPopUpOpen);
   const isHelpPopUpOpen = useSelector(selectIsHelpPopUpOpen);
+  const isFiltersModalOpen = useSelector(selectIsFiltersOpen);
 
   return {
+    isFiltersModalOpen,
     isSideBarOpen,
     isChangeThemePopUpOpen,
     isMoveCardPopUpOpen,

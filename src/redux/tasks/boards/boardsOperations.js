@@ -49,7 +49,10 @@ export const addBoard = createAsyncThunk(
       const data = await tasksApi.addBoard(body);
       const newItems = [...items, data];
 
-      return newItems;
+      if (!items.length) {
+        return { newActive: data, newItems };
+      }
+      return { newItems, newActive: null };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -68,13 +71,8 @@ export const deleteBoard = createAsyncThunk(
       const response = await tasksApi.removeBoard(id);
       const newItems = items.filter((board) => board._id !== response);
 
-      if (active._id === response) {
-        const newActiveId =
-          response === items[0]._id ? items[1]._id : items[0]._id;
-        const newActive = await tasksApi.getBoardById(newActiveId);
-        return { newActive, items: newItems };
-      }
-      if (items.length < 0) {
+      if (!newItems.length) {
+        console.log('empty');
         return { newActive: null, items: [] };
       }
 

@@ -52,6 +52,7 @@ const BoardForm = ({
   action = 'Create',
   data = INITIAL_STATE,
   item = null,
+  func,
 }) => {
   const dispatch = useDispatch();
 
@@ -78,7 +79,7 @@ const BoardForm = ({
       try {
         if (action === 'Create') {
           dispatch(addBoard({ ...columns }));
-          console.log('Saved');
+          func(false);
         } else {
           if (item)
             dispatch(
@@ -91,13 +92,14 @@ const BoardForm = ({
                 },
               })
             );
-          console.log('Updated');
         }
         reset();
+        func(false);
       } catch (error) {
         console.error('Error saving form data:', error);
       }
       reset();
+      func(false);
     }
   };
 

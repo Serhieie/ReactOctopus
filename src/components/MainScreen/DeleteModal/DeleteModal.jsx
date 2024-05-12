@@ -7,18 +7,18 @@ import { deleteColumn } from '../../../redux/tasks/columns/columnsOperations';
 import { deleteCard } from '../../../redux/tasks/cards/cardsOperations';
 import { deleteBoard } from '../../../redux/tasks/boards/boardsOperations';
 import { useAuth } from '../../../hooks';
+import { useParams } from 'react-router-dom';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-import { useParams } from 'react-router-dom';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();
   const dispatch = useDispatch();
   const location = useParams();
   const id = location.boardName;
-  console.log('RERENDER');
-  // useClickOnBackdropToCloseModals(func);
-  // useEscapeKeyToCloseModals(func);
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   const onConfirmDelete = () => {
     switch (itemType) {

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   setIsChangeThemePopUpOpen,
+  setIsFiltersOpen,
   setIsHelpPopUpOpen,
 } from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
@@ -17,6 +18,7 @@ function useEscapeKeyToCloseModals(func) {
           dispatch(setIsChangeThemePopUpOpen(false));
           dispatch(setIsHelpPopUpOpen(false));
           dispatch(setIsSideBarOpen(false));
+          dispatch(setIsFiltersOpen(false));
         }
       }
     }

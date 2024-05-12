@@ -1,10 +1,9 @@
 import css from './FilterModal.module.scss';
 import clsx from 'clsx';
-import { useAuth } from '../../../hooks';
 import Filter from './Filter';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
 
-const FilterModal = ({ children }) => {
+const FilterModal = () => {
   //   const { theme } = useAuth();
   const theme = 'dark';
 

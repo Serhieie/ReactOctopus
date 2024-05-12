@@ -26,7 +26,7 @@ const NewBoard = ({ name, open, func }) => {
         >
           {name}
         </p>
-        <BoardForm action="Create" />
+        <BoardForm action="Create" func={func} />
       </BoardModal>
     </Backdrop>
   );

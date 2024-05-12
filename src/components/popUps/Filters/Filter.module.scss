@@ -1,3 +1,7 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/mixins';
+@import '/src/styles/colors';
+
 .filterContainer {
   display: flex;
   justify-content: space-between;
@@ -8,7 +12,6 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: #fff;
   margin-bottom: 14px;
 }
 
@@ -36,7 +39,6 @@
   font-weight: 400;
   font-size: 12px;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .colorFilter {
@@ -73,7 +75,7 @@
 }
 
 .colorFilterCenterWithoutPriority {
-  background-color: #ffffff4d;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .colorFilterCenterMediumPriority {
@@ -112,6 +114,62 @@
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-skip-ink: none;
-  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+}
+
+.filterContainerDark {
+  color: $text-dark;
+  .lableColor,
+  .colorFilterRadioLable,
+  .clearAllBtn {
+    color: $text-dark;
+  }
+
+  .priorityText {
+    color: $text-secondary-dark;
+  }
+
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+  }
+}
+
+.filterContainerLight {
+  color: $text-light;
+  .lableColor,
+  .colorFilterRadioLable,
+  .clearAllBtn {
+    color: $text-light;
+  }
+
+  .priorityText {
+    color: $text-secondary-light;
+  }
+
+  .colorFilterCenterWithoutPriority {
+    background-color: rgba(22, 22, 22, 0.1);
+  }
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+  }
+}
+
+.filterContainerViolet {
+  color: $text-violet;
+  .lableColor,
+  .colorFilterRadioLable,
+  .clearAllBtn {
+    color: $text-violet;
+  }
+
+  .priorityText {
+    color: $text-secondary-violet;
+  }
+  .colorFilterCenterWithoutPriority {
+    background-color: rgba(22, 22, 22, 0.1);
+  }
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+  }
 }

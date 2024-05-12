@@ -26,6 +26,9 @@ export const popUpsSlice = createSlice({
     setIsUserModalOpen(state, action) {
       state.isUserModalOpen = action.payload;
     },
+    setIsFiltersOpen(state, action) {
+      state.isFiltersOpen = action.payload;
+    },
   },
 });
 
@@ -41,6 +44,7 @@ export const persistedPopUpsReducer = persistReducer(
 );
 
 export const {
+  setIsFiltersOpen,
   setIsUserModalOpen,
   setIsSideBarOpen,
   setIsChangeThemePopUpOpen,

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import RestrictedRoute from './redirect/RestrictedRoute';
 import PrivateRoute from './redirect/PrivateRoute';
@@ -20,9 +20,13 @@ import { useSelector } from 'react-redux';
 import { fetchBoardById } from './redux/tasks/boards/boardsOperations';
 
 function App() {
-  const { isLogin } = useAuth();
+  const { isLogin, isLoading } = useAuth();
   const reduxState = useSelector(selectTasksState);
-  const { items, active } = useSelector(selectBoardsState);
+  const {
+    items,
+    active,
+    isLoading: isBoardsLoading,
+  } = useSelector(selectBoardsState);
   const [state, setState] = useState(reduxState);
 
   const dispatch = useDispatch();
@@ -35,10 +39,10 @@ function App() {
   }, [dispatch, isLogin]);
 
   useEffect(() => {
-    if (active === null && items[0] && isLogin) {
+    if (items.length > 0 && !isLoading && !isBoardsLoading) {
       dispatch(fetchBoardById(items[0]._id));
-    } else if (active && isLogin) dispatch(fetchBoardById(active._id));
-  }, [isLogin]);
+    }
+  }, []);
 
   // example
   // const result = {
