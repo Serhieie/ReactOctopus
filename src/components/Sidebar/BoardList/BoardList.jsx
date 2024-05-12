@@ -13,7 +13,7 @@ import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 // import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
-  const {
+  let {
     items,
     active,
     isLoading: boardsLoading,
@@ -31,7 +31,7 @@ const BoardList = ({ theme }) => {
     ) {
       dispatch(fetchBoardById(boardName));
     }
-  }, [boardName, active, dispatch]);
+  }, [boardName, dispatch]);
 
   //Це просто переставляє активний елемент на першу позицію
   const sortedItems = items && [...items];

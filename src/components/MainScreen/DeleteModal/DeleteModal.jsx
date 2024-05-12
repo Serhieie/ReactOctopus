@@ -9,10 +9,13 @@ import { deleteBoard } from '../../../redux/tasks/boards/boardsOperations';
 import { useAuth } from '../../../hooks';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import { useParams } from 'react-router-dom';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();
   const dispatch = useDispatch();
+  const location = useParams();
+  const id = location.boardName;
 
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
@@ -30,7 +33,7 @@ export const DeleteModal = ({ open, itemType, item, func }) => {
         );
         break;
       case 'board':
-        dispatch(deleteBoard(item._id));
+        dispatch(deleteBoard(id));
         break;
       default:
         break;
