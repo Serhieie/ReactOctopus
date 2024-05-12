@@ -26,6 +26,7 @@ export const Column = ({ column }) => {
     <>
       {' '}
       <li
+        data-column-id={column._id}
         className={clsx(styles.column, {
           [styles.columnDark]: theme === 'dark',
           [styles.columnLight]: theme === 'light',

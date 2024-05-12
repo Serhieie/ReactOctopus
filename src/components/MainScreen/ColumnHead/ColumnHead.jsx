@@ -8,6 +8,7 @@ import ModalPortal from '../../popUps/ModalPortal.jsx';
 import { useState } from 'react';
 import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
+import MdlEdit from '../../popUps/Column/Edit.jsx';
 
 export const ColumnHead = ({ column }) => {
   const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
@@ -69,6 +70,12 @@ export const ColumnHead = ({ column }) => {
             func={closeDeleteCard}
             open={isDeletePopUpOpen}
             itemType="column"
+            item={column}
+          />
+          <MdlEdit
+            open={isEditPopUpOpen}
+            onOpen={openEditColumn}
+            onClose={closeEditColumn}
             item={column}
           />
         </ModalPortal>
