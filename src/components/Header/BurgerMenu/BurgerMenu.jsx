@@ -2,11 +2,15 @@ import styles from './BurgerMenu.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+import { setIsSideBarOpen } from '../../../redux/popUps/popUpsSlice';
 
 export const BurgerMenu = () => {
   const { theme } = useAuth();
+  const dispatch = useDispatch();
+
   const toggleOpenSidebar = async () => {
-    console.log('You are trying to open sidebar');
+    dispatch(setIsSideBarOpen(true));
   };
 
   return (

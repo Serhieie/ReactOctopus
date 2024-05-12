@@ -6,7 +6,7 @@
   overflow: auto;
   direction: rtl;
   width: 100%;
-  height: calc(100dvh - 616px);
+  height: calc(100dvh - 560px);
   gap: 4px;
   display: flex;
   flex-direction: column;
@@ -14,6 +14,9 @@
 
   &:first-child {
     justify-content: center;
+  }
+  @include media-rules(tablet) {
+    height: calc(100dvh - 594px);
   }
 }
 

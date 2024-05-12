@@ -63,7 +63,7 @@ const BoardList = () => {
       {isLoading || boardsLoading ? (
         <BoardListSkelleton />
       ) : (
-        <ul className={styles.board_list_sheet}>
+        <div className={styles.board_list_sheet}>
           {items &&
             sortedItems.map((item, index) => (
               <BoardListItem
@@ -73,7 +73,7 @@ const BoardList = () => {
                 activeItem={index === 0 ? 'active' : ''}
               />
             ))}
-        </ul>
+        </div>
       )}
     </div>
   );

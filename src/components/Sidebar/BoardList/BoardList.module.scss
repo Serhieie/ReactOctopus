@@ -19,22 +19,23 @@
   }
 
   .board_list_sheet {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     direction: rtl;
     width: 100%;
     min-height: 61px;
-    height: calc(100dvh - 570px);
+    height: calc(100dvh - 560px);
     gap: 4px;
     display: flex;
     flex-direction: column;
-    // margin-bottom: 10px;
+    margin-bottom: 10px;
 
     &:first-child {
       justify-content: center;
     }
 
     @include media-rules(tablet) {
-      height: calc(100dvh - 604px);
+      height: calc(100dvh - 594px);
     }
   }
 }
