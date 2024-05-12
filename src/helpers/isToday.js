@@ -23,3 +23,9 @@ export const toodayDate = (value) => {
     return `Tooday, ${month} ${day}`;
   }
 };
+
+export const dbDate = (value) => {
+  const date = new Date(value);
+  const isoDateString = date.toISOString();
+  return isoDateString;
+};

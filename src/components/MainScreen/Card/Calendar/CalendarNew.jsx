@@ -3,13 +3,13 @@ import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useState } from 'react';
-import { toodayDate } from '../../../../helpers/isToday';
+import { dbDate, toodayDate } from '../../../../helpers/isToday';
 import DatePicker from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/colors/purple.css';
 import 'react-multi-date-picker/styles/backgrounds/bg-dark.css';
 import 'react-multi-date-picker/styles/colors/green.css';
 
-export const CalendarNew = () => {
+export const CalendarNew = ({ onChange }) => {
   const { theme } = useAuth();
   const [value, setValue] = useState(new Date());
 
@@ -26,7 +26,11 @@ export const CalendarNew = () => {
   };
 
   const handleChange = (date, { isTyping }) => {
-    if (!isTyping) return setValue(date);
+    if (!isTyping) {
+      onChange(dbDate(date));
+
+      return setValue(date);
+    }
     const currentDate = new Date();
     const selectedDate = new Date(date.year, date.month - 1, date.day);
     if (selectedDate < currentDate) {
