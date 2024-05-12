@@ -4,9 +4,9 @@
 
 .needHelp {
   border-radius: 8px;
-  max-width: 212px;
-  padding: 20px;
-  margin: 0 24px;
+  max-width: 197px;
+  padding: 15px 14px;
+  margin: 0 14px;
   height: 238px;
 
   .img {
@@ -16,10 +16,12 @@
   .infoText {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 143%;
+    font-size: 12px;
+    line-height: 133%;
     letter-spacing: -0.02em;
     margin-bottom: 18px;
+    width: 168px;
+    height: 80px;
   }
 
   .button {
@@ -47,6 +49,16 @@
 
   @include media-rules(tablet) {
     height: 272px;
+    padding: 20px;
+    margin: 0 24px;
+    max-width: 212px;
+
+    .infoText {
+      font-size: 14px;
+      line-height: 143%;
+      width: 172px;
+      height: 102px;
+    }
   }
 
   @include media-rules(desktop) {

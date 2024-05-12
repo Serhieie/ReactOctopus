@@ -1,9 +1,12 @@
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import { useAuth } from '../../../hooks';
 
 import styles from './Logo.module.scss';
 
-const Logo = ({ theme }) => {
+const Logo = () => {
+  const { theme } = useAuth();
+
   return (
     <div
       className={clsx(styles.sidebar_logo, {

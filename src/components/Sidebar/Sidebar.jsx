@@ -28,10 +28,10 @@ const Sidebar = () => {
             [styles.sidebar_open]: isSidebarOpen,
           })}
         >
-          <Logo theme={theme} />
-          <BoardList theme={theme} />
-          <NeedHelp theme={theme} />
-          <LogoutButton theme={theme} />
+          <Logo />
+          <BoardList />
+          <NeedHelp />
+          <LogoutButton />
         </div>
       )}
     </>

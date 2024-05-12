@@ -12,13 +12,13 @@ import { useEffect } from 'react';
 import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 // import data from '../../MainScreen/boards.json';
 
-const BoardList = ({ theme }) => {
+const BoardList = () => {
   const {
     items,
     active,
     isLoading: boardsLoading,
   } = useSelector(selectBoardsState);
-  const { isLoading } = useAuth();
+  const { isLoading, theme } = useAuth();
   const dispatch = useDispatch();
   const { boardName } = useParams();
 
