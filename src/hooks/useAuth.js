@@ -6,6 +6,7 @@ import {
   selectAuthError,
   selectUser,
   selectUserTheme,
+  selectUserAvatar,
 } from '../redux/auth/authSelectors.js';
 
 export const useAuth = () => {
@@ -15,6 +16,7 @@ export const useAuth = () => {
   const user = useSelector(selectUser);
   const error = useSelector(selectAuthError);
   const theme = useSelector(selectUserTheme);
+  const avatarURL = useSelector(selectUserAvatar);
 
   return {
     token,
@@ -23,5 +25,6 @@ export const useAuth = () => {
     user,
     error,
     theme,
+    avatarURL,
   };
 };
