@@ -1,25 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Column.module.scss';
 import validationTitle from '../../../schemas/validationTitle';
 import clsx from 'clsx';
 
 import LogoSprite from '../../../assets/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { addColumnOperation } from '../../../redux/tasks/columns/columnsOperations';
+import { useParams } from 'react-router-dom';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import { useAuth } from '../../../hooks';
 
-const MdlColumn = () => {
-  const theme = 'Dark';
+const MdlColumn = ({ open, onOpen, onClose }) => {
+  const { boardName } = useParams();
+  const { theme } = useAuth();
+  const dispatch = useDispatch();
 
-  const [isOpen, setIsOpen] = useState(false);
   const [titleInput, setTitleInput] = useState('');
   const [error, setError] = useState('');
 
   const handleCloseModal = () => {
-    setIsOpen(false);
+    onClose();
     setTitleInput('');
     setError('');
   };
 
+  useClickOnBackdropToCloseModals(onClose);
+  useEscapeKeyToCloseModals(onClose);
+
   const handleOpenModal = () => {
-    setIsOpen(true);
+    onOpen(true);
   };
 
   const handleChangeTitle = (e) => {
@@ -30,11 +40,11 @@ const MdlColumn = () => {
     e.preventDefault();
 
     const schema = validationTitle;
-
     schema
-      .validate({ title: titleInput })
-      .then(() => {
+      .validate({ boardId: boardName, title: titleInput })
+      .then((data) => {
         handleCloseModal();
+        dispatch(addColumnOperation(data));
       })
       .catch((error) => {
         setError(error.message);
@@ -44,13 +54,13 @@ const MdlColumn = () => {
   return (
     <>
       <button onClick={handleOpenModal}>Open Add</button>
-      {isOpen && (
-        <div className={styles.modal}>
+      {open && (
+        <div className={styles.modal} data-id="modal-backdrop">
           <div
             className={clsx(styles.modalContent, {
-              [styles.dark]: theme === 'Dark',
-              [styles.light]: theme === 'Light',
-              [styles.violet]: theme === 'Violet',
+              [styles.dark]: theme === 'dark',
+              [styles.light]: theme === 'light',
+              [styles.violet]: theme === 'violet',
             })}
           >
             <button className={styles.closeButton} onClick={handleCloseModal}>
@@ -58,8 +68,8 @@ const MdlColumn = () => {
                 <use
                   xlinkHref={`${LogoSprite}#icon-x-close`}
                   className={clsx(styles.closeIcon, {
-                    [styles.lightCloseButton]: theme === 'Light',
-                    [styles.violetCloseButton]: theme === 'Violet',
+                    [styles.lightCloseButton]: theme === 'light',
+                    [styles.violetCloseButton]: theme === 'violet',
                   })}
                 />
               </svg>
@@ -67,7 +77,7 @@ const MdlColumn = () => {
             <div className={styles.titleContainer}>
               <h1
                 className={clsx(styles.mainTitle, {
-                  [styles.titleDark]: theme === 'Dark',
+                  [styles.titleDark]: theme === 'dark',
                 })}
               >
                 Add column
@@ -78,7 +88,7 @@ const MdlColumn = () => {
                 <input
                   type="text"
                   className={clsx(styles.forTitle, {
-                    [styles.darkInput]: theme === 'Dark',
+                    [styles.darkInput]: theme === 'dark',
                   })}
                   placeholder="Title"
                   value={titleInput}
@@ -89,26 +99,26 @@ const MdlColumn = () => {
               </div>
               <button
                 className={clsx(styles.addButton, {
-                  [styles.addButtonViolet]: theme === 'Violet',
+                  [styles.addButtonViolet]: theme === 'violet',
                 })}
               >
                 <div
                   className={clsx(styles.blackBox, {
-                    [styles.blackBoxViolet]: theme === 'Violet',
+                    [styles.blackBoxViolet]: theme === 'violet',
                   })}
                 >
                   <svg className={styles.icon} width="14px" height="14px">
                     <use
                       xlinkHref={`${LogoSprite}#icon-plus`}
                       className={clsx(styles.plusIcon, {
-                        [styles.plusIconViolet]: theme === 'Violet',
+                        [styles.plusIconViolet]: theme === 'violet',
                       })}
                     />
                   </svg>
                 </div>
                 <span
                   className={clsx(styles.span, {
-                    [styles.addTextButton]: theme === 'Violet',
+                    [styles.addTextButton]: theme === 'violet',
                   })}
                 >
                   Add

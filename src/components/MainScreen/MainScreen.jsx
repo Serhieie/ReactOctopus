@@ -8,15 +8,22 @@ import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 import { selectBoardsState } from '../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
+import ModalPortal from '../popUps/ModalPortal.jsx';
+import MdlColumn from '../popUps/Column/Column.jsx';
+import { useState } from 'react';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
   const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  const [isAddCardOpen, setAddCardOpen] = useState(false);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
 
-  const addColumnFunc = () => {
-    console.log('Add Column');
+  const openAddColumnModal = () => {
+    setAddCardOpen(true);
+  };
+  const closeAddColumnModal = () => {
+    setAddCardOpen(false);
   };
 
   return (isBoardLoading && active) || isLoading ? (
@@ -45,8 +52,15 @@ export const MainScreen = () => {
             </div>
             <div className={styles.mainContent}>
               <ColumnList data={active} />
-              <AddButton column={true} addFunction={addColumnFunc} />
+              <AddButton column={true} addFunction={openAddColumnModal} />
             </div>
+            <ModalPortal>
+              <MdlColumn
+                open={isAddCardOpen}
+                onOpen={openAddColumnModal}
+                onClose={closeAddColumnModal}
+              />
+            </ModalPortal>
           </>
         ) : (
           <ExplainField />

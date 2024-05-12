@@ -10,12 +10,14 @@ import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
+import MdlColumn from '../../../popUps/Column/Column';
 
 export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
+
   const tooday = isToday(card.deadline);
   const { active } = useSelector(selectBoardsState);
 
@@ -43,6 +45,11 @@ export const Buttons = ({ card, column }) => {
   const moveCardOpen = () => {
     setIsMoveCardPopUpOpen(true);
   };
+
+  const addCardOpen = () => {
+    setAddCardOpen(true);
+  };
+
   return (
     <div
       className={clsx(styles.buttons, {
