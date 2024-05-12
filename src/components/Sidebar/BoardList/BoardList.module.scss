@@ -24,7 +24,7 @@
     direction: rtl;
     width: 100%;
     min-height: 61px;
-    height: calc(100dvh - 560px);
+    height: calc(100dvh - 580px);
     gap: 4px;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
     }
 
     @include media-rules(tablet) {
-      height: calc(100dvh - 594px);
+      height: calc(100dvh - 614px);
     }
   }
 }
