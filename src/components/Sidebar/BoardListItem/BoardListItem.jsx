@@ -5,37 +5,43 @@ import { useState } from 'react';
 import ModalPortal from '../../popUps/ModalPortal';
 import EditBoard from '../../popUps/Board/EditBoard';
 import { DeleteModal } from '../../MainScreen/DeleteModal/DeleteModal';
-import { useDispatch } from 'react-redux';
-import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 // import { useSelector } from 'react-redux';
 // import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import { NavLink } from 'react-router-dom';
-
+import { getBoardById } from '../../../redux/api/tasks-api';
+import { useDispatch } from 'react-redux';
 const BoardListItem = ({ theme, board, activeItem }) => {
   const [isEditBoardModalOpen, setIsEditBoardModalOpen] = useState(false);
   const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
   const dispatch = useDispatch();
 
-  // const { active } = useSelector(selectBoardsState);
-
-  console.log(activeItem);
-
-  const toggleEditBoardModalOpen = () => {
-    setIsEditBoardModalOpen((state) => !state);
+  const openEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(true);
   };
 
-  const toggleDeleteBoardModalOpen = () => {
-    setIsDeleteBoardModalOpen((state) => !state);
+  const closeEditBoardModalOpen = () => {
+    setIsEditBoardModalOpen(false);
   };
 
-  const handleChangeBoard = () => {
-    dispatch(fetchBoardById(board._id));
+  const closeDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(false);
   };
+
+  const openDeleteBoardModalOpen = () => {
+    setIsDeleteBoardModalOpen(true);
+  };
+
+  const candleClick = () => {
+    dispatch(getBoardById(board._id));
+  };
+
+  let endPoint;
+  if (board) endPoint = board ? `${board?._id}` : '';
 
   return (
-    <NavLink to={`/home/${board.title}`}>
+    <NavLink to={`/home/${endPoint}`}>
       <li
-        onClick={handleChangeBoard}
+        onClick={candleClick}
         className={clsx(styles.sidebar_board_item, {
           [styles.sidebar_board_itemDark]: theme === 'dark',
           [styles.sidebar_board_itemLight]: theme === 'light',
@@ -53,7 +59,7 @@ const BoardListItem = ({ theme, board, activeItem }) => {
           <div className={styles.sidebar_board_active}></div>
           <div className={styles.sidebar_board_cont}>
             <button
-              onClick={toggleDeleteBoardModalOpen}
+              onClick={openDeleteBoardModalOpen}
               type="button"
               className={styles.sidebar_board_remove_btn}
             >
@@ -66,7 +72,7 @@ const BoardListItem = ({ theme, board, activeItem }) => {
               </svg>
             </button>
             <button
-              onClick={toggleEditBoardModalOpen}
+              onClick={openEditBoardModalOpen}
               type="button"
               className={styles.sidebar_board_edit_btn}
             >
@@ -92,12 +98,12 @@ const BoardListItem = ({ theme, board, activeItem }) => {
             name="Edit board"
             open={isEditBoardModalOpen}
             item={board}
-            func={toggleEditBoardModalOpen}
+            func={closeEditBoardModalOpen}
           />
         </ModalPortal>
         <ModalPortal>
           <DeleteModal
-            func={toggleDeleteBoardModalOpen}
+            func={closeDeleteBoardModalOpen}
             itemType="board"
             open={isDeleteBoardModalOpen}
             item={board}

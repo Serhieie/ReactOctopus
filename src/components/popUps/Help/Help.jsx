@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import { needHelpOperation } from '../../../redux/auth/authOperations';
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const HelpModal = () => {
   const theme = 'Violet';
@@ -25,6 +27,9 @@ const HelpModal = () => {
   };
 
   const { isHelpPopUpOpen } = useIsPopUpOpen();
+
+  useClickOnBackdropToCloseModals();
+  useEscapeKeyToCloseModals();
 
   const onSubmit = (data) => {
     dispatch(needHelpOperation(data));

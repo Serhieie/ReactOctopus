@@ -13,8 +13,8 @@ const Sidebar = () => {
   const { theme } = useAuth();
   const isSidebarOpen = useSelector(selectIsSideBarOpen);
   const { isMobile, isTablet } = useMedia();
-  // const location = useLocation();
-  // const endOfURL = location.pathname.includes('/home/');
+  const location = useLocation();
+  const endOfURL = location.pathname.includes('/home');
 
   return (
     <>

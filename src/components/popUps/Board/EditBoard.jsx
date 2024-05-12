@@ -8,6 +8,8 @@ import CloseModalButton from './CloseModalButton/CloseModalButton';
 import Backdrop from '../Backdrop/Backdrop';
 import BoardModal from '../Modal/BoardModal/BoardModal';
 import { useAuth } from '../../../hooks';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 const EditBoard = ({ name, open, item, func }) => {
   const { theme } = useAuth();
@@ -18,6 +20,8 @@ const EditBoard = ({ name, open, item, func }) => {
     background: '',
   });
   const [loading, setLoading] = useState(true);
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   useEffect(() => {
     const fetchData = async () => {

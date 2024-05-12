@@ -17,7 +17,11 @@ export const tasksSlice = createSlice({
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.fetchBoards.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false), (state.boards.items = payload.result);
+        (state.boards.isLoading = false),
+          (state.boards.items = payload.data.result);
+        state.boards.active = payload.newActive;
+        state.columns.items = payload.newActive.columns;
+        state.cards.items = payload.newActive.columns.cards;
       })
       .addCase(boardsOperations.fetchBoards.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
@@ -33,11 +37,8 @@ export const tasksSlice = createSlice({
           (state.boards.isLoading = false),
             (state.columns.isLoading = false),
             (state.boards.active = payload);
-          state.columns.items = payload.columns;
-          state.cards.items = [];
-          payload.columns.forEach((column) => {
-            state.cards.items.unshift(...column.cards);
-          });
+          state.columns.items = [payload.columns];
+          state.cards.items = [payload.columns.cards];
         }
       )
       .addCase(

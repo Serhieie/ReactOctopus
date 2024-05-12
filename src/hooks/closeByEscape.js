@@ -6,16 +6,18 @@ import {
 } from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
-function useEscapeKeyToCloseModals() {
+function useEscapeKeyToCloseModals(func) {
   const dispatch = useDispatch();
 
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.keyCode === 27) {
-        console.log(event.keyCode);
-        dispatch(setIsChangeThemePopUpOpen(false));
-        dispatch(setIsHelpPopUpOpen(false));
-        dispatch(setIsSideBarOpen(false));
+        if (func) func();
+        else {
+          dispatch(setIsChangeThemePopUpOpen(false));
+          dispatch(setIsHelpPopUpOpen(false));
+          dispatch(setIsSideBarOpen(false));
+        }
       }
     }
 
@@ -24,7 +26,7 @@ function useEscapeKeyToCloseModals() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch]);
+  }, [dispatch, func]);
 
   return null;
 }

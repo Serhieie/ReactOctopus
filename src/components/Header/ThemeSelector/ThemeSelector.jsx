@@ -6,13 +6,15 @@ import { useAuth } from '../../../hooks';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
 import { setIsChangeThemePopUpOpen } from '../../../redux/popUps/popUpsSlice';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 export const ThemeSelector = () => {
   const { isChangeThemePopUpOpen } = useIsPopUpOpen();
   const dispatch = useDispatch();
-  // const [isThemeOpen, setIsThemeOpen] = useState(false);
   const { theme } = useAuth();
-  console.log(isChangeThemePopUpOpen);
+
+  useEscapeKeyToCloseModals();
+
   const toggleOpenTheme = async () => {
     isChangeThemePopUpOpen
       ? dispatch(setIsChangeThemePopUpOpen(false))
