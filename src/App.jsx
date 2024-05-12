@@ -136,10 +136,6 @@ function App() {
     setState(newState);
   };
 
-  const { items } = useSelector(selectBoardsState);
-
-  const endPoint = items.length > 0 ? `/home/${items[0].title}` : '/home';
-
   return (
     <DragDropContext
       // onDragStart={}
@@ -151,7 +147,7 @@ function App() {
           <Route
             index
             element={
-              <RestrictedRoute redirectTo={endPoint}>
+              <RestrictedRoute redirectTo="/home">
                 <WelcomePage />
               </RestrictedRoute>
             }
@@ -159,18 +155,16 @@ function App() {
           <Route
             path="/auth/:id"
             element={
-              <RestrictedRoute redirectTo={endPoint}>
+              <RestrictedRoute redirectTo="/home">
                 <AuthPage />
               </RestrictedRoute>
             }
           />
-          {/* <Route
+          <Route
             path="/home"
             element={
               <PrivateRoute redirectTo="/">
-                <Route path="/:boardName">
-                  <HomePage state={state} />
-                </Route>
+                <HomePage state={state} />
               </PrivateRoute>
             }
           />

@@ -3,7 +3,7 @@ import { useMedia } from '../../hooks/useMedia.js';
 import { ThemeSelector } from './ThemeSelector/ThemeSelector.jsx';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from '../../hooks/useAuth.js';
 import { CalendarNew } from '../MainScreen/Card/Calendar/CalendarNew.jsx';

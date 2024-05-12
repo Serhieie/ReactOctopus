@@ -23,14 +23,18 @@
     direction: rtl;
     width: 100%;
     min-height: 61px;
-    height: calc(100dvh - 635px);
+    height: calc(100dvh - 570px);
     gap: 4px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
 
     &:first-child {
       justify-content: center;
+    }
+
+    @include media-rules(tablet) {
+      height: calc(100dvh - 604px);
     }
   }
 }

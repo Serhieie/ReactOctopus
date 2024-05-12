@@ -5,9 +5,12 @@ import clsx from 'clsx';
 import HelpModal from '../../popUps/Help/Help';
 import { useDispatch } from 'react-redux';
 import { setIsHelpPopUpOpen } from '../../../redux/popUps/popUpsSlice';
+import ModalPortal from '../../popUps/ModalPortal';
+import { useAuth } from '../../../hooks';
 
-const NeedHelp = ({ theme }) => {
+const NeedHelp = () => {
   const dispatch = useDispatch();
+  const { theme } = useAuth();
 
   const openNeedHelpModal = () => {
     dispatch(setIsHelpPopUpOpen(true));
@@ -40,7 +43,9 @@ const NeedHelp = ({ theme }) => {
         </svg>
         Need help?
       </button>
-      <HelpModal />
+      <ModalPortal>
+        <HelpModal />
+      </ModalPortal>
     </div>
   );
 };

@@ -18,22 +18,22 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* {endOfURL && ( */}
-      <div
-        className={clsx(styles.sidebar_container, {
-          [styles.sidebar_containerDark]: theme === 'dark',
-          [styles.sidebar_containerLight]: theme === 'light',
-          [styles.sidebar_containerViolet]: theme === 'violet',
-          [styles.sidebar_hidden]: isMobile || isTablet,
-          [styles.sidebar_open]: isSidebarOpen,
-        })}
-      >
-        <Logo theme={theme} />
-        <BoardList theme={theme} />
-        <NeedHelp theme={theme} />
-        <LogoutButton theme={theme} />
-      </div>
-      {/* )} */}
+      {endOfURL && (
+        <div
+          className={clsx(styles.sidebar_container, {
+            [styles.sidebar_containerDark]: theme === 'dark',
+            [styles.sidebar_containerLight]: theme === 'light',
+            [styles.sidebar_containerViolet]: theme === 'violet',
+            [styles.sidebar_hidden]: isMobile || isTablet,
+            [styles.sidebar_open]: isSidebarOpen,
+          })}
+        >
+          <Logo theme={theme} />
+          <BoardList theme={theme} />
+          <NeedHelp theme={theme} />
+          <LogoutButton />
+        </div>
+      )}
     </>
   );
 };

@@ -10,9 +10,11 @@ import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import { useAuth } from '../../../hooks';
 
 const HelpModal = () => {
-  const theme = 'Violet';
+  const { theme } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -41,9 +43,9 @@ const HelpModal = () => {
         <div data-id="modal-backdrop" className={styles.modal}>
           <div
             className={clsx(styles.modalContent, {
-              [styles.dark]: theme === 'Dark',
-              [styles.light]: theme === 'Light',
-              [styles.violet]: theme === 'Violet',
+              [styles.dark]: theme === 'dark',
+              [styles.light]: theme === 'light',
+              [styles.violet]: theme === 'violet',
             })}
           >
             <button className={styles.closeButton} onClick={handleCloseModal}>
@@ -51,8 +53,8 @@ const HelpModal = () => {
                 <use
                   xlinkHref={`${LogoSprite}#icon-x-close`}
                   className={clsx(styles.closeIcon, {
-                    [styles.lightCloseButton]: theme === 'Light',
-                    [styles.violetCloseButton]: theme === 'Violet',
+                    [styles.lightCloseButton]: theme === 'light',
+                    [styles.violetCloseButton]: theme === 'violet',
                   })}
                 />
               </svg>
@@ -60,7 +62,7 @@ const HelpModal = () => {
             <div className={styles.titleContainer}>
               <h1
                 className={clsx(styles.mainTitle, {
-                  [styles.titleDark]: theme === 'Dark',
+                  [styles.titleDark]: theme === 'dark',
                 })}
               >
                 Need help
@@ -78,7 +80,7 @@ const HelpModal = () => {
                   type="email"
                   name="email"
                   className={clsx(styles.forEmail, {
-                    [styles.darkInput]: theme === 'Dark',
+                    [styles.darkInput]: theme === 'dark',
                   })}
                   {...register('email', { required: true })}
                   placeholder="Email address"
@@ -92,7 +94,7 @@ const HelpModal = () => {
                   type="text"
                   name="message"
                   className={clsx(styles.forComment, {
-                    [styles.darkInp]: theme === 'Dark',
+                    [styles.darkInp]: theme === 'dark',
                   })}
                   {...register('comment', { required: true })}
                   placeholder="Comment"
@@ -103,13 +105,13 @@ const HelpModal = () => {
               </div>
               <button
                 className={clsx(styles.button, {
-                  [styles.addButtonViolet]: theme === 'Violet',
+                  [styles.addButtonViolet]: theme === 'violet',
                 })}
                 type="submit"
               >
                 <span
                   className={clsx(styles.span, {
-                    [styles.addTextButton]: theme === 'Violet',
+                    [styles.addTextButton]: theme === 'violet',
                   })}
                 >
                   Add
