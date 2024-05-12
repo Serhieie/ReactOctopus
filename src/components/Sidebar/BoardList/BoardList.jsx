@@ -13,7 +13,7 @@ import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
 // import data from '../../MainScreen/boards.json';
 
 const BoardList = ({ theme }) => {
-  let {
+  const {
     items,
     active,
     isLoading: boardsLoading,

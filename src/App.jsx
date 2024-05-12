@@ -28,13 +28,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isLogin) {
+      dispatch(fetchBoards());
+    }
     dispatch(current());
-    dispatch(fetchBoards());
   }, [dispatch, isLogin]);
 
   useEffect(() => {
-    if (active === null && items[0] && isLogin)
+    if (active === null && items[0] && isLogin) {
       dispatch(fetchBoardById(items[0]._id));
+    } else if (active && isLogin) dispatch(fetchBoardById(active._id));
   }, [isLogin]);
 
   // example

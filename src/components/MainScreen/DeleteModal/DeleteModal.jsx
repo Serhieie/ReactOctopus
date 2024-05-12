@@ -16,9 +16,9 @@ export const DeleteModal = ({ open, itemType, item, func }) => {
   const dispatch = useDispatch();
   const location = useParams();
   const id = location.boardName;
-
-  useClickOnBackdropToCloseModals(func);
-  useEscapeKeyToCloseModals(func);
+  console.log('RERENDER');
+  // useClickOnBackdropToCloseModals(func);
+  // useEscapeKeyToCloseModals(func);
 
   const onConfirmDelete = () => {
     switch (itemType) {
