@@ -28,12 +28,12 @@ const BoardListItem = ({ theme, board, activeItem }) => {
   };
 
   let endPoint;
-  if (board) endPoint = board ? `${board?._id}` : '';
+  if (board) endPoint = board._id ? `${board._id}` : '';
 
   return (
     <>
       <NavLink to={`/home/${endPoint}`}>
-        <div
+        <li
           className={clsx(styles.sidebar_board_item, {
             [styles.sidebar_board_itemDark]: theme === 'dark',
             [styles.sidebar_board_itemLight]: theme === 'light',
@@ -89,8 +89,9 @@ const BoardListItem = ({ theme, board, activeItem }) => {
               <use xlinkHref={`${LogoSprite}#icon-${board.iconId}`}></use>
             </svg>
           </div>
-        </div>
+        </li>
       </NavLink>
+
       <ModalPortal>
         <EditBoard
           name="Edit board"
@@ -104,7 +105,7 @@ const BoardListItem = ({ theme, board, activeItem }) => {
           func={closeDeleteBoardModalOpen}
           itemType="board"
           open={isDeleteBoardModalOpen}
-          item={board}
+          item={null}
         />
       </ModalPortal>
     </>

@@ -81,6 +81,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           state.boards.isLoading = false;
           state.boards.active = payload.newActive;
+          state.boards.items = payload.newItems;
         }
       )
       .addCase(
@@ -241,6 +242,7 @@ export const tasksSlice = createSlice({
 const persistConfig = {
   key: 'tasks',
   storage,
+  blacklist: ['cards', 'columns'],
 };
 
 export const persistedTasksReducer = persistReducer(
