@@ -1,9 +1,11 @@
 import css from './Filter.module.scss';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { useAuth } from '../../../hooks';
 
 const Filter = () => {
   const [filter, setFilter] = useState('');
+  const { theme } = useAuth();
 
   const options = [
     { priority: 'Without priority' },
@@ -54,7 +56,13 @@ const Filter = () => {
   ));
 
   return (
-    <div className={css.filterContainer}>
+    <div
+      className={clsx(css.filterContainer, {
+        [css.filterContainerDark]: theme === 'dark',
+        [css.filterContainerLight]: theme === 'light',
+        [css.filterContainerViolet]: theme === 'violet',
+      })}
+    >
       <div className={css.filterOptions}>
         <p className={css.lableColor}>Lable color</p>
         <div className={css.filterForm}>{elements}</div>

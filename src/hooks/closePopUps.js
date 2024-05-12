@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
 function useEscapeKeyToClosePopUps(func, isPopUpOpen) {
-  const dispatch = useDispatch();
-
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.keyCode === 27) {
@@ -15,8 +12,7 @@ function useEscapeKeyToClosePopUps(func, isPopUpOpen) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [dispatch, func, isPopUpOpen]);
-
+  }, [func, isPopUpOpen]);
   return null;
 }
 
