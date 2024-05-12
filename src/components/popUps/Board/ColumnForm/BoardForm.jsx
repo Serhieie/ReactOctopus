@@ -114,7 +114,9 @@ const BoardForm = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <InputForm onChange={handleChange} value={title} />
+        <div className={css.inputWrapper}>
+          <InputForm onChange={handleChange} value={title} />
+        </div>
         <div className={css.iconsInputWrapper}>
           <h3
             className={clsx(css.formSubtitle, {
