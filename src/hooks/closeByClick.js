@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setIsHelpPopUpOpen } from '../redux/popUps/popUpsSlice.js';
+import {
+  setIsHelpPopUpOpen,
+  setIsUserModalOpen,
+} from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
 function useClickOnBackdropToCloseModals(func) {
@@ -11,6 +14,7 @@ function useClickOnBackdropToCloseModals(func) {
       if (event.target.dataset.id === 'modal-backdrop') {
         if (func) func();
         else {
+          dispatch(setIsUserModalOpen(false));
           dispatch(setIsSideBarOpen(false));
           dispatch(setIsHelpPopUpOpen(false));
         }

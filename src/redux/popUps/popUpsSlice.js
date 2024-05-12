@@ -23,6 +23,9 @@ export const popUpsSlice = createSlice({
       const isOpen = action.payload;
       handlers.setPopUpState(state, 'isHelpPopUpOpen', isOpen);
     },
+    setIsUserModalOpen(state, action) {
+      state.isUserModalOpen = action.payload;
+    },
   },
 });
 
@@ -38,6 +41,7 @@ export const persistedPopUpsReducer = persistReducer(
 );
 
 export const {
+  setIsUserModalOpen,
   setIsSideBarOpen,
   setIsChangeThemePopUpOpen,
   setIsMoveCardPopUpOpen,
