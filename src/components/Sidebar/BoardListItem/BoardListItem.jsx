@@ -27,17 +27,15 @@ const BoardListItem = ({ theme, board, activeItem }) => {
     setIsDeleteBoardModalOpen(true);
   };
 
-  function truncateText(text, maxLength, ellipsis) {
-    if (text.length <= maxLength) {
-      return text;
-    } else {
-      return (
-        ellipsis + text.substring(text.length - maxLength + ellipsis.length)
-      );
+  function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+      const truncatedText = '...' + text.substring(0, maxLength - 3);
+      return truncatedText;
     }
+    return text;
   }
 
-  const boardName = truncateText(board.title, 16, '...');
+  const boardName = truncateText(board.title, 13);
 
   let endPoint;
   if (board) endPoint = board._id ? `${board._id}` : '';
