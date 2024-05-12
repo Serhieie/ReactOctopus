@@ -17,11 +17,10 @@ export const tasksSlice = createSlice({
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.fetchBoards.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false),
-          (state.boards.items = payload.data.result);
-        state.boards.active = payload.newActive;
-        state.columns.items = payload.newActive.columns;
-        state.cards.items = payload.newActive.columns.cards;
+        (state.boards.isLoading = false), (state.boards.items = payload.result);
+        // state.boards.active = payload.newActive;
+        // state.columns.items = payload.newActive.columns;
+        // state.cards.items = payload.newActive.columns.cards;
       })
       .addCase(boardsOperations.fetchBoards.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
@@ -37,8 +36,8 @@ export const tasksSlice = createSlice({
           (state.boards.isLoading = false),
             (state.columns.isLoading = false),
             (state.boards.active = payload);
-          state.columns.items = [payload.columns];
-          state.cards.items = [payload.columns.cards];
+          state.columns.items = payload.columns;
+          state.cards.items = payload.columns.cards;
         }
       )
       .addCase(
@@ -64,8 +63,10 @@ export const tasksSlice = createSlice({
         (state.boards.isLoading = true), (state.boards.error = null);
       })
       .addCase(boardsOperations.deleteBoard.fulfilled, (state, { payload }) => {
-        (state.boards.isLoading = false), (state.boards.items = payload.items);
+        state.boards.isLoading = false;
         state.boards.active = payload.newActive;
+        state.boards.items = payload.items;
+        state.boards.lastDeleted = payload.items;
       })
       .addCase(boardsOperations.deleteBoard.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
@@ -79,10 +80,6 @@ export const tasksSlice = createSlice({
         boardsOperations.editeBoardOperation.fulfilled,
         (state, { payload }) => {
           state.boards.isLoading = false;
-          const idx = state.boards.items.findIndex(
-            (board) => board._id === payload.response._id
-          );
-          state.boards.items.splice(idx, 1, payload.response);
           state.boards.active = payload.newActive;
         }
       )

@@ -12,7 +12,9 @@
 
   padding: 24px;
   width: 335px;
-  max-height: 433px;
+
+  // ломає модалку редагування користувача
+  // max-height: 433px;
   @include media-rules(tablet) {
     width: 350px;
   }

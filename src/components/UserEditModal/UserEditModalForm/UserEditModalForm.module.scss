@@ -1,0 +1,229 @@
+ @import '/src/styles/breakpoints';
+ @import '/src/styles/mixins';
+ @import '/src/styles/colors';
+
+ .form {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+     margin-top: 10px
+ }
+
+ .inputContainer {
+     position: relative;
+     height: 49px;
+ }
+
+ .inputContainerImg {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     //  position: relative;
+     //  height: 49px;
+ }
+
+ .inputDark {
+     border: 1px solid #bedbb0;
+     border-radius: 8px;
+     //  width: 287px;
+     width: 100%;
+     height: 49px;
+     background: #1f1f1f;
+     color: #fff;
+     padding: 0 18px;
+     //  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+     //  opacity: 0.4;
+
+     @include media-rules(tablet) {
+         //  width: 344px;
+         width: 100%;
+     }
+ }
+
+ .inputLight {
+     border: 1px solid #bedbb0;
+     border-radius: 8px;
+     //  width: 287px;
+     width: 100%;
+     height: 49px;
+     background: #ffffff;
+     color: #1f1f1f;
+     padding: 0 18px;
+     //  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+     //  opacity: 0.4;
+
+     @include media-rules(tablet) {
+         //  width: 344px;
+         width: 100%;
+     }
+ }
+
+ .inputViolet {
+     border: 1px solid #5255BC;
+     border-radius: 8px;
+     //  width: 287px;
+     width: 100%;
+     height: 49px;
+     background: #fff;
+     color: #1f1f1f;
+     padding: 0 18px;
+     //  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+     //  opacity: 0.4;
+
+     @include media-rules(tablet) {
+         //  width: 344px;
+         width: 100%;
+     }
+ }
+
+ .input::placeholder {
+     color: rgba(255, 255, 255, 0.7);
+ }
+
+ .buttonDark,
+ .buttonLight {
+     border: none;
+     border-radius: 8px;
+     width: 287px;
+     height: 49px;
+     background: #bedbb0;
+     color: #161616;
+     font-weight: bold;
+     font-size: 14px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+     margin-top: 24px;
+
+     @include media-rules(tablet) {
+         width: 100%;
+         //  width: 344px;
+     }
+ }
+
+ .buttonViolet {
+     border: none;
+     border-radius: 8px;
+     width: 287px;
+     height: 49px;
+     background: #5255BC;
+     color: #161616;
+     font-weight: bold;
+     font-size: 14px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+     margin-top: 24px;
+
+     @include media-rules(tablet) {
+         width: 100%;
+         //  width: 344px;
+     }
+ }
+
+ .button:hover {
+     background: #9dc888;
+ }
+
+ .iconContainer {
+     position: absolute;
+     top: 60%;
+     right: 18px;
+     transform: translateY(-50%);
+     cursor: pointer;
+ }
+
+ .iconDark {
+     color: rgba(255, 255, 255, 0);
+     width: 18px;
+     height: 18px;
+ }
+
+ .iconLight {
+     color: rgba(22, 22, 22, 0.3);
+     width: 18px;
+     height: 18px;
+ }
+
+ .iconViolet {
+     color: rgba(255, 255, 255, 0.3);
+     width: 18px;
+     height: 18px;
+ }
+
+
+ .inputDark:hover,
+ .inputDark:focus {
+     //  box-shadow: 0 0 10px rgba(157, 200, 136, 0.5);
+     outline: 1px solid #84e753;
+ }
+
+ .inputLight:hover,
+ .inputLight:focus {
+     //  box-shadow: 0 0 10px rgba(157, 200, 136, 0.5);
+     outline: 1px solid #84e753;
+ }
+
+ .inputViolet:hover,
+ .inputViolet:focus {
+     //  box-shadow: 0 0 10px rgba(157, 200, 136, 0.5);
+     outline: 1px solid #5255BC;
+ }
+
+ .error {
+     color: #ff4e4e;
+     font-family: Poppins;
+     font-weight: 400;
+     font-size: 14px;
+ }
+
+ .loadInput {
+     position: relative;
+     margin-top: -12px;
+     color: transparent;
+     display: flex;
+     width: 24px;
+     height: 24px;
+ }
+
+ .loadInput::-webkit-file-upload-button {
+     visibility: hidden;
+ }
+
+ .loadInput::before {
+     content: '+';
+     display: inline-block;
+     outline: none;
+     border: none;
+     border-radius: 8px;
+     width: 24px;
+     height: 24px;
+     background: #bedbb0;
+     color: #161616;
+     font-weight: bold;
+     font-size: 14px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+     position: absolute;
+
+
+     @include media-rules(tablet) {
+         //  width: 100%;
+         //  width: 344px;
+     }
+ }
+
+ .loadInput:hover::before {
+     background: #9dc888;
+ }
+
+ .loadInput:active {
+     outline: 0;
+ }
+
+ .loadInput:active::before {
+     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+ }
+
+ .img {
+     width: 68px;
+     height: 68px;
+ }

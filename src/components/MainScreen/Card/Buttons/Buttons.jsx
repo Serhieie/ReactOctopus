@@ -102,7 +102,7 @@ export const Buttons = ({ card, column }) => {
       <MovePopUp
         isMoveCardPopUpOpen={isMoveCardPopUpOpen}
         currentBoard={active}
-        false={moveCardClose}
+        func={moveCardClose}
         columnTitle={column.title}
         card={card}
       />

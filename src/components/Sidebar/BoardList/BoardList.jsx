@@ -31,7 +31,7 @@ const BoardList = () => {
     ) {
       dispatch(fetchBoardById(boardName));
     }
-  }, [boardName, active, dispatch]);
+  }, [boardName, dispatch]);
 
   //Це просто переставляє активний елемент на першу позицію
   const sortedItems = items && [...items];
