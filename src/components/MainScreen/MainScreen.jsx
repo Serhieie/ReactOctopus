@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
-  let { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
+  const { active, isLoading: isBoardLoading } = useSelector(selectBoardsState);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
 

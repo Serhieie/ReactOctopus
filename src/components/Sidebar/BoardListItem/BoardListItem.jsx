@@ -5,15 +5,11 @@ import { useState } from 'react';
 import ModalPortal from '../../popUps/ModalPortal';
 import EditBoard from '../../popUps/Board/EditBoard';
 import { DeleteModal } from '../../MainScreen/DeleteModal/DeleteModal';
-// import { useSelector } from 'react-redux';
-// import { selectBoardsState } from '../../../redux/tasks/tasksSelectors';
 import { NavLink } from 'react-router-dom';
-import { getBoardById } from '../../../redux/api/tasks-api';
-import { useDispatch } from 'react-redux';
+
 const BoardListItem = ({ theme, board, activeItem }) => {
   const [isEditBoardModalOpen, setIsEditBoardModalOpen] = useState(false);
   const [isDeleteBoardModalOpen, setIsDeleteBoardModalOpen] = useState(false);
-  const dispatch = useDispatch();
 
   const openEditBoardModalOpen = () => {
     setIsEditBoardModalOpen(true);
@@ -31,17 +27,12 @@ const BoardListItem = ({ theme, board, activeItem }) => {
     setIsDeleteBoardModalOpen(true);
   };
 
-  const candleClick = () => {
-    dispatch(getBoardById(board._id));
-  };
-
   let endPoint;
   if (board) endPoint = board ? `${board?._id}` : '';
 
   return (
     <NavLink to={`/home/${endPoint}`}>
       <li
-        onClick={candleClick}
         className={clsx(styles.sidebar_board_item, {
           [styles.sidebar_board_itemDark]: theme === 'dark',
           [styles.sidebar_board_itemLight]: theme === 'light',

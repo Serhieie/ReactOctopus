@@ -5,19 +5,20 @@ export const fetchBoards = createAsyncThunk(
   'boards/fetcBoards',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const {
-        tasks: {
-          boards: { active },
-        },
-      } = getState();
+      // const {
+      //   tasks: {
+      //     boards: { active },
+      //   },
+      // } = getState();
       const data = await tasksApi.getBoards();
-      if (!active) {
-        const newActive = await tasksApi.getBoardById(data.result[0]._id);
-        return { data, newActive };
-      } else {
-        const newActive = await tasksApi.getBoardById(active._id);
-        return { data, newActive };
-      }
+      // if (!active) {
+      //   const newActive = await tasksApi.getBoardById(data.result[0]._id);
+      //   return { data, newActive };
+      // } else {
+      //   const newActive = await tasksApi.getBoardById(active._id);
+      //   return { data, newActive };
+      // }
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -65,7 +66,8 @@ export const deleteBoard = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.removeBoard(id);
-      const newItems = items.filter((card) => card._id !== response);
+      const newItems = items.filter((board) => board._id !== response);
+
       if (active._id === response) {
         const newActiveId =
           response === items[0]._id ? items[1]._id : items[0]._id;
@@ -75,6 +77,7 @@ export const deleteBoard = createAsyncThunk(
       if (items.length < 0) {
         return { newActive: null, items: [] };
       }
+
       return { newActive: active, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);

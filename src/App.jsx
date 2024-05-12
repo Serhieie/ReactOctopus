@@ -17,9 +17,7 @@ import {
   selectTasksState,
 } from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
-import { ExplainField } from './components/MainScreen/ExplainField/ExplainField';
-import { MainScreen } from './components/MainScreen/MainScreen';
-import { getBoardById } from './redux/api/tasks-api';
+import { fetchBoardById } from './redux/tasks/boards/boardsOperations';
 
 function App() {
   const { isLogin } = useAuth();
@@ -34,10 +32,10 @@ function App() {
     dispatch(fetchBoards());
   }, [dispatch, isLogin]);
 
-  // useEffect(() => {
-  //   if (!active && items) dispatch(getBoardById(items[0]._id));
-  //   else dispatch(getBoardById(active._id));
-  // }, []);
+  useEffect(() => {
+    if (active === null && items[0] && isLogin)
+      dispatch(fetchBoardById(items[0]._id));
+  }, [isLogin]);
 
   // example
   // const result = {
