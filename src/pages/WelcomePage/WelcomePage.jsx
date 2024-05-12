@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Welcome from '../../components/Welcome/Welcome';
 import { ping } from '../../redux/api/api';
-import CardModal from '../../components/popUps/cardModal/CardModal';
 
 const WelcomePage = () => {
   const wakeUp = async () => {
@@ -20,7 +19,6 @@ const WelcomePage = () => {
       }}
     >
       <Welcome />
-      <CardModal />
     </div>
   );
 };
