@@ -25,7 +25,7 @@ const CardModal = ({ func, columnId }) => {
         <CloseModalButton onClick={func} />
         <p className={css.filtersTitle}>Add card</p>
         <div>
-          <AddEditCardForm columnId={columnId} />
+          <AddEditCardForm columnId={columnId} func={func} />
         </div>
       </div>
     </div>

@@ -29,6 +29,7 @@ const AddEditCardForm = ({
   cardData = initialValues,
   action = 'Create',
   columnId = null,
+  func,
 }) => {
   const dispatch = useDispatch();
 
@@ -67,10 +68,12 @@ const AddEditCardForm = ({
           console.log('Updated');
         }
         reset();
+        func(false);
       } catch (error) {
         console.error('Error saving form data:', error);
       }
       reset();
+      func(false);
     }
   };
 

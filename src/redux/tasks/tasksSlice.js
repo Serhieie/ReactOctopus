@@ -183,7 +183,7 @@ export const tasksSlice = createSlice({
       })
       .addCase(cardsOperations.addCard.fulfilled, (state, { payload }) => {
         (state.cards.isLoading = false),
-          (state.cards.items = payload.newItems),
+          (state.cards.items = payload.items),
           (state.boards.active = payload.newActive);
       })
       .addCase(cardsOperations.addCard.rejected, (state, { payload }) => {

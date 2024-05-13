@@ -24,14 +24,15 @@ export const addCard = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.addCard(data);
-      const newItems = [response.result, ...items];
+      const newItems = [response, ...items];
+
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
           if (column._id === data.columnId) {
             return {
               ...column,
-              cards: [response.result, ...column.cards],
+              cards: [response, ...column.cards],
             };
           } else {
             return column;

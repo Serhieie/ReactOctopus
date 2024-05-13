@@ -16,7 +16,7 @@ export const Card = ({ card, column, index }) => {
   const labelColor = getColorByPriority(card?.priority, theme);
 
   //TRANSFORM RIGHT AFTER SIDEBAR
-  return isCardLoading || card ? (
+  return isCardLoading ? (
     <CardSkelleton />
   ) : (
     <Draggable draggableId={card?._id} index={index}>
