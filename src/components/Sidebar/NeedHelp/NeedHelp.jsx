@@ -1,5 +1,5 @@
 import styles from './NeedHelp.module.scss';
-import UserImg from '../../../assets/plant/plantX1.png';
+import UserImg from '../../../assets/plant/plantX4.png';
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import HelpModal from '../../popUps/Help/Help';
