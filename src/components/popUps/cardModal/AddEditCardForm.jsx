@@ -4,7 +4,7 @@ import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
 import { useAuth } from '../../../hooks';
-import { addCard } from '../../../redux/tasks/cards/cardsOperations';
+import { addCardOperation } from '../../../redux/tasks/cards/cardsOperations';
 
 import ModalButton from '../ModalButton/ModalButton';
 
@@ -35,7 +35,6 @@ const AddEditCardForm = ({
 
   const { theme } = useAuth();
   const [card, setCard] = useState({ ...cardData, columnId: columnId });
-  console.log(card);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -50,20 +49,17 @@ const AddEditCardForm = ({
       ...card,
       deadline: date,
     });
-    console.log('Selected date:', date);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (card.title === '') {
-      dispatch(addCard({ ...card }));
+      dispatch(addCardOperation({ ...card }));
     } else {
       try {
         if (action === 'Create') {
-          console.log(card);
-          console.log('Saved');
-          dispatch(addCard({ ...card }));
+          dispatch(addCardOperation({ ...card }));
         } else {
           console.log('Updated');
         }

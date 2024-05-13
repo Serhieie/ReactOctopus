@@ -13,7 +13,7 @@ export const fetchCards = createAsyncThunk(
   }
 );
 
-export const addCard = createAsyncThunk(
+export const addCardOperation = createAsyncThunk(
   'cards/addCard',
   async (data, { rejectWithValue, getState }) => {
     try {
@@ -21,10 +21,21 @@ export const addCard = createAsyncThunk(
         tasks: {
           boards: { active },
           cards: { items },
+          columns: { items: columnItems },
         },
       } = getState();
       const response = await tasksApi.addCard(data);
       const newItems = [response, ...items];
+
+      const newColumnItems = columnItems.map((column) => {
+        if (column._id === data.columnId) {
+          return {
+            ...column,
+            cards: [...column.cards, response],
+          };
+        }
+        return column;
+      });
 
       const newActive = {
         ...active,
@@ -39,7 +50,7 @@ export const addCard = createAsyncThunk(
           }
         }),
       };
-      return { newActive, items: newItems };
+      return { newActive, items: newItems, columnItems: newColumnItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -54,21 +65,52 @@ export const deleteCard = createAsyncThunk(
         tasks: {
           boards: { active },
           cards: { items },
+          columns: { items: columns },
         },
       } = getState();
       const response = await tasksApi.removeCard(data.cardId);
       const newItems = items.filter((card) => card._id !== response);
-      const newActive = {
-        ...active,
-        columns: active.columns.map((column) => {
+
+      const deletedItem = items.filter((card) => card._id === response)[0];
+
+      const newColumns = columns.map((column) => {
+        if (column._id === deletedItem.columnId) {
           return {
             ...column,
             cards: column.cards.filter((card) => card._id !== response),
           };
+        }
+      });
+
+      console.log(columns);
+
+      if (!newItems.length) {
+        const newActive = {
+          ...active,
+          columns: active.columns.map((column) => {
+            return {
+              ...column,
+              cards: [],
+            };
+          }),
+        };
+        return { newActive, items: [] };
+      }
+
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column._id === deletedItem.columnId) {
+            return {
+              ...column,
+              cards: column.cards.filter((card) => card._id !== response),
+            };
+          }
+          return column;
         }),
       };
 
-      return { newActive, items: newItems };
+      return { newActive, items: newItems, newColumns };
     } catch (error) {
       return rejectWithValue(error.message);
     }

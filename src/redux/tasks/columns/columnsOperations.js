@@ -25,6 +25,7 @@ export const addColumnOperation = createAsyncThunk(
       } = getState();
       const response = await tasksApi.addColumn(data);
       const newItems = [...items, response];
+
       const newActive = {
         ...active,
         columns: [...active.columns, response],
@@ -49,10 +50,23 @@ export const deleteColumn = createAsyncThunk(
       } = getState();
       const response = await tasksApi.removeColumn(data.columnId);
       const newItems = items.filter((column) => column._id !== response);
+
+      if (newItems.length === 0) {
+        const newActive = {
+          ...active,
+          columns: [],
+        };
+
+        console.log('items length', items);
+        console.log('new length', newItems);
+        return { newActive, items: [] };
+      }
       const newActive = {
         ...active,
         columns: [...newItems],
       };
+      console.log('items', items);
+      console.log('new', newItems);
       return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);

@@ -8,7 +8,6 @@ import { useAuth } from '../../../hooks';
 
 const CardModal = ({ func, columnId }) => {
   const { theme } = useAuth();
-  console.log(columnId);
 
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
