@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
@@ -13,6 +15,7 @@ import ModalButton from '../ModalButton/ModalButton';
 
 import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
+import { validationCardSchema } from '../../../schemas/validationCard';
 
 const initialValues = {
   title: '',
@@ -45,6 +48,7 @@ const AddEditCardForm = ({
       ...card,
       [name]: value,
     });
+    console.log(e.target.value);
   };
 
   const handleCalendarChange = (date) => {
@@ -99,6 +103,13 @@ const AddEditCardForm = ({
 
   // const { title, description, priority, date } = card;
 
+  const {
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationCardSchema),
+  });
+
   const elements = options.map((option, index) => (
     <label key={index} className={css.colorFilterRadioLable}>
       <input
@@ -133,7 +144,19 @@ const AddEditCardForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.inputWrapper}>
-        <InputForm value={title} onChange={handleChange} />
+        {/* <InputForm
+          value={title}
+          onChange={handleChange}
+          {...register('title', { required: true })}
+        /> */}
+        <input
+          type="text"
+          name="title"
+          value={title}
+          // onChange={handleChange}
+          {...register('title', { required: true })}
+        />
+        {/* {errors.title && <p className={css.error}>{errors.title.message}</p>} */}
       </div>
 
       <div className={css.comment}>
@@ -145,10 +168,14 @@ const AddEditCardForm = ({
             [css.forCommentlLight]: theme === 'light',
             [css.forCommentViolet]: theme === 'violet',
           })}
-          onChange={handleChange}
+          // onChange={handleChange}
           value={description}
           placeholder="Description"
+          {...register('description', { required: true })}
         />
+        {/* {errors.description && (
+          <p className={css.error}>{errors.description.message}</p>
+        )} */}
       </div>
 
       <div className={css.filterOptions}>
