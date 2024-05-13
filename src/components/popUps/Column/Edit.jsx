@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { editColumnOperation } from '../../../redux/tasks/columns/columnsOperations';
-import { useParams } from 'react-router-dom';
 import { useAuth } from '../../../hooks';
 
 const MdlEdit = ({ open, onOpen, onClose, item }) => {
@@ -32,10 +31,7 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
   };
 
   const handleChangeTitle = (e) => {
-    console.log(e.target);
-
     setTitleInput(e.target.value);
-    console.log(titleInput);
   };
 
   const handleSubmit = (e) => {
@@ -46,7 +42,6 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
     schema
       .validate({ title: titleInput })
       .then((data) => {
-        console.log('data', data);
         handleCloseModal();
         dispatch(
           editColumnOperation({ columnId: item._id, body: { ...data } })
@@ -59,7 +54,6 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
 
   return (
     <>
-      <button onClick={handleOpenModal}>Edit Modal</button>
       {open && (
         <div className={styles.modal} data-id="modal-backdrop">
           <div
@@ -127,7 +121,7 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
                     [styles.addTextButton]: theme === 'violet',
                   })}
                 >
-                  Add
+                  Edit
                 </span>
               </button>
             </form>

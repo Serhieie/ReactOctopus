@@ -6,9 +6,10 @@ import { AddButtonSkelleton } from './AddButtonSkelleton/AddButtonSkelleton.jsx'
 import { useAuth } from '../../../hooks/useAuth.js';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors.js';
+import { ExplainField } from '../../MainScreen/ExplainField/ExplainField.jsx';
 
 export const MainScreenSkelleton = () => {
-  const { active } = useSelector(selectBoardsState);
+  const { active, items } = useSelector(selectBoardsState);
   const { theme } = useAuth();
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
@@ -29,14 +30,20 @@ export const MainScreenSkelleton = () => {
           [styles.mainScreenSidebarOpen]: isSidebarOpen && !isDesktop,
         })}
       >
-        <div className={styles.mainScreenHead}>
-          <div className={styles.headTitle}></div>
-          <div className={styles.headFilter}></div>
-        </div>
-        <div className={styles.mainContent}>
-          <ColumnListSkelleton data={active} />
-          <AddButtonSkelleton column={true} />
-        </div>
+        {items.length !== 0 || active != null ? (
+          <>
+            <div className={styles.mainScreenHead}>
+              <div className={styles.headTitle}></div>
+              <div className={styles.headFilter}></div>
+            </div>
+            <div className={styles.mainContent}>
+              <ColumnListSkelleton data={active} />
+              <AddButtonSkelleton column={true} />
+            </div>
+          </>
+        ) : (
+          <ExplainField />
+        )}
       </div>
     </div>
   );

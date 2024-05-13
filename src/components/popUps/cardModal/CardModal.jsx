@@ -1,26 +1,31 @@
 import css from './CardModal.module.scss';
 import clsx from 'clsx';
-import { useAuth } from '../../../hooks';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
 import AddEditCardForm from './AddEditCardForm';
+import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
+import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import { useAuth } from '../../../hooks';
 
-const CardModal = ({ children }) => {
-  //   const { theme } = useAuth();
-  const theme = 'dark';
+const CardModal = ({ func }) => {
+  const { theme } = useAuth();
+
+  useClickOnBackdropToCloseModals(func);
+  useEscapeKeyToCloseModals(func);
 
   return (
-    <div
-      className={clsx(css.filterModal, {
-        [css.filterModalDark]: theme === 'dark',
-        [css.filterModalLight]: theme === 'light',
-        [css.filterModalViolet]: theme === 'violet',
-      })}
-    >
-      <CloseModalButton />
-      <p className={css.filtersTitle}>Add card</p>
-      <div>
-        <AddEditCardForm />
-        {/* {children} */}
+    <div data-id="modal-backdrop" className={css.backdrop}>
+      <div
+        className={clsx(css.filterModal, {
+          [css.filterModalDark]: theme === 'dark',
+          [css.filterModalLight]: theme === 'light',
+          [css.filterModalViolet]: theme === 'violet',
+        })}
+      >
+        <CloseModalButton onClick={func} />
+        <p className={css.filtersTitle}>Add card</p>
+        <div>
+          <AddEditCardForm />
+        </div>
       </div>
     </div>
   );

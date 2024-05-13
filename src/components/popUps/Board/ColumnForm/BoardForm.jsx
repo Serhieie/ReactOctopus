@@ -147,7 +147,10 @@ const BoardForm = ({
             checked={background}
           />
         </div>
-        <ModalButton type="submit" text="Create" />
+        <ModalButton
+          type="submit"
+          text={action === 'Create' ? 'Create' : 'Edit'}
+        />
       </form>
       <ToastContainer position="top-right" />
     </>

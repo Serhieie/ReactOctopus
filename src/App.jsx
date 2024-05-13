@@ -12,22 +12,14 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { fetchBoards } from './redux/tasks/boards/boardsOperations';
-import {
-  selectBoardsState,
-  selectTasksState,
-} from './redux/tasks/tasksSelectors';
+import { selectTasksState } from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
-import { fetchBoardById } from './redux/tasks/boards/boardsOperations';
 
 function App() {
-  const { isLogin, isLoading } = useAuth();
+  const { isLogin } = useAuth();
   const reduxState = useSelector(selectTasksState);
-  const {
-    items,
-    active,
-    isLoading: isBoardsLoading,
-  } = useSelector(selectBoardsState);
   const [state, setState] = useState(reduxState);
+  // const [true, setTrue] = useState();
 
   const dispatch = useDispatch();
 
@@ -37,12 +29,6 @@ function App() {
     }
     dispatch(current());
   }, [dispatch, isLogin]);
-
-  useEffect(() => {
-    if (items.length > 0 && !isLoading && !isBoardsLoading) {
-      dispatch(fetchBoardById(items[0]._id));
-    }
-  }, []);
 
   // example
   // const result = {

@@ -8,9 +8,9 @@ export const ExplainField = () => {
   return (
     <div
       className={clsx(styles.explainField, {
-        [styles.explainTextDark]: theme === 'dark',
-        [styles.explainTextLight]: theme === 'light',
-        [styles.explainTextViolet]: theme === 'violet',
+        [styles.explainFieldDark]: theme === 'dark',
+        [styles.explainFieldLight]: theme === 'light',
+        [styles.explainFieldViolet]: theme === 'violet',
       })}
     >
       <p className={styles.explainText}>

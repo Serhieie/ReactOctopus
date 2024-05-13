@@ -43,20 +43,21 @@
     height: 73px;
   }
   @include media-rules(desktop) {
-    height: 57px;
+    height: 61px;
     padding-bottom: 10px;
   }
 
   .headTitle {
-    width: 160px;
-    height: 18px;
+    width: 144px;
+    height: 32px;
     opacity: 0.2;
     border-radius: 4px;
+    padding-bottom: 10px;
   }
 
   .headFilter {
-    width: 44px;
-    height: 14px;
+    width: 76px;
+    height: 26px;
     opacity: 0.1;
     border-radius: 4px;
   }

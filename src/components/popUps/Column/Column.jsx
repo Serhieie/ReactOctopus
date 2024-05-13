@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Column.module.scss';
 import validationTitle from '../../../schemas/validationTitle';
 import clsx from 'clsx';
@@ -11,7 +11,7 @@ import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { useAuth } from '../../../hooks';
 
-const MdlColumn = ({ open, onOpen, onClose }) => {
+const MdlColumn = ({ open, onClose }) => {
   const { boardName } = useParams();
   const { theme } = useAuth();
   const dispatch = useDispatch();
@@ -27,10 +27,6 @@ const MdlColumn = ({ open, onOpen, onClose }) => {
 
   useClickOnBackdropToCloseModals(onClose);
   useEscapeKeyToCloseModals(onClose);
-
-  const handleOpenModal = () => {
-    onOpen(true);
-  };
 
   const handleChangeTitle = (e) => {
     setTitleInput(e.target.value);
@@ -53,7 +49,6 @@ const MdlColumn = ({ open, onOpen, onClose }) => {
 
   return (
     <>
-      <button onClick={handleOpenModal}>Open Add</button>
       {open && (
         <div className={styles.modal} data-id="modal-backdrop">
           <div

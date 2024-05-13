@@ -51,7 +51,7 @@ export const deleteColumn = createAsyncThunk(
       const newItems = items.filter((column) => column._id !== response);
       const newActive = {
         ...active,
-        columns: active.columns.filter((column) => column._id !== response),
+        columns: [...newItems],
       };
       return { newActive, items: newItems };
     } catch (error) {
@@ -76,19 +76,24 @@ export const editColumnOperation = createAsyncThunk(
       const columnIndex = updatedItems.findIndex(
         (column) => column._id === data.columnId
       );
+
       if (columnIndex !== -1) {
         updatedItems[columnIndex] = response;
+
+        const newActive = {
+          ...active,
+          columns: active.columns.map((column) => {
+            if (column._id === data.columnId) {
+              return response;
+            }
+            return column;
+          }),
+        };
+
+        return { newActive, items: updatedItems };
       }
-      const newActive = {
-        ...active,
-        columns: active.columns.map((column) => {
-          if (column._id === data.columnId) {
-            return response;
-          }
-          return column;
-        }),
-      };
-      return { newActive, items: updatedItems };
+
+      return { newActive: active, items };
     } catch (error) {
       return rejectWithValue(error.message);
     }

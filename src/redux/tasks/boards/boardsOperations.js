@@ -3,21 +3,9 @@ import * as tasksApi from '../../api/tasks-api';
 
 export const fetchBoards = createAsyncThunk(
   'boards/fetcBoards',
-  async (_, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      // const {
-      //   tasks: {
-      //     boards: { active },
-      //   },
-      // } = getState();
       const data = await tasksApi.getBoards();
-      // if (!active) {
-      //   const newActive = await tasksApi.getBoardById(data.result[0]._id);
-      //   return { data, newActive };
-      // } else {
-      //   const newActive = await tasksApi.getBoardById(active._id);
-      //   return { data, newActive };
-      // }
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -72,8 +60,10 @@ export const deleteBoard = createAsyncThunk(
       const newItems = items.filter((board) => board._id !== response);
 
       if (!newItems.length) {
-        console.log('empty');
         return { newActive: null, items: [] };
+      } else if (active._id === response) {
+        const newActive = active._id === items[0]._id ? items[1] : items[0];
+        return { newActive, items: newItems };
       }
 
       return { newActive: active, items: newItems };

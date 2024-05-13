@@ -82,6 +82,10 @@
   .box_3 {
     background-color: $text-dark;
   }
+
+  &:first-child {
+    background-color: rgb(23, 23, 23);
+  }
 }
 
 //Light
@@ -95,6 +99,10 @@
   .box_3 {
     background-color: $text-light;
   }
+
+  &:first-child {
+    background-color: rgb(251, 251, 252);
+  }
 }
 
 //Violet
@@ -107,6 +115,10 @@
   .box_1,
   .box_2,
   .box_3 {
-    background-color: $text-violet;
+    background-color: $text-dark;
+  }
+
+  &:first-child {
+    background-color: rgb(117, 119, 201);
   }
 }

@@ -11,9 +11,6 @@ import ModalButton from '../ModalButton/ModalButton';
 import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
 
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-
 const initialValues = {
   title: '',
   description: '',

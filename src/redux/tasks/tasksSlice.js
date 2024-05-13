@@ -111,7 +111,7 @@ export const tasksSlice = createSlice({
         (state.columns.isLoading = false), (state.columns.error = payload);
       })
 
-      //ADD COLUMN(UPDATED BUT DIDNT CHECKED)
+      //ADD COLUMN(UPDATEd)
       .addCase(columsOperations.addColumnOperation.pending, (state) => {
         (state.columns.isLoading = true), (state.columns.error = null);
       })
@@ -154,7 +154,7 @@ export const tasksSlice = createSlice({
         columsOperations.editColumnOperation.fulfilled,
         (state, { payload }) => {
           state.columns.isLoading = false;
-          state.columns.items = payload.newItems;
+          state.columns.items = payload.items;
           state.boards.active = payload.newActive;
         }
       )

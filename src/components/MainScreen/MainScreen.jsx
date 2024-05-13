@@ -7,7 +7,10 @@ import { AddButton } from './AddButton/AddButton.jsx';
 import { useMedia } from '../../hooks/useMedia.js';
 import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
-import { selectBoardsState } from '../../redux/tasks/tasksSelectors.js';
+import {
+  selectBoardsState,
+  selectColumnsState,
+} from '../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 import { FilterModal } from '../popUps/Filters/FilterModal.jsx';
 import { useIsPopUpOpen } from '../../hooks/useIsPopUpOpen.js';
@@ -15,14 +18,12 @@ import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
 import ModalPortal from '../popUps/ModalPortal.jsx';
 import MdlColumn from '../popUps/Column/Column.jsx';
-import { useState } from 'react';
-
-  
-
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
-    const {
+  const {
     active,
     items,
     isLoading: isBoardLoading,
@@ -30,12 +31,17 @@ export const MainScreen = () => {
   const dispatch = useDispatch();
   const { isFiltersModalOpen } = useIsPopUpOpen();
   const [isAddCardOpen, setAddCardOpen] = useState(false);
+  const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
+  const [truuue, setTruuue] = useState(true);
   const isSidebarOpen = false;
   const { isDesktop } = useMedia();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const openAddColumnModal = () => {
     setAddCardOpen(true);
   };
+
   const closeAddColumnModal = () => {
     setAddCardOpen(false);
   };
@@ -44,13 +50,36 @@ export const MainScreen = () => {
     dispatch(setIsFiltersOpen(true));
   };
 
-  return (isBoardLoading && active) || isLoading ? (
+  useEffect(() => {
+    // if (location.pathname === `/home/${itemId}`) {
+    //   return;
+    // }
+
+    if (location.pathname === '/home') {
+      setTruuue(true);
+    }
+    if (items.length === 0) {
+      navigate('/home');
+    } else {
+      const firstItem = active ? active : items[0] ? items[0] : null;
+      const itemId = firstItem._id;
+      const newPath = `/home/${itemId}`;
+      if (truuue) navigate(newPath);
+      setTruuue(false);
+    }
+  }, [items, navigate, truuue]);
+
+  const showIfDonwloading = isColumnLoading || isLoading || isBoardLoading;
+
+  return showIfDonwloading ? (
     <MainScreenSkelleton />
   ) : (
     <div className={styles.wrapper}>
       <div
         style={{
-          backgroundImage: `url(${active ? active.background : ''})`,
+          backgroundImage: `url(${
+            active ? active.background : items[0] ? items[0]?.background : ''
+          })`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -62,11 +91,14 @@ export const MainScreen = () => {
           [styles.mainScreenSidebarOpen]: isSidebarOpen && !isDesktop,
         })}
       >
-        {active && active.columns ? (
+        {(active && active?.columns) ||
+        (items?.length > 0 && items[0]?.columns) ? (
           <>
             <div className={styles.mainScreenHead}>
               <div className={styles.blur}>
-                <h2 className={styles.boardTitle}>{active.title}</h2>
+                <h2 className={styles.boardTitle}>
+                  {active ? active.title : items[0].title}
+                </h2>
               </div>
               <div onClick={openFilters} className={styles.blur}>
                 {' '}
@@ -85,7 +117,7 @@ export const MainScreen = () => {
               </div>
             </div>
             <div className={styles.mainContent}>
-              <ColumnList data={active ? active : items[0]} />
+              <ColumnList data={active ? active : items} />
               <AddButton column={true} addFunction={openAddColumnModal} />
             </div>
             <ModalPortal>
@@ -100,6 +132,7 @@ export const MainScreen = () => {
           <ExplainField />
         )}
       </div>
+
       {isFiltersModalOpen && <FilterModal />}
     </div>
   );

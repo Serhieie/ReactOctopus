@@ -7,9 +7,10 @@ import { useAuth } from '../../../hooks/useAuth.js';
 import { ColumnSkelleton } from '../../Skelletons/MainScreenSkelleton/ColumnSkelleton/ColumnSkelleton.jsx';
 import { useState } from 'react';
 import ModalPortal from '../../popUps/ModalPortal.jsx';
-import AddEditCardForm from '../../popUps/cardModal/AddEditCardForm.jsx';
 import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
+import CardModal from '../../popUps/cardModal/CardModal.jsx';
+import Backdrop from '../../popUps/Backdrop/Backdrop.jsx';
 
 export const Column = ({ column }) => {
   const { theme } = useAuth();
@@ -17,9 +18,13 @@ export const Column = ({ column }) => {
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
 
   // (cardData = initialValues), (columnId = null);
-  const toggleAddCardModal = () => {
-    setIsAddCardModalOpen((state) => !state);
+  const closeAddCardModal = () => {
+    setIsAddCardModalOpen(false);
   };
+  const openAddCardModal = () => {
+    setIsAddCardModalOpen(true);
+  };
+
   return isColumnLoading ? (
     <ColumnSkelleton />
   ) : (
@@ -35,10 +40,10 @@ export const Column = ({ column }) => {
       >
         <ColumnHead column={column} />
         <CardList column={column} />
-        <AddButton column={false} addFunction={toggleAddCardModal} />
+        <AddButton column={false} addFunction={openAddCardModal} />
       </li>
       <ModalPortal>
-        {isAddCardModalOpen && <AddEditCardForm columnId={column._id} />}
+        {isAddCardModalOpen && <CardModal func={closeAddCardModal} />}
       </ModalPortal>
     </>
   );
