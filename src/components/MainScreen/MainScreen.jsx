@@ -71,7 +71,7 @@ export const MainScreen = () => {
 
   const showIfDonwloading = isColumnLoading || isLoading || isBoardLoading;
 
-  return showIfDonwloading ? (
+  return showIfDonwloading && items?.length > 0 ? (
     <MainScreenSkelleton />
   ) : (
     <div className={styles.wrapper}>
@@ -117,7 +117,7 @@ export const MainScreen = () => {
               </div>
             </div>
             <div className={styles.mainContent}>
-              <ColumnList data={active ? active : items} />
+              <ColumnList data={active ? active : items[0]} />
               <AddButton column={true} addFunction={openAddColumnModal} />
             </div>
             <ModalPortal>

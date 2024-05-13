@@ -45,25 +45,16 @@ export const deleteColumn = createAsyncThunk(
       const {
         tasks: {
           boards: { active },
-          columns: { items },
         },
       } = getState();
       const response = await tasksApi.removeColumn(data.columnId);
-      const newItems = items.filter((column) => column._id !== response);
 
-      if (!newItems.length) {
-        const newActive = {
-          ...active,
-          columns: [],
-        };
-        return { newActive, items: [] };
-      }
       const newActive = {
         ...active,
-        columns: newItems,
+        columns: active.columns.filter((column) => column._id !== response),
       };
 
-      return { newActive, items: newItems };
+      return { active: newActive };
     } catch (error) {
       return rejectWithValue(error.message);
     }

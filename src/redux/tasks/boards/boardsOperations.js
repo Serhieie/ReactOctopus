@@ -6,7 +6,12 @@ export const fetchBoards = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const data = await tasksApi.getBoards();
-      return data;
+      const arrayOfCards = [];
+      data.result[0].columns.forEach((column) => {
+        column.cards.forEach((card) => arrayOfCards.push(card));
+      });
+
+      return { data, arrayOfCards };
     } catch (error) {
       return rejectWithValue(error.message);
     }

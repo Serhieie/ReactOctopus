@@ -28,6 +28,7 @@ export const DeleteModal = ({ open, itemType, item, func }) => {
       case 'card':
         dispatch(
           deleteCard({
+            columnId: item.columnId,
             cardId: item._id,
           })
         );

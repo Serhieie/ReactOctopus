@@ -50,6 +50,7 @@ export const addCardOperation = createAsyncThunk(
           }
         }),
       };
+
       return { newActive, items: newItems, columnItems: newColumnItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -64,18 +65,14 @@ export const deleteCard = createAsyncThunk(
       const {
         tasks: {
           boards: { active },
-          cards: { items },
         },
       } = getState();
       const response = await tasksApi.removeCard(data.cardId);
-      const newItems = items.filter((card) => card._id !== response);
-      const deletedItem = items.filter((card) => card._id === response);
-
-      console.log(active);
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
-          if (column._id === deletedItem[0].columnId) {
+          if (column._id === data.columnId) {
+            console.log('column', column);
             return {
               ...column,
               cards: column.cards.filter((card) => card._id !== response),
@@ -84,8 +81,8 @@ export const deleteCard = createAsyncThunk(
           return column;
         }),
       };
-      console.log(newActive);
-      return { newActive, items: newItems };
+
+      return { newActive };
     } catch (error) {
       return rejectWithValue(error.message);
     }
