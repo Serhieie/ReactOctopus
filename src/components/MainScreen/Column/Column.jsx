@@ -10,7 +10,7 @@ import ModalPortal from '../../popUps/ModalPortal.jsx';
 import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 import CardModal from '../../popUps/cardModal/CardModal.jsx';
-import Backdrop from '../../popUps/Backdrop/Backdrop.jsx';
+import AddEditCardForm from '../../popUps/cardModal/addEditCardForm.jsx';
 
 export const Column = ({ column }) => {
   const { theme } = useAuth();
@@ -43,7 +43,13 @@ export const Column = ({ column }) => {
       </li>
       <ModalPortal>
         {isAddCardModalOpen && (
-          <CardModal func={closeAddCardModal} columnId={column._id} />
+          <CardModal func={closeAddCardModal} name={'Add card'}>
+            <AddEditCardForm
+              columnId={column._id}
+              func={closeAddCardModal}
+              action="Create"
+            />
+          </CardModal>
         )}
       </ModalPortal>
     </>

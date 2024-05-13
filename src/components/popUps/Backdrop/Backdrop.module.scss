@@ -6,10 +6,19 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(46, 47, 66, 0.4);
   top: 0;
   left: 0;
   z-index: 1002;
+}
+
+.backdropDark {
+  background-color: rgba(21, 21, 21, 0.5);
+}
+.backdropLight {
+  background-color: rgba(21, 21, 21, 0.3);
+}
+.backdropViolet {
+  background-color: rgba(21, 21, 21, 0.3);
 }
 
 .visuallyHidden {

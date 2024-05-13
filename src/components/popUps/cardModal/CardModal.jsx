@@ -1,19 +1,25 @@
 import css from './CardModal.module.scss';
 import clsx from 'clsx';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
-import AddEditCardForm from './AddEditCardForm';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { useAuth } from '../../../hooks';
 
-const CardModal = ({ func, columnId }) => {
+const CardModal = ({ func, name, children }) => {
   const { theme } = useAuth();
 
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
 
   return (
-    <div data-id="modal-backdrop" className={css.backdrop}>
+    <div
+      data-id="modal-backdrop"
+      className={clsx(css.backdrop, {
+        [css.backdropDark]: theme === 'dark',
+        [css.backdropLight]: theme === 'light',
+        [css.backdropViolet]: theme === 'violet',
+      })}
+    >
       <div
         className={clsx(css.filterModal, {
           [css.filterModalDark]: theme === 'dark',
@@ -22,10 +28,8 @@ const CardModal = ({ func, columnId }) => {
         })}
       >
         <CloseModalButton onClick={func} />
-        <p className={css.filtersTitle}>Add card</p>
-        <div>
-          <AddEditCardForm columnId={columnId} func={func} />
-        </div>
+        <p className={css.filtersTitle}>{name}</p>
+        <div>{children}</div>
       </div>
     </div>
   );
