@@ -22,8 +22,14 @@
   }
 
   .sidebar_board_title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.02em;
+
     text-align: end;
-    padding: 0 20px;
+    // text-wrap: nowrap;
+    // padding: 0 20px;
   }
 
   .right_part {

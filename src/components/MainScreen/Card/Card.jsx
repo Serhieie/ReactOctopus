@@ -13,7 +13,7 @@ export const Card = ({ card, column, index }) => {
   const { theme } = useAuth();
   const { isLoading: isCardLoading } = useSelector(selectCardsState);
 
-  const labelColor = getColorByPriority(card?.priority, theme);
+  const labelColor = getColorByPriority(card.priority, theme);
 
   //TRANSFORM RIGHT AFTER SIDEBAR
   return isCardLoading ? (

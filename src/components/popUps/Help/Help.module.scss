@@ -17,12 +17,21 @@ $tablet-textarea-height: 352px;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.75);
   overflow: hidden;
   overflow-y: auto;
   transition: opacity 0.3s;
   z-index: 999;
   user-select: none;
+}
+
+.modalDark {
+  background-color: rgba(21, 21, 21, 0.5);
+}
+.modalLight {
+  background-color: rgba(21, 21, 21, 0.3);
+}
+.modalViolet {
+  background-color: rgba(21, 21, 21, 0.3);
 }
 
 .modalContent {
@@ -36,6 +45,7 @@ $tablet-textarea-height: 352px;
   background: $modal-background-dark;
   box-sizing: border-box;
   border-radius: 10px;
+
   @include media-rules(tablet) {
     width: $tablet-width;
   }

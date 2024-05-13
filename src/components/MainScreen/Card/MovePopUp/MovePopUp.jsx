@@ -15,7 +15,6 @@ export const MovePopUp = ({
 }) => {
   const { theme } = useAuth();
   const dispatch = useDispatch();
-  // console.log(isMoveCardPopUpOpen);
   useEscapeKeyToClosePopUps(func, isMoveCardPopUpOpen);
 
   const handleChangeColumn = async (event) => {

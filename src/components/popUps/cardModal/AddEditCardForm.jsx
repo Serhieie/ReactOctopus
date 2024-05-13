@@ -10,6 +10,7 @@ import {
   addCard,
   editCardOperation,
 } from '../../../redux/tasks/cards/cardsOperations';
+import { addCardOperation } from '../../../redux/tasks/cards/cardsOperations';
 
 import ModalButton from '../ModalButton/ModalButton';
 
@@ -55,14 +56,12 @@ const AddEditCardForm = ({
       ...card,
       deadline: date,
     });
-    console.log('Selected date:', date);
   };
 
   const { title, description, deadline, priority } = card;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (action === 'Create') {
       dispatch(addCard({ ...card, columnId }));
       reset();
@@ -77,7 +76,8 @@ const AddEditCardForm = ({
       func(false);
     }
   };
-
+  
+  
   const reset = () => {
     setCard({ ...initialValues });
   };

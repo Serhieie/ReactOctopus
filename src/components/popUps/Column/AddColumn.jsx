@@ -8,9 +8,7 @@ import ColumnFormAdd from '../Board/ColumnForm/ColumnFormAdd';
 
 const AddColumn = ({ name = 'Add Columns' }) => {
   const theme = 'Dark';
-  const func = () => {
-    console.log(123);
-  };
+  const func = () => {};
   return (
     <Backdrop>
       <BoardModal>

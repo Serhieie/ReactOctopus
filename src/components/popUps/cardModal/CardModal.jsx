@@ -12,7 +12,14 @@ const CardModal = ({ func, name, children }) => {
   useEscapeKeyToCloseModals(func);
 
   return (
-    <div data-id="modal-backdrop" className={css.backdrop}>
+    <div
+      data-id="modal-backdrop"
+      className={clsx(css.backdrop, {
+        [css.backdropDark]: theme === 'dark',
+        [css.backdropLight]: theme === 'light',
+        [css.backdropViolet]: theme === 'violet',
+      })}
+    >
       <div
         className={clsx(css.filterModal, {
           [css.filterModalDark]: theme === 'dark',

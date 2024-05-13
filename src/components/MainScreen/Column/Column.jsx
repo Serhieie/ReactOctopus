@@ -24,7 +24,6 @@ export const Column = ({ column }) => {
   const openAddCardModal = () => {
     setIsAddCardModalOpen(true);
   };
-  ``;
   return isColumnLoading ? (
     <ColumnSkelleton />
   ) : (

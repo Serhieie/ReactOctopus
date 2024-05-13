@@ -17,7 +17,6 @@ export const CardList = ({ column }) => {
     <CardListSkelleton />
   ) : (
     <>
-      {' '}
       <Droppable droppableId={column._id}>
         {(provided) => (
           <ul
