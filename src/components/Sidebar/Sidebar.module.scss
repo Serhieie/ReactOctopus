@@ -27,6 +27,8 @@
   top: 0;
   left: 0;
 
+  font-family: 'Poppins', sans-serif;
+
   @include media-rules(tablet) {
     width: 260px;
   }
