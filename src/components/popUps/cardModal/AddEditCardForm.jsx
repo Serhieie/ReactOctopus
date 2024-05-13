@@ -152,11 +152,11 @@ const AddEditCardForm = ({
         <input
           type="text"
           name="title"
-          value={title}
-          // onChange={handleChange}
+          value={card.title}
+          onChange={handleChange}
           {...register('title', { required: true })}
         />
-        {/* {errors.title && <p className={css.error}>{errors.title.message}</p>} */}
+        {errors.title && <p className={css.error}>{errors.title.message}</p>}
       </div>
 
       <div className={css.comment}>
@@ -168,14 +168,14 @@ const AddEditCardForm = ({
             [css.forCommentlLight]: theme === 'light',
             [css.forCommentViolet]: theme === 'violet',
           })}
-          // onChange={handleChange}
-          value={description}
+          onChange={handleChange}
+          value={card.description}
           placeholder="Description"
           {...register('description', { required: true })}
         />
-        {/* {errors.description && (
+        {errors.description && (
           <p className={css.error}>{errors.description.message}</p>
-        )} */}
+        )}
       </div>
 
       <div className={css.filterOptions}>
