@@ -79,7 +79,6 @@ export const editeBoardOperation = createAsyncThunk(
     try {
       const { active, items } = getState().tasks.boards;
       const response = await tasksApi.editeBoard(data.boardId, data.body);
-
       const newActive = { ...active, ...response };
       const newItems = items.map((board) =>
         board._id === response._id ? { ...board, ...response } : board

@@ -67,6 +67,8 @@ export const tasksSlice = createSlice({
       .addCase(boardsOperations.deleteBoard.fulfilled, (state, { payload }) => {
         state.boards.isLoading = false;
         state.boards.active = payload.newActive;
+        state.columns.items = [];
+        state.cards.items = [];
         state.boards.items = payload.items;
         state.boards.lastDeleted = payload.items;
       })
@@ -83,6 +85,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           state.boards.isLoading = false;
           state.boards.active = payload.newActive;
+          state.columns.items = payload.newActive.columns;
           state.boards.items = payload.newItems;
         }
       )
@@ -135,7 +138,7 @@ export const tasksSlice = createSlice({
         columsOperations.deleteColumn.fulfilled,
         (state, { payload }) => {
           (state.columns.isLoading = false),
-            (state.columns.items = payload.items);
+            (state.columns.items = payload.newActive.columns);
           state.boards.active = payload.newActive;
         }
       )
@@ -151,7 +154,7 @@ export const tasksSlice = createSlice({
         columsOperations.editColumnOperation.fulfilled,
         (state, { payload }) => {
           state.columns.isLoading = false;
-          state.columns.items = payload.items;
+          state.columns.items = payload.newActive.columns;
           state.boards.active = payload.newActive;
         }
       )
@@ -183,7 +186,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           (state.cards.isLoading = false),
             (state.cards.items = payload.items),
-            (state.columns.items = payload.columnItems),
+            (state.columns.items = payload.newActive.columns),
             (state.boards.active = payload.newActive);
         }
       )
@@ -201,12 +204,13 @@ export const tasksSlice = createSlice({
       .addCase(cardsOperations.deleteCard.fulfilled, (state, { payload }) => {
         (state.cards.isLoading = false), (state.cards.items = payload.items);
         state.boards.active = payload.newActive;
+        state.columns.active = payload.newColumns;
       })
       .addCase(cardsOperations.deleteCard.rejected, (state, { payload }) => {
         (state.cards.isLoading = false), (state.cards.error = payload);
       })
 
-      //EDIT CARD(UPDATED BUT DIDNT CHECKED)
+      //EDIT CARD(UPDATED)
       .addCase(cardsOperations.editCardOperation.pending, (state) => {
         (state.cards.isLoading = true), (state.cards.error = null);
       })
@@ -215,6 +219,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           state.cards.isLoading = false;
           state.cards.items = payload.newItems;
+          state.columns.items = payload.newActive.columns;
           state.boards.active = payload.newActive;
         }
       )
@@ -237,6 +242,7 @@ export const tasksSlice = createSlice({
           state.columns.isLoading = false;
           state.cards.isLoading = false;
           state.boards.active = payload;
+          state.columns.items = payload.columns;
         }
       )
       .addCase(
@@ -251,7 +257,7 @@ export const tasksSlice = createSlice({
 const persistConfig = {
   key: 'tasks',
   storage,
-  // blacklist: ['cards', 'columns'],
+  blacklist: ['cards', 'columns'],
 };
 
 export const persistedTasksReducer = persistReducer(

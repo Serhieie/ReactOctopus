@@ -65,42 +65,17 @@ export const deleteCard = createAsyncThunk(
         tasks: {
           boards: { active },
           cards: { items },
-          columns: { items: columns },
         },
       } = getState();
       const response = await tasksApi.removeCard(data.cardId);
       const newItems = items.filter((card) => card._id !== response);
+      const deletedItem = items.filter((card) => card._id === response);
 
-      const deletedItem = items.filter((card) => card._id === response)[0];
-
-      const newColumns = columns.map((column) => {
-        if (column._id === deletedItem.columnId) {
-          return {
-            ...column,
-            cards: column.cards.filter((card) => card._id !== response),
-          };
-        }
-      });
-
-      console.log(columns);
-
-      if (!newItems.length) {
-        const newActive = {
-          ...active,
-          columns: active.columns.map((column) => {
-            return {
-              ...column,
-              cards: [],
-            };
-          }),
-        };
-        return { newActive, items: [] };
-      }
-
+      console.log(active);
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
-          if (column._id === deletedItem.columnId) {
+          if (column._id === deletedItem[0].columnId) {
             return {
               ...column,
               cards: column.cards.filter((card) => card._id !== response),
@@ -109,8 +84,8 @@ export const deleteCard = createAsyncThunk(
           return column;
         }),
       };
-
-      return { newActive, items: newItems, newColumns };
+      console.log(newActive);
+      return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }

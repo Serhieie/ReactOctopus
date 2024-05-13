@@ -51,22 +51,18 @@ export const deleteColumn = createAsyncThunk(
       const response = await tasksApi.removeColumn(data.columnId);
       const newItems = items.filter((column) => column._id !== response);
 
-      if (newItems.length === 0) {
+      if (!newItems.length) {
         const newActive = {
           ...active,
           columns: [],
         };
-
-        console.log('items length', items);
-        console.log('new length', newItems);
         return { newActive, items: [] };
       }
       const newActive = {
         ...active,
-        columns: [...newItems],
+        columns: newItems,
       };
-      console.log('items', items);
-      console.log('new', newItems);
+
       return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -74,7 +70,6 @@ export const deleteColumn = createAsyncThunk(
   }
 );
 
-//ТРЕБА БУДЕ ПЕРЕВІРЯТИ, ФУНКЦІЇ ЄДІТ КАРД ТА КОЛУМЕ МОЖУТЬ БУТИ ПРОБЛЕМНИМИ
 export const editColumnOperation = createAsyncThunk(
   'columns/editColumn',
   async (data, { rejectWithValue, getState }) => {
