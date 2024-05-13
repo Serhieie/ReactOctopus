@@ -40,7 +40,14 @@ const HelpModal = () => {
   return (
     <>
       {isHelpPopUpOpen && (
-        <div data-id="modal-backdrop" className={styles.modal}>
+        <div
+          data-id="modal-backdrop"
+          className={clsx(styles.modal, {
+            [styles.modalDark]: theme === 'dark',
+            [styles.modalLight]: theme === 'light',
+            [styles.modalViolet]: theme === 'violet',
+          })}
+        >
           <div
             className={clsx(styles.modalContent, {
               [styles.dark]: theme === 'dark',

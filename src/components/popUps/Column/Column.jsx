@@ -50,7 +50,14 @@ const MdlColumn = ({ open, onClose }) => {
   return (
     <>
       {open && (
-        <div className={styles.modal} data-id="modal-backdrop">
+        <div
+          className={clsx(styles.modal, {
+            [styles.modalDark]: theme === 'dark',
+            [styles.modalLight]: theme === 'light',
+            [styles.modalViolet]: theme === 'violet',
+          })}
+          data-id="modal-backdrop"
+        >
           <div
             className={clsx(styles.modalContent, {
               [styles.dark]: theme === 'dark',

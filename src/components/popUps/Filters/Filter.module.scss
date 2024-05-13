@@ -52,7 +52,7 @@
 }
 
 .colorFilterWithoutPriority {
-  border: 1px solid #ffffff4d;
+  border: 1px solid rgba(231, 231, 231, 0.3);
 }
 
 .colorFilterMediumPriority {
@@ -120,56 +120,62 @@
 .filterContainerDark {
   color: $text-dark;
   .lableColor,
-  .colorFilterRadioLable,
-  .clearAllBtn {
+  .colorFilterRadioLable {
     color: $text-dark;
+  }
+
+  .clearAllBtn {
+    color: rgba(255, 255, 255, 0.5);
   }
 
   .priorityText {
     color: $text-secondary-dark;
-  }
-
-  .hr {
-    border-color: rgba(255, 255, 255, 0.1);
-    border-width: 1px;
   }
 }
 
 .filterContainerLight {
   color: $text-light;
   .lableColor,
-  .colorFilterRadioLable,
-  .clearAllBtn {
+  .colorFilterRadioLable {
     color: $text-light;
+  }
+
+  .clearAllBtn {
+    color: rgba(22, 22, 22, 0.5);
   }
 
   .priorityText {
     color: $text-secondary-light;
   }
 
+  .colorFilterWithoutPriority {
+    width: 15px;
+  }
+
   .colorFilterCenterWithoutPriority {
     background-color: rgba(22, 22, 22, 0.1);
-  }
-  .hr {
-    border-color: rgba(22, 22, 22, 0.1);
   }
 }
 
 .filterContainerViolet {
   color: $text-violet;
   .lableColor,
-  .colorFilterRadioLable,
-  .clearAllBtn {
+  .colorFilterRadioLable {
     color: $text-violet;
+  }
+  .clearAllBtn {
+    color: rgba(22, 22, 22, 0.5);
   }
 
   .priorityText {
     color: $text-secondary-violet;
   }
+
+  .colorFilterWithoutPriority {
+    width: 15px;
+  }
+
   .colorFilterCenterWithoutPriority {
     background-color: rgba(22, 22, 22, 0.1);
-  }
-  .hr {
-    border-color: rgba(22, 22, 22, 0.1);
   }
 }
