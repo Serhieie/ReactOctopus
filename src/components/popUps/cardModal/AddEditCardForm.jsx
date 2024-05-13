@@ -48,7 +48,6 @@ const AddEditCardForm = ({
       ...card,
       [name]: value,
     });
-    console.log(e.target.value);
   };
 
   const handleCalendarChange = (date) => {
@@ -77,38 +76,19 @@ const AddEditCardForm = ({
       );
       func(false);
     }
-
-    // if (action === 'Edite') {
-    //   dispatch(addCard({ ...card }));
-    // } else {
-    //   try {
-    //     if (action === 'Create') {
-    //       dispatch(addCard({ ...card }));
-    //     } else {
-    //       console.log('Updated');
-    //     }
-    //     reset();
-    //     func(false);
-    //   } catch (error) {
-    //     console.error('Error saving form data:', error);
-    //   }
-    //   reset();
-    //   func(false);
-    // }
   };
 
   const reset = () => {
     setCard({ ...initialValues });
   };
 
-  // const { title, description, priority, date } = card;
-
-  const {
-    register,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(validationCardSchema),
-  });
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   setValue,
+  // } = useForm({
+  //   resolver: yupResolver(validationCardSchema),
+  // });
 
   const elements = options.map((option, index) => (
     <label key={index} className={css.colorFilterRadioLable}>
@@ -144,19 +124,19 @@ const AddEditCardForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.inputWrapper}>
-        {/* <InputForm
+        <InputForm
           value={title}
           onChange={handleChange}
-          {...register('title', { required: true })}
-        /> */}
-        <input
+          // {...register('title', { required: true })}
+        />
+        {/* <input
           type="text"
           name="title"
           value={card.title}
           onChange={handleChange}
           {...register('title', { required: true })}
         />
-        {errors.title && <p className={css.error}>{errors.title.message}</p>}
+        {errors.title && <p className={css.error}>{errors.title.message}</p>} */}
       </div>
 
       <div className={css.comment}>
@@ -171,11 +151,11 @@ const AddEditCardForm = ({
           onChange={handleChange}
           value={card.description}
           placeholder="Description"
-          {...register('description', { required: true })}
+          // {...register('description', { required: true })}
         />
-        {errors.description && (
+        {/* {errors.description && (
           <p className={css.error}>{errors.description.message}</p>
-        )}
+        )} */}
       </div>
 
       <div className={css.filterOptions}>
