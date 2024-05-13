@@ -59,9 +59,12 @@ const UserEditModalForm = ({ userData, func }) => {
     const newFormData = new FormData();
     newFormData.append('avatar', data.avatar[0]);
     newFormData.append('name', data.name);
+    newFormData.append('email', data.email);
     newFormData.append('password', data.password);
 
     dispatch(updateUser(newFormData));
+
+    func();
   };
 
   return (
