@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+// import { useForm } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers/yup';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
 import { useAuth } from '../../../hooks';
 import {
-  addCard,
+  addCardOperation,
   editCardOperation,
 } from '../../../redux/tasks/cards/cardsOperations';
-import { addCardOperation } from '../../../redux/tasks/cards/cardsOperations';
 
 import ModalButton from '../ModalButton/ModalButton';
 
 import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
-import { validationCardSchema } from '../../../schemas/validationCard';
+// import { validationCardSchema } from '../../../schemas/validationCard';
 
 const initialValues = {
   title: '',
@@ -63,7 +62,7 @@ const AddEditCardForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (action === 'Create') {
-      dispatch(addCard({ ...card, columnId }));
+      dispatch(addCardOperation({ ...card, columnId }));
       reset();
       func(false);
     } else if (action === 'Edit') {
@@ -76,8 +75,7 @@ const AddEditCardForm = ({
       func(false);
     }
   };
-  
-  
+
   const reset = () => {
     setCard({ ...initialValues });
   };

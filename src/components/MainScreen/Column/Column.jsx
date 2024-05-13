@@ -10,7 +10,7 @@ import ModalPortal from '../../popUps/ModalPortal.jsx';
 import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 import CardModal from '../../popUps/cardModal/CardModal.jsx';
-import AddEditCardForm from '../../popUps/cardModal/addEditCardForm.jsx';
+import AddEditCardForm from '../../popUps/cardModal/AddEditCardForm.jsx';
 
 export const Column = ({ column }) => {
   const { theme } = useAuth();

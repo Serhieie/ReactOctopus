@@ -89,7 +89,7 @@ export const deleteCard = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }``
+  }
 );
 
 export const editCardOperation = createAsyncThunk(
