@@ -26,8 +26,7 @@ const UserEditModalForm = ({ userData, func }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(userInitState);
 
-  const { avatarURL } = useAuth();
-  const theme = 'dark';
+  const { avatarURL, theme } = useAuth();
 
   const dispatch = useDispatch();
 
