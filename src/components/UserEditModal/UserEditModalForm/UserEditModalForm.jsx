@@ -63,6 +63,8 @@ const UserEditModalForm = ({ userData, func }) => {
     newFormData.append('password', data.password);
 
     dispatch(updateUser(newFormData));
+
+    func();
   };
 
   return (
