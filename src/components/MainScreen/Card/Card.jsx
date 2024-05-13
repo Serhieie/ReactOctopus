@@ -13,13 +13,13 @@ export const Card = ({ card, column, index }) => {
   const { theme } = useAuth();
   const { isLoading: isCardLoading } = useSelector(selectCardsState);
 
-  const labelColor = getColorByPriority(card.priority, theme);
+  const labelColor = getColorByPriority(card?.priority, theme);
 
   //TRANSFORM RIGHT AFTER SIDEBAR
-  return isCardLoading ? (
+  return isCardLoading || card ? (
     <CardSkelleton />
   ) : (
-    <Draggable draggableId={card._id} index={index}>
+    <Draggable draggableId={card?._id} index={index}>
       {(provided) => (
         <li
           {...provided.draggableProps}
@@ -36,8 +36,8 @@ export const Card = ({ card, column, index }) => {
             style={{ backgroundColor: `${labelColor}` }}
           ></span>
           <div className={styles.descriptionBlock}>
-            <h4 className={styles.cardTitle}>{card.title}</h4>
-            <p className={styles.cardDescription}>{card.description}</p>
+            <h4 className={styles.cardTitle}>{card?.title}</h4>
+            <p className={styles.cardDescription}>{card?.description}</p>
           </div>
           <hr className={styles.hr} />
           <div className={styles.priorityBlock}>

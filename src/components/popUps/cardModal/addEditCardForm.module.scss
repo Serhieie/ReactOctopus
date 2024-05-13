@@ -72,12 +72,25 @@
   padding: 18px;
   border: 1px solid $button-light;
   border-radius: 8px;
-  color: #161616;
+  // color: #ffffff;
   background-color: $text-dark;
   opacity: 0.4;
   margin-top: 14px;
   overflow: hidden;
   resize: none;
+
+  .forCommentlLight {
+    background-color: $text-light;
+  }
+
+  .forCommentViolet {
+    background-color: $text-violet;
+  }
+
+  .forCommentDark {
+    background-color: $text-dark;
+    // color: #ffffff;
+  }
 }
 
 .forComment:focus {
