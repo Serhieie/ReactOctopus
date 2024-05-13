@@ -5,7 +5,6 @@ import { useAuth } from '../../../hooks';
 
 const ModalButton = ({ type = 'button', text = 'Create' }) => {
   const { theme } = useAuth();
-  // const theme = 'dark';
   return (
     <button
       type={type}

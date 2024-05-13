@@ -25,6 +25,7 @@ export const addColumnOperation = createAsyncThunk(
       } = getState();
       const response = await tasksApi.addColumn(data);
       const newItems = [...items, response];
+
       const newActive = {
         ...active,
         columns: [...active.columns, response],
@@ -49,10 +50,19 @@ export const deleteColumn = createAsyncThunk(
       } = getState();
       const response = await tasksApi.removeColumn(data.columnId);
       const newItems = items.filter((column) => column._id !== response);
+
+      if (!newItems.length) {
+        const newActive = {
+          ...active,
+          columns: [],
+        };
+        return { newActive, items: [] };
+      }
       const newActive = {
         ...active,
-        columns: [...newItems],
+        columns: newItems,
       };
+
       return { newActive, items: newItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -60,7 +70,6 @@ export const deleteColumn = createAsyncThunk(
   }
 );
 
-//ТРЕБА БУДЕ ПЕРЕВІРЯТИ, ФУНКЦІЇ ЄДІТ КАРД ТА КОЛУМЕ МОЖУТЬ БУТИ ПРОБЛЕМНИМИ
 export const editColumnOperation = createAsyncThunk(
   'columns/editColumn',
   async (data, { rejectWithValue, getState }) => {

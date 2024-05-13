@@ -11,6 +11,7 @@ import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
 import MdlColumn from '../../../popUps/Column/Column';
+import CardModal from '../../../popUps/cardModal/CardModal';
 
 export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
@@ -115,11 +116,14 @@ export const Buttons = ({ card, column }) => {
       />
       <ModalPortal>
         {isEditCardOpen && (
-          <AddEditCardForm
-            cardData={card}
-            columnId={column._id}
-            func={closeEditCard}
-          />
+          <CardModal func={closeEditCard} name={'Edit card'}>
+            <AddEditCardForm
+              cardData={card}
+              columnId={column._id}
+              func={closeEditCard}
+              action="Edit"
+            />
+          </CardModal>
         )}
         <DeleteModal
           open={isDeleteCardOpen}

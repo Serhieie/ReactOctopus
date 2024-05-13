@@ -17,7 +17,6 @@ export const CardList = ({ column }) => {
     <CardListSkelleton />
   ) : (
     <>
-      {' '}
       <Droppable droppableId={column._id}>
         {(provided) => (
           <ul
@@ -29,7 +28,7 @@ export const CardList = ({ column }) => {
               [styles.cardListViolet]: theme === 'violet',
             })}
           >
-            {column?.cards?.length &&
+            {column?.cards &&
               column.cards.map((card, index) => (
                 <Card
                   key={nanoid()}

@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include appear-animation(50ms);
+  // @include appear-animation(50ms);
 
   z-index: 1005;
 }
@@ -22,7 +22,7 @@
   border-radius: 8px;
   width: 100%;
   max-width: 420px;
-  @include appear-animation(300ms);
+  // @include appear-animation(300ms);
   @include media-rules(tablet) {
     padding: 32px 28px;
   }
@@ -59,7 +59,7 @@
 //Dark
 
 .modalOverlayDark {
-  background-color: rgba(0, 0, 0, 0.22);
+  background-color: rgba(21, 21, 21, 0.5);
 
   .modalContent {
     background-color: $background-dark;
@@ -85,7 +85,7 @@
 //Light
 
 .modalOverlayLight {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(21, 21, 21, 0.3);
 
   .modalContent {
     background-color: $background-light;
@@ -114,7 +114,7 @@
 .modalOverlayViolet {
   background-color: $background-violet;
   color: $text-violet;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(21, 21, 21, 0.3);
 
   .modalContent {
     background-color: $background-violet;

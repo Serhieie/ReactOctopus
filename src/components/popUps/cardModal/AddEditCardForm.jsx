@@ -1,20 +1,26 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+// import { useForm } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers/yup';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
 import { useAuth } from '../../../hooks';
-import { addCard } from '../../../redux/tasks/cards/cardsOperations';
+import {
+  addCardOperation,
+  editCardOperation,
+} from '../../../redux/tasks/cards/cardsOperations';
 
 import ModalButton from '../ModalButton/ModalButton';
 
 import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
+// import { validationCardSchema } from '../../../schemas/validationCard';
 
 const initialValues = {
   title: '',
   description: '',
-  priority: '',
+  priority: 'without',
   deadline: dbDate(new Date()),
 };
 
@@ -34,8 +40,7 @@ const AddEditCardForm = ({
   const dispatch = useDispatch();
 
   const { theme } = useAuth();
-  const [card, setCard] = useState({ ...cardData, columnId: columnId });
-  console.log(card);
+  const [card, setCard] = useState({ ...cardData });
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -50,29 +55,23 @@ const AddEditCardForm = ({
       ...card,
       deadline: date,
     });
-    console.log('Selected date:', date);
   };
+
+  const { title, description, deadline, priority } = card;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (card.title === '') {
-      dispatch(addCard({ ...card }));
-    } else {
-      try {
-        if (action === 'Create') {
-          console.log(card);
-          console.log('Saved');
-          dispatch(addCard({ ...card }));
-        } else {
-          console.log('Updated');
-        }
-        reset();
-        func(false);
-      } catch (error) {
-        console.error('Error saving form data:', error);
-      }
+    if (action === 'Create') {
+      dispatch(addCardOperation({ ...card, columnId }));
       reset();
+      func(false);
+    } else if (action === 'Edit') {
+      dispatch(
+        editCardOperation({
+          cardId: cardData._id,
+          body: { title, description, priority, deadline },
+        })
+      );
       func(false);
     }
   };
@@ -81,7 +80,13 @@ const AddEditCardForm = ({
     setCard({ ...initialValues });
   };
 
-  const { title, description, priority, date } = card;
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   setValue,
+  // } = useForm({
+  //   resolver: yupResolver(validationCardSchema),
+  // });
 
   const elements = options.map((option, index) => (
     <label key={index} className={css.colorFilterRadioLable}>
@@ -117,7 +122,19 @@ const AddEditCardForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.inputWrapper}>
-        <InputForm value={title} onChange={handleChange} />
+        <InputForm
+          value={title}
+          onChange={handleChange}
+          // {...register('title', { required: true })}
+        />
+        {/* <input
+          type="text"
+          name="title"
+          value={card.title}
+          onChange={handleChange}
+          {...register('title', { required: true })}
+        />
+        {errors.title && <p className={css.error}>{errors.title.message}</p>} */}
       </div>
 
       <div className={css.comment}>
@@ -130,9 +147,13 @@ const AddEditCardForm = ({
             [css.forCommentViolet]: theme === 'violet',
           })}
           onChange={handleChange}
-          value={description}
+          value={card.description}
           placeholder="Description"
+          // {...register('description', { required: true })}
         />
+        {/* {errors.description && (
+          <p className={css.error}>{errors.description.message}</p>
+        )} */}
       </div>
 
       <div className={css.filterOptions}>
@@ -140,8 +161,8 @@ const AddEditCardForm = ({
         <div className={css.filterForm}>{elements}</div>
       </div>
 
-      <CalendarNew value={date} onChange={handleCalendarChange} />
-      <ModalButton type="submit" />
+      <CalendarNew value={deadline} onChange={handleCalendarChange} />
+      <ModalButton type="submit" text={action === 'Create' ? 'Add' : 'Edit'} />
     </form>
   );
 };

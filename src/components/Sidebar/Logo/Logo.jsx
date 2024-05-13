@@ -21,7 +21,7 @@ const Logo = () => {
         </svg>
       </div>
       <div>
-        <p>Task Pro</p>
+        <p className={styles.sidebar_logo_title}>Task Pro</p>
       </div>
     </div>
   );

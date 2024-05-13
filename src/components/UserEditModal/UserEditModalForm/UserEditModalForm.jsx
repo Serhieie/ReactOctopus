@@ -49,7 +49,6 @@ const UserEditModalForm = ({ userData, func }) => {
 
   const handleFileChange = (e) => {
     const file = e.target.files && e.target.files[0];
-    console.log(file);
     setFormData((prevData) => ({
       ...prevData,
       avatar: file,
