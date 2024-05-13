@@ -6,7 +6,7 @@
   color: #ff4e4e;
   font-family: Poppins;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .filterContainer {
@@ -136,7 +136,7 @@
   background-color: #bedbb0;
 }
 
-.radioIcon:checked ~ .colorFilter .colorFilterCenter {
+.radioIcon:checked~.colorFilter .colorFilterCenter {
   width: 8px;
   height: 8px;
 }

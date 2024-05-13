@@ -42,6 +42,8 @@ const AddEditCardForm = ({
   const { theme } = useAuth();
   const [card, setCard] = useState({ ...cardData });
 
+  const [error, setError] = useState(false);
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setCard({
@@ -61,6 +63,10 @@ const AddEditCardForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (title === '' || description === '') {
+      setError(true);
+      return;
+    }
     if (action === 'Create') {
       dispatch(addCardOperation({ ...card, columnId }));
       reset();
@@ -125,8 +131,10 @@ const AddEditCardForm = ({
         <InputForm
           value={title}
           onChange={handleChange}
+
           // {...register('title', { required: true })}
         />
+        {error && <p className={css.error}>{'Title is required'}</p>}
         {/* <input
           type="text"
           name="title"
@@ -151,6 +159,7 @@ const AddEditCardForm = ({
           placeholder="Description"
           // {...register('description', { required: true })}
         />
+        {error && <p className={css.error}>{'Title is required'}</p>}
         {/* {errors.description && (
           <p className={css.error}>{errors.description.message}</p>
         )} */}
