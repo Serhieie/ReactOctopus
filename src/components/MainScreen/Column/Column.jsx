@@ -43,7 +43,9 @@ export const Column = ({ column }) => {
         <AddButton column={false} addFunction={openAddCardModal} />
       </li>
       <ModalPortal>
-        {isAddCardModalOpen && <CardModal func={closeAddCardModal} />}
+        {isAddCardModalOpen && (
+          <CardModal func={closeAddCardModal} columnId={column._id} />
+        )}
       </ModalPortal>
     </>
   );

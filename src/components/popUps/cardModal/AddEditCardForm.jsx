@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
+import { useAuth } from '../../../hooks';
+import { addCard } from '../../../redux/tasks/cards/cardsOperations';
 
-import s from './addEditCardForm.module.scss';
-s;
 import ModalButton from '../ModalButton/ModalButton';
 
 import InputForm from '../Board/InputForm/InputForm';
@@ -15,21 +15,26 @@ const initialValues = {
   title: '',
   description: '',
   priority: '',
-  date: dbDate(new Date()),
+  deadline: dbDate(new Date()),
 };
 
 const options = [
-  { priority: 'Without priority' },
-  { priority: 'Low' },
-  { priority: 'Medium' },
-  { priority: 'High' },
+  { priority: 'without' },
+  { priority: 'low' },
+  { priority: 'medium' },
+  { priority: 'high' },
 ];
 
-const AddEditCardForm = ({ cardData = initialValues, action = 'Create' }) => {
+const AddEditCardForm = ({
+  cardData = initialValues,
+  action = 'Create',
+  columnId = null,
+}) => {
   const dispatch = useDispatch();
 
-  const theme = 'dark';
-  const [card, setCard] = useState({ ...cardData });
+  const { theme } = useAuth();
+  const [card, setCard] = useState({ ...cardData, columnId: columnId });
+  console.log(card);
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -42,7 +47,7 @@ const AddEditCardForm = ({ cardData = initialValues, action = 'Create' }) => {
   const handleCalendarChange = (date) => {
     setCard({
       ...card,
-      date,
+      deadline: date,
     });
     console.log('Selected date:', date);
   };
@@ -51,12 +56,13 @@ const AddEditCardForm = ({ cardData = initialValues, action = 'Create' }) => {
     e.preventDefault();
 
     if (card.title === '') {
-      console.log(123);
+      dispatch(addCard({ ...card }));
     } else {
       try {
         if (action === 'Create') {
           console.log(card);
           console.log('Saved');
+          dispatch(addCard({ ...card }));
         } else {
           console.log('Updated');
         }
@@ -86,20 +92,19 @@ const AddEditCardForm = ({ cardData = initialValues, action = 'Create' }) => {
       />
       <span
         className={clsx(css.colorFilter, {
-          [css.colorFilterWithoutPriority]:
-            option.priority === 'Without priority',
-          [css.colorFilterLowPriority]: option.priority === 'Low',
-          [css.colorFilterMediumPriority]: option.priority === 'Medium',
-          [css.colorFilterHighPriority]: option.priority === 'High',
+          [css.colorFilterWithoutPriority]: option.priority === 'without',
+          [css.colorFilterLowPriority]: option.priority === 'low',
+          [css.colorFilterMediumPriority]: option.priority === 'medium',
+          [css.colorFilterHighPriority]: option.priority === 'high',
         })}
       >
         <span
           className={clsx(css.colorFilterCenter, {
             [css.colorFilterCenterWithoutPriority]:
-              option.priority === 'Without priority',
-            [css.colorFilterCenterLowPriority]: option.priority === 'Low',
-            [css.colorFilterCenterMediumPriority]: option.priority === 'Medium',
-            [css.colorFilterCenterHighPriority]: option.priority === 'High',
+              option.priority === 'without',
+            [css.colorFilterCenterLowPriority]: option.priority === 'low',
+            [css.colorFilterCenterMediumPriority]: option.priority === 'medium',
+            [css.colorFilterCenterHighPriority]: option.priority === 'high',
           })}
         ></span>
       </span>
@@ -117,11 +122,13 @@ const AddEditCardForm = ({ cardData = initialValues, action = 'Create' }) => {
           type="text"
           name="description"
           className={clsx(css.forComment, {
-            [css.darkInp]: theme === 'Dark',
+            [css.forCommentDark]: theme === 'dark',
+            [css.forCommentlLight]: theme === 'light',
+            [css.forCommentViolet]: theme === 'violet',
           })}
           onChange={handleChange}
           value={description}
-          placeholder="Comment"
+          placeholder="Description"
         />
       </div>
 

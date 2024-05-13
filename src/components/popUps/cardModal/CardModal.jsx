@@ -6,8 +6,9 @@ import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { useAuth } from '../../../hooks';
 
-const CardModal = ({ func }) => {
+const CardModal = ({ func, columnId }) => {
   const { theme } = useAuth();
+  console.log(columnId);
 
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
@@ -24,7 +25,7 @@ const CardModal = ({ func }) => {
         <CloseModalButton onClick={func} />
         <p className={css.filtersTitle}>Add card</p>
         <div>
-          <AddEditCardForm />
+          <AddEditCardForm columnId={columnId} />
         </div>
       </div>
     </div>

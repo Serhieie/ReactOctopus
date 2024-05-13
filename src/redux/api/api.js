@@ -38,7 +38,6 @@ export const logout = async () => {
 };
 
 export const updateProfile = async (body) => {
-  console.log(body);
   const response = await instance.patch('/auth/update-profile', body, {
     headers: {
       'Content-Type': 'multipart/form-data',
