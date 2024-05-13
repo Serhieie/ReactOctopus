@@ -4,7 +4,10 @@ import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
 import { useAuth } from '../../../hooks';
-import { addCard } from '../../../redux/tasks/cards/cardsOperations';
+import {
+  addCard,
+  editCardOperation,
+} from '../../../redux/tasks/cards/cardsOperations';
 
 import ModalButton from '../ModalButton/ModalButton';
 
@@ -14,7 +17,7 @@ import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
 const initialValues = {
   title: '',
   description: '',
-  priority: '',
+  priority: 'without',
   deadline: dbDate(new Date()),
 };
 
@@ -34,8 +37,7 @@ const AddEditCardForm = ({
   const dispatch = useDispatch();
 
   const { theme } = useAuth();
-  const [card, setCard] = useState({ ...cardData, columnId: columnId });
-  console.log(card);
+  const [card, setCard] = useState({ ...cardData });
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -53,35 +55,49 @@ const AddEditCardForm = ({
     console.log('Selected date:', date);
   };
 
+  const { title, description, deadline, priority } = card;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (card.title === '') {
-      dispatch(addCard({ ...card }));
-    } else {
-      try {
-        if (action === 'Create') {
-          console.log(card);
-          console.log('Saved');
-          dispatch(addCard({ ...card }));
-        } else {
-          console.log('Updated');
-        }
-        reset();
-        func(false);
-      } catch (error) {
-        console.error('Error saving form data:', error);
-      }
+    if (action === 'Create') {
+      dispatch(addCard({ ...card, columnId }));
       reset();
       func(false);
+    } else if (action === 'Edit') {
+      dispatch(
+        editCardOperation({
+          cardId: cardData._id,
+          body: { title, description, priority, deadline },
+        })
+      );
+      func(false);
     }
+
+    // if (action === 'Edite') {
+    //   dispatch(addCard({ ...card }));
+    // } else {
+    //   try {
+    //     if (action === 'Create') {
+    //       dispatch(addCard({ ...card }));
+    //     } else {
+    //       console.log('Updated');
+    //     }
+    //     reset();
+    //     func(false);
+    //   } catch (error) {
+    //     console.error('Error saving form data:', error);
+    //   }
+    //   reset();
+    //   func(false);
+    // }
   };
 
   const reset = () => {
     setCard({ ...initialValues });
   };
 
-  const { title, description, priority, date } = card;
+  // const { title, description, priority, date } = card;
 
   const elements = options.map((option, index) => (
     <label key={index} className={css.colorFilterRadioLable}>
@@ -140,8 +156,8 @@ const AddEditCardForm = ({
         <div className={css.filterForm}>{elements}</div>
       </div>
 
-      <CalendarNew value={date} onChange={handleCalendarChange} />
-      <ModalButton type="submit" />
+      <CalendarNew value={deadline} onChange={handleCalendarChange} />
+      <ModalButton type="submit" text={action === 'Create' ? 'Add' : 'Edit'} />
     </form>
   );
 };

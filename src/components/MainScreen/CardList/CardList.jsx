@@ -29,7 +29,7 @@ export const CardList = ({ column }) => {
               [styles.cardListViolet]: theme === 'violet',
             })}
           >
-            {column?.cards?.length &&
+            {column?.cards &&
               column.cards.map((card, index) => (
                 <Card
                   key={nanoid()}

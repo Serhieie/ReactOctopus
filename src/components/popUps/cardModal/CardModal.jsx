@@ -1,14 +1,12 @@
 import css from './CardModal.module.scss';
 import clsx from 'clsx';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
-import AddEditCardForm from './AddEditCardForm';
 import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { useAuth } from '../../../hooks';
 
-const CardModal = ({ func, columnId }) => {
+const CardModal = ({ func, name, children }) => {
   const { theme } = useAuth();
-  console.log(columnId);
 
   useClickOnBackdropToCloseModals(func);
   useEscapeKeyToCloseModals(func);
@@ -23,10 +21,8 @@ const CardModal = ({ func, columnId }) => {
         })}
       >
         <CloseModalButton onClick={func} />
-        <p className={css.filtersTitle}>Add card</p>
-        <div>
-          <AddEditCardForm columnId={columnId} func={func} />
-        </div>
+        <p className={css.filtersTitle}>{name}</p>
+        <div>{children}</div>
       </div>
     </div>
   );
