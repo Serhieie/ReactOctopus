@@ -28,6 +28,8 @@ const UserEditModalForm = ({ userData, func }) => {
 
   const { avatarURL, theme } = useAuth();
 
+  const [previewImage, setPreviewImage] = useState(null);
+
   const dispatch = useDispatch();
 
   const togglePasswordVisibility = () => {
@@ -53,6 +55,16 @@ const UserEditModalForm = ({ userData, func }) => {
       ...prevData,
       avatar: file,
     }));
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreviewImage(null);
+    }
   };
 
   const onSubmit = (data) => {
@@ -77,11 +89,16 @@ const UserEditModalForm = ({ userData, func }) => {
       noValidate
     >
       <div className={styles.inputContainerImg}>
-        <img
-          className={styles.img}
-          src={avatarURL || setUserPlaceholder(theme)}
-          alt="user avatar"
-        />
+        {previewImage && (
+          <img className={styles.img} src={previewImage} alt="Preview" />
+        )}
+        {!previewImage && (
+          <img
+            className={styles.img}
+            src={avatarURL || setUserPlaceholder(theme)}
+            alt="user avatar"
+          />
+        )}
         <input
           className={styles.loadInput}
           {...register('avatar', { required: false })}
