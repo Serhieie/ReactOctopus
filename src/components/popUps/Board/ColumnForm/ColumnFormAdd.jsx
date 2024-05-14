@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 
 import InputForm from '../InputForm/InputForm';
 import ModalButton from '../../ModalButton/ModalButton';
@@ -8,6 +7,7 @@ import {
   addBoard,
   editeBoardOperation,
 } from '../../../../redux/tasks/boards/boardsOperations';
+import { Notify } from 'notiflix';
 
 const INITIAL_STATE = {
   title: '',
@@ -34,7 +34,7 @@ const ColumnFormAdd = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (columns.title === '') {
-      toast.error('Title is required');
+      Notify.failure('Title is required');
     } else {
       try {
         if (action === 'Create') {
@@ -72,7 +72,6 @@ const ColumnFormAdd = ({
         <InputForm onChange={handleChange} value={title} />
         <ModalButton type="submit" text={action} />
       </form>
-      <ToastContainer position="top-right" />
     </>
   );
 };

@@ -3,6 +3,7 @@
 @import '/src/styles/colors';
 
 .error {
+  position: absolute;
   color: #ff4e4e;
   font-family: Poppins;
   font-weight: 400;
@@ -100,7 +101,7 @@
   border-radius: 8px;
   color: #161616;
   opacity: 0.4;
-  margin-top: 14px;
+  margin-top: 18px;
   overflow: hidden;
   resize: none;
   outline: none;
@@ -175,7 +176,7 @@
   background-color: #bedbb0;
 }
 
-.radioIcon:checked ~ .colorFilter .colorFilterCenter {
+.radioIcon:checked~.colorFilter .colorFilterCenter {
   width: 8px;
   height: 8px;
 }

@@ -26,9 +26,11 @@ $tablet-input-button: 302px;
 .modalDark {
   background-color: rgba(21, 21, 21, 0.5);
 }
+
 .modalLight {
   background-color: rgba(21, 21, 21, 0.3);
 }
+
 .modalViolet {
   background-color: rgba(21, 21, 21, 0.3);
 }
@@ -74,8 +76,9 @@ $tablet-input-button: 302px;
   height: 49px;
   color: black;
   background-color: white;
-  opacity: 0.4;
+  // opacity: 0.4;
   padding: 0 18px;
+
   @include media-rules(tablet) {
     width: $tablet-input-button;
   }
@@ -118,6 +121,7 @@ $tablet-input-button: 302px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   @include media-rules(tablet) {
     width: $tablet-input-button;
   }
@@ -149,11 +153,15 @@ $tablet-input-button: 302px;
 }
 
 .error {
-  color: red;
+  position: absolute;
+  color: #ff4e4e;
   font-family: Poppins;
   font-weight: 400;
-  font-size: 14px;
-  opacity: 0.6;
+  font-size: 12px;
+}
+
+.inputError {
+  border: red;
 }
 
 // THEME
@@ -206,4 +214,5 @@ $tablet-input-button: 302px;
 .plusIconViolet {
   stroke: $button-violet;
 }
+
 // THEME

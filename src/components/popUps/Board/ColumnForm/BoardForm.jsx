@@ -1,6 +1,5 @@
 import css from './BoardForm.module.scss';
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import clsx from 'clsx';
 import IconsList from '../Icons/IconsList';
 import BackgroundsInputList from '../BackgroundsInputList/BackgroundsInputList';
@@ -62,6 +61,10 @@ const BoardForm = ({
     ...data,
   });
 
+  const [error, setError] = useState({
+    title: false,
+  });
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setColumns({
@@ -74,7 +77,10 @@ const BoardForm = ({
     e.preventDefault();
 
     if (columns.title === '') {
-      toast.error('Title is required');
+      if (title === '') {
+        setError({ title: true });
+        return;
+      }
     } else {
       try {
         if (action === 'Create') {
@@ -118,6 +124,7 @@ const BoardForm = ({
       <form onSubmit={handleSubmit}>
         <div className={css.inputWrapper}>
           <InputForm onChange={handleChange} value={title} />
+          {error.title && <p className={css.error}>{'Title is required'}</p>}
         </div>
         <div className={css.iconsInputWrapper}>
           <h3
@@ -152,7 +159,6 @@ const BoardForm = ({
           text={action === 'Create' ? 'Create' : 'Edit'}
         />
       </form>
-      <ToastContainer position="top-right" />
     </>
   );
 };

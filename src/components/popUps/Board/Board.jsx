@@ -21,29 +21,29 @@ const Board = ({ name, open, action = 'Create' }) => {
     setShowModal(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //const response = await axios.get('/api/board');
-        const response = {
-          title: 'hhhhh',
-          icon: 'star',
-          background:
-            'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/fekrlygw3hcac9ru0sqj.webp',
-        };
-        setBoard(response);
-        setLoading(false);
-        // setBoard(response.data);
-      } catch (error) {
-        console.error('Error fetching board data:', error);
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       //const response = await axios.get('/api/board');
+  //       const response = {
+  //         title: 'hhhhh',
+  //         icon: 'star',
+  //         background:
+  //           'http://res.cloudinary.com/dnqperiuu/image/upload/v1714575496/react-octopus/desctop/fekrlygw3hcac9ru0sqj.webp',
+  //       };
+  //       setBoard(response);
+  //       setLoading(false);
+  //       // setBoard(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching board data:', error);
+  //       setLoading(false);
+  //     }
+  //   };
 
-    if (action !== 'Create') {
-      fetchData();
-    }
-  }, [loading]);
+  //   if (action !== 'Create') {
+  //     fetchData();
+  //   }
+  // }, [loading]);
 
   return (
     <Backdrop show={showModal}>

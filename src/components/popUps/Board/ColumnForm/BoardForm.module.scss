@@ -5,6 +5,7 @@
 .iconsInputWrapper {
   margin-bottom: 24px;
 }
+
 .inputWrapper {
   margin-bottom: 24px;
 }
@@ -30,4 +31,12 @@
 
 .formSubtitleViolet {
   color: #161616;
+}
+
+.error {
+  position: absolute;
+  color: #ff4e4e;
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 12px;
 }

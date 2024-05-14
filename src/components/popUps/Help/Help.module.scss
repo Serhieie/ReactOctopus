@@ -27,9 +27,11 @@ $tablet-textarea-height: 352px;
 .modalDark {
   background-color: rgba(21, 21, 21, 0.5);
 }
+
 .modalLight {
   background-color: rgba(21, 21, 21, 0.3);
 }
+
 .modalViolet {
   background-color: rgba(21, 21, 21, 0.3);
 }
@@ -76,8 +78,9 @@ $tablet-textarea-height: 352px;
   height: 49px;
   color: #161616;
   background-color: $text-dark;
-  opacity: 0.4;
+  // opacity: 0.4;
   padding: 0 18px;
+
   @include media-rules(tablet) {
     width: $tablet-input-button;
   }
@@ -99,10 +102,11 @@ $tablet-textarea-height: 352px;
   border-radius: 8px;
   color: #161616;
   background-color: $text-dark;
-  opacity: 0.4;
-  margin-top: 14px;
+  // opacity: 0.4;
+  margin-top: 18px;
   overflow: hidden;
   resize: none;
+
   @include media-rules(tablet) {
     width: $tablet-input-button;
   }
@@ -124,6 +128,7 @@ $tablet-textarea-height: 352px;
   font-size: 14px;
   cursor: pointer;
   transition: background 0.3s ease;
+
   @include media-rules(tablet) {
     width: $tablet-input-button;
   }
@@ -147,10 +152,11 @@ $tablet-textarea-height: 352px;
 }
 
 .error {
+  position: absolute;
   color: red;
   font-family: Poppins;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   opacity: 0.6;
 }
 
