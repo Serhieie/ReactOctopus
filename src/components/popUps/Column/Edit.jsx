@@ -26,10 +26,6 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
   useClickOnBackdropToCloseModals(onClose);
   useEscapeKeyToCloseModals(onClose);
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-
   const handleChangeTitle = (e) => {
     setTitleInput(e.target.value);
   };
@@ -95,7 +91,9 @@ const MdlEdit = ({ open, onOpen, onClose, item }) => {
                 <input
                   type="text"
                   className={clsx(styles.forTitle, {
-                    [styles.darkInput]: theme === 'dark',
+                    [styles.forTitleDark]: theme === 'dark',
+                    [styles.forTitleLight]: theme === 'light',
+                    [styles.forTitleViolet]: theme === 'violet',
                   })}
                   placeholder="Title"
                   value={titleInput}

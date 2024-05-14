@@ -1,4 +1,3 @@
-import { showSuccessToast, showErrorToast } from '../showToast';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
@@ -102,10 +101,10 @@ export const needHelpOperation = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await needHelp(credentials);
-      showSuccessToast('All data saved successfully');
+      Notify.success('All data saved successfully');
       return response.data;
     } catch (error) {
-      showErrorToast(error.response.data.message);
+      Notify.failure(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

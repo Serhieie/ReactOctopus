@@ -91,6 +91,7 @@ const MdlColumn = ({ open, onClose }) => {
                   type="text"
                   className={clsx(styles.forTitle, {
                     [styles.darkInput]: theme === 'dark',
+                    [styles.inputError]: error === true,
                   })}
                   placeholder="Title"
                   value={titleInput}

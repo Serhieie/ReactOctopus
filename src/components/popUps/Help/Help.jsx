@@ -81,6 +81,7 @@ const HelpModal = () => {
                 onSubmit(data);
                 handleCloseModal();
               })}
+              noValidate
             >
               <div className={styles.email}>
                 <input
