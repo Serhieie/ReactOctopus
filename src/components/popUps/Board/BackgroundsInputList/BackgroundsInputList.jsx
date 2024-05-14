@@ -67,8 +67,8 @@ const BackgroundsInputList = ({ onChange, items, checked = undefined }) => {
             type="radio"
             name="background"
             id={backgroundId}
-            value={getDefaultBackground(theme)}
-            checked={checked === getDefaultBackground(theme)}
+            value={''}
+            checked={checked === ''}
           />
           <img
             width="28"

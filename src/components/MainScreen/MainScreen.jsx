@@ -99,21 +99,23 @@ export const MainScreen = () => {
                   {active ? active.title : items[0].title}
                 </h2>
               </div>
-              <div onClick={openFilters} className={styles.blur}>
-                {' '}
-                <span className={styles.filters}>
+              {active?.columns?.cards && (
+                <div onClick={openFilters} className={styles.blur}>
                   {' '}
-                  <svg
-                    className={styles.iconFilter}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                  >
-                    <use xlinkHref={`${sprite}#icon-filter`} />
-                  </svg>
-                  Filters
-                </span>
-              </div>
+                  <span className={styles.filters}>
+                    {' '}
+                    <svg
+                      className={styles.iconFilter}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                    >
+                      <use xlinkHref={`${sprite}#icon-filter`} />
+                    </svg>
+                    Filters
+                  </span>
+                </div>
+              )}
             </div>
             <div className={styles.mainContent}>
               <ColumnList data={active ? active : items[0]} />

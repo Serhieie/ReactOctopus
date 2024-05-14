@@ -16,7 +16,7 @@ import {
 const INITIAL_STATE = {
   title: '',
   iconId: 'project',
-  background: '/ReactOctopus/src/assets/themeDefault/backgroundViolet.png',
+  background: '',
 };
 
 const icons = [
