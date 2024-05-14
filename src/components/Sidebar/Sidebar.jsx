@@ -24,6 +24,9 @@ const Sidebar = () => {
           className={clsx({
             [styles.sidebar_backdrop]:
               (isMobile && isSidebarOpen) || (isTablet && isSidebarOpen),
+            [styles.sidebar_backdropDark]: theme === 'dark',
+            [styles.sidebar_backdropLight]: theme === 'light',
+            [styles.sidebar_backdropViolet]: theme === 'violet',
           })}
         >
           <div
