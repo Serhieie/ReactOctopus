@@ -79,7 +79,6 @@ export const deleteCard = createAsyncThunk(
             return {
               ...column,
               cards: column.cards.filter((card) => {
-                console.log(card);
                 return card._id !== response;
               }),
             };

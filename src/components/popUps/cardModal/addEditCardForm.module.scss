@@ -20,6 +20,10 @@
   font-weight: 400;
   font-size: 12px;
   letter-spacing: -0.02em;
+  color: rgba(22, 22, 22, 0.5);
+}
+
+.lableColorDark {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -49,7 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 14px;
+  width: 15px;
   height: 14px;
   border-radius: 50%;
   cursor: pointer;
@@ -140,6 +144,10 @@
   border: 1px solid rgba(22, 22, 22, 0.3);
 }
 
+.colorFilterWithoutPriorityDark {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .colorFilterMediumPriority {
   border: 1px solid #e09cb5;
 }
@@ -161,7 +169,10 @@
 
 .colorFilterCenterWithoutPriority {
   background-color: rgba(22, 22, 22, 0.3);
-  width: 15px;
+}
+
+.colorFilterCenterWithoutPriorityDark {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .colorFilterCenterMediumPriority {

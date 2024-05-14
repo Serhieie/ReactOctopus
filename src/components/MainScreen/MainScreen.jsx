@@ -9,6 +9,7 @@ import { useAuth } from '../../hooks/useAuth.js';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 import {
   selectBoardsState,
+  selectCardsState,
   selectColumnsState,
 } from '../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
@@ -31,8 +32,10 @@ export const MainScreen = () => {
   const dispatch = useDispatch();
   const { isSidebarOpen, isFiltersOpen } = useIsPopUpOpen();
   const [isAddCardOpen, setAddCardOpen] = useState(false);
+  const { items: cards } = useSelector(selectCardsState);
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
   const [truuue, setTruuue] = useState(true);
+  const isFilterShow = cards.length > 0;
   const { isDesktop } = useMedia();
   const navigate = useNavigate();
   const location = useLocation();
@@ -69,7 +72,6 @@ export const MainScreen = () => {
   }, [items, navigate, truuue]);
 
   const showIfDonwloading = isColumnLoading || isLoading || isBoardLoading;
-
   return showIfDonwloading && items?.length > 0 ? (
     <MainScreenSkelleton />
   ) : (
@@ -99,7 +101,8 @@ export const MainScreen = () => {
                   {active ? active.title : items[0].title}
                 </h2>
               </div>
-              {active?.columns?.cards && (
+
+              {isFilterShow && (
                 <div onClick={openFilters} className={styles.blur}>
                   {' '}
                   <span className={styles.filters}>

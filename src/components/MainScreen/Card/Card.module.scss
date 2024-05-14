@@ -20,8 +20,6 @@
   .cardDescription {
     @include twoLineText();
   }
-  @include media-rules(tablet) {
-  }
 }
 
 .cardTitle {

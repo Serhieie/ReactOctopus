@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 75px;
+  height: 83px;
 
   padding: 10px 24px 40px 0;
   @include media-rules(tablet) {
@@ -43,23 +43,29 @@
     height: 77px;
   }
   @include media-rules(desktop) {
-    height: 61px;
+    height: 65px;
+    padding: 16px 24px 26px 0;
     padding-bottom: 10px;
   }
 
   .headTitle {
-    width: 144px;
-    height: 22px;
-    opacity: 0.1;
-    border-radius: 4px;
+    width: 120px;
+    height: 33px;
     padding-bottom: 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2%);
+
+    @include media-rules(tablet) {
+      width: 144px;
+      height: 39px;
+    }
   }
 
   .headFilter {
-    width: 76px;
-    height: 26px;
-    opacity: 0.1;
-    border-radius: 4px;
+    width: 88.5px;
+    height: 33px;
+    border-radius: 10px;
+    backdrop-filter: blur(2%);
   }
 }
 
@@ -82,7 +88,7 @@
 
   .headTitle,
   .headFilter {
-    background-color: $text-dark;
+    background-color: rgba(23, 23, 23, 0.1);
   }
 
   .mainContent {
@@ -110,7 +116,7 @@
 
   .headTitle,
   .headFilter {
-    background-color: $text-light;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .mainContent {
@@ -136,7 +142,7 @@
 
   .headTitle,
   .headFilter {
-    background-color: $text-violet;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .mainContent {

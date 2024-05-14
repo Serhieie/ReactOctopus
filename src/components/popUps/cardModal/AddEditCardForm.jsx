@@ -100,6 +100,8 @@ const AddEditCardForm = ({
       <span
         className={clsx(css.colorFilter, {
           [css.colorFilterWithoutPriority]: option.priority === 'without',
+          [css.colorFilterWithoutPriorityDark]:
+            option.priority === 'without' && theme === 'dark',
           [css.colorFilterLowPriority]: option.priority === 'low',
           [css.colorFilterMediumPriority]: option.priority === 'medium',
           [css.colorFilterHighPriority]: option.priority === 'high',
@@ -109,6 +111,8 @@ const AddEditCardForm = ({
           className={clsx(css.colorFilterCenter, {
             [css.colorFilterCenterWithoutPriority]:
               option.priority === 'without',
+            [css.colorFilterCenterWithoutPriorityDark]:
+              option.priority === 'without' && theme === 'dark',
             [css.colorFilterCenterLowPriority]: option.priority === 'low',
             [css.colorFilterCenterMediumPriority]: option.priority === 'medium',
             [css.colorFilterCenterHighPriority]: option.priority === 'high',
@@ -162,7 +166,14 @@ const AddEditCardForm = ({
       </div>
 
       <div className={css.filterOptions}>
-        <p className={css.lableColor}>Lable color</p>
+        <p
+          className={clsx(
+            css.lableColor,
+            theme === 'dark' && css.lableColorDark
+          )}
+        >
+          Lable color
+        </p>
         <div className={css.filterForm}>{elements}</div>
       </div>
 
