@@ -11,13 +11,15 @@ import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
 import CardModal from '../../../popUps/cardModal/CardModal';
+import { useDispatch } from 'react-redux';
+import { setIsFiltersOpen } from '../../../../redux/popUps/popUpsSlice';
 
 export const Buttons = ({ card, column }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
   const [isMoveCardPopUpOpen, setIsMoveCardPopUpOpen] = useState(false);
-
+  const dispatch = useDispatch();
   const tooday = isToday(card.deadline);
   const { active } = useSelector(selectBoardsState);
 
@@ -44,6 +46,10 @@ export const Buttons = ({ card, column }) => {
 
   const moveCardOpen = () => {
     setIsMoveCardPopUpOpen(true);
+    if (isMoveCardPopUpOpen) {
+      console.log(isMoveCardPopUpOpen);
+      dispatch(setIsFiltersOpen(false));
+    }
   };
 
   return (

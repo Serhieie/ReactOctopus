@@ -169,7 +169,7 @@ const AddEditCardForm = ({
         <div className={css.filterForm}>{elements}</div>
       </div>
 
-      <CalendarNew value={deadline} onChange={handleCalendarChange} />
+      <CalendarNew cardDeadline={deadline} onChange={handleCalendarChange} />
       <ModalButton type="submit" text={action === 'Create' ? 'Add' : 'Edit'} />
     </form>
   );

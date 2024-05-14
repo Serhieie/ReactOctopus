@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  setIsFiltersOpen,
   setIsHelpPopUpOpen,
   setIsUserModalOpen,
+  setIsSideBarOpen,
 } from '../redux/popUps/popUpsSlice.js';
-import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
 function useClickOnBackdropToCloseModals(func) {
   const dispatch = useDispatch();
@@ -18,7 +17,6 @@ function useClickOnBackdropToCloseModals(func) {
           dispatch(setIsUserModalOpen(false));
           dispatch(setIsSideBarOpen(false));
           dispatch(setIsHelpPopUpOpen(false));
-          dispatch(setIsFiltersOpen(false));
         }
       }
     }

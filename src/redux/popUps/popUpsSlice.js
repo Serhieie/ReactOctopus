@@ -24,10 +24,13 @@ export const popUpsSlice = createSlice({
       handlers.setPopUpState(state, 'isHelpPopUpOpen', isOpen);
     },
     setIsUserModalOpen(state, action) {
-      state.isUserModalOpen = action.payload;
+      const isOpen = action.payload;
+      handlers.setPopUpState(state, 'isUserModalOpen', isOpen);
     },
     setIsFiltersOpen(state, action) {
-      state.isFiltersOpen = action.payload;
+      const isOpen = action.payload;
+      console.log(state);
+      handlers.setIsFiltersOpenState(state, isOpen);
     },
   },
 });

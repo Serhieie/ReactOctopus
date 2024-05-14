@@ -25,7 +25,7 @@ export const addCardOperation = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.addCard(data);
-      console.log(items);
+
       const newItems = [response, ...items];
 
       const newColumnItems = columnItems.map((column) => {
@@ -52,7 +52,6 @@ export const addCardOperation = createAsyncThunk(
         }),
       };
 
-      console.log('newItems add', newItems);
       return { newActive, items: newItems, columnItems: newColumnItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -72,7 +71,6 @@ export const deleteCard = createAsyncThunk(
       } = getState();
       const response = await tasksApi.removeCard(data.cardId);
       const newItems = items.filter((card) => card._id !== response);
-      console.log(response);
 
       const newActive = {
         ...active,
@@ -90,8 +88,6 @@ export const deleteCard = createAsyncThunk(
         }),
       };
 
-      console.log('newItems delete', newItems);
-      console.log('active delete', newActive);
       return { newActive, newItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -110,7 +106,7 @@ export const editCardOperation = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.editCard(data.cardId, data.body);
-      console.log(response);
+
       const updatedItems = [...items];
       const cardIndex = updatedItems.findIndex(
         (card) => card._id === data.cardId

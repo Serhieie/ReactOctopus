@@ -8,15 +8,15 @@ import {
 } from '../redux/popUps/popUpsSelectors.js';
 
 export const useIsPopUpOpen = () => {
-  const isSideBarOpen = useSelector(selectIsSideBarOpen);
+  const isSidebarOpen = useSelector(selectIsSideBarOpen);
   const isChangeThemePopUpOpen = useSelector(selectIsChangeThemePopUpOpen);
   const isMoveCardPopUpOpen = useSelector(selectIsMoveCardPopUpOpen);
   const isHelpPopUpOpen = useSelector(selectIsHelpPopUpOpen);
-  const isFiltersModalOpen = useSelector(selectIsFiltersOpen);
+  const isFiltersOpen = useSelector(selectIsFiltersOpen);
 
   return {
-    isFiltersModalOpen,
-    isSideBarOpen,
+    isFiltersOpen,
+    isSidebarOpen,
     isChangeThemePopUpOpen,
     isMoveCardPopUpOpen,
     isHelpPopUpOpen,

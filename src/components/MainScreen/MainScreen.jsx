@@ -14,12 +14,12 @@ import {
 import { useSelector } from 'react-redux';
 import { FilterModal } from '../popUps/Filters/FilterModal.jsx';
 import { useIsPopUpOpen } from '../../hooks/useIsPopUpOpen.js';
-import { useDispatch } from 'react-redux';
-import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
 import ModalPortal from '../popUps/ModalPortal.jsx';
 import MdlColumn from '../popUps/Column/Column.jsx';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
@@ -29,11 +29,10 @@ export const MainScreen = () => {
     isLoading: isBoardLoading,
   } = useSelector(selectBoardsState);
   const dispatch = useDispatch();
-  const { isFiltersModalOpen } = useIsPopUpOpen();
+  const { isSidebarOpen, isFiltersOpen } = useIsPopUpOpen();
   const [isAddCardOpen, setAddCardOpen] = useState(false);
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
   const [truuue, setTruuue] = useState(true);
-  const isSidebarOpen = false;
   const { isDesktop } = useMedia();
   const navigate = useNavigate();
   const location = useLocation();
@@ -131,9 +130,8 @@ export const MainScreen = () => {
         ) : (
           <ExplainField />
         )}
+        {isFiltersOpen && <FilterModal />}
       </div>
-
-      {isFiltersModalOpen && <FilterModal />}
     </div>
   );
 };

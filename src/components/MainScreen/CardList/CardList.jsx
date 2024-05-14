@@ -7,11 +7,18 @@ import { useAuth } from '../../../hooks/useAuth.js';
 import { CardListSkelleton } from '../../Skelletons/MainScreenSkelleton/CardListSkelleton/CardListSkelleton.jsx';
 import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
+import { selectFilter } from '../../../redux/filter/filterSelectors.js';
 
 export const CardList = ({ column }) => {
+  const filter = useSelector(selectFilter);
   const { theme } = useAuth();
   const { isLoading: isCardLoading } = useSelector(selectColumnsState);
-  // const sortedData = column.cards.slice().sort(sortByCreatedAt);
+
+  const filteredCards = column?.cards.filter((card) => {
+    if (!filter) {
+      return card;
+    } else return card.priority === filter;
+  });
 
   return isCardLoading ? (
     <CardListSkelleton />
@@ -29,7 +36,7 @@ export const CardList = ({ column }) => {
             })}
           >
             {column?.cards &&
-              column.cards.map((card, index) => (
+              filteredCards.map((card, index) => (
                 <Card
                   key={nanoid()}
                   card={card}

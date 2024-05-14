@@ -1,21 +1,22 @@
 import css from './FilterModal.module.scss';
 import clsx from 'clsx';
-import { useAuth } from '../../../hooks';
+import { useAuth, useMedia } from '../../../hooks';
 import Filter from './Filter';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
 import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../../redux/popUps/popUpsSlice';
 
-export const FilterModal = () => {
+export const FilterModal = ({ func }) => {
   const { theme } = useAuth();
+  const { isMobile } = useMedia();
   const dispatch = useDispatch();
 
-  const closeFilters = () => {
+  const onClose = () => {
     dispatch(setIsFiltersOpen(false));
   };
 
-  useEscapeKeyToCloseModals();
+  useEscapeKeyToCloseModals(func);
 
   return (
     <div
@@ -23,9 +24,10 @@ export const FilterModal = () => {
         [css.filterModalDark]: theme === 'dark',
         [css.filterModalLight]: theme === 'light',
         [css.filterModalViolet]: theme === 'violet',
+        [css.mobile]: isMobile,
       })}
     >
-      <CloseModalButton onClick={closeFilters} />
+      <CloseModalButton onClick={onClose} />
       <p className={css.filtersTitle}>Filters</p>
       <div>
         <Filter />

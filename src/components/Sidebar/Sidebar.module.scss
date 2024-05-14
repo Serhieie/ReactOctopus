@@ -53,15 +53,23 @@
   color: $text-dark;
 }
 
-//Light
+.sidebar_backdropDark {
+  background-color: $backdrop-dark;
+}
 
+//Light
+.sidebar_backdropLight {
+  background-color: $backdrop-light;
+}
 .sidebar_containerLight {
   background-color: $sidebar-background-light;
   color: $text-light;
 }
 
 //Violet
-
+.sidebar_backdropViolet {
+  background-color: $backdrop-light;
+}
 .sidebar_containerViolet {
   background-color: $sidebar-background-violet;
   color: $text-dark;

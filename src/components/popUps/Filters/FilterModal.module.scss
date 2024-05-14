@@ -4,15 +4,23 @@
 
 .filterModal {
   position: absolute;
-  top: 20%;
-  right: 0%;
-  transform: translate(-50%, -50%);
+  right: 4%;
+  top: 4%;
   border-radius: 8px;
   padding: 24px;
   width: 300px;
   height: 234px;
-  z-index: 999;
+  z-index: 1001;
+
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.05);
 }
+
+.mobile {
+  width: 294px;
+  right: 2%;
+  top: 2%;
+}
+
 .filtersTitle {
   font-weight: 500;
   font-size: 18px;

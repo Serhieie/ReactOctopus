@@ -6,11 +6,12 @@ import { AddButtonSkelleton } from './AddButtonSkelleton/AddButtonSkelleton.jsx'
 import { useAuth } from '../../../hooks/useAuth.js';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../redux/tasks/tasksSelectors.js';
+import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen.js';
 
 export const MainScreenSkelleton = () => {
   const { theme } = useAuth();
   const { active } = useSelector(selectBoardsState);
-  const isSidebarOpen = false;
+  const { isSidebarOpen } = useIsPopUpOpen();
   const { isDesktop } = useMedia();
 
   return (

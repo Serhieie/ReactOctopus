@@ -11,29 +11,17 @@ const setPopUpState = (state, popUpName, isOpen) => {
 const setChangeThemePopUpState = (state, isOpen) => {
   state.isChangeThemePopUpOpen = isOpen;
   if (!isOpen) return;
-  state.isDeletePopUpOpen = !isOpen;
-  state.isAddBoardPopUpOpen = !isOpen;
-  state.isEditBoardPopUpOpen = !isOpen;
-  state.isAddColumnPopUpOpen = !isOpen;
-  state.isEditColumnPopUpOpen = !isOpen;
-  state.isAddCardPopUpOpen = !isOpen;
-  state.isEditCardPopUpOpen = !isOpen;
+  state.isFiltersOpen = !isOpen;
 };
 
-const setMoveCardPopUpState = (state, isOpen) => {
-  state.isMoveCardPopUpOpen = isOpen;
+const setIsFiltersOpenState = (state, isOpen) => {
+  state.isFiltersOpen = isOpen;
   if (!isOpen) return;
-  state.isEditCardPopUpOpen = !isOpen;
-  state.isAddCardPopUpOpen = !isOpen;
-  state.isEditColumnPopUpOpen = !isOpen;
-  state.isAddColumnPopUpOpen = !isOpen;
-  state.isEditBoardPopUpOpen = !isOpen;
-  state.isAddBoardPopUpOpen = !isOpen;
-  state.isDeletePopUpOpen = !isOpen;
+  state.isChangeThemePopUpOpen = !isOpen;
 };
 
 export default {
   setPopUpState,
   setChangeThemePopUpState,
-  setMoveCardPopUpState,
+  setIsFiltersOpenState,
 };

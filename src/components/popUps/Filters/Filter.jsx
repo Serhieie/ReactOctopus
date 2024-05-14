@@ -1,11 +1,24 @@
 import css from './Filter.module.scss';
 import clsx from 'clsx';
-import { useState } from 'react';
 import { useAuth } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../../redux/filter/filterSlice';
+import { selectFilter } from '../../../redux/filter/filterSelectors';
+import { useSelector } from 'react-redux';
+
+String.prototype.capitalizeFirstLetter = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 const Filter = () => {
-  const [filter, setFilter] = useState('');
+  const filter = useSelector(selectFilter);
+  let frontFilter = filter.capitalizeFirstLetter();
+  if (frontFilter === 'Without') {
+    frontFilter = 'Without priority';
+  }
+
   const { theme } = useAuth();
+  const dispatch = useDispatch();
 
   const options = [
     { priority: 'Without priority' },
@@ -13,13 +26,19 @@ const Filter = () => {
     { priority: 'Medium' },
     { priority: 'High' },
   ];
+  // without low medium high
 
   const changeFilter = ({ target }) => {
-    setFilter(target.value);
+    let fi = target.value.toLowerCase();
+    if (fi.split(' ').length === 2) {
+      fi = fi.split(' ')[0];
+    }
+
+    dispatch(setFilter(fi));
   };
 
   const resetFilters = () => {
-    setFilter('');
+    dispatch(setFilter(''));
   };
 
   const elements = options.map((option, index) => (
@@ -30,7 +49,7 @@ const Filter = () => {
         type="radio"
         name="filter"
         value={option.priority}
-        checked={filter === option.priority}
+        checked={frontFilter === option.priority}
       />
       <span
         className={clsx(css.colorFilter, {

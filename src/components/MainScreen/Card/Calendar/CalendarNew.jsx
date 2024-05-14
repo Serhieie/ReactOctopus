@@ -9,9 +9,9 @@ import 'react-multi-date-picker/styles/colors/purple.css';
 import 'react-multi-date-picker/styles/backgrounds/bg-dark.css';
 import 'react-multi-date-picker/styles/colors/green.css';
 
-export const CalendarNew = ({ onChange }) => {
+export const CalendarNew = ({ cardDeadline, onChange }) => {
   const { theme } = useAuth();
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(cardDeadline);
 
   const getDefaultBackground = (theme) => {
     switch (theme) {
@@ -60,6 +60,7 @@ export const CalendarNew = ({ onChange }) => {
       </span>
       <DatePicker
         value={value}
+        minDate={new Date()}
         className={`${color}`}
         onChange={handleChange}
         style={{
