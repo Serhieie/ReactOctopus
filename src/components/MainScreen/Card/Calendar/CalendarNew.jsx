@@ -8,6 +8,7 @@ import DatePicker from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/colors/purple.css';
 import 'react-multi-date-picker/styles/backgrounds/bg-dark.css';
 import 'react-multi-date-picker/styles/colors/green.css';
+import 'react-multi-date-picker/styles/colors/teal.css';
 
 export const CalendarNew = ({ cardDeadline, onChange }) => {
   const { theme } = useAuth();
@@ -16,7 +17,7 @@ export const CalendarNew = ({ cardDeadline, onChange }) => {
   const getDefaultBackground = (theme) => {
     switch (theme) {
       case 'dark':
-        return 'bg-dark';
+        return 'bg-dark teal';
       case 'light':
         return 'green';
       case 'violet':
