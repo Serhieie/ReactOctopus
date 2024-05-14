@@ -37,7 +37,10 @@ const AddEditCardForm = ({
 
   const { theme } = useAuth();
   const [card, setCard] = useState({ ...cardData });
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    title: false,
+    description: false,
+  });
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -58,8 +61,11 @@ const AddEditCardForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (title === '' || description === '') {
-      setError(true);
+    if (title === '') {
+      setError({ title: true });
+      return;
+    } else if (description === '') {
+      setError({ description: true });
       return;
     }
     if (action === 'Create') {
@@ -131,7 +137,7 @@ const AddEditCardForm = ({
             `${card.title.length > 0 && css.active}`
           )}
         />
-        {error && <p className={css.error}>{'Title is required'}</p>}
+        {error.title && <p className={css.error}>{'Title is required'}</p>}
       </div>
       <div className={css.comment}>
         <textarea
@@ -150,7 +156,9 @@ const AddEditCardForm = ({
           value={card.description}
           placeholder="Description"
         />
-        {error && <p className={css.error}>{'Description is required'}</p>}
+        {error.description && (
+          <p className={css.error}>{'Description is required'}</p>
+        )}
       </div>
 
       <div className={css.filterOptions}>
