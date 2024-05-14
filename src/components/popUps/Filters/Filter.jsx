@@ -6,13 +6,14 @@ import { setFilter } from '../../../redux/filter/filterSlice';
 import { selectFilter } from '../../../redux/filter/filterSelectors';
 import { useSelector } from 'react-redux';
 
-String.prototype.capitalizeFirstLetter = function () {
-  return this.charAt(0).toUpperCase() + this.slice(1);
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 const Filter = () => {
   const filter = useSelector(selectFilter);
-  let frontFilter = filter.capitalizeFirstLetter();
+  let frontFilter = capitalizeFirstLetter(filter);
+  // let frontFilter = filter.capitalizeFirstLetter();
   if (frontFilter === 'Without') {
     frontFilter = 'Without priority';
   }

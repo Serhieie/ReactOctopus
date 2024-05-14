@@ -29,7 +29,6 @@ export const popUpsSlice = createSlice({
     },
     setIsFiltersOpen(state, action) {
       const isOpen = action.payload;
-      console.log(state);
       handlers.setIsFiltersOpenState(state, isOpen);
     },
   },

@@ -10,9 +10,10 @@
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  transition: opacity 0.3s;
+  transition: opacity 1s;
   user-select: none;
   z-index: 1001;
+  @include appear-animation-opacity();
 }
 
 .sidebar_backdropDark {
