@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
 import { dbDate } from '../../../helpers/isToday';
@@ -13,9 +11,7 @@ import {
 
 import ModalButton from '../ModalButton/ModalButton';
 
-import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
-// import { validationCardSchema } from '../../../schemas/validationCard';
 
 const options = [
   { priority: 'without' },
@@ -41,7 +37,10 @@ const AddEditCardForm = ({
 
   const { theme } = useAuth();
   const [card, setCard] = useState({ ...cardData });
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    title: false,
+    description: false,
+  });
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -62,8 +61,11 @@ const AddEditCardForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (title === '' || description === '') {
-      setError(true);
+    if (title === '') {
+      setError({ title: true });
+      return;
+    } else if (description === '') {
+      setError({ description: true });
       return;
     }
     if (action === 'Create') {
@@ -84,14 +86,6 @@ const AddEditCardForm = ({
   const reset = () => {
     setCard({ ...initialValues });
   };
-
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   setValue,
-  // } = useForm({
-  //   resolver: yupResolver(validationCardSchema),
-  // });
 
   const elements = options.map((option, index) => (
     <label key={index} className={css.colorFilterRadioLable}>
@@ -127,41 +121,44 @@ const AddEditCardForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className={css.inputWrapper}>
-        <InputForm
-          value={title}
-          onChange={handleChange}
-
-          // {...register('title', { required: true })}
-        />
-        {error && <p className={css.error}>{'Title is required'}</p>}
-        {/* <input
+        <input
           type="text"
           name="title"
+          placeholder="Title"
           value={card.title}
           onChange={handleChange}
-          {...register('title', { required: true })}
+          className={clsx(
+            css.forTitle,
+            {
+              [css.forTitleDark]: theme === 'dark',
+              [css.forTitleLight]: theme === 'light',
+              [css.forTitleViolet]: theme === 'violet',
+            },
+            `${card.title.length > 0 && css.active}`
+          )}
         />
-        {errors.title && <p className={css.error}>{errors.title.message}</p>} */}
+        {error.title && <p className={css.error}>{'Title is required'}</p>}
       </div>
-
       <div className={css.comment}>
         <textarea
           type="text"
           name="description"
-          className={clsx(css.forComment, {
-            [css.forCommentDark]: theme === 'dark',
-            [css.forCommentlLight]: theme === 'light',
-            [css.forCommentViolet]: theme === 'violet',
-          })}
+          className={clsx(
+            css.forDescription,
+            {
+              [css.forDescriptionDark]: theme === 'dark',
+              [css.forDescriptionLight]: theme === 'light',
+              [css.forDescriptionViolet]: theme === 'violet',
+            },
+            `${card.description.length > 0 && css.active}`
+          )}
           onChange={handleChange}
           value={card.description}
           placeholder="Description"
-          // {...register('description', { required: true })}
         />
-        {error && <p className={css.error}>{'Title is required'}</p>}
-        {/* {errors.description && (
-          <p className={css.error}>{errors.description.message}</p>
-        )} */}
+        {error.description && (
+          <p className={css.error}>{'Description is required'}</p>
+        )}
       </div>
 
       <div className={css.filterOptions}>

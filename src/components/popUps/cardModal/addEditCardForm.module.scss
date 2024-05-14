@@ -37,14 +37,6 @@
   margin-top: 24px;
 }
 
-// .colorFilterCenter {
-//   width: 8px;
-//   height: 8px;
-//   display: block;
-//   border-radius: 50%;
-//   background-color: #8fa1d0;
-// }
-
 .priorityText {
   font-weight: 400;
   font-size: 12px;
@@ -66,31 +58,77 @@
   position: relative;
 }
 
-.forComment {
+.forTitle {
+  border-radius: 8px;
+  width: 100%;
+  height: 49px;
+  box-shadow: 0 4px 16px 0 rgba(22, 22, 22, 0.08);
+  border: 1px solid $button-light;
+  color: #161616;
+  opacity: 0.4;
+  padding: 18px 14px;
+  outline: none;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+}
+
+.forTitleDark {
+  background: #1f1f1f;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #ffffff;
+  }
+}
+
+.forTitleViolet {
+  border: 1px solid $border-violet;
+}
+
+.forDescription {
   width: 287px;
   height: 154px;
   padding: 18px;
   border: 1px solid $button-light;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   border-radius: 8px;
-  // color: #ffffff;
-  background-color: $text-dark;
+  color: #161616;
   opacity: 0.4;
   margin-top: 14px;
   overflow: hidden;
   resize: none;
+  outline: none;
 
-  .forCommentlLight {
-    background-color: $text-light;
+  &:hover {
+    opacity: 0.6;
   }
 
-  .forCommentViolet {
-    background-color: $text-violet;
+  &:focus {
+    opacity: 1;
   }
+}
 
-  .forCommentDark {
-    background-color: $text-dark;
-    // color: #ffffff;
+.forDescriptionDark {
+  background: #1f1f1f;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #ffffff;
   }
+}
+
+.forDescriptionViolet {
+  border: 1px solid $border-violet;
+}
+
+.active {
+  opacity: 1;
 }
 
 .forComment:focus {
@@ -98,7 +136,7 @@
 }
 
 .colorFilterWithoutPriority {
-  border: 1px solid #ffffff4d;
+  border: 1px solid rgba(22, 22, 22, 0.3);
 }
 
 .colorFilterMediumPriority {
@@ -121,7 +159,8 @@
 }
 
 .colorFilterCenterWithoutPriority {
-  background-color: #ffffff4d;
+  background-color: rgba(22, 22, 22, 0.3);
+  width: 15px;
 }
 
 .colorFilterCenterMediumPriority {
@@ -136,7 +175,7 @@
   background-color: #bedbb0;
 }
 
-.radioIcon:checked~.colorFilter .colorFilterCenter {
+.radioIcon:checked ~ .colorFilter .colorFilterCenter {
   width: 8px;
   height: 8px;
 }
@@ -152,14 +191,4 @@
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-.clearAllBtn {
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: -0.02em;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
 }
