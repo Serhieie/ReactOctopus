@@ -1,4 +1,3 @@
-import css from './ColumnFormAdd.module.scss';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -40,7 +39,6 @@ const ColumnFormAdd = ({
       try {
         if (action === 'Create') {
           dispatch(addBoard({ ...columns }));
-          console.log('Saved');
         } else {
           if (item)
             dispatch(
@@ -53,7 +51,6 @@ const ColumnFormAdd = ({
                 },
               })
             );
-          console.log('Updated');
         }
         reset();
       } catch (error) {

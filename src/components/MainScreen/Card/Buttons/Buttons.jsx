@@ -10,7 +10,6 @@ import { useAuth } from '../../../../hooks';
 import AddEditCardForm from '../../../popUps/cardModal/AddEditCardForm';
 import { useSelector } from 'react-redux';
 import { selectBoardsState } from '../../../../redux/tasks/tasksSelectors';
-import MdlColumn from '../../../popUps/Column/Column';
 import CardModal from '../../../popUps/cardModal/CardModal';
 
 export const Buttons = ({ card, column }) => {
@@ -45,10 +44,6 @@ export const Buttons = ({ card, column }) => {
 
   const moveCardOpen = () => {
     setIsMoveCardPopUpOpen(true);
-  };
-
-  const addCardOpen = () => {
-    setAddCardOpen(true);
   };
 
   return (

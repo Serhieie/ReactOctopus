@@ -23,7 +23,12 @@ export const fetchBoardById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const data = await tasksApi.getBoardById(id);
-      return data;
+      const arrayOfCards = [];
+      data.columns.forEach((column) => {
+        column.cards.forEach((card) => arrayOfCards.push(card));
+      });
+
+      return { data, arrayOfCards };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -43,8 +48,9 @@ export const addBoard = createAsyncThunk(
       const newItems = [...items, data];
 
       if (!items.length) {
-        return { newActive: data, newItems };
+        return { newActive: data, newItems: [data] };
       }
+
       return { newItems, newActive: null };
     } catch (error) {
       return rejectWithValue(error.message);

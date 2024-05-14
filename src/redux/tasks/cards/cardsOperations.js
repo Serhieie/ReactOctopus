@@ -25,6 +25,7 @@ export const addCardOperation = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.addCard(data);
+      console.log(items);
       const newItems = [response, ...items];
 
       const newColumnItems = columnItems.map((column) => {
@@ -51,6 +52,7 @@ export const addCardOperation = createAsyncThunk(
         }),
       };
 
+      console.log('newItems add', newItems);
       return { newActive, items: newItems, columnItems: newColumnItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -65,24 +67,32 @@ export const deleteCard = createAsyncThunk(
       const {
         tasks: {
           boards: { active },
+          cards: { items },
         },
       } = getState();
       const response = await tasksApi.removeCard(data.cardId);
+      const newItems = items.filter((card) => card._id !== response);
+      console.log(response);
+
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
           if (column._id === data.columnId) {
-            console.log('column', column);
             return {
               ...column,
-              cards: column.cards.filter((card) => card._id !== response),
+              cards: column.cards.filter((card) => {
+                console.log(card);
+                return card._id !== response;
+              }),
             };
           }
           return column;
         }),
       };
 
-      return { newActive };
+      console.log('newItems delete', newItems);
+      console.log('active delete', newActive);
+      return { newActive, newItems };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -100,6 +110,7 @@ export const editCardOperation = createAsyncThunk(
         },
       } = getState();
       const response = await tasksApi.editCard(data.cardId, data.body);
+      console.log(response);
       const updatedItems = [...items];
       const cardIndex = updatedItems.findIndex(
         (card) => card._id === data.cardId
@@ -107,6 +118,7 @@ export const editCardOperation = createAsyncThunk(
       if (cardIndex !== -1) {
         updatedItems[cardIndex] = response;
       }
+
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
@@ -125,6 +137,7 @@ export const editCardOperation = createAsyncThunk(
           }
         }),
       };
+
       return { newActive, items: updatedItems };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -154,9 +167,13 @@ export const moveCardOperation = createAsyncThunk(
               cards: column.cards.filter((card) => card._id !== data.card._id),
             };
           } else if (column._id === destinationColumn._id) {
+            const updatedCard = {
+              ...data.card,
+              columnId: destinationColumn._id,
+            };
             return {
               ...column,
-              cards: [data.card, ...column.cards],
+              cards: [updatedCard, ...column.cards],
             };
           }
           return column;

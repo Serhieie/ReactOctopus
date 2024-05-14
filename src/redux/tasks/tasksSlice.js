@@ -36,8 +36,10 @@ export const tasksSlice = createSlice({
       .addCase(
         boardsOperations.fetchBoardById.fulfilled,
         (state, { payload }) => {
-          (state.boards.isLoading = false), (state.boards.active = payload);
-          state.columns.items = payload.columns;
+          (state.boards.isLoading = false),
+            (state.boards.active = payload.data);
+          state.columns.items = payload.data.columns;
+          state.cards.items = payload.arrayOfCards;
         }
       )
       .addCase(
@@ -70,7 +72,6 @@ export const tasksSlice = createSlice({
         state.columns.items = [];
         state.cards.items = [];
         state.boards.items = payload.items;
-        state.boards.lastDeleted = payload.items;
       })
       .addCase(boardsOperations.deleteBoard.rejected, (state, { payload }) => {
         (state.boards.isLoading = false), (state.boards.error = payload);
@@ -96,20 +97,6 @@ export const tasksSlice = createSlice({
           state.boards.error = payload;
         }
       )
-
-      //FETCH COLUMNS
-      .addCase(columsOperations.fetchColumns.pending, (state) => {
-        (state.columns.isLoading = true), (state.columns.error = null);
-      })
-      .addCase(
-        columsOperations.fetchColumns.fulfilled,
-        (state, { payload }) => {
-          (state.columns.isLoading = false), (state.columns.items = payload);
-        }
-      )
-      .addCase(columsOperations.fetchColumns.rejected, (state, { payload }) => {
-        (state.columns.isLoading = false), (state.columns.error = payload);
-      })
 
       //ADD COLUMN(UPDATEd)
       .addCase(columsOperations.addColumnOperation.pending, (state) => {
@@ -165,17 +152,6 @@ export const tasksSlice = createSlice({
         }
       )
 
-      //FETCH CARDS
-      .addCase(cardsOperations.fetchCards.pending, (state) => {
-        (state.cards.isLoading = true), (state.cards.error = null);
-      })
-      .addCase(cardsOperations.fetchCards.fulfilled, (state, { payload }) => {
-        (state.cards.isLoading = false), (state.cards.items = payload);
-      })
-      .addCase(cardsOperations.fetchCards.rejected, (state, { payload }) => {
-        (state.cards.isLoading = false), (state.cards.error = payload);
-      })
-
       //ADD CARD(UPDATED)
       .addCase(cardsOperations.addCardOperation.pending, (state) => {
         (state.cards.isLoading = true), (state.cards.error = null);
@@ -185,6 +161,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           (state.cards.isLoading = false),
             (state.boards.active = payload.newActive);
+          state.cards.items = payload.items;
         }
       )
       .addCase(
@@ -201,6 +178,7 @@ export const tasksSlice = createSlice({
       .addCase(cardsOperations.deleteCard.fulfilled, (state, { payload }) => {
         (state.cards.isLoading = false),
           (state.boards.active = payload.newActive);
+        state.cards.items = payload.newItems;
       })
       .addCase(cardsOperations.deleteCard.rejected, (state, { payload }) => {
         (state.cards.isLoading = false), (state.cards.error = payload);
@@ -251,7 +229,6 @@ export const tasksSlice = createSlice({
 const persistConfig = {
   key: 'tasks',
   storage,
-  blacklist: ['cards'],
 };
 
 export const persistedTasksReducer = persistReducer(

@@ -17,19 +17,19 @@ import InputForm from '../Board/InputForm/InputForm';
 import { CalendarNew } from '../../MainScreen/Card/Calendar/CalendarNew';
 // import { validationCardSchema } from '../../../schemas/validationCard';
 
-const initialValues = {
-  title: '',
-  description: '',
-  priority: 'without',
-  deadline: dbDate(new Date()),
-};
-
 const options = [
   { priority: 'without' },
   { priority: 'low' },
   { priority: 'medium' },
   { priority: 'high' },
 ];
+
+const initialValues = {
+  title: '',
+  description: '',
+  priority: 'without',
+  deadline: dbDate(new Date()),
+};
 
 const AddEditCardForm = ({
   cardData = initialValues,
@@ -41,7 +41,6 @@ const AddEditCardForm = ({
 
   const { theme } = useAuth();
   const [card, setCard] = useState({ ...cardData });
-
   const [error, setError] = useState(false);
 
   const handleChange = (e) => {
