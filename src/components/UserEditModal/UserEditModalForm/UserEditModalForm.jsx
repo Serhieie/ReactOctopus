@@ -120,7 +120,7 @@ const UserEditModalForm = ({ userData, func }) => {
           })}
           {...register('name', { required: false })}
           type="text"
-          placeholder="Enter you name"
+          placeholder="Enter your or new name"
           name="name"
           value={formData.name}
           onChange={handleFormData}
@@ -137,7 +137,7 @@ const UserEditModalForm = ({ userData, func }) => {
           })}
           {...register('email', { required: false })}
           type="email"
-          placeholder="Enter you email"
+          placeholder="Enter your or new email"
           name="email"
           value={formData.email}
           onChange={handleFormData}
@@ -157,7 +157,7 @@ const UserEditModalForm = ({ userData, func }) => {
           onChange={handleFormData}
           type={showPassword ? 'text' : 'password'}
           name="password"
-          placeholder="Enter new password"
+          placeholder="Enter your or new password"
         />
 
         {errors.password && (

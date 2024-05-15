@@ -52,10 +52,6 @@ export const MainScreen = () => {
   };
 
   useEffect(() => {
-    // if (location.pathname === `/home/${itemId}`) {
-    //   return;
-    // }
-
     if (location.pathname === '/home') {
       setTruuue(true);
     }

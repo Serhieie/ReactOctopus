@@ -10,7 +10,6 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchBoardById } from '../../../redux/tasks/boards/boardsOperations';
-// import data from '../../MainScreen/boards.json';
 
 const BoardList = () => {
   const {
@@ -21,8 +20,6 @@ const BoardList = () => {
   const { isLoading, theme } = useAuth();
   const dispatch = useDispatch();
   const { boardName } = useParams();
-  // const navigate = useNavigate();
-  // navigate(`home/${items[0]._id}`);
 
   useEffect(() => {
     if (
