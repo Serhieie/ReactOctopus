@@ -6,7 +6,7 @@ export const getBoards = async () => {
 };
 
 export const getBoardById = async (id) => {
-  const { data } = await instance.get(`/boards/${id}`);
+  const { data } = await instance.patch(`/boards/${id}`, { active: true });
   return data;
 };
 

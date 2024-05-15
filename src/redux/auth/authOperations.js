@@ -56,7 +56,6 @@ export const current = createAsyncThunk(
       const response = await checkTokenRequest(auth.token);
       return response.data;
     } catch (error) {
-      localStorage.clear();
       console.error(error.message);
       Notify.failure(error.response.data.message);
       return rejectWithValue(error.response.data.message);

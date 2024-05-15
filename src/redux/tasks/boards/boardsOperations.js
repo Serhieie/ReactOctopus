@@ -7,10 +7,13 @@ export const fetchBoards = createAsyncThunk(
     try {
       const data = await tasksApi.getBoards();
       const arrayOfCards = [];
-      data.result[0].columns.forEach((column) => {
+      const activeBoard = data.result.find((board) => board.active === true);
+
+      activeBoard.columns.forEach((column) => {
         column.cards.forEach((card) => arrayOfCards.push(card));
       });
-      return { data, arrayOfCards };
+
+      return { data, arrayOfCards, activeBoard };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -43,7 +46,7 @@ export const addBoard = createAsyncThunk(
           boards: { items },
         },
       } = getState();
-      const data = await tasksApi.addBoard(body);
+      const data = await tasksApi.addBoard({ ...body, active: true });
       const newItems = [...items, data];
 
       if (!items.length) {

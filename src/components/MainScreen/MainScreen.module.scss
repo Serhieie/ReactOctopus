@@ -7,6 +7,7 @@
   position: relative;
 }
 
+.blurSpan,
 .blur {
   border-radius: 10px;
   padding: 4px;
@@ -124,6 +125,14 @@
     background-color: rgba(23, 23, 23, 0.1);
   }
 
+  .blurSpan {
+    background-color: rgba(23, 23, 23, 0.8);
+  }
+
+  .blurSpan:hover {
+    background-color: rgba(23, 23, 23, 1);
+  }
+
   .blur:hover {
     background-color: rgba(23, 23, 23, 0.4);
   }
@@ -165,6 +174,14 @@
 
   .blur:hover {
     background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .blurSpan {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .blurSpan:hover {
+    background-color: rgba(255, 255, 255, 0.9);
   }
 
   .iconFilter {

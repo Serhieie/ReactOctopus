@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
+import { selectFilter } from '../../redux/filter/filterSelectors.js';
 
 export const MainScreen = () => {
   const { theme, isLoading } = useAuth();
@@ -28,6 +29,7 @@ export const MainScreen = () => {
     items,
     isLoading: isBoardLoading,
   } = useSelector(selectBoardsState);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   const { isSidebarOpen, isFiltersOpen } = useIsPopUpOpen();
   const [isAddCardOpen, setAddCardOpen] = useState(false);
@@ -58,7 +60,7 @@ export const MainScreen = () => {
     if (items.length === 0) {
       navigate('/home');
     } else {
-      const firstItem = active ? active : items[0] ? items[0] : null;
+      const firstItem = active && active;
       const itemId = firstItem._id;
       const newPath = `/home/${itemId}`;
       if (truuue) navigate(newPath);
@@ -98,21 +100,35 @@ export const MainScreen = () => {
               </div>
 
               {isFilterShow && (
-                <div onClick={openFilters} className={styles.blur}>
+                <>
                   {' '}
-                  <span className={styles.filters}>
+                  {filter !== '' && (
+                    <div onClick={openFilters} className={styles.blurSpan}>
+                      <span className={styles.filters}>
+                        {filter === 'without'
+                          ? 'wtihout priority'
+                          : filter === ''
+                          ? null
+                          : `${filter} priority`}
+                      </span>
+                    </div>
+                  )}
+                  <div onClick={openFilters} className={styles.blur}>
                     {' '}
-                    <svg
-                      className={styles.iconFilter}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                    >
-                      <use xlinkHref={`${sprite}#icon-filter`} />
-                    </svg>
-                    Filters
-                  </span>
-                </div>
+                    <span className={styles.filters}>
+                      {' '}
+                      <svg
+                        className={styles.iconFilter}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                      >
+                        <use xlinkHref={`${sprite}#icon-filter`} />
+                      </svg>
+                      Filters
+                    </span>
+                  </div>
+                </>
               )}
             </div>
             <div className={styles.mainContent}>

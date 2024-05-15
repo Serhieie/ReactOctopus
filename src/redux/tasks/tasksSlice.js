@@ -19,8 +19,9 @@ export const tasksSlice = createSlice({
       .addCase(boardsOperations.fetchBoards.fulfilled, (state, { payload }) => {
         (state.boards.isLoading = false),
           (state.boards.items = payload.data.result);
-        state.boards.active = payload.data.result[0];
-        state.columns.items = payload.data.result[0].columns;
+
+        state.boards.active = payload.activeBoard;
+        state.columns.items = payload.activeBoard.columns;
         state.cards.items = payload.arrayOfCards;
       })
       .addCase(boardsOperations.fetchBoards.rejected, (state, { payload }) => {
