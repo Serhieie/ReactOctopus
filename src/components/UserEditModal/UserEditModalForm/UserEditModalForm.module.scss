@@ -98,6 +98,10 @@
     width: 100%;
     //  width: 344px;
   }
+
+  &:hover {
+    background-color: $button-hover-dark;
+  }
 }
 
 .buttonViolet {
@@ -116,6 +120,10 @@
   @include media-rules(tablet) {
     width: 100%;
     //  width: 344px;
+  }
+
+  &:hover {
+    background-color: $button-hover-violet;
   }
 }
 

@@ -17,6 +17,7 @@
   padding: 16px 20px;
   border-radius: 8px;
 
+  transition: all 300ms ease-in-out;
   user-select: none;
   @include media-rules(tablet) {
   }
@@ -35,6 +36,11 @@
   justify-content: center;
 
   border-radius: 6px;
+  transition: all 300ms ease-in-out;
+}
+
+.iconAddColumn {
+  transition: stroke 300ms ease-in-out;
 }
 
 //DARK
@@ -50,6 +56,15 @@
   .addSpan {
     background-color: $text-dark;
   }
+
+  &:hover {
+    color: $text-hover-dark;
+  }
+
+  &:hover > span {
+    color: $text-hover-dark;
+    background-color: $button-dark;
+  }
 }
 
 .addCardButtonDark {
@@ -62,6 +77,10 @@
 
   .addSpan {
     background-color: $text-light;
+  }
+
+  &:hover {
+    background-color: $button-hover-dark;
   }
 }
 
@@ -77,6 +96,11 @@
   .addSpan {
     background-color: $text-light;
   }
+
+  &:hover {
+    background-color: $button-light;
+    color: $text-light;
+  }
 }
 
 .addCardButtonLight {
@@ -89,6 +113,10 @@
 
   .addSpan {
     background-color: $text-light;
+  }
+
+  &:hover {
+    background-color: $button-hover-light;
   }
 }
 
@@ -105,6 +133,20 @@
   .addSpan {
     background-color: $button-violet;
   }
+
+  &:hover {
+    background-color: $button-hover-violet;
+    color: $text-light;
+  }
+
+  &:hover > span {
+    color: $text-hover-dark;
+    background-color: $background-violet;
+  }
+
+  &:hover .iconAddColumn {
+    stroke: $text-light;
+  }
 }
 
 .addCardButtonViolet {
@@ -116,5 +158,9 @@
 
   .addSpan {
     background-color: $text-dark;
+  }
+
+  &:hover {
+    background-color: $button-hover-violet;
   }
 }

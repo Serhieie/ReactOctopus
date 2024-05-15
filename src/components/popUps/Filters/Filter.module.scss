@@ -40,6 +40,8 @@
   font-weight: 400;
   font-size: 12px;
   letter-spacing: -0.02em;
+
+  transition: color 300ms ease-in-out;
 }
 
 .colorFilter {
@@ -116,6 +118,8 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   cursor: pointer;
+
+  transition: color 300ms ease-in-out;
 }
 
 .filterContainerDark {
@@ -127,10 +131,16 @@
 
   .clearAllBtn {
     color: rgba(255, 255, 255, 0.5);
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 
   .priorityText {
     color: $text-secondary-dark;
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
   }
 }
 
@@ -143,10 +153,17 @@
 
   .clearAllBtn {
     color: rgba(22, 22, 22, 0.5);
+
+    &:hover {
+      color: rgba(22, 22, 22, 0.9);
+    }
   }
 
   .priorityText {
     color: $text-secondary-light;
+    &:hover {
+      color: $text-secondary-light;
+    }
   }
 
   .colorFilterWithoutPriority {
@@ -166,10 +183,16 @@
   }
   .clearAllBtn {
     color: rgba(22, 22, 22, 0.5);
+    &:hover {
+      color: rgba(22, 22, 22, 0.9);
+    }
   }
 
   .priorityText {
     color: $text-secondary-violet;
+    &:hover {
+      color: $text-violet;
+    }
   }
 
   .colorFilterWithoutPriority {

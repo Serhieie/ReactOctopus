@@ -21,6 +21,8 @@
     width: 32px;
     height: 32px;
     margin-right: 14px;
+
+    transition: stroke 300ms ease-in-out;
   }
   .text {
     color: #fff;
@@ -41,6 +43,9 @@
 }
 
 .logoutDark {
+  &:hover .icon {
+    stroke: $button-hover-dark;
+  }
   .icon {
     stroke: #bedbb0;
   }
@@ -51,6 +56,9 @@
 }
 
 .logoutLight {
+  &:hover .icon {
+    stroke: $button-hover-light;
+  }
   .text {
     color: #161616;
   }
@@ -60,6 +68,9 @@
 }
 
 .logoutViolet {
+  &:hover .icon {
+    stroke: $button-hover-violet;
+  }
   .text {
     color: #fff;
   }

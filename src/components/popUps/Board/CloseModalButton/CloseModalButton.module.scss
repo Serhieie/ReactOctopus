@@ -9,6 +9,8 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+
+  transition: all 300ms ease-in-out;
 }
 
 .modalCloseIcon {
@@ -17,12 +19,22 @@
 
 .modalCloseIconDark {
   fill: #ffffff;
+
+  &:hover {
+    stroke: $text-hover-dark;
+  }
 }
 
 .modalCloseIconLight {
   fill: #161616;
+  &:hover {
+    stroke: $text-hover-light;
+  }
 }
 
 .modalCloseIconViolet {
   fill: #161616;
+  &:hover {
+    stroke: $text-hover-violet;
+  }
 }

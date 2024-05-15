@@ -49,11 +49,20 @@
   padding: 8px 24px;
   border-radius: 4px;
   cursor: pointer;
+  opacity: 0.8;
+
+  transition: opacity 300ms ease-in-out;
 }
 
 .closeButton {
   border-radius: 4px;
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 300ms ease-in-out;
+}
+
+.icon {
+  transition: stroke 300ms ease-in-out;
 }
 
 //Dark
@@ -69,16 +78,28 @@
   .deleteButton {
     background-color: #ff5555;
     color: white;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .closeButton {
     .icon {
       stroke: $text-dark;
     }
+
+    &:hover .icon {
+      stroke: $text-hover-dark;
+    }
   }
   .cancelButton {
     background-color: $button-dark;
     color: $text-light;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -96,16 +117,26 @@
     background-color: #ff5555;
     opacity: 0.85;
     color: white;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .closeButton {
     .icon {
       stroke: $text-light;
     }
+
+    &:hover .icon {
+      stroke: $text-hover-light;
+    }
   }
   .cancelButton {
     background-color: $button-dark;
     color: $text-light;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -125,16 +156,26 @@
     background-color: #990000;
     opacity: 0.9;
     color: white;
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .closeButton {
     .icon {
       stroke: $text-violet;
     }
+
+    &:hover .icon {
+      stroke: $text-hover-violet;
+    }
   }
   .cancelButton {
     background-color: $button-violet;
     color: $text-dark;
     opacity: 0.8;
+  }
+  &:hover {
+    opacity: 1;
   }
 }

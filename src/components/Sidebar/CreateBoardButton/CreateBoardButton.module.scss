@@ -27,6 +27,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: background-color 300ms ease-in-out;
   }
 
   @include media-rules(tablet) {
