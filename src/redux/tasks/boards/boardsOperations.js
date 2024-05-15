@@ -10,7 +10,6 @@ export const fetchBoards = createAsyncThunk(
       data.result[0].columns.forEach((column) => {
         column.cards.forEach((card) => arrayOfCards.push(card));
       });
-      console.log(data);
       return { data, arrayOfCards };
     } catch (error) {
       return rejectWithValue(error.message);
