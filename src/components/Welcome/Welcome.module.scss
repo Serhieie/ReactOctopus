@@ -43,6 +43,10 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  width: 100%;
+
+  min-width: 280px;
+  margin: 0 auto;
 }
 
 .register,
@@ -52,18 +56,22 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  width: 335px;
   letter-spacing: -0.02em;
-  padding: 14px 131px 14px 130px;
+  // padding: 14px 131px 14px 130px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   background: $header-background-dark;
   border-radius: 8px;
   color: $sidebar-background-light;
   cursor: pointer;
   text-transform: none;
-  min-width: 290px;
+  // min-width: 290px;
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto;
 
   @include media-rules(tablet) {
-      width: 344px;
+    max-width: 344px;
   }
 }
 
@@ -73,19 +81,24 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  width: 335px;
   letter-spacing: -0.02em;
-  padding: 14px 131px 14px 130px;
+  // padding: 14px 131px 14px 130px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   background: transparent;
   border-radius: 8px;
   color: $header-background-dark;
   cursor: pointer;
   text-transform: none;
-  min-width: 290px;
+  // min-width: 290px;
+  // max-width: 335px;
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto;
 
   @include media-rules(tablet) {
-      width: 344px;
-    }
+    max-width: 344px;
+  }
 }
 
 .registerOnLoginHover {
@@ -94,29 +107,34 @@
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  width: 335px;
   letter-spacing: -0.02em;
-  padding: 14px 131px 14px 130px;
+  // padding: 14px 131px 14px 130px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   border-radius: 8px;
   cursor: pointer;
   text-transform: none;
   background: transparent;
   color: $header-background-dark;
-  min-width: 290px;
+  // max-width: 335px;
+  // min-width: 290px;
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto;
 
   @include media-rules(tablet) {
-      width: 344px;
-    }
+    max-width: 344px;
+  }
 }
 
 .login:hover {
   background: $header-background-dark;
   color: $sidebar-background-light;
-  min-width: 290px;
+  min-width: 280px;
 
   @include media-rules(tablet) {
-      width: 344px;
-    }
+    max-width: 344px;
+  }
 }
 
 .logoWrap {
