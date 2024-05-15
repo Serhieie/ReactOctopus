@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../../redux/auth/authOperations';
 import clsx from 'clsx';
 import { useAuth } from '../../../hooks';
+import { clearTasks } from '../../../redux/tasks/tasksSlice';
 
 const LogoutButton = () => {
   const { theme } = useAuth();
@@ -11,6 +12,7 @@ const LogoutButton = () => {
 
   const onLogout = () => {
     dispatch(logOut());
+    dispatch(clearTasks());
   };
   return (
     <section

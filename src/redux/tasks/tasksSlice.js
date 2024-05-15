@@ -9,9 +9,15 @@ import storage from 'redux-persist/lib/storage';
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
+  reducers: {
+    clearTasks: (state) => {
+      state.boards = initialState.boards;
+      state.columns = initialState.columns;
+      state.cards = initialState.cards;
+    },
+  },
   extraReducers: (builder) => {
     builder
-
       //GET BOARDS
       .addCase(boardsOperations.fetchBoards.pending, (state) => {
         (state.boards.isLoading = true), (state.boards.error = null);
@@ -229,6 +235,7 @@ const persistConfig = {
   key: 'tasks',
   storage,
 };
+export const { clearTasks } = tasksSlice.actions;
 
 export const persistedTasksReducer = persistReducer(
   persistConfig,

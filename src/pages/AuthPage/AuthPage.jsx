@@ -10,6 +10,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import styles from './AuthPage.module.scss';
 import { useDispatch } from 'react-redux';
 import { signUp, logIn } from '../../redux/auth/authOperations';
+import { clearTasks } from '../../redux/tasks/tasksSlice';
 
 export const AuthPage = () => {
   const { id } = useParams();
@@ -22,10 +23,12 @@ export const AuthPage = () => {
   };
 
   const onRegister = (data) => {
+    dispatch(clearTasks());
     dispatch(signUp(data));
   };
 
   const onLogin = (data) => {
+    dispatch(clearTasks());
     dispatch(logIn(data));
   };
 

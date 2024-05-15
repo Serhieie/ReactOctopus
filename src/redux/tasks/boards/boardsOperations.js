@@ -8,7 +8,6 @@ export const fetchBoards = createAsyncThunk(
       const data = await tasksApi.getBoards();
       const arrayOfCards = [];
       const activeBoard = data.result.find((board) => board.active === true);
-
       activeBoard.columns.forEach((column) => {
         column.cards.forEach((card) => arrayOfCards.push(card));
       });
