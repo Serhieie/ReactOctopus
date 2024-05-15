@@ -2,14 +2,16 @@ import styles from './DeleteModal.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
-import { getEntityName } from '../../../helpers/deleteModalHelper';
+import { getEntityName } from '../../../helpers';
 import { deleteColumn } from '../../../redux/tasks/columns/columnsOperations';
 import { deleteCard } from '../../../redux/tasks/cards/cardsOperations';
 import { deleteBoard } from '../../../redux/tasks/boards/boardsOperations';
-import { useAuth } from '../../../hooks';
 import { useParams } from 'react-router-dom';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import {
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+  useAuth,
+} from '../../../hooks';
 
 export const DeleteModal = ({ open, itemType, item, func }) => {
   const { theme } = useAuth();

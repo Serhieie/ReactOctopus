@@ -1,11 +1,10 @@
 import styles from './Header.module.scss';
-import { useMedia } from '../../hooks/useMedia.js';
+import { useMedia, useAuth } from '../../hooks';
 import { ThemeSelector } from './ThemeSelector/ThemeSelector.jsx';
 import { BurgerMenu } from './BurgerMenu/BurgerMenu.jsx';
 import { UserInfo } from './UserInfo/UserInfo.jsx';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { useAuth } from '../../hooks/useAuth.js';
 
 export const Header = () => {
   const { theme } = useAuth();

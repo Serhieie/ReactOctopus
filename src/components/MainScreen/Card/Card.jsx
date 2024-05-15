@@ -2,7 +2,7 @@ import styles from './Card.module.scss';
 import clsx from 'clsx';
 import { Buttons } from './Buttons/Buttons';
 import { Priority } from './Priority/Priority';
-import { getColorByPriority } from '../../../helpers/getColorByPriority';
+import { getColorByPriority } from '../../../helpers';
 import { useAuth } from '../../../hooks';
 import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 import { Draggable } from 'react-beautiful-dnd';

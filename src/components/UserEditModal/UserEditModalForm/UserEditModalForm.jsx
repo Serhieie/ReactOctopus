@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import styles from './UserEditModalForm.module.scss';
 import schema from '../../../schemas/validationRegistrSchemas';
 import { updateUser } from '../../../redux/auth/authOperations';
+import { setUserPlaceholder } from '../../../helpers';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '../../../hooks';
 import clsx from 'clsx';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-import { setUserPlaceholder } from '../../../helpers/setUserPlaceholder';
+import {
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+  useAuth,
+} from '../../../hooks';
 
 const UserEditModalForm = ({ userData, func }) => {
   const {

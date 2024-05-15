@@ -2,19 +2,19 @@ import { useState } from 'react';
 import styles from './Column.module.scss';
 import validationTitle from '../../../schemas/validationTitle';
 import clsx from 'clsx';
-
 import LogoSprite from '../../../assets/sprite.svg';
 import { useDispatch } from 'react-redux';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+import {
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+  useAuth,
+} from '../../../hooks';
 import { editColumnOperation } from '../../../redux/tasks/columns/columnsOperations';
-import { useAuth } from '../../../hooks';
 
-const MdlEdit = ({ open, onOpen, onClose, item }) => {
+const MdlEdit = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
   const { theme } = useAuth();
 
-  const [isOpen, setIsOpen] = useState(false);
   const [titleInput, setTitleInput] = useState(item.title);
   const [error, setError] = useState('');
 

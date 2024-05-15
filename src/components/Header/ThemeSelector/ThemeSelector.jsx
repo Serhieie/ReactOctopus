@@ -2,11 +2,10 @@ import styles from './ThemeSelector.module.scss';
 import sprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { PopUp } from './PopUp/PopUp';
-import { useAuth } from '../../../hooks';
+import { useAuth, useEscapeKeyToCloseModals } from '../../../hooks';
 import { useIsPopUpOpen } from '../../../hooks/useIsPopUpOpen';
 import { useDispatch } from 'react-redux';
 import { setIsChangeThemePopUpOpen } from '../../../redux/popUps/popUpsSlice';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
 
 export const ThemeSelector = () => {
   const { isChangeThemePopUpOpen } = useIsPopUpOpen();

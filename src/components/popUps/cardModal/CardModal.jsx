@@ -1,9 +1,11 @@
 import css from './CardModal.module.scss';
 import clsx from 'clsx';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-import { useAuth } from '../../../hooks';
+import {
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+  useAuth,
+} from '../../../hooks';
 
 const CardModal = ({ func, name, children }) => {
   const { theme } = useAuth();

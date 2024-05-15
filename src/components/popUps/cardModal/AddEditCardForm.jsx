@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import css from './addEditCardForm.module.scss';
 import clsx from 'clsx';
-import { dbDate } from '../../../helpers/isToday';
+import { dbDate } from '../../../helpers';
 import { useAuth } from '../../../hooks';
 import {
   addCardOperation,

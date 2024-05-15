@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useDispatch } from 'react-redux';
 import { moveCardOperation } from '../../../../redux/tasks/cards/cardsOperations';
-import useEscapeKeyToClosePopUps from '../../../../hooks/closePopUps';
+import { useEscapeKeyToClosePopUps } from '../../../../hooks';
 
 export const MovePopUp = ({
   isMoveCardPopUpOpen,

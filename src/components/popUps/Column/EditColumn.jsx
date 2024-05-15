@@ -8,7 +8,7 @@ import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
 
 import ColumnFormAdd from '../Board/ColumnForm/ColumnFormAdd';
 
-const EditColumn = ({ name, open, item, func }) => {
+const EditColumn = ({ name, item, func }) => {
   const theme = 'Dark';
 
   const [column, setColumn] = useState({

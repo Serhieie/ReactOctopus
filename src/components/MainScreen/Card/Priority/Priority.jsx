@@ -1,4 +1,4 @@
-import { formatDate } from '../../../../helpers/formatDate';
+import { formatDate } from '../../../../helpers';
 import styles from './Priority.module.scss';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';

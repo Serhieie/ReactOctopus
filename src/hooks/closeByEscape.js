@@ -7,7 +7,7 @@ import {
 } from '../redux/popUps/popUpsSlice.js';
 import { setIsSideBarOpen } from '../redux/popUps/popUpsSlice';
 
-function useEscapeKeyToCloseModals(func) {
+export const useEscapeKeyToCloseModals = (func) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,6 +31,4 @@ function useEscapeKeyToCloseModals(func) {
   }, [dispatch, func]);
 
   return null;
-}
-
-export default useEscapeKeyToCloseModals;
+};

@@ -8,9 +8,11 @@ import { useDispatch } from 'react-redux';
 import { needHelpOperation } from '../../../redux/auth/authOperations';
 import LogoSprite from '../../../assets/sprite.svg';
 import clsx from 'clsx';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-import { useAuth } from '../../../hooks';
+import {
+  useAuth,
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+} from '../../../hooks';
 
 const HelpModal = () => {
   const { theme } = useAuth();

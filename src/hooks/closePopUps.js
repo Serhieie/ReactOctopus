@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useEscapeKeyToClosePopUps(func, isPopUpOpen) {
+export const useEscapeKeyToClosePopUps = (func, isPopUpOpen) => {
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.keyCode === 27) {
@@ -14,6 +14,6 @@ function useEscapeKeyToClosePopUps(func, isPopUpOpen) {
     };
   }, [func, isPopUpOpen]);
   return null;
-}
+};
 
 export default useEscapeKeyToClosePopUps;

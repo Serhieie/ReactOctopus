@@ -2,14 +2,15 @@ import { useState } from 'react';
 import styles from './Column.module.scss';
 import validationTitle from '../../../schemas/validationTitle';
 import clsx from 'clsx';
-
 import LogoSprite from '../../../assets/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { addColumnOperation } from '../../../redux/tasks/columns/columnsOperations';
 import { useParams } from 'react-router-dom';
-import useClickOnBackdropToCloseModals from '../../../hooks/closeByClick';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
-import { useAuth } from '../../../hooks';
+import {
+  useClickOnBackdropToCloseModals,
+  useEscapeKeyToCloseModals,
+  useAuth,
+} from '../../../hooks';
 
 const MdlColumn = ({ open, onClose }) => {
   const { boardName } = useParams();

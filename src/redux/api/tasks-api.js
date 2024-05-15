@@ -12,7 +12,7 @@ export const getBoardById = async (id) => {
 
 export const addBoard = async (body) => {
   const { data } = await instance.post('/boards/post', body);
-  return data.result;
+  return data;
 };
 
 export const removeBoard = async (id) => {

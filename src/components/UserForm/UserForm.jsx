@@ -3,18 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { RiEyeLine, RiEyeCloseLine } from 'react-icons/ri';
-
 import { selectUser } from '../../redux/auth/authSelectors';
-
 import styles from './UserForm.module.scss';
-
-import { imageExists } from '../../hooks/imageExists';
-
+import { imageExists } from '../../hooks';
 import { SuccessIcon } from 'assets/success.svg';
 import { ErrorIcon } from 'assets/error.svg';
-
 import avatarDark from '../../assets/user/userDark.png';
-
 import { updateUser } from '../../redux/auth/authOperations';
 
 export const UserForm = (isOpen, onClose) => {
@@ -41,13 +35,11 @@ export const UserForm = (isOpen, onClose) => {
   });
 
   const { userName, email, avatarURL } = useSelector(selectUser);
-
   const [newAvatar, setNewAvatar] = useState(avatarURL ?? '');
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState('');
   const [newUserName, setNewUserName] = useState(userName ?? '');
   const [newEmail, setNewEmail] = useState(email ?? '');
   const [newPassword, setNewPassword] = useState('');
-
   const [isSaving, setIsSaving] = useState(false);
   const [isNameValid, setIsNameValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -136,7 +128,7 @@ export const UserForm = (isOpen, onClose) => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     onClose();
   };
 

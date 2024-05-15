@@ -3,7 +3,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import UserInfoSkeleton from '../../Skelletons/UserInfoSkeleton/UserInfoSkeleton';
 import { useAuth } from '../../../hooks';
-import { setUserPlaceholder } from '../../../helpers/setUserPlaceholder';
+import { setUserPlaceholder } from '../../../helpers';
 import UserEditModal from '../../UserEditModal/UserEditModal';
 
 export const UserInfo = () => {

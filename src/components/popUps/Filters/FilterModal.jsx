@@ -1,9 +1,9 @@
 import css from './FilterModal.module.scss';
 import clsx from 'clsx';
-import { useAuth, useMedia } from '../../../hooks';
+import { useAuth, useEscapeKeyToCloseModals, useMedia } from '../../../hooks';
 import Filter from './Filter';
 import CloseModalButton from '../Board/CloseModalButton/CloseModalButton';
-import useEscapeKeyToCloseModals from '../../../hooks/closeByEscape';
+
 import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../../redux/popUps/popUpsSlice';
 

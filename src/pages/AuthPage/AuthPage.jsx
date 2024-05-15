@@ -11,7 +11,7 @@ import styles from './AuthPage.module.scss';
 import { useDispatch } from 'react-redux';
 import { signUp, logIn } from '../../redux/auth/authOperations';
 
-const AuthPage = () => {
+export const AuthPage = () => {
   const { id } = useParams();
   const [value, setValue] = useState(id === 'login' ? 1 : 0);
 
@@ -76,5 +76,3 @@ const AuthPage = () => {
     </div>
   );
 };
-
-export default AuthPage;

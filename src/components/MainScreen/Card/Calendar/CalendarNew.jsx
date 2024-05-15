@@ -3,7 +3,7 @@ import sprite from '../../../../assets/sprite.svg';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 import { useState } from 'react';
-import { dbDate, toodayDate } from '../../../../helpers/isToday';
+import { dbDate, toodayDate } from '../../../../helpers';
 import DatePicker from 'react-multi-date-picker';
 import 'react-multi-date-picker/styles/colors/purple.css';
 import 'react-multi-date-picker/styles/backgrounds/bg-dark.css';

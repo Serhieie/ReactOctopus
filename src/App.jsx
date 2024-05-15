@@ -1,14 +1,10 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import RestrictedRoute from './redirect/RestrictedRoute';
-import PrivateRoute from './redirect/PrivateRoute';
+import { RestrictedRoute, PrivateRoute } from './redirect';
 import { useDispatch } from 'react-redux';
 import { current } from './redux/auth/authOperations';
+import { NotFoundPage, HomePage, AuthPage, WelcomePage } from './pages';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import HomePage from './pages/HomePage/HomePage';
-import WelcomePage from './pages/WelcomePage/WelcomePage';
-import AuthPage from './pages/AuthPage/AuthPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { useAuth } from './hooks';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { fetchBoards } from './redux/tasks/boards/boardsOperations';
@@ -19,7 +15,6 @@ function App() {
   const { isLogin } = useAuth();
   const reduxState = useSelector(selectTasksState);
   const [state, setState] = useState(reduxState);
-  // const [true, setTrue] = useState();
 
   const dispatch = useDispatch();
 
@@ -29,21 +24,6 @@ function App() {
     }
     dispatch(current());
   }, [dispatch, isLogin]);
-
-  // example
-  // const result = {
-  //   draggableId: 'task-1',
-  //   type: 'type',
-  //   reason: 'drop',
-  //   souce: {
-  //     droppableId: 'column-1',
-  //     index: 0,
-  //   },
-  //   destination: {
-  //     droppableId: 'column-1',
-  //     index: 1,
-  //   },
-  // };
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -79,23 +59,15 @@ function App() {
       newCards.splice(destination.index, 0, dragCard);
       const newColumn = { ...column, cards: newCards };
 
-      console.log('COLUMN', column);
-      console.log('NEW COLUMN', newColumn);
-
       const newState = {
         ...state,
         [state.columns]: state.columns.items.map((col) =>
           col._id === newColumn._id ? newColumn : col
         ),
       };
-      console.log(' OLD STATE ', state);
-      console.log(' NEW STATE ', newState);
       setState(newState);
       return;
     }
-
-    console.log('Start Column', start);
-    console.log('Finish Column ', finish);
 
     const startCards = Array.from(column.cards);
     startCards.splice(source.index, 1);

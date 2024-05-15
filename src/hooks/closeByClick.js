@@ -6,7 +6,7 @@ import {
   setIsSideBarOpen,
 } from '../redux/popUps/popUpsSlice.js';
 
-function useClickOnBackdropToCloseModals(func) {
+export const useClickOnBackdropToCloseModals = (func) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +27,4 @@ function useClickOnBackdropToCloseModals(func) {
   }, [dispatch, func]);
 
   return null;
-}
-
-export default useClickOnBackdropToCloseModals;
+};

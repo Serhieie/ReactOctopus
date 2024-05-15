@@ -3,7 +3,7 @@ import sprite from '../../../../assets/sprite.svg';
 import { DeleteModal } from '../../DeleteModal/DeleteModal';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { isToday } from '../../../../helpers/isToday';
+import { isToday } from '../../../../helpers';
 import { MovePopUp } from '../MovePopUp/MovePopUp';
 import ModalPortal from '../../../popUps/ModalPortal';
 import { useAuth } from '../../../../hooks';
@@ -47,7 +47,6 @@ export const Buttons = ({ card, column }) => {
   const moveCardOpen = () => {
     setIsMoveCardPopUpOpen(true);
     if (isMoveCardPopUpOpen) {
-      console.log(isMoveCardPopUpOpen);
       dispatch(setIsFiltersOpen(false));
     }
   };

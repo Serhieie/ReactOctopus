@@ -1,2 +1,4 @@
-// export PrivateRoute from './PrivateRoute.jsx';
-// export RestrictedRoute from './RestrictedRoute.jsx';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+
+export { PrivateRoute, RestrictedRoute };

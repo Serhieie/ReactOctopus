@@ -15,10 +15,6 @@ const setToken = (token) => {
   }
 };
 
-// export const deleteToken = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
-
 export const register = async (body) => {
   const response = await instance.post('/auth/register', body);
   setToken(response.data.token);
@@ -57,12 +53,6 @@ export const checkTokenRequest = async (token) => {
     throw error;
   }
 };
-
-// export const edit = async (credentials) => {
-//   const response = await instance.patch('/users/edit', credentials);
-//   setToken();
-//   return response;
-// };
 
 export const needHelp = async (credentials) => {
   try {

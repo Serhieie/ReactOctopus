@@ -10,7 +10,6 @@ const CreateBoardButton = ({ theme }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const openAddBoardModal = () => {
-    console.log('Open Modal', isAddModalOpen);
     setIsAddModalOpen(true);
   };
 

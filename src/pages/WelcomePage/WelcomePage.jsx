@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Welcome from '../../components/Welcome/Welcome';
 import { ping } from '../../redux/api/api';
 
-const WelcomePage = () => {
+export const WelcomePage = () => {
   const wakeUp = async () => {
     await ping();
   };
@@ -22,5 +22,3 @@ const WelcomePage = () => {
     </div>
   );
 };
-
-export default WelcomePage;

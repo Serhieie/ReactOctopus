@@ -4,8 +4,7 @@ import clsx from 'clsx';
 import { ExplainField } from './ExplainField/ExplainField.jsx';
 import { ColumnList } from './ColumnList/ColumnList.jsx';
 import { AddButton } from './AddButton/AddButton.jsx';
-import { useMedia } from '../../hooks/useMedia.js';
-import { useAuth } from '../../hooks/useAuth.js';
+import { useMedia, useAuth } from '../../hooks';
 import { MainScreenSkelleton } from '../Skelletons/MainScreenSkelleton/MainScreenSkelleton.jsx';
 import {
   selectBoardsState,
