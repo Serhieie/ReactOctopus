@@ -12,6 +12,9 @@ export const ThemeSelector = () => {
   const dispatch = useDispatch();
   const { theme } = useAuth();
 
+  const titleTheme =
+    theme === 'dark' ? 'Dark' : theme === 'light' ? 'Light' : 'Violet';
+
   useEscapeKeyToCloseModals();
 
   const toggleOpenTheme = async () => {
@@ -29,7 +32,7 @@ export const ThemeSelector = () => {
           [styles.openThemeSpanViolet]: theme === 'violet',
         })}
       >
-        Theme{' '}
+        {titleTheme}{' '}
         <svg
           className={clsx(styles.arrowIcon, {
             [styles.rotate]: isChangeThemePopUpOpen,
