@@ -51,8 +51,8 @@ const Welcome = () => {
           Log In
         </NavLink>
         <a
-          // href="https://reactoctopus-back.onrender.com/api/auth/google"
-          href="http://localhost:3000/api/auth/google"
+          href="https://reactoctopus-back.onrender.com/api/auth/google"
+          // href="http://localhost:3000/api/auth/google"
           className={styles.googleAuth}
           onMouseEnter={handleLoginHover}
           onMouseLeave={handleLoginLeave}

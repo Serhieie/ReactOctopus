@@ -105,7 +105,7 @@ export const AuthPage = () => {
               </span>
             }
             component={Link}
-            href="http://localhost:3000/api/auth/google"
+            href="https://reactoctopus-back.onrender.com/api/auth/google"
             style={{
               borderRadius: '10px',
               textTransform: 'none',
