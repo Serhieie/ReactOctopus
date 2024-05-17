@@ -5,7 +5,7 @@ const validationRegistrSchema = yup.object().shape({
     .string()
     .required('Name is required')
     .matches(
-      /^[a-zA-Zа-яА-Я0-9\s!@#$%^&*()_+-=`~[\]{}|\\:;"'<>,.?/]+$/,
+      /^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s!@#$%^&*()_+-=`~[\]{}|\\:;"'<>,.?/]+$/,
       'Invalid characters in name'
     )
     .min(2, 'Name must be at least 2 characters')
@@ -80,7 +80,7 @@ const validationEditUSerSchema = yup.object().shape({
   name: yup
     .string()
     .matches(
-      /^[a-zA-Zа-яА-Я0-9\s!@#$%^&*()_+-=`~[\]{}|\\:;"'<>,.?/]+$/,
+      /^[a-zA-Zа-яА-ЯґҐєЄіІїЇ0-9\s!@#$%^&*()_+-=`~[\]{}|\\:;"'<>,.?/]+$/,
       'Invalid characters in name'
     )
     .min(2, 'Name must be at least 2 characters')
