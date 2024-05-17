@@ -15,10 +15,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setTheme(state) {
-      state.user.theme = "dark";
+      state.user.theme = 'dark';
     },
     setTokenToRedux(state, action) {
       state.token = action.payload;
+      state.isLogin = true;
+      state.isLoading = false;
     },
     clearTokenToRedux(state) {
       state.token = null;
