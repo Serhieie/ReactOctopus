@@ -37,8 +37,8 @@ function App() {
     if (token) {
       dispatch(clearTasks());
       setToken(token);
-      dispatch(current());
       dispatch(setTokenToRedux(token));
+      dispatch(current());
     }
   }, [googleToken, dispatch]);
 
@@ -84,7 +84,7 @@ function App() {
             }
           />
           <Route
-            path="/auth/:token"
+            path="/auth/google/:token"
             element={
               <RestrictedRoute redirectTo="/home">
                 <WelcomePage />
