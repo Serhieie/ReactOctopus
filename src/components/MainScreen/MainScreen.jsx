@@ -22,13 +22,9 @@ import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../redux/popUps/popUpsSlice.js';
 import { selectFilter } from '../../redux/filter/filterSelectors.js';
 
-export const MainScreen = () => {
+export const MainScreen = ({ active }) => {
   const { theme, isLoading } = useAuth();
-  const {
-    active,
-    items,
-    isLoading: isBoardLoading,
-  } = useSelector(selectBoardsState);
+  const { items, isLoading: isBoardLoading } = useSelector(selectBoardsState);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   const { isSidebarOpen, isFiltersOpen } = useIsPopUpOpen();

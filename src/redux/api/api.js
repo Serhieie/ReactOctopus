@@ -7,7 +7,7 @@ const instance = axios.create({
   timeout: 15000,
 });
 
-const setToken = (token) => {
+export const setToken = (token) => {
   if (token) {
     return (instance.defaults.headers.authorization = `Bearer ${token}`);
   } else {

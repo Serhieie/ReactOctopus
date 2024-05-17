@@ -45,7 +45,7 @@ export const addBoard = createAsyncThunk(
           boards: { items },
         },
       } = getState();
-      const data = await tasksApi.addBoard({ ...body, active: true });
+      const data = await tasksApi.addBoard({ ...body });
       const newItems = [...items, data];
 
       if (!items.length) {

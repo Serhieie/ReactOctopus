@@ -13,6 +13,17 @@ import { handlePending, handleRejected } from './authHandlers';
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setTheme(state) {
+      state.user.theme = "dark";
+    },
+    setTokenToRedux(state, action) {
+      state.token = action.payload;
+    },
+    clearTokenToRedux(state) {
+      state.token = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       //signUp
@@ -74,5 +85,7 @@ const authSlice = createSlice({
       .addCase(needHelpOperation.rejected, handleRejected);
   },
 });
+
+export const { setTokenToRedux, clearTokenToRedux } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

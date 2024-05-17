@@ -7,10 +7,10 @@
   gap: 24px;
   background-color: transparent;
 
-  max-height: calc(100dvh - 174px);
+  max-height: calc(100vh - 174px);
 
   @include media-rules(tablet) {
-    max-height: calc(100dvh - 182px);
+    max-height: calc(100vh - 182px);
     gap: 34px;
   }
 }

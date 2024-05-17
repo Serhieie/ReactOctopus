@@ -2,12 +2,12 @@ import { MainScreen } from '../../components/MainScreen/MainScreen';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from '../../components/Header/Header';
 
-export const HomePage = ({ state }) => {
+export const HomePage = ({ active }) => {
   return (
     <>
       <Header />
       <Sidebar />
-      <MainScreen state={state} />
+      <MainScreen active={active} />
     </>
   );
 };

@@ -184,8 +184,49 @@
 }
 
 .login,
-.register {
+.register,
+.googleAuth {
   transition:
     background-color 0.25s,
     color 1.4s;
+}
+
+//googleBTN
+
+.googleAuth {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  border-radius: 8px;
+  color: $text-light;
+  cursor: pointer;
+  text-transform: none;
+
+  width: 100%;
+  max-width: 335px;
+  margin: 0 auto;
+
+  @include media-rules(tablet) {
+    max-width: 344px;
+  }
+}
+
+.googleAuth:hover {
+  background: $header-background-dark;
+  color: $sidebar-background-light;
+}
+
+.googleAuth:hover .register {
+  background: transparent;
 }

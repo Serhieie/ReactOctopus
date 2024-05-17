@@ -19,15 +19,15 @@
   position: relative;
   padding-left: 20px;
   padding-right: 10px;
-  min-height: calc(100dvh - 60px);
+  min-height: calc(100vh - 60px);
 
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @include media-rules(tablet) {
-    min-height: calc(100dvh - 68px);
+    min-height: calc(100vh - 68px);
     padding-left: 32px;
   }
   @include media-rules(desktop) {
-    width: calc(100dvw - 260px);
+    width: calc(100vw - 260px);
     margin-left: auto;
     padding-left: 24px;
   }
