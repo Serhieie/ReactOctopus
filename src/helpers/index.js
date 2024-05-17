@@ -11,6 +11,7 @@ import {
 } from './notiflix';
 import { setUserPlaceholder } from './setUserPlaceholder';
 import { sortByCreatedAt } from './sortByCreatedAt';
+import { getDragingColorByPriority } from './getDragingColorByPriority';
 
 export {
   setUserPlaceholder,
@@ -25,5 +26,6 @@ export {
   nameCheckerError,
   succesRegistrationMessage,
   failedRegistrationMessage,
+  getDragingColorByPriority,
   failedLogin,
 };

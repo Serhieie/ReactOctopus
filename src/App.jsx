@@ -13,10 +13,14 @@ import {
   selectCardsState,
 } from './redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
-import { moveCardOperation } from './redux/tasks/cards/cardsOperations';
+import {
+  changeCardIndexOperation,
+  moveCardOperation,
+} from './redux/tasks/cards/cardsOperations';
 import { setToken } from './redux/api/api';
 import { setTokenToRedux } from './redux/auth/authSlice';
 import { clearTasks } from './redux/tasks/tasksSlice';
+import { changeColumnIndexOperation } from './redux/tasks/columns/columnsOperations';
 
 function App() {
   const { isLogin } = useAuth();
@@ -33,30 +37,61 @@ function App() {
 
   useEffect(() => {
     const token = googleToken.get('token');
-
     if (token) {
       dispatch(clearTasks());
       setToken(token);
       dispatch(current());
       dispatch(setTokenToRedux(token));
     }
+    console.log(1);
   }, [googleToken, dispatch]);
 
   const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
     const card = items.filter((card) => card._id === draggableId)[0];
-    const { droppableId } = destination;
+    const { droppableId, index: destinationIndex } = destination;
+    const { index: sourceIndex } = source;
 
     if (!destination) {
       return;
     }
 
-    dispatch(
-      moveCardOperation({
-        card,
-        destinationColumnId: droppableId,
-      })
-    );
+    if (
+      destination.draggableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    if (type === 'column') {
+      dispatch(
+        changeColumnIndexOperation({
+          columnId: draggableId,
+          boardId: state._id,
+          destinationIndex,
+        })
+      );
+    }
+
+    if (source.droppableId === droppableId) {
+      dispatch(
+        changeCardIndexOperation({
+          card,
+          destinationColumnId: droppableId,
+          destinationIndex,
+          sourceIndex,
+        })
+      );
+    } else {
+      dispatch(
+        moveCardOperation({
+          card,
+          destinationColumnId: droppableId,
+          destinationIndex,
+          sourceIndex,
+        })
+      );
+    }
   };
 
   return (

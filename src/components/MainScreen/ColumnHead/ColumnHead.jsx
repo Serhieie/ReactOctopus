@@ -10,7 +10,7 @@ import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 import MdlEdit from '../../popUps/Column/Edit.jsx';
 
-export const ColumnHead = ({ column }) => {
+export const ColumnHead = ({ column, isDragging }) => {
   const [isDeletePopUpOpen, setIsDeletePopUpOpen] = useState(false);
   const [isEditPopUpOpen, setIsEditPopUpOpen] = useState(false);
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
@@ -39,6 +39,9 @@ export const ColumnHead = ({ column }) => {
           [styles.columnHeadDark]: theme === 'dark',
           [styles.columnHeadLight]: theme === 'light',
           [styles.columnHeadViolet]: theme === 'violet',
+          [styles.columnHeadDraggingDark]: theme === 'dark' && isDragging,
+          [styles.columnHeadDraggingLight]: theme === 'light' && isDragging,
+          [styles.columnHeadDraggingViolet]: theme === 'violet' && isDragging,
         })}
       >
         {' '}

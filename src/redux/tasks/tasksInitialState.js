@@ -18,4 +18,5 @@ export const initialState = {
     error: null,
     lastDeleted: '',
   },
+  columnsOrder: [],
 };

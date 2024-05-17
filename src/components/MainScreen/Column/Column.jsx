@@ -11,8 +11,9 @@ import { selectColumnsState } from '../../../redux/tasks/tasksSelectors.js';
 import { useSelector } from 'react-redux';
 import CardModal from '../../popUps/cardModal/CardModal.jsx';
 import AddEditCardForm from '../../popUps/cardModal/AddEditCardForm.jsx';
+import { Draggable } from 'react-beautiful-dnd';
 
-export const Column = ({ column }) => {
+export const Column = ({ column, index }) => {
   const { theme } = useAuth();
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
@@ -28,19 +29,25 @@ export const Column = ({ column }) => {
     <ColumnSkelleton />
   ) : (
     <>
-      {' '}
-      <li
-        data-column-id={column._id}
-        className={clsx(styles.column, {
-          [styles.columnDark]: theme === 'dark',
-          [styles.columnLight]: theme === 'light',
-          [styles.columnViolet]: theme === 'violet',
-        })}
-      >
-        <ColumnHead column={column} />
-        <CardList column={column} />
-        <AddButton column={false} addFunction={openAddCardModal} />
-      </li>
+      <Draggable draggableId={column?._id} index={index}>
+        {(provided, snapshot) => (
+          <li
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            data-column-id={column._id}
+            className={clsx(styles.column, {
+              [styles.columnDark]: theme === 'dark',
+              [styles.columnLight]: theme === 'light',
+              [styles.columnViolet]: theme === 'violet',
+            })}
+          >
+            <ColumnHead column={column} isDragging={snapshot.isDragging} />
+            <CardList column={column} />
+            <AddButton column={false} addFunction={openAddCardModal} />
+          </li>
+        )}
+      </Draggable>
       <ModalPortal>
         {isAddCardModalOpen && (
           <CardModal func={closeAddCardModal} name={'Add card'}>

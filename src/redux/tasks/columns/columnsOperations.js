@@ -21,17 +21,19 @@ export const addColumnOperation = createAsyncThunk(
         tasks: {
           boards: { active },
           columns: { items },
+          columnsOrder,
         },
       } = getState();
       const response = await tasksApi.addColumn(data);
       const newItems = [...items, response];
+      const newColumnsOrder = [...columnsOrder, response._id];
 
       const newActive = {
         ...active,
         columns: [...active.columns, response],
       };
 
-      return { newItems, newActive };
+      return { newItems, newActive, newColumnsOrder };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -45,16 +47,20 @@ export const deleteColumn = createAsyncThunk(
       const {
         tasks: {
           boards: { active },
+          columnsOrder,
         },
       } = getState();
       const response = await tasksApi.removeColumn(data.columnId);
 
+      const newColumnsOrder = columnsOrder.filter(
+        (columnId) => columnId !== response
+      );
       const newActive = {
         ...active,
         columns: active.columns.filter((column) => column._id !== response),
       };
 
-      return { active: newActive };
+      return { active: newActive, newColumnsOrder };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -94,6 +100,23 @@ export const editColumnOperation = createAsyncThunk(
       }
 
       return { newActive: active, items };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeColumnIndexOperation = createAsyncThunk(
+  'cards/changeColumnIndex',
+  async (data, { rejectWithValue }) => {
+    try {
+      const { boardId, destinationIndex, columnId } = data;
+      const response = await tasksApi.changeColumnIndex(columnId, {
+        boardId,
+        destinationIndex,
+      });
+
+      return { newActive: response, newItems: response.columns };
     } catch (error) {
       return rejectWithValue(error.message);
     }

@@ -147,35 +147,75 @@ export const moveCardOperation = createAsyncThunk(
       const {
         tasks: {
           boards: { active },
+          columns: { items },
         },
       } = getState();
       const response = await tasksApi.moveCard(data.card._id, {
         destinationColumnId: data.destinationColumnId,
+        sourceIndex: data.sourceIndex,
+        destinationIndex: data.destinationIndex,
       });
       const { destinationColumn, sourceColumn } = response;
+      const newItems = items.map((column) => {
+        if (column._id === destinationColumn._id) {
+          return destinationColumn;
+        }
+        return column;
+      });
+
       const newActive = {
         ...active,
         columns: active.columns.map((column) => {
           if (column._id === sourceColumn._id) {
-            return {
-              ...column,
-              cards: column.cards.filter((card) => card._id !== data.card._id),
-            };
+            return sourceColumn;
           } else if (column._id === destinationColumn._id) {
-            const updatedCard = {
-              ...data.card,
-              columnId: destinationColumn._id,
-            };
-            return {
-              ...column,
-              cards: [updatedCard, ...column.cards],
-            };
+            return destinationColumn;
           }
           return column;
         }),
       };
 
-      return newActive;
+      return { newActive, newItems };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeCardIndexOperation = createAsyncThunk(
+  'cards/changeCardIndex',
+  async (data, { rejectWithValue, getState }) => {
+    try {
+      const {
+        tasks: {
+          boards: { active },
+          columns: { items },
+        },
+      } = getState();
+      const { destinationColumnId, sourceIndex, destinationIndex } = data;
+      const response = await tasksApi.changeCardIndex(data.card._id, {
+        destinationColumnId,
+        sourceIndex,
+        destinationIndex,
+      });
+      const newItems = items.map((column) => {
+        if (column._id === destinationColumnId) {
+          return response;
+        }
+        return column;
+      });
+
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column._id === destinationColumnId) {
+            return response;
+          }
+          return column;
+        }),
+      };
+
+      return { newItems, newActive };
     } catch (error) {
       return rejectWithValue(error.message);
     }

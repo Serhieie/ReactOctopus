@@ -14,7 +14,7 @@ import CardModal from '../../../popUps/cardModal/CardModal';
 import { useDispatch } from 'react-redux';
 import { setIsFiltersOpen } from '../../../../redux/popUps/popUpsSlice';
 
-export const Buttons = ({ card, column }) => {
+export const Buttons = ({ card, column, isDragging }) => {
   const { theme } = useAuth();
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [isEditCardOpen, setIsEditCardOpen] = useState(false);
@@ -57,6 +57,9 @@ export const Buttons = ({ card, column }) => {
         [styles.buttonsDark]: theme === 'dark',
         [styles.buttonsLight]: theme === 'light',
         [styles.buttonsViolet]: theme === 'violet',
+        [styles.buttonsDraggingDark]: theme === 'dark' && isDragging,
+        [styles.buttonsDraggingLight]: theme === 'light' && isDragging,
+        [styles.buttonsDraggingViolet]: theme === 'violet' && isDragging,
       })}
     >
       {tooday && (

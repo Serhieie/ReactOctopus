@@ -52,6 +52,12 @@
   width: 4px;
 }
 
+.cardTitle,
+.cardDescription,
+.hr {
+  transition: color 1000ms ease-in-out;
+}
+
 //DARK
 
 .cardDark {
@@ -67,6 +73,22 @@
 
   .hr {
     border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+//dragging
+.cardDraggingDark {
+  background-color: #121212;
+
+  .cardTitle {
+    color: $button-hover-dark;
+  }
+
+  .cardDescription {
+    color: $button-dark;
+  }
+
+  .hr {
+    border-color: $button-dark;
   }
 }
 
@@ -86,6 +108,21 @@
     border-width: 1px;
   }
 }
+//dragging
+.cardDraggingLight {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $button-hover-light;
+  }
+  .cardDescription {
+    color: $button-light;
+  }
+  .hr {
+    border-color: $button-light;
+    border-width: 1px;
+  }
+}
 
 //VIOLET
 
@@ -101,6 +138,23 @@
 
   .hr {
     border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+}
+
+//dragging
+.cardDraggingViolet {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $button-violet;
+  }
+  .cardDescription {
+    color: $button-hover-violet;
+  }
+
+  .hr {
+    border-color: $button-hover-violet;
     border-width: 1px;
   }
 }

@@ -24,7 +24,7 @@ export const CardList = ({ column }) => {
     <CardListSkelleton />
   ) : (
     <>
-      <Droppable droppableId={column._id}>
+      <Droppable droppableId={column._id} type="card">
         {(provided) => (
           <ul
             ref={provided.innerRef}

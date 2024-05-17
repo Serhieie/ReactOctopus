@@ -113,6 +113,7 @@ export const tasksSlice = createSlice({
           (state.columns.isLoading = false),
             (state.columns.items = payload.newItems);
           state.boards.active = payload.newActive;
+          state.columnsOrder = payload.newColumnsOrder;
         }
       )
       .addCase(
@@ -131,6 +132,7 @@ export const tasksSlice = createSlice({
         (state, { payload }) => {
           (state.columns.isLoading = false),
             (state.boards.active = payload.active);
+          state.columnsOrder = payload.newColumnsOrder;
         }
       )
       .addCase(columsOperations.deleteColumn.rejected, (state, { payload }) => {
@@ -218,12 +220,51 @@ export const tasksSlice = createSlice({
           state.boards.isLoading = false;
           state.columns.isLoading = false;
           state.cards.isLoading = false;
-          state.boards.active = payload;
-          state.columns.items = payload.columns;
+          state.boards.active = payload.newActive;
+          state.columns.items = payload.newItems;
         }
       )
       .addCase(
         cardsOperations.moveCardOperation.rejected,
+        (state, { payload }) => {
+          (state.cards.isLoading = false), (state.cards.error = payload);
+        }
+      )
+      //changeCardIndex
+      .addCase(cardsOperations.changeCardIndexOperation.pending, (state) => {
+        (state.cards.isLoading = true), (state.cards.error = null);
+      })
+      .addCase(
+        cardsOperations.changeCardIndexOperation.fulfilled,
+        (state, { payload }) => {
+          state.columns.isLoading = false;
+          state.cards.isLoading = false;
+          state.columns.items = payload.newItems;
+          state.boards.active = payload.newActive;
+        }
+      )
+      .addCase(
+        cardsOperations.changeCardIndexOperation.rejected,
+        (state, { payload }) => {
+          (state.cards.isLoading = false), (state.cards.error = payload);
+        }
+      )
+
+      //changeColumnIndex
+      .addCase(columsOperations.changeColumnIndexOperation.pending, (state) => {
+        (state.cards.isLoading = true), (state.cards.error = null);
+      })
+      .addCase(
+        columsOperations.changeColumnIndexOperation.fulfilled,
+        (state, { payload }) => {
+          state.columns.isLoading = false;
+          state.boards.isLoading = false;
+          state.columns.items = payload.newItems;
+          state.boards.active = payload.newActive;
+        }
+      )
+      .addCase(
+        columsOperations.changeColumnIndexOperation.rejected,
         (state, { payload }) => {
           (state.cards.isLoading = false), (state.cards.error = payload);
         }

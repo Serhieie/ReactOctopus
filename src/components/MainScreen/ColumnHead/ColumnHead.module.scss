@@ -67,6 +67,29 @@
   }
 }
 
+.columnHeadDraggingDark {
+  background-color: #121212;
+
+  .icon {
+    stroke: $button-dark;
+  }
+  .columnTitle {
+    color: $button-hover-dark;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-hover-dark, 100%);
+  }
+
+  border: 1px solid $button-hover-dark;
+}
+
 //LIGHT
 
 .columnHeadLight {
@@ -96,6 +119,29 @@
   }
 }
 
+.columnHeadDraggingLight {
+  background-color: #fff;
+
+  .icon {
+    stroke: $button-light;
+  }
+  .columnTitle {
+    color: $button-hover-light;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-hover-light, 100%);
+  }
+
+  border: 1px solid $button-hover-light;
+}
+
 //VIOLET
 
 .columnHeadViolet {
@@ -120,4 +166,27 @@
   .button:focus .lightSpanBtn {
     @include light($text-hover-light, 100%);
   }
+}
+
+.columnHeadDraggingViolet {
+  background-color: #fff;
+
+  .icon {
+    stroke: $button-violet;
+  }
+  .columnTitle {
+    color: $button-hover-violet;
+  }
+
+  .lightSpanBtn {
+    @include light('', 100%);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-hover-violet, 100%);
+  }
+
+  border: 1px solid $button-hover-violet;
 }

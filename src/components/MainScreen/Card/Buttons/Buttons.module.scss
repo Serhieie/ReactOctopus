@@ -60,6 +60,22 @@
   }
 }
 
+.buttonsDraggingDark {
+  .icon {
+    stroke: $button-hover-dark;
+  }
+
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-dark, 70%);
+  }
+}
+
 //LIGHT
 
 .buttonsLight {
@@ -85,6 +101,22 @@
   }
 }
 
+.buttonsDraggingLight {
+  .icon {
+    stroke: $button-hover-light;
+  }
+
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-light, 70%);
+  }
+}
+
 //VIOLET
 
 .buttonsViolet {
@@ -107,5 +139,19 @@
   .button:hover .lightSpanBtn,
   .button:focus .lightSpanBtn {
     @include light($text-hover-violet, 70%);
+  }
+}
+
+.buttonsDraggingViolet {
+  .icon {
+    stroke: $button-hover-violet;
+  }
+  .lightSpanBtn {
+    @include light('', 0);
+  }
+  .lightSpan,
+  .button:hover .lightSpanBtn,
+  .button:focus .lightSpanBtn {
+    @include light($button-violet, 70%);
   }
 }

@@ -58,6 +58,28 @@
   }
 }
 
+.priorityInfoDraggingDark {
+  background-color: #121212;
+
+  .cardTitle {
+    color: $text-dark;
+  }
+
+  .hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .cardDescription,
+  .prioritySpanLabel {
+    color: $button-dark;
+  }
+
+  .prioritySpanDate,
+  .prioritySpanPriority {
+    color: $button-hover-dark;
+  }
+}
+
 //LIGHT
 
 .priorityInfoLight {
@@ -80,6 +102,27 @@
   }
 }
 
+.priorityInfoDraggingLight {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $text-light;
+  }
+  .cardDescription,
+  .prioritySpanLabel {
+    color: $button-light;
+  }
+
+  .prioritySpanDate,
+  .prioritySpanPriority {
+    color: $button-hover-light;
+  }
+  .hr {
+    border-color: rgba(22, 22, 22, 0.1);
+    border-width: 1px;
+  }
+}
+
 //VIOLET
 
 .priorityInfoViolet {
@@ -99,5 +142,27 @@
 
   .prioritySpanLabel {
     color: $text-secondary-violet;
+  }
+}
+
+.priorityInfoDraggingViolet {
+  background-color: #fff;
+
+  .cardTitle {
+    color: $button-violet;
+  }
+  .cardDescription,
+  .prioritySpanLabel {
+    color: $button-hover-violet;
+  }
+
+  .hr {
+    border-color: $button-hover-violet;
+    border-width: 1px;
+  }
+
+  .prioritySpanPriority,
+  .prioritySpanDate {
+    color: $button-violet;
   }
 }

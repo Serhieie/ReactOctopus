@@ -69,3 +69,16 @@ export const moveCard = async (cardId, body) => {
   const { data } = await instance.patch(`/cards/move/${cardId}`, body);
   return data;
 };
+
+export const changeCardIndex = async (cardId, body) => {
+  const { data } = await instance.patch(`/cards/changeIndex/${cardId}`, body);
+  return data;
+};
+
+export const changeColumnIndex = async (columnId, body) => {
+  const { data } = await instance.patch(
+    `/columns/changeIndex/${columnId}`,
+    body
+  );
+  return data;
+};

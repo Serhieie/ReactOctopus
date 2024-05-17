@@ -3,7 +3,7 @@ import styles from './Priority.module.scss';
 import clsx from 'clsx';
 import { useAuth } from '../../../../hooks';
 
-export const Priority = ({ card, labelColor }) => {
+export const Priority = ({ isDragging, card, labelColor }) => {
   const { theme } = useAuth();
   const data = formatDate(card.deadline);
 
@@ -13,6 +13,9 @@ export const Priority = ({ card, labelColor }) => {
         [styles.priorityInfoDark]: theme === 'dark',
         [styles.priorityInfoLight]: theme === 'light',
         [styles.priorityInfoViolet]: theme === 'violet',
+        [styles.priorityInfoDraggingDark]: theme === 'dark' && isDragging,
+        [styles.priorityInfoDraggingLight]: theme === 'light' && isDragging,
+        [styles.priorityInfoDraggingViolet]: theme === 'violet' && isDragging,
       })}
     >
       <div className={styles.priorityWrapper}>
@@ -20,7 +23,9 @@ export const Priority = ({ card, labelColor }) => {
         <div className={styles.priority}>
           <div
             className={styles.prioritySpan}
-            style={{ backgroundColor: `${labelColor}` }}
+            style={{
+              backgroundColor: `${labelColor}`,
+            }}
           ></div>
           <span className={styles.prioritySpanPriority}>{card.priority}</span>
         </div>
