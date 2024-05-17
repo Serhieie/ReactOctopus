@@ -33,12 +33,12 @@ function App() {
 
   useEffect(() => {
     const token = googleToken.get('token');
-    console.log(token);
+
     if (token) {
       dispatch(clearTasks());
       setToken(token);
-      dispatch(setTokenToRedux(token));
       dispatch(current());
+      dispatch(setTokenToRedux(token));
     }
   }, [googleToken, dispatch]);
 
