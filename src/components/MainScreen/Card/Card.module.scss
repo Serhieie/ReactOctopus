@@ -21,6 +21,7 @@
     @include twoLineText();
   }
   // @include appear-animation(300ms);
+  transition: box-shadow 300ms ease;
 }
 
 .cardTitle {
@@ -79,7 +80,9 @@
 //dragging
 .cardDraggingDark {
   background-color: #121212;
-
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 6px 20px rgba(0, 0, 0, 0.46);
   .cardTitle {
     color: $button-hover-dark;
   }
@@ -112,7 +115,9 @@
 //dragging
 .cardDraggingLight {
   background-color: #fff;
-
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 6px 20px rgba(0, 0, 0, 0.23);
   .cardTitle {
     color: $button-hover-light;
   }
@@ -146,7 +151,9 @@
 //dragging
 .cardDraggingViolet {
   background-color: #fff;
-
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 6px 20px rgba(0, 0, 0, 0.23);
   .cardTitle {
     color: $button-violet;
   }
