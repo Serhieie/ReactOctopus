@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 export const Card = ({ card, column, index }) => {
   const { theme } = useAuth();
   const { isLoading: isCardLoading } = useSelector(selectCardsState);
+  // const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
 
   const labelColor = getColorByPriority(card.priority, theme);
   const draggingColor = getDragingColorByPriority(theme);

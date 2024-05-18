@@ -43,6 +43,7 @@
   @include media-rules(tablet) {
     width: 260px;
   }
+  transition: background-color 75ms ease-in-out;
 }
 
 .sidebar_hidden {

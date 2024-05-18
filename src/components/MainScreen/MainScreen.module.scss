@@ -35,6 +35,8 @@
   .iconFilter {
     fill: transparent;
   }
+
+  transition: background-color 75ms ease-in-out;
 }
 
 .mainScreenSidebarOpen {

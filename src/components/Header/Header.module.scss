@@ -17,6 +17,8 @@
     width: calc(100dvw - 260px);
     margin-left: auto;
   }
+
+  transition: background-color 75ms ease-in-out;
 }
 
 // DARK THEME

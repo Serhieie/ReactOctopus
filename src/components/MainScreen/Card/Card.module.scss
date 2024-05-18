@@ -20,6 +20,7 @@
   .cardDescription {
     @include twoLineText();
   }
+  // @include appear-animation(300ms);
 }
 
 .cardTitle {

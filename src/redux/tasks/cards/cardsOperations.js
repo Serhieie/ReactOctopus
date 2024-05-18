@@ -192,6 +192,7 @@ export const changeCardIndexOperation = createAsyncThunk(
           columns: { items },
         },
       } = getState();
+
       const { destinationColumnId, sourceIndex, destinationIndex } = data;
       const response = await tasksApi.changeCardIndex(data.card._id, {
         destinationColumnId,
