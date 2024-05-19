@@ -15,6 +15,94 @@ export const tasksSlice = createSlice({
       state.columns = initialState.columns;
       state.cards = initialState.cards;
     },
+    changeCardIndexLocal: (state, action) => {
+      const { active } = state.boards;
+      const { items } = state.columns;
+      const { destinationColumnId, sourceIndex, destinationIndex, card } =
+        action.payload;
+
+      const newItems = items.map((column) => {
+        if (column._id === destinationColumnId) {
+          const newCards = [...column.cards];
+          newCards.splice(sourceIndex, 1);
+          newCards.splice(destinationIndex, 0, card);
+          return {
+            ...column,
+            cards: newCards,
+          };
+        }
+        return column;
+      });
+
+      const newActive = {
+        ...active,
+        columns: active.columns.map((column) => {
+          if (column._id === destinationColumnId) {
+            const newCards = [...column.cards];
+            newCards.splice(sourceIndex, 1);
+            newCards.splice(destinationIndex, 0, card);
+            return {
+              ...column,
+              cards: newCards,
+            };
+          }
+          return column;
+        }),
+      };
+
+      state.columns.items = newItems;
+      state.boards.active = newActive;
+    },
+    // moveCardIndexLocal: (state, action) => {
+    //   const { active } = state.boards;
+    //   const { items } = state.columns;
+    //   const { destinationColumnId, sourceIndex, destinationIndex, card } =
+    //     action.payload;
+
+    //   const newItems = items.map((column) => {
+    //     if (column._id === card.columnId) {
+    //       const newCards = [...column.cards];
+    //       newCards.splice(sourceIndex, 1);
+    //       return {
+    //         ...column,
+    //         cards: newCards,
+    //       };
+    //     } else if (column._id === destinationColumnId) {
+    //       const newCards = [...column.cards];
+    //       newCards.splice(destinationIndex, 0, card);
+    //       return {
+    //         ...column,
+    //         cards: newCards,
+    //       };
+    //     }
+    //     return column;
+    //   });
+
+    //   const newActive = {
+    //     ...active,
+    //     columns: active.columns.map((column) => {
+    //       if (column._id === card.columnId) {
+    //         const newCards = [...column.cards];
+    //         newCards.splice(sourceIndex, 1);
+    //         return {
+    //           ...column,
+    //           cards: newCards,
+    //         };
+    //       } else if (column._id === destinationColumnId) {
+    //         const newCards = [...column.cards];
+    //         newCards.splice(destinationIndex, 0, card);
+    //         return {
+    //           ...column,
+    //           cards: newCards,
+    //         };
+    //       }
+    //       return column;
+    //     }),
+    //   };
+
+    //   state.columns.items = newItems;
+    //   state.boards.active = newActive;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -252,7 +340,7 @@ export const tasksSlice = createSlice({
 
       //changeColumnIndex
       .addCase(columsOperations.changeColumnIndexOperation.pending, (state) => {
-        (state.cards.isLoading = true), (state.cards.error = null);
+        (state.columns.isLoading = true), (state.columns.error = null);
       })
       .addCase(
         columsOperations.changeColumnIndexOperation.fulfilled,
@@ -266,7 +354,7 @@ export const tasksSlice = createSlice({
       .addCase(
         columsOperations.changeColumnIndexOperation.rejected,
         (state, { payload }) => {
-          (state.cards.isLoading = false), (state.cards.error = payload);
+          (state.columns.isLoading = false), (state.columns.error = payload);
         }
       );
   },
@@ -276,7 +364,8 @@ const persistConfig = {
   key: 'tasks',
   storage,
 };
-export const { clearTasks } = tasksSlice.actions;
+export const { clearTasks, changeCardIndexLocal, moveCardIndexLocal } =
+  tasksSlice.actions;
 
 export const persistedTasksReducer = persistReducer(
   persistConfig,

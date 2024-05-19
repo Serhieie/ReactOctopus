@@ -19,7 +19,11 @@ import {
 } from './redux/tasks/cards/cardsOperations';
 import { setToken } from './redux/api/api';
 import { setTokenToRedux } from './redux/auth/authSlice';
-import { clearTasks } from './redux/tasks/tasksSlice';
+import {
+  changeCardIndexLocal,
+  clearTasks,
+  moveCardIndexLocal,
+} from './redux/tasks/tasksSlice';
 import { changeColumnIndexOperation } from './redux/tasks/columns/columnsOperations';
 
 function App() {
@@ -75,6 +79,14 @@ function App() {
 
     if (source.droppableId === droppableId) {
       dispatch(
+        changeCardIndexLocal({
+          card,
+          destinationColumnId: droppableId,
+          destinationIndex,
+          sourceIndex,
+        })
+      );
+      dispatch(
         changeCardIndexOperation({
           card,
           destinationColumnId: droppableId,
@@ -83,6 +95,14 @@ function App() {
         })
       );
     } else {
+      // dispatch(
+      //   moveCardIndexLocal({
+      //     card,
+      //     destinationColumnId: droppableId,
+      //     destinationIndex,
+      //     sourceIndex,
+      //   })
+      // );
       dispatch(
         moveCardOperation({
           card,

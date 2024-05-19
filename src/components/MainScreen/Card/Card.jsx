@@ -6,25 +6,32 @@ import {
   getColorByPriority,
   getDragingColorByPriority,
 } from '../../../helpers';
-import { useAuth } from '../../../hooks';
+import { useAuth, useMedia } from '../../../hooks';
 import { CardSkelleton } from '../../Skelletons/MainScreenSkelleton/CardSkelleton/CardSkelleton';
 import { Draggable } from 'react-beautiful-dnd';
-import { selectCardsState } from '../../../redux/tasks/tasksSelectors';
+import {
+  selectCardsState,
+  selectColumnsState,
+} from '../../../redux/tasks/tasksSelectors';
 import { useSelector } from 'react-redux';
 
 export const Card = ({ card, column, index }) => {
   const { theme } = useAuth();
-  const { isLoading: isCardLoading } = useSelector(selectCardsState);
-  // const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
-
+  // const { isLoading: isCardLoading } = useSelector(selectCardsState);
+  const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
+  const { isMobile, isTablet } = useMedia();
   const labelColor = getColorByPriority(card.priority, theme);
   const draggingColor = getDragingColorByPriority(theme);
 
   //TRANSFORM RIGHT AFTER SIDEBAR
-  return isCardLoading ? (
+  return isColumnLoading ? (
     <CardSkelleton />
   ) : (
-    <Draggable draggableId={card?._id} index={index}>
+    <Draggable
+      draggableId={card?._id}
+      index={index}
+      isDragDisabled={isMobile || isTablet}
+    >
       {(provided, snapshot) => (
         <li
           {...provided.draggableProps}

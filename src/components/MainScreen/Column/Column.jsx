@@ -12,11 +12,13 @@ import { useSelector } from 'react-redux';
 import CardModal from '../../popUps/cardModal/CardModal.jsx';
 import AddEditCardForm from '../../popUps/cardModal/AddEditCardForm.jsx';
 import { Draggable } from 'react-beautiful-dnd';
+import { useMedia } from '../../../hooks/useMedia.js';
 
 export const Column = ({ column, index }) => {
   const { theme } = useAuth();
   const { isLoading: isColumnLoading } = useSelector(selectColumnsState);
   const [isAddCardModalOpen, setIsAddCardModalOpen] = useState(false);
+  const { isMobile, isTablet } = useMedia();
 
   // (cardData = initialValues), (columnId = null);
   const closeAddCardModal = () => {
@@ -29,7 +31,11 @@ export const Column = ({ column, index }) => {
     <ColumnSkelleton />
   ) : (
     <>
-      <Draggable draggableId={column?._id} index={index}>
+      <Draggable
+        draggableId={column?._id}
+        index={index}
+        isDragDisabled={isMobile || isTablet}
+      >
         {(provided, snapshot) => (
           <li
             {...provided.draggableProps}

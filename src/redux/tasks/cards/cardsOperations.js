@@ -199,6 +199,7 @@ export const changeCardIndexOperation = createAsyncThunk(
         sourceIndex,
         destinationIndex,
       });
+
       const newItems = items.map((column) => {
         if (column._id === destinationColumnId) {
           return response;
