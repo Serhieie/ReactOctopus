@@ -8,6 +8,7 @@ import {
   needHelp,
   updateProfile,
 } from '../api/api';
+import { customCleanerLS } from '../../helpers/customCleanerLS';
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
@@ -30,10 +31,10 @@ export const logIn = createAsyncThunk(
   async (body, { rejectWithValue }) => {
     try {
       const response = await login(body);
-      localStorage.clear();
+      customCleanerLS('persist:tasks', 'persist:root', 'persist:popUps');
       return response.data;
     } catch (error) {
-      localStorage.clear();
+      customCleanerLS('persist:tasks', 'persist:root', 'persist:popUps');
       console.error(error.message);
       if (error.response.status === 600) {
         Notify.failure(error.response.data.message);
@@ -65,7 +66,7 @@ export const current = createAsyncThunk(
     condition: (_, { getState }) => {
       const { auth } = getState();
       if (!auth.token) {
-        localStorage.clear();
+        customCleanerLS('persist:tasks', 'persist:root', 'persist:popUps');
         return false;
       }
     },

@@ -8,6 +8,7 @@ const instance = axios.create({
 });
 
 export const setToken = (token) => {
+  console.log(token);
   if (token) {
     return (instance.defaults.headers.authorization = `Bearer ${token}`);
   } else {
@@ -15,15 +16,50 @@ export const setToken = (token) => {
   }
 };
 
+instance.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  async function (error) {
+    const originalRequest = error.config;
+
+    if (error.response && error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      if (refreshToken && !originalRequest._retry) {
+        originalRequest._retry = true;
+        try {
+          const response = await instance.post('/auth/refresh', {
+            refreshToken,
+          });
+          const { accessToken, refreshToken: newRefreshToken } = response.data;
+
+          setToken(accessToken);
+          localStorage.setItem('refreshToken', newRefreshToken);
+
+          originalRequest.headers.authorization = `Bearer ${accessToken}`;
+
+          return instance(originalRequest);
+        } catch (err) {
+          return Promise.reject(err);
+        }
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export const register = async (body) => {
   const response = await instance.post('/auth/register', body);
-  setToken(response.data.token);
+  setToken(response.data.accessToken);
+  localStorage.setItem('refreshToken', response.data.refreshToken);
   return response;
 };
 
 export const login = async (body) => {
   const response = await instance.post('/auth/login', body);
-  setToken(response.data.token);
+  setToken(response.data.accessToken);
+  localStorage.setItem('refreshToken', response.data.refreshToken);
   return response;
 };
 
